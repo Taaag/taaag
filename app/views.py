@@ -33,6 +33,11 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
+
 @app.before_request
 def get_current_user():
     """Set g.user to the currently logged in user.
