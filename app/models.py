@@ -17,6 +17,10 @@ class User(db.Model):
     access_token = db.Column(db.String, nullable=False)
     privacy = db.Column(SMALLINT, default=0, nullable=False)
 
+    # Relationships
+    tags = db.relationship('taggings', backref='taggee', lazy='dynamic')
+    tag_others = db.relationship('taggings', backref='tagger', lazy='dynamic')
+
 
 class Tag(db.Model):
     __tablename__ = 'tags'
@@ -26,6 +30,9 @@ class Tag(db.Model):
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
     name = db.Column(db.String, nullable=False, unique=True)
+
+    # Relationships
+    taggings = db.relationship('taggings', backref='tag', lazy='dynamic')
 
     def to_dict(self):
         return {'id': self.id, 'name': self.name}
