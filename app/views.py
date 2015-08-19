@@ -2,7 +2,7 @@ from facebook import get_user_from_cookie, GraphAPI
 from flask import g, render_template, redirect, request, session, url_for, jsonify
 
 from app import app, db
-from app.models import User
+from app.models import User, Tag, Tagging
 
 from app.utils import get_user_friends
 
@@ -26,7 +26,33 @@ def index():
 
 @app.route('/api', methods=['GET'])
 def api():
+    supported_apis = {
+        'tag': {'all': api_tag_all,
+                'search': api_tag_search,
+                'insert': api_tag_insert}
+    }
+    target = request.args.get('target', '')
+    method = request.args.get('method', '')
+    payload = request.args.get('payload', '')
+    if target in supported_apis and method in supported_apis[target]:
+        return jsonify(supported_apis[target][method](payload))
+
     return jsonify({'message': 'API endpoint is working!'})
+
+
+def api_tag_all(payload):
+    return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
+
+
+def api_tag_search(payload):
+    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload).all() or []]}
+
+
+def api_tag_insert(payload):
+    tag = Tag(name=payload)
+    db.session.add(tag)
+    db.session.commit()
+    return {'response': tag.to_dict()}
 
 
 @app.route('/test')
