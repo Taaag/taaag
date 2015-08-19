@@ -1,5 +1,5 @@
 from facebook import get_user_from_cookie, GraphAPI
-from flask import g, render_template, redirect, request, session, url_for
+from flask import g, render_template, redirect, request, session, url_for, jsonify
 
 from app import app, db
 from app.models import User
@@ -22,6 +22,11 @@ def index():
                                friends=get_user_friends(g.user['access_token']))
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
+
+
+@app.route('/api', methods=['GET'])
+def api():
+    return jsonify({'message': 'API endpoint is working!'})
 
 
 @app.route('/test')
