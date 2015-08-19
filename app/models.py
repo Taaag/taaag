@@ -25,8 +25,18 @@ class Tag(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
+    name = db.Column(db.String, nullable=False, unique=True)
 
-    name = db.Column(db.String, nullable=False)
+    def to_dict(self):
+        return {'id': self.id, 'name': self.name}
+
+    @classmethod
+    def query_tags_by_name(cls, name):
+        return cls.query.filter(cls.name.like('%' + name + '%'))
+
+    @classmethod
+    def all_tags(cls):
+        cls.query.all()
 
 
 class Tagging(db.Model):
@@ -36,7 +46,6 @@ class Tagging(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
-
     tagger_uid = db.Column(BIGINT(unsigned=True), db.ForeignKey('users.id'), nullable=False)
     taggee_uid = db.Column(BIGINT(unsigned=True), db.ForeignKey('users.id'), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), nullable=False)
