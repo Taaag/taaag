@@ -10,7 +10,7 @@ FB_APP_NAME = 'Taaag'
 FB_APP_SECRET = '***REMOVED***'
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # If a user was set in the get_current_user function before the request,
     # the user is logged in.
@@ -19,18 +19,6 @@ def index():
                                app_name=FB_APP_NAME, user=g.user)
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
-
-
-@app.route('/logout')
-def logout():
-    """Log out the user from the application.
-
-    Log out the user from the application by removing them from the
-    session.  Note: this does not log the user out of Facebook - this is done
-    by the JavaScript SDK.
-    """
-    session.pop('user', None)
-    return redirect(url_for('index'))
 
 
 @app.route('/test')
@@ -73,7 +61,6 @@ def get_current_user():
 
             # Create the user and insert it into the database
             user = User(id=str(profile['id']), name=profile['name'],
-                        profile_url=profile['link'],
                         access_token=result['access_token'])
             db.session.add(user)
         elif user.access_token != result['access_token']:
@@ -81,7 +68,7 @@ def get_current_user():
             user.access_token = result['access_token']
 
         # Add the user to the current session
-        session['user'] = dict(name=user.name, profile_url=user.profile_url,
+        session['user'] = dict(name=user.name,
                                id=user.id, access_token=user.access_token)
 
     # Commit changes to the database and set the user as a global g.user
