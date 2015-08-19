@@ -18,8 +18,8 @@ class User(db.Model):
     privacy = db.Column(SMALLINT, default=0, nullable=False)
 
     # Relationships
-    tags = db.relationship('taggings', backref='taggee', lazy='dynamic')
-    tag_others = db.relationship('taggings', backref='tagger', lazy='dynamic')
+    tags = db.relationship('Tagging', backref='taggee', foreign_keys='Tagging.taggee_id', lazy='dynamic')
+    tag_others = db.relationship('Tagging', backref='tagger', foreign_keys='Tagging.tagger_id', lazy='dynamic')
 
 
 class Tag(db.Model):
@@ -32,7 +32,7 @@ class Tag(db.Model):
     name = db.Column(db.String, nullable=False, unique=True)
 
     # Relationships
-    taggings = db.relationship('taggings', backref='tag', lazy='dynamic')
+    taggings = db.relationship('Tagging', backref='tag', lazy='dynamic')
 
     def to_dict(self):
         return {'id': self.id, 'name': self.name}
@@ -53,6 +53,6 @@ class Tagging(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
-    tagger_uid = db.Column(BIGINT(unsigned=True), db.ForeignKey('users.id'), nullable=False)
-    taggee_uid = db.Column(BIGINT(unsigned=True), db.ForeignKey('users.id'), nullable=False)
+    tagger_id = db.Column(BIGINT(unsigned=True), db.ForeignKey('users.id'), nullable=False)
+    taggee_id = db.Column(BIGINT(unsigned=True), db.ForeignKey('users.id'), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), nullable=False)
