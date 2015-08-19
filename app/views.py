@@ -4,6 +4,8 @@ from flask import g, render_template, redirect, request, session, url_for
 from app import app, db
 from app.models import User
 
+from app.utils import get_user_friends
+
 # Facebook app details
 FB_APP_ID = '687248731410966'
 FB_APP_NAME = 'Taaag'
@@ -16,7 +18,8 @@ def index():
     # the user is logged in.
     if g.user:
         return render_template('index.html', app_id=FB_APP_ID,
-                               app_name=FB_APP_NAME, user=g.user)
+                               app_name=FB_APP_NAME, user=g.user,
+                               friends=get_user_friends(g.user['access_token']))
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
