@@ -35,20 +35,9 @@ class User(db.Model):
     def get_by_id(cls, id):
         return cls.query.get(id)
 
-    @classmethod
-    def login(cls, id, **kwargs):
-        user = cls.get_by_id(id)
-
-        if user is None:
-            user = cls(**kwargs)
-            db.session.add(user)
-            db.session.commit()
-            return user, True
-        else:
-            args = dict(**kwargs)
-            user.name = args['name']
-            user.access_token = args['access_token']
-            return user, False
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class Tag(db.Model):
