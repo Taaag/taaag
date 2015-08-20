@@ -21,8 +21,8 @@ class User(db.Model):
     # tags = db.relationship('Tagging', backref='taggee', foreign_keys='Tagging.taggee_id', lazy='dynamic')
     # tag_others = db.relationship('Tagging', backref='tagger', foreign_keys='Tagging.tagger_id', lazy='dynamic')
 
-    tags = db.relationship('Tag', backref='taggees', secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
-    tag_others = db.relationship('Tag', backref='taggers', secondary='taggings', primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
+    tags = db.relationship('Tag', backref=db.backref('taggees', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
+    tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
 
     def get_tags(self):
         return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
@@ -51,6 +51,9 @@ class Tag(db.Model):
     @classmethod
     def all_tags(cls):
         cls.query.all()
+
+    def get_taggees(self):
+        return self.taggees.with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
 
 
 class Tagging(db.Model):
