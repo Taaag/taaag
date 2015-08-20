@@ -62,7 +62,7 @@ def api_my_tags():
     result = dict()
     for tag in tags:
         tag_name = tag[0]
-        tagger = [tag[1].id, tag[1].name]
+        tagger = {'uid': tag[1].id, 'name': tag[1].name}
         if tag_name in result:
             result[tag_name].append(tagger)
         else:
