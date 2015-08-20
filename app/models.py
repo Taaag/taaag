@@ -31,10 +31,6 @@ class User(db.Model):
         tagger = aliased(User, name="tagger")
         return self.tags.join(tagger, tagger.id == Tagging.tagger_id).with_entities(Tag.name, tagger).all()
 
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
-
     @classmethod
     def get_by_id(cls, id):
         return cls.query.get(id)

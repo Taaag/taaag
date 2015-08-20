@@ -1,5 +1,5 @@
 from facebook import get_user_from_cookie, GraphAPI
-from flask import g, render_template, redirect, request, session, url_for, jsonify
+from flask import g, render_template, redirect, request, session, url_for, jsonify, abort
 
 from app import app, db
 from app.models import User, Tag, Tagging
@@ -18,7 +18,7 @@ def index():
     # the user is logged in.
     if g.user:
         return render_template('index.html', app_id=FB_APP_ID,
-                               app_name=FB_APP_NAME, user_name=g.user,
+                               app_name=FB_APP_NAME, user=g.user,
                                friends=get_user_friends(g.user.access_token))
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
@@ -26,6 +26,8 @@ def index():
 
 @app.route('/api', methods=['GET'])
 def api():
+    if not g.user:
+        abort(403)
     supported_apis = {
         'tag': {'all': api_tag_all,
                 'search': api_tag_search,
@@ -35,20 +37,20 @@ def api():
     method = request.args.get('method', '')
     payload = request.args.get('payload', '')
     if target in supported_apis and method in supported_apis[target]:
-        return jsonify(supported_apis[target][method](payload))
+        return jsonify(supported_apis[target][method](g.user, payload))
 
     return jsonify({'message': 'API endpoint is working!'})
 
 
-def api_tag_all(payload):
+def api_tag_all(user, payload):
     return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
 
 
-def api_tag_search(payload):
+def api_tag_search(user, payload):
     return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload).all() or []]}
 
 
-def api_tag_insert(payload):
+def api_tag_insert(user, payload):
     tag = Tag(name=payload)
     db.session.add(tag)
     db.session.commit()
@@ -77,5 +79,5 @@ def get_current_user():
                                    access_token=access_token['access_token'])
             session['user'] = user.id
 
-    g.uid = session.get('user', None)
+    g.uid = session.get('user')
     g.user = User.get_by_id(g.uid) if g.uid else None
