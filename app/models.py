@@ -24,8 +24,8 @@ class User(db.Model):
     tags = db.relationship('Tag', backref=db.backref('taggees', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
     tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
 
-    def get_tags(self):
-        return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
+    # def get_tags(self):
+    #     return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
@@ -41,6 +41,11 @@ class User(db.Model):
         db.session.add(user)
         db.session.commit()
         return user
+
+    @classmethod
+    def get_tags_for_user(cls, user_id):
+        user = cls.get_by_id(user_id)
+        return user.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
 
 
 class Tag(db.Model):
@@ -82,8 +87,8 @@ class Tag(db.Model):
     @classmethod
     def delete_by_name_for_user(cls, name, user):
         tag = cls.get_by_name(name)
-        # If nothing is deleted, indicate error
-        if not tag.taggings.filter_by(taggee_id=user.id).delete():
+        # If the tag does not exist or not belong to the user, indicate error
+        if not tag or not tag.taggings.filter_by(taggee_id=user.id).delete():
             return False
         # If nobody has this tag, remove it
         if not tag.taggings.all():
