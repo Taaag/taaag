@@ -57,6 +57,14 @@ def api_tag_insert(user, payload):
     return {'response': tag.to_dict()}
 
 
+def add_tag_to(taggee, tag_name):
+    tag = Tag.get_or_create(tag_name)
+    if Tagging.create(tagger=g.user, taggee=taggee, tag=tag):
+        return {'response': ''}
+    else:
+        return {'response': ''}
+
+
 @app.route('/test')
 def test():
     return render_template('test.html')
