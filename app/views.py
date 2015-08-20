@@ -57,6 +57,24 @@ def api_tag_insert(user, payload):
     return {'response': tag.to_dict()}
 
 
+def api_my_tags():
+    tags = g.user.get_tags_with_tagger()
+    result = dict()
+    for tag in tags:
+        tag_name = tag[0]
+        tagger = [tag[1].id, tag[1].name]
+        if tag_name in result:
+            result[tag_name].append(tagger)
+        else:
+            result[tag_name] = [tagger]
+    return {'response': result}
+
+
+def api_get_friend_tags(user_id):
+    tags = User.get_tags_for_user(user_id)
+    return {'response': tags}
+
+
 def api_add_tag_to(taggee, tag_name):
     tag = Tag.get_or_create(tag_name)
     if Tagging.create(tagger=g.user, taggee=taggee, tag=tag):
