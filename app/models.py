@@ -67,13 +67,24 @@ class Tag(db.Model):
         return cls.query.all()
 
     @classmethod
+    def get_by_name(cls, name):
+        return cls.query.filter_by(name=name).first()
+
+    @classmethod
     def get_or_create(cls, name):
-        tag = cls.query.filter_by(name=name).first()
+        tag = cls.get_by_name(name)
         if tag is None:
             tag = cls(name=name)
             db.session.add(tag)
             db.session.commit()
         return tag
+
+    @classmethod
+    def delete_by_name_for_user(cls, name, user):
+        tag = cls.get_by_name(name)
+        tag.taggings.filter_by(taggee_id=user.id).delete()
+        if not tag.taggings.all():
+            tag.query.delete()
 
 
 class Tagging(db.Model):
@@ -92,7 +103,7 @@ class Tagging(db.Model):
     # Relationships
     tagger = db.relationship('User', foreign_keys='Tagging.tagger_id')
     taggee = db.relationship('User', foreign_keys='Tagging.taggee_id')
-    tag = db.relationship('Tag')
+    tag = db.relationship('Tag', backref=db.backref('taggings', lazy='dynamic'))
 
     @classmethod
     def create(cls, **kwargs):
