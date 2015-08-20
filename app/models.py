@@ -95,9 +95,19 @@ class Tagging(db.Model):
     taggee_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), nullable=False)
 
-    uniq = db.Index([tagger_id, taggee_id, tag_id], unique=True)
+    db.UniqueConstraint(tagger_id, taggee_id, tag_id)
 
     # Relationships
     tagger = db.relationship('User', foreign_keys='Tagging.tagger_id')
     taggee = db.relationship('User', foreign_keys='Tagging.taggee_id')
     tag = db.relationship('Tag')
+
+    @classmethod
+    def create(cls, **kwargs):
+        tagging = cls(**kwargs)
+        try:
+            db.session.add(tagging)
+            db.session.commit()
+            return True
+        except:
+            return False
