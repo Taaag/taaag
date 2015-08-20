@@ -24,9 +24,6 @@ class User(db.Model):
     tags = db.relationship('Tag', backref='taggees', secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
     tag_others = db.relationship('Tag', backref='taggers', secondary='taggings', primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
 
-    def get_settings(self):
-        return self.privacy
-
     def get_tags(self):
         return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
 
