@@ -31,6 +31,25 @@ class User(db.Model):
         tagger = aliased(User, name="tagger")
         return self.tags.join(tagger, tagger.id == Tagging.tagger_id).with_entities(Tag.name, tagger).all()
 
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.query.get(id)
+
+    @classmethod
+    def login(cls, id, **kwargs):
+        user = cls.get_by_id(id)
+
+        if user is None:
+            user = cls(**kwargs)
+            db.session.add(user)
+            db.session.commit()
+            return user, True
+        else:
+            args = dict(**kwargs)
+            user.name = args['name']
+            user.access_token = args['access_token']
+            return user, False
+
 
 class Tag(db.Model):
     __tablename__ = 'tags'
@@ -44,16 +63,25 @@ class Tag(db.Model):
     def to_dict(self):
         return {'id': self.id, 'name': self.name}
 
+    def get_taggees(self):
+        return self.taggees.with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+
     @classmethod
     def query_tags_by_name(cls, name):
         return cls.query.filter(cls.name.like('%' + name + '%'))
 
     @classmethod
     def all_tags(cls):
-        cls.query.all()
+        return cls.query.all()
 
-    def get_taggees(self):
-        return self.taggees.with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+    @classmethod
+    def get_or_create(cls, name):
+        tag = cls.query.filter_by(name=name).first()
+        if tag is None:
+            tag = cls(name=name)
+            db.session.add(tag)
+            db.session.commit()
+        return tag
 
 
 class Tagging(db.Model):
