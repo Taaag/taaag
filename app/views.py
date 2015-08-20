@@ -57,9 +57,16 @@ def api_tag_insert(user, payload):
     return {'response': tag.to_dict()}
 
 
-def add_tag_to(taggee, tag_name):
+def api_add_tag_to(taggee, tag_name):
     tag = Tag.get_or_create(tag_name)
     if Tagging.create(tagger=g.user, taggee=taggee, tag=tag):
+        return {'response': ''}
+    else:
+        return {'response': ''}
+
+
+def api_delete_tag(tag_name):
+    if Tag.delete_by_name_for_user(tag_name, g.user):
         return {'response': ''}
     else:
         return {'response': ''}
