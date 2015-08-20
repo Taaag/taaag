@@ -46,8 +46,10 @@ class User(db.Model):
             return user, True
         else:
             args = dict(**kwargs)
-            user.name = args['name']
-            user.access_token = args['access_token']
+            if user.name != args['name']:
+                user.name = args['name']
+            if user.access_token != args['access_token']:
+                user.access_token = args['access_token']
             return user, False
 
 
