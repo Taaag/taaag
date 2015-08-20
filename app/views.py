@@ -37,20 +37,20 @@ def api():
     method = request.args.get('method', '')
     payload = request.args.get('payload', '')
     if target in supported_apis and method in supported_apis[target]:
-        return jsonify(supported_apis[target][method](payload))
+        return jsonify(supported_apis[target][method](g.user, payload))
 
     return jsonify({'message': 'API endpoint is working!'})
 
 
-def api_tag_all(payload):
+def api_tag_all(user, payload):
     return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
 
 
-def api_tag_search(payload):
+def api_tag_search(user, payload):
     return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload).all() or []]}
 
 
-def api_tag_insert(payload):
+def api_tag_insert(user, payload):
     tag = Tag(name=payload)
     db.session.add(tag)
     db.session.commit()
