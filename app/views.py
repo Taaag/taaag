@@ -1,3 +1,5 @@
+import json
+
 from facebook import get_user_from_cookie, GraphAPI
 from flask import g, render_template, redirect, request, session, url_for, jsonify, abort
 
@@ -29,62 +31,89 @@ def api():
     if not g.user:
         abort(403)
     supported_apis = {
-        'tag': {'all': api_tag_all,
-                'search': api_tag_search,
-                'insert': api_tag_insert}
+        'tag': {
+            'all': api_tag_all,
+            'search': api_tag_search,
+            'insert': api_tag_insert
+        },
+        'user': {
+            'my_tags': api_user_my_tags,
+            'friend_tags': api_user_friend_tags,
+            'add_tag': api_user_add_tag,
+            'delete_tag': api_user_delete_tag
+        }
     }
     target = request.args.get('target', '')
     method = request.args.get('method', '')
-    payload = request.args.get('payload', '')
+    payload = json.loads(request.args.get('payload', '{}'))
     if target in supported_apis and method in supported_apis[target]:
         return jsonify(supported_apis[target][method](g.user, payload))
 
     return jsonify({'message': 'API endpoint is working!'})
 
-
+# Debug purpose
 def api_tag_all(user, payload):
+    # Payload: ignored
+    # Return: list of tag dicts
     return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
 
 
+# Debug purpose
 def api_tag_search(user, payload):
-    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload).all() or []]}
+    # Payload: {'keyword': 'foo'}
+    # Return: list of tag dicts
+    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']).all() or []]}
 
 
+# Debug purpose
 def api_tag_insert(user, payload):
-    tag = Tag(name=payload)
+    # Payload: {'name': 'foo'}
+    # Return: tag dict
+    tag = Tag(name=payload['name'])
     db.session.add(tag)
     db.session.commit()
     return {'response': tag.to_dict()}
 
 
-def api_my_tags():
-    tags = g.user.get_tags_with_tagger()
-    result = dict()
+def api_user_my_tags(user, payload):
+    # Payload: ignored
+    # Return: {'tag1': [{'id': 'uid1', 'name': 'name1'}]}
+    tags = user.get_tags_with_tagger()
+    result = {}
     for tag in tags:
         tag_name = tag[0]
-        tagger = {'uid': tag[1].id, 'name': tag[1].name}
-        if tag_name in result:
-            result[tag_name].append(tagger)
-        else:
-            result[tag_name] = [tagger]
+        if not tag_name in result:
+            result[tag_name] = []
+        result[tag_name].append(tag[1].to_dict())
     return {'response': result}
 
 
-def api_get_friend_tags(user_id):
-    tags = User.get_tags_for_user(user_id)
+def api_user_friend_tags(user, payload):
+    # Payload: {'id': 'foo'}
+    # Return: ???
+    tags = User.get_tags_for_user(payload['id'])
     return {'response': tags}
 
 
-def api_add_tag_to(taggee, tag_name):
-    tag = Tag.get_or_create(tag_name)
-    if Tagging.create(tagger=g.user, taggee=taggee, tag=tag):
-        return {'response': ''}
+def api_user_add_tag(user, payload):
+    # Payload: {'taggee': 'uid', 'tag': 'foo'}
+    # Return: ???
+    taggee = User.get_by_id(payload['taggee'])
+    if not taggee:
+        return {'error': 'Taggee does not exist!'}
+    if not user.can_tag(taggee):
+        return {'error': 'Cannot tag the user!'}
+    tag = Tag.get_or_create(payload['tag'])
+    if Tagging.create(tagger=user, taggee=taggee, tag=tag):
+        return {'response': 'OK'}
     else:
-        return {'response': ''}
+        return {'response': 'OK'}
 
 
-def api_delete_tag(tag_name):
-    if Tag.delete_by_name_for_user(tag_name, g.user):
+def api_user_delete_tag(user, payload):
+    # Payload: {'name': 'foo'}
+    # Return: ???
+    if Tag.delete_by_name_for_user(payload['name'], g.user):
         return {'response': ''}
     else:
         return {'response': ''}

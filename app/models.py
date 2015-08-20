@@ -22,14 +22,21 @@ class User(db.Model):
     # tag_others = db.relationship('Tagging', backref='tagger', foreign_keys='Tagging.tagger_id', lazy='dynamic')
 
     tags = db.relationship('Tag', backref=db.backref('taggees', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
-    tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
+    tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.tagger_id==User.id',
+                                 lazy='dynamic')
 
     # def get_tags(self):
-    #     return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
+    # return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
         return self.tags.join(tagger, tagger.id == Tagging.tagger_id).with_entities(Tag.name, tagger).all()
+
+    def to_dict(self):
+        return {'id': self.id, 'name': self.name}
+
+    def can_tag(self, taggee):
+        return True  # TODO
 
     @classmethod
     def get_by_id(cls, id):
