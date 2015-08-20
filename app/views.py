@@ -72,10 +72,9 @@ def get_current_user():
                 profile = graph.get_object('me', fields='link,name,id')
                 access_token = graph.extend_access_token(FB_APP_ID, FB_APP_SECRET)
 
-                new_user = User(id=profile['id'], name=profile['name'],
-                            profile_url=profile['link'],
-                            access_token=access_token['access_token'])
-                new_user.insert()
+                user = User.create(id=profile['id'], name=profile['name'],
+                                   profile_url=profile['link'],
+                                   access_token=access_token['access_token'])
             session['user'] = user.id
 
     g.uid = session.get('user', None)
