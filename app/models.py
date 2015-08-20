@@ -82,9 +82,14 @@ class Tag(db.Model):
     @classmethod
     def delete_by_name_for_user(cls, name, user):
         tag = cls.get_by_name(name)
-        tag.taggings.filter_by(taggee_id=user.id).delete()
+        # If nothing is deleted, indicate error
+        if not tag.taggings.filter_by(taggee_id=user.id).delete():
+            return False
+        # If nobody has this tag, remove it
         if not tag.taggings.all():
             tag.query.delete()
+        # Show success
+        return True
 
 
 class Tagging(db.Model):
