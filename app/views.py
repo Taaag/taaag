@@ -1,5 +1,5 @@
 from facebook import get_user_from_cookie, GraphAPI
-from flask import g, render_template, redirect, request, session, url_for, jsonify
+from flask import g, render_template, redirect, request, session, url_for, jsonify, abort
 
 from app import app, db
 from app.models import User, Tag, Tagging
@@ -26,6 +26,8 @@ def index():
 
 @app.route('/api', methods=['GET'])
 def api():
+    if not g.user:
+        abort(403)
     supported_apis = {
         'tag': {'all': api_tag_all,
                 'search': api_tag_search,
