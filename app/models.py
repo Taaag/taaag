@@ -18,18 +18,21 @@ class User(db.Model):
     privacy = db.Column(db.Integer, default=0, nullable=False)
 
     # Relationships
-    tags = db.relationship('Tagging', backref='taggee', foreign_keys='Tagging.taggee_id', lazy='dynamic')
-    tag_others = db.relationship('Tagging', backref='tagger', foreign_keys='Tagging.tagger_id', lazy='dynamic')
+    # tags = db.relationship('Tagging', backref='taggee', foreign_keys='Tagging.taggee_id', lazy='dynamic')
+    # tag_others = db.relationship('Tagging', backref='tagger', foreign_keys='Tagging.tagger_id', lazy='dynamic')
+
+    tags = db.relationship('Tag', backref='taggees', secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
+    tag_others = db.relationship('Tag', backref='taggers', secondary='taggings', primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
 
     def get_settings(self):
         return self.privacy
 
     def get_tags(self):
-        return self.tags.join(Tag).with_entities(Tag.name, func.count()).group_by(Tag.name).all()
+        return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
-        return self.tags.join(Tag).join(tagger, tagger.id == Tagging.tagger_id).with_entities(Tag.name, tagger).all()
+        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).with_entities(Tag.name, tagger).all()
 
 
 class Tag(db.Model):
@@ -40,9 +43,6 @@ class Tag(db.Model):
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
     name = db.Column(db.String, nullable=False, unique=True)
-
-    # Relationships
-    taggings = db.relationship('Tagging', backref='tag', lazy='dynamic')
 
     def to_dict(self):
         return {'id': self.id, 'name': self.name}
@@ -68,3 +68,8 @@ class Tagging(db.Model):
     tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), nullable=False)
 
     uniq = db.Index([tagger_id, taggee_id, tag_id], unique=True)
+
+    # Relationships
+    tagger = db.relationship('User', foreign_keys='Tagging.tagger_id')
+    taggee = db.relationship('User', foreign_keys='Tagging.taggee_id')
+    tag = db.relationship('Tag')
