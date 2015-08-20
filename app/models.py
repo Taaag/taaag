@@ -31,26 +31,20 @@ class User(db.Model):
         tagger = aliased(User, name="tagger")
         return self.tags.join(tagger, tagger.id == Tagging.tagger_id).with_entities(Tag.name, tagger).all()
 
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
     @classmethod
     def get_by_id(cls, id):
         return cls.query.get(id)
 
     @classmethod
-    def login(cls, id, **kwargs):
-        user = cls.get_by_id(id)
-
-        if user is None:
-            user = cls(**kwargs)
-            db.session.add(user)
-            db.session.commit()
-            return user, True
-        else:
-            args = dict(**kwargs)
-            if user.name != args['name']:
-                user.name = args['name']
-            if user.access_token != args['access_token']:
-                user.access_token = args['access_token']
-            return user, False
+    def create(cls, **kwargs):
+        user = cls(**kwargs)
+        db.session.add(user)
+        db.session.commit()
+        return user
 
 
 class Tag(db.Model):
