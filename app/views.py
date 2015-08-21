@@ -111,7 +111,10 @@ def api_user_add_tag(user, payload):
         return {'error': 'Taggee does not exist!'}
     if not user.can_tag(taggee):
         return {'error': 'Cannot tag the user!'}
-    tag = Tag.get_or_create(payload['tag'])
+    tag_name = payload['tag'].strip().lower()
+    if not tag_name:
+        return {'error': 'Tag name not allowed!'}
+    tag = Tag.get_or_create(tag_name)
     if Tagging.create(tagger=user, taggee=taggee, tag=tag):
         return {'response': 'OK'}
     else:
