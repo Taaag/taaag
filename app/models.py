@@ -2,6 +2,7 @@ from datetime import datetime
 
 from app import db
 from app.enums import UserPrivacy
+from app.utils import is_friend_of
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
@@ -44,6 +45,9 @@ class User(db.Model):
             self.privacy = privacy
             return True
         return False
+
+    def can_tag(self, taggee):
+        return is_friend_of(self, taggee) and taggee.allow_tag()
 
     @classmethod
     def get_by_id(cls, id):
@@ -88,7 +92,11 @@ class Tag(db.Model):
 
     @classmethod
     def query_tags_by_name(cls, name):
-        return cls.query.filter(cls.name.like('%' + name + '%'))
+        name = name.strip().lower()
+        if name:
+            return cls.query.filter(cls.name.like('%' + name + '%')).all()
+        else:
+            return None
 
     @classmethod
     def all_tags(cls):
@@ -96,10 +104,11 @@ class Tag(db.Model):
 
     @classmethod
     def get_by_name(cls, name):
-        return cls.query.filter_by(name=name).first()
+        return cls.query.filter_by(name=name.strip().lower()).first()
 
     @classmethod
     def get_or_create(cls, name):
+        name = name.strip().lower()
         tag = cls.get_by_name(name)
         if tag is None:
             tag = cls(name=name)
@@ -109,6 +118,7 @@ class Tag(db.Model):
 
     @classmethod
     def delete_by_name_for_user(cls, name, user):
+        name = name.strip().lower()
         tag = cls.get_by_name(name)
         # If the tag does not exist or not belong to the user, indicate error
         if not tag or not tag.taggings.filter_by(taggee_id=user.id).delete():

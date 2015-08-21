@@ -21,7 +21,7 @@ def index():
     if g.user:
         return render_template('index.html', app_id=FB_APP_ID,
                                app_name=FB_APP_NAME, user=g.user,
-                               friends=get_user_friends(g.user.access_token))
+                               friends=get_user_friends(g.user))
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
@@ -34,13 +34,15 @@ def api():
         'tag': {
             'all': api_tag_all,
             'search': api_tag_search,
-            'insert': api_tag_insert
+            'insert': api_tag_insert,
+            'get_taggees': api_tag_get_taggees
         },
         'user': {
             'my_tags': api_user_my_tags,
             'friend_tags': api_user_friend_tags,
             'add_tag': api_user_add_tag,
-            'delete_tag': api_user_delete_tag
+            'delete_tag': api_user_delete_tag,
+            'search_friends': api_user_search_friends
         }
     }
     target = request.args.get('target', '')
@@ -51,6 +53,7 @@ def api():
 
     return jsonify({'message': 'API endpoint is working!'})
 
+
 # Debug purpose
 def api_tag_all(user, payload):
     # Payload: ignored
@@ -58,21 +61,26 @@ def api_tag_all(user, payload):
     return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
 
 
-# Debug purpose
 def api_tag_search(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: list of tag dicts
-    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']).all() or []]}
+    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']) or []]}
 
 
 # Debug purpose
 def api_tag_insert(user, payload):
     # Payload: {'name': 'foo'}
     # Return: tag dict
-    tag = Tag(name=payload['name'])
-    db.session.add(tag)
-    db.session.commit()
+    tag = Tag.get_or_create(payload['name'])
     return {'response': tag.to_dict()}
+
+
+def api_tag_get_taggees(user, payload):
+    # Payload: {'name': 'foo'}
+    # Return: {'user1': 2, 'user2': 1}
+    tag = Tag.query_tags_by_name(payload['name'])
+    # TODO: Filter by friends
+    return {'response': {i[0]: i[1] for i in tag.get_taggees()}}
 
 
 def api_user_my_tags(user, payload):
@@ -103,7 +111,10 @@ def api_user_add_tag(user, payload):
         return {'error': 'Taggee does not exist!'}
     if not user.can_tag(taggee):
         return {'error': 'Cannot tag the user!'}
-    tag = Tag.get_or_create(payload['tag'])
+    tag_name = payload['tag'].strip().lower()
+    if not tag_name:
+        return {'error': 'Tag name not allowed!'}
+    tag = Tag.get_or_create(tag_name)
     if Tagging.create(tagger=user, taggee=taggee, tag=tag):
         return {'response': 'OK'}
     else:
@@ -117,6 +128,17 @@ def api_user_delete_tag(user, payload):
         return {'response': ''}
     else:
         return {'response': ''}
+
+
+def api_user_search_friends(user, payload):
+    # Payload: {'keyword': 'foo'}
+    # Return: [{'name': 'foo', 'id': 123}]
+    keyword = payload['keyword'].strip().lower()
+    if keyword:
+        friends = get_user_friends(user)
+        return {'response': [_ for _ in friends if keyword in _['name'].lower()]}
+    else:
+        return {'response': []}
 
 
 @app.route('/test')
