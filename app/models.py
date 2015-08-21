@@ -54,6 +54,15 @@ class User(db.Model):
         user = cls.get_by_id(user_id)
         return user.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
 
+    @classmethod
+    def delete_by_uid(cls, user_id):
+        user = cls.get_by_id(user_id)
+        if not user:
+            return False
+        db.session.delete(user)
+        db.session.commit()
+        return True
+
 
 class Tag(db.Model):
     __tablename__ = 'tags'
@@ -111,8 +120,8 @@ class Tagging(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
-    tagger_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    taggee_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    tagger_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False)
+    taggee_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False)
     tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), nullable=False)
 
     db.UniqueConstraint(tagger_id, taggee_id, tag_id)
