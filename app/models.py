@@ -127,6 +127,7 @@ class Tag(db.Model):
         if not tag.taggings.all():
             tag.query.delete()
         # Show success
+        db.session.commit()
         return True
 
 
