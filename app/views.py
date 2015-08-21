@@ -41,7 +41,8 @@ def api():
             'my_tags': api_user_my_tags,
             'friend_tags': api_user_friend_tags,
             'add_tag': api_user_add_tag,
-            'delete_tag': api_user_delete_tag
+            'delete_tag': api_user_delete_tag,
+            'search_friends': api_user_search_friends
         }
     }
     target = request.args.get('target', '')
@@ -127,6 +128,13 @@ def api_user_delete_tag(user, payload):
         return {'response': ''}
     else:
         return {'response': ''}
+
+
+def api_user_search_friends(user, payload):
+    # Payload: {'keyword': 'foo'}
+    # Return: [{'name': 'foo', 'id': 123}]
+    friends = get_user_friends(user)
+    return {'response': [_ for _ in friends if payload['keyword'] in _['name']]}
 
 
 @app.route('/test')
