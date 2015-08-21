@@ -21,7 +21,7 @@ def index():
     if g.user:
         return render_template('index.html', app_id=FB_APP_ID,
                                app_name=FB_APP_NAME, user=g.user,
-                               friends=get_user_friends(g.user.access_token))
+                               friends=get_user_friends(g.user))
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
