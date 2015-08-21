@@ -72,9 +72,7 @@ def api_tag_search(user, payload):
 def api_tag_insert(user, payload):
     # Payload: {'name': 'foo'}
     # Return: tag dict
-    tag = Tag.query_tags_by_name(payload['name'])
-    db.session.add(tag)
-    db.session.commit()
+    tag = Tag.get_or_create(payload['name'])
     return {'response': tag.to_dict()}
 
 
