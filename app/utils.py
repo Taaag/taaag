@@ -16,3 +16,11 @@ def get_user_friends(user):
         combined_data.extend(data['data'])
     mc.set('friends:' + str(user.id), combined_data, time=1800)
     return combined_data
+
+
+def is_friend_of(user, other):
+    friends = get_user_friends(user)
+    for friend in friends:
+        if friend['id'] == str(other.id):
+            return True
+    return False

@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from app import db
+from app.utils import is_friend_of
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
@@ -36,6 +37,9 @@ class User(db.Model):
         return {'id': self.id, 'name': self.name}
 
     def can_tag(self, taggee):
+        return is_friend_of(self, taggee) and taggee.allow_tag()
+
+    def allow_tag(self):
         return True  # TODO
 
     @classmethod
