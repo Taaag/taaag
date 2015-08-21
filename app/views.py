@@ -132,7 +132,7 @@ def api_user_search_friends(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: [{'name': 'foo', 'id': 123}]
     friends = get_user_friends(user)
-    return {'response': [_ for _ in friends if payload['keyword'] in _['name']]}
+    return {'response': [_ for _ in friends if payload['keyword'].lower() in _['name'].lower()]}
 
 
 @app.route('/test')
