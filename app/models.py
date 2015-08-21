@@ -72,7 +72,7 @@ class Tag(db.Model):
 
     @classmethod
     def query_tags_by_name(cls, name):
-        return cls.query.filter(cls.name.like('%' + name + '%'))
+        return cls.query.filter(cls.name.like('%' + name.strip().lower() + '%'))
 
     @classmethod
     def all_tags(cls):
@@ -80,11 +80,11 @@ class Tag(db.Model):
 
     @classmethod
     def get_by_name(cls, name):
-        return cls.query.filter_by(name=name.lower()).first()
+        return cls.query.filter_by(name=name.strip().lower()).first()
 
     @classmethod
     def get_or_create(cls, name):
-        name = name.lower()
+        name = name.strip().lower()
         tag = cls.get_by_name(name)
         if tag is None:
             tag = cls(name=name)
@@ -94,7 +94,7 @@ class Tag(db.Model):
 
     @classmethod
     def delete_by_name_for_user(cls, name, user):
-        name = name.lower()
+        name = name.strip().lower()
         tag = cls.get_by_name(name)
         # If the tag does not exist or not belong to the user, indicate error
         if not tag or not tag.taggings.filter_by(taggee_id=user.id).delete():
