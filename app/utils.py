@@ -18,9 +18,9 @@ def get_user_friends(user):
     return combined_data
 
 
-def is_friend_of(user, other):
+def is_friend_of(user, other_id):
     friends = get_user_friends(user)
     for friend in friends:
-        if friend['id'] == str(other.id):
+        if friend['id'] == str(other_id):
             return True
     return False

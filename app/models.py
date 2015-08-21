@@ -47,7 +47,7 @@ class User(db.Model):
         return False
 
     def can_tag(self, taggee):
-        return is_friend_of(self, taggee) and taggee.allow_tag()
+        return is_friend_of(self, taggee.id) and taggee.allow_tag()
 
     @classmethod
     def get_by_id(cls, id):

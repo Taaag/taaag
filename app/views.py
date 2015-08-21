@@ -6,7 +6,7 @@ from flask import g, render_template, redirect, request, session, url_for, jsoni
 from app import app, db
 from app.models import User, Tag, Tagging
 
-from app.utils import get_user_friends
+from app.utils import get_user_friends, is_friend_of
 
 # Facebook app details
 FB_APP_ID = '687248731410966'
@@ -98,9 +98,12 @@ def api_user_my_tags(user, payload):
 
 def api_user_friend_tags(user, payload):
     # Payload: {'id': 'foo'}
-    # Return: ???
-    tags = User.get_tags_for_user(payload['id'])
-    return {'response': tags}
+    # Return: {'tag': 2, 'tag2': 1}
+    if is_friend_of(user, payload['id']):
+        tags = User.get_tags_for_user(payload['id'])
+        return {'response': {_[0]: _[1] for _ in tags}}
+    else:
+        return {'error': 'You are not friends!'}
 
 
 def api_user_add_tag(user, payload):
