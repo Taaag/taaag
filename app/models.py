@@ -80,10 +80,11 @@ class Tag(db.Model):
 
     @classmethod
     def get_by_name(cls, name):
-        return cls.query.filter_by(name=name).first()
+        return cls.query.filter_by(name=name.lower()).first()
 
     @classmethod
     def get_or_create(cls, name):
+        name = name.lower()
         tag = cls.get_by_name(name)
         if tag is None:
             tag = cls(name=name)
@@ -93,6 +94,7 @@ class Tag(db.Model):
 
     @classmethod
     def delete_by_name_for_user(cls, name, user):
+        name = name.lower()
         tag = cls.get_by_name(name)
         # If the tag does not exist or not belong to the user, indicate error
         if not tag or not tag.taggings.filter_by(taggee_id=user.id).delete():
