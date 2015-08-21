@@ -36,8 +36,8 @@ class User(db.Model):
     def to_dict(self):
         return {'id': self.id, 'name': self.name}
 
-    def can_tag(self, taggee):
-        return taggee.privacy == UserPrivacy.OPEN  # TODO
+    def allow_tag(self):
+        return self.privacy == UserPrivacy.OPEN  # TODO
 
     def update_privacy(self, privacy):
         if UserPrivacy.is_valid(privacy):
