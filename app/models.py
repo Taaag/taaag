@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from app import db
+from app.enums import UserPrivacy
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
@@ -15,7 +16,7 @@ class User(db.Model):
     name = db.Column(db.String, nullable=False)
     profile_url = db.Column(db.String, nullable=False)
     access_token = db.Column(db.String, nullable=False)
-    privacy = db.Column(db.Integer, default=0, nullable=False)
+    privacy = db.Column(db.Integer, default=UserPrivacy.OPEN, nullable=False)
 
     # Relationships
     # tags = db.relationship('Tagging', backref='taggee', foreign_keys='Tagging.taggee_id', lazy='dynamic')
@@ -36,7 +37,13 @@ class User(db.Model):
         return {'id': self.id, 'name': self.name}
 
     def can_tag(self, taggee):
-        return True  # TODO
+        return taggee.privacy == UserPrivacy.OPEN  # TODO
+
+    def update_privacy(self, privacy):
+        if UserPrivacy.is_valid(privacy):
+            self.privacy = privacy
+            return True
+        return False
 
     @classmethod
     def get_by_id(cls, id):
