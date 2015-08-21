@@ -34,7 +34,8 @@ def api():
         'tag': {
             'all': api_tag_all,
             'search': api_tag_search,
-            'insert': api_tag_insert
+            'insert': api_tag_insert,
+            'get_taggees': api_tag_get_taggees
         },
         'user': {
             'my_tags': api_user_my_tags,
@@ -50,6 +51,7 @@ def api():
         return jsonify(supported_apis[target][method](g.user, payload))
 
     return jsonify({'message': 'API endpoint is working!'})
+
 
 # Debug purpose
 def api_tag_all(user, payload):
@@ -69,10 +71,18 @@ def api_tag_search(user, payload):
 def api_tag_insert(user, payload):
     # Payload: {'name': 'foo'}
     # Return: tag dict
-    tag = Tag(name=payload['name'])
+    tag = Tag.query_tags_by_name(payload['name'])
     db.session.add(tag)
     db.session.commit()
     return {'response': tag.to_dict()}
+
+
+def api_tag_get_taggees(user, payload):
+    # Payload: {'name': 'foo'}
+    # Return: {'user1': 2, 'user2': 1}
+    tag = Tag.query_tags_by_name(payload['name'])
+    # TODO: Filter by friends
+    return {'response': {i[0]: i[1] for i in tag.get_taggees()}}
 
 
 def api_user_my_tags(user, payload):
