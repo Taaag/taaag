@@ -72,7 +72,11 @@ class Tag(db.Model):
 
     @classmethod
     def query_tags_by_name(cls, name):
-        return cls.query.filter(cls.name.like('%' + name.strip().lower() + '%'))
+        name = name.strip().lower()
+        if name:
+            return cls.query.filter(cls.name.like('%' + name + '%')).all()
+        else:
+            return None
 
     @classmethod
     def all_tags(cls):

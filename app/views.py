@@ -61,11 +61,10 @@ def api_tag_all(user, payload):
     return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
 
 
-# Debug purpose
 def api_tag_search(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: list of tag dicts
-    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']).all() or []]}
+    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']) or []]}
 
 
 # Debug purpose
@@ -131,8 +130,12 @@ def api_user_delete_tag(user, payload):
 def api_user_search_friends(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: [{'name': 'foo', 'id': 123}]
-    friends = get_user_friends(user)
-    return {'response': [_ for _ in friends if payload['keyword'].strip().lower() in _['name'].lower()]}
+    keyword = payload['keyword'].strip().lower()
+    if keyword:
+        friends = get_user_friends(user)
+        return {'response': [_ for _ in friends if keyword in _['name'].lower()]}
+    else:
+        return {'response': []}
 
 
 @app.route('/test')
