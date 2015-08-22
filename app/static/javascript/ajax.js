@@ -83,6 +83,7 @@
     var $input = $($(e.target).find('input').get(0));
     var content = $input.val();
     var firstChar, keyword;
+
     if(content.length >= 1) {
       firstChar = content[0];
       keyword = content.substring(1);
