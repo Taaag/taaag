@@ -17,32 +17,40 @@
   }
 
   function viewFriendTags (e) {
-    console.log(e.target);
-    // var uid = e.target.dataUid();
-    // $.get(VIEW_URL + 'friend_tags', { id: id }, function(response) {
-    //     console.log(response);
-    // });
+    var uid = $(e.target).data('uid');
+    $.get(VIEW_URL + 'friend_tags', { id: uid }, function(response) {
+        console.log(response);
+    });
   }
 
   function viewSearchFriends (e) {
-    var keyword = e.target.value();
+    var $input = $($(e.target).find('input').get(0));
+    var keyword = $input.val();
+    
     $.get(VIEW_URL + 'search_friends', { keyword: keyword }, function(response) {
         console.log(response);
     });
+    return false;
   }
 
   function viewSearchTags (e) {
-    var keyword = e.target.value();
+    var $input = $($(e.target).find('input').get(0));
+    var keyword = $input.val();
+
     $.get(VIEW_URL + 'search_tags', { keyword: keyword }, function(response) {
         console.log(response);
     });
+    return false;
   }
 
   function viewSearchUserByTag (e) {
-    var name = e.target.value();
+    var $input = $($(e.target).find('input').get(0));
+    var name = $input.val();
+
     $.get(VIEW_URL + 'get_taggees', { name: name }, function(response) {
         console.log(response);
     });
+    return false;
   }
 
   function apiAddTag (e) {
@@ -64,9 +72,9 @@
     $('#viewMyTags').click(viewMyTags);
     $('#viewMyFriends').click(viewMyFriends);
     $('#viewFriendTags').click(viewFriendTags);
-    $('#viewSearchFriends').click(viewSearchFriends);
-    $('#viewSearchTags').click(viewSearchTags);
-    $('#viewSearchUserByTag').click(viewSearchUserByTag);
+    $('#viewSearchFriends').submit(viewSearchFriends);
+    $('#viewSearchTags').submit(viewSearchTags);
+    $('#viewSearchUserByTag').submit(viewSearchUserByTag);
     $('#apiAddTag').click(apiAddTag);
     $('#apiDeleteTag').click(apiDeleteTag);
   });
