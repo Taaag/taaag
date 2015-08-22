@@ -61,10 +61,7 @@
   }
 
   $(document).ready(function() {
-    $('#my-tags').click(function() {
-      console.log('fsadd');
-    });
-    // $('#my-tags').click(viewMyTags());
+    $('#my-tags').click(viewMyTags);
   });
 
 }(jQuery));
