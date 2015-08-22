@@ -1,18 +1,6 @@
 from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
-apis = {
-    'all_tags': api_tag_all,
-    'search_tags': api_tag_search,
-    'insert_tag': api_tag_insert,
-    'get_taggees': api_tag_get_taggees,
-    'my_tags': api_user_my_tags,
-    'friend_tags': api_user_friend_tags,
-    'add_tag': api_user_add_tag,
-    'delete_tag': api_user_delete_tag,
-    'search_friends': api_user_search_friends
-}
-
 # Debug purpose
 def api_tag_all(user, payload):
     # Payload: ignored
@@ -101,3 +89,15 @@ def api_user_search_friends(user, payload):
         return {'response': [_ for _ in friends if keyword in _['name'].lower()]}
     else:
         return {'response': []}
+
+apis = {
+    'all_tags': api_tag_all,
+    'search_tags': api_tag_search,
+    'insert_tag': api_tag_insert,
+    'get_taggees': api_tag_get_taggees,
+    'my_tags': api_user_my_tags,
+    'friend_tags': api_user_friend_tags,
+    'add_tag': api_user_add_tag,
+    'delete_tag': api_user_delete_tag,
+    'search_friends': api_user_search_friends
+}

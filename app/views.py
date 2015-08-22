@@ -3,9 +3,9 @@ import json
 from facebook import get_user_from_cookie, GraphAPI
 from flask import g, render_template, redirect, request, session, url_for, jsonify, abort
 
-from app import app, db, api
+from app import app, db
 from app.models import User, Tag, Tagging
-
+from app.api import apis
 from app.utils import get_user_friends
 
 # Facebook app details
@@ -30,8 +30,8 @@ def index():
 def api(method):
     if not g.user:
         abort(403)
-    if method in api.apis:
-        return jsonify(api.apis[method](g.user, request.args))
+    if method in apis:
+        return jsonify(apis[method](g.user, request.args))
     return jsonify({'message': 'API endpoint is working!'})
 
 
