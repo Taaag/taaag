@@ -67,7 +67,8 @@
   }
   
   function apiDeleteTag (e) {
-    var name = e.target.value();
+    var $input = $($(e.target).find('input').get(0));
+    var name = $input.val();
     $.get(API_URL + 'delete_tag', { name: name }, function(response) {
         console.log(response);
     });
