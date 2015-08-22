@@ -18,7 +18,7 @@ def api_tag_all(user, payload):
 def api_tag_search(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: list of tag dicts
-    return [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']) or []]
+    return [_.name for _ in Tag.query_tags_by_name(payload['keyword']) or []]
 
 
 # Debug purpose
