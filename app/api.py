@@ -1,17 +1,23 @@
 from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
+
+class APIException(Exception):
+    def __init__(self, message):
+        self.message = message
+
+
 # Debug purpose
 def api_tag_all(user, payload):
     # Payload: ignored
     # Return: list of tag dicts
-    return {'response': [_.to_dict() for _ in Tag.all_tags() or []]}
+    return [_.to_dict() for _ in Tag.all_tags() or []]
 
 
 def api_tag_search(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: list of tag dicts
-    return {'response': [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']) or []]}
+    return [_.to_dict() for _ in Tag.query_tags_by_name(payload['keyword']) or []]
 
 
 # Debug purpose
@@ -19,7 +25,7 @@ def api_tag_insert(user, payload):
     # Payload: {'name': 'foo'}
     # Return: tag dict
     tag = Tag.get_or_create(payload['name'])
-    return {'response': tag.to_dict()}
+    return tag.to_dict()
 
 
 def api_tag_get_taggees(user, payload):
@@ -27,7 +33,7 @@ def api_tag_get_taggees(user, payload):
     # Return: {'user1': 2, 'user2': 1}
     tag = Tag.query_tags_by_name(payload['name'])
     # TODO: Filter by friends
-    return {'response': {i[0]: i[1] for i in tag.get_taggees()}}
+    return {i[0]: i[1] for i in tag.get_taggees()}
 
 
 def api_user_my_tags(user, payload):
@@ -40,7 +46,7 @@ def api_user_my_tags(user, payload):
         if not tag_name in result:
             result[tag_name] = []
         result[tag_name].append(tag[1].to_dict())
-    return {'response': result}
+    return result
 
 
 def api_user_friend_tags(user, payload):
@@ -48,9 +54,9 @@ def api_user_friend_tags(user, payload):
     # Return: {'tag': 2, 'tag2': 1}
     if is_friend_of(user, payload['id']):
         tags = User.get_tags_for_user(payload['id'])
-        return {'response': {_[0]: _[1] for _ in tags}}
+        return {_[0]: _[1] for _ in tags}
     else:
-        return {'error': 'You are not friends!'}
+        raise APIException('You are not friends!')
 
 
 def api_user_add_tag(user, payload):
@@ -58,26 +64,26 @@ def api_user_add_tag(user, payload):
     # Return: ???
     taggee = User.get_by_id(payload['taggee'])
     if not taggee:
-        return {'error': 'Taggee does not exist!'}
+        raise APIException('Taggee does not exist!')
     if not user.can_tag(taggee):
-        return {'error': 'Cannot tag the user!'}
+        raise APIException('Cannot tag the user!')
     tag_name = payload['tag'].strip().lower()
     if not tag_name:
-        return {'error': 'Tag name not allowed!'}
+        raise APIException('Tag name not allowed!')
     tag = Tag.get_or_create(tag_name)
     if Tagging.create(tagger=user, taggee=taggee, tag=tag):
-        return {'response': 'OK'}
+        return 'OK'
     else:
-        return {'response': 'OK'}
+        return 'OK'
 
 
 def api_user_delete_tag(user, payload):
     # Payload: {'name': 'foo'}
     # Return: ???
     if Tag.delete_by_name_for_user(payload['name'], user):
-        return {'response': ''}
+        return 'OK'
     else:
-        return {'response': ''}
+        raise APIException('Error!')
 
 
 def api_user_search_friends(user, payload):
@@ -86,9 +92,10 @@ def api_user_search_friends(user, payload):
     keyword = payload['keyword'].strip().lower()
     if keyword:
         friends = get_user_friends(user)
-        return {'response': [_ for _ in friends if keyword in _['name'].lower()]}
+        return [_ for _ in friends if keyword in _['name'].lower()]
     else:
-        return {'response': []}
+        return []
+
 
 apis = {
     'all_tags': api_tag_all,

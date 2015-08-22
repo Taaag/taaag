@@ -5,7 +5,7 @@ from flask import g, render_template, redirect, request, session, url_for, jsoni
 
 from app import app, db
 from app.models import User, Tag, Tagging
-from app.api import apis
+from app.api import apis, APIException
 from app.utils import get_user_friends
 
 # Facebook app details
@@ -31,7 +31,10 @@ def api(method):
     if not g.user:
         abort(403)
     if method in apis:
-        return jsonify(apis[method](g.user, request.args))
+        try:
+            return jsonify({'succeed': True, 'response': apis[method](g.user, request.args)})
+        except APIException as e:
+            return jsonify({'succeed': False, 'message': e.message})
     return jsonify({'message': 'API endpoint is working!'})
 
 
