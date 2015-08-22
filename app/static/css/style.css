@@ -1,6 +1,7 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
+    background-color: #2574b0;
 }
 
 .center {
@@ -20,3 +21,127 @@ body {
     border-radius: 100%;
     display: block;
 }
+
+body {
+  font-family: 'Satellite', sans-serif;
+  padding: 100px;
+  font-size: 15px;
+}
+
+#container {
+  position: absolute;
+  width: 760px;
+  height: 560px;
+  background-color: #f7ca18;
+  top: 0px;
+  left: 0px;
+}
+
+#logo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#boxes-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.box {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+#searchbar-container {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-top: 325px;
+  margin-left: 130px;
+  text-align:center;
+}
+
+#search-input {
+  text-align: center; 
+  position: relative;
+  border: none;
+  width: 95%;
+  height: 95%;
+  color: #726E6D;
+  font-size: 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+#greeting {
+  position: absolute;
+  font-size: 60px;
+  margin-top: 150px;
+  margin-left: 160px;
+  
+}
+
+#question {
+  position: absolute;
+  font-size: 30px;
+  margin-top: 250px;
+  margin-left: 160px;
+}
+
+.button1 {
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  background-color: #5d5d5d;
+  font-family: 'Satellite', sans-serif;
+  font-size: 25px;
+  color: #f7ca18;
+  border-radius: 10px;
+  border: 0px;
+  margin-top:  400px; 
+  margin-left: 250px;
+}
+
+.button1:hover {
+  background-color: #303030;
+}
+
+.button2 {
+  position: absolute;
+  width: 70px;
+  height: 30px;
+  background-color: #3b5998;
+  font-family: 'Satellite', sans-serif;
+  font-size: 15px; 
+  color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 520px;
+  margin-left: 670px;
+}
+
+.button3 {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: #3b5998;
+  font-family: 'Satellite', sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 520px;
+  margin-left: 600px;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
