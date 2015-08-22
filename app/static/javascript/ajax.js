@@ -7,6 +7,10 @@
     console.log('wtf');
   });
 
+  $('button').click(function() {
+      console.log('wtf');
+  });
+
   $('#my-tags').click(function() {
       console.log('llllll');
       // $.ajax({
