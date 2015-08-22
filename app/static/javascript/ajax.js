@@ -54,9 +54,11 @@
   }
 
   function apiAddTag (e) {
-    var taggee = $(e.target).data('uid');
-    var $input = $($(e.target).find('input').get(0));
+    var $form = $(e.target);
+    var taggee = $form.data('uid');
+    var $input = $($form.find('input').get(0));
     var tag = $input.val();
+    console.log('fsa');
 
     $.get(API_URL + 'add_tag', { taggee: taggee, tag: tag }, function(response) {
         console.log(response);
