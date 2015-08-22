@@ -1,6 +1,8 @@
 (function($) {
   'use strict';
 
+  function query(method)
+
   var myTagUrl = "/api";
 
   $(document).ready(function() {
@@ -11,17 +13,14 @@
     });
 
     $('#my-tags').click(function() {
-        $.ajax({
-          type: 'GET',
-          url: myTagUrl,
-          data: {
+        $.get(myTagUrl,
+          {
             target: "user",
             method: "my_tags"
           },
-          success: function(response) {
+          function(response) {
             console.log(response);
-          }
-        });
+          });
     });
   });
 
