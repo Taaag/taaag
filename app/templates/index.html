@@ -1,11 +1,172 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="center">
-    <p class='circle-image'
-       style="background-image: url(https://graph.facebook.com/{{ user.id }}/picture?type=large);
-              margin-left: auto; margin-right: auto;">
-    </p>
-    <h3>Hello, {{ user.name }}.</h3>
+  <head>
+    <title>CSSDesk</title>
+    <style type="text/css">
+      
+      body { background-color: #2574b0; }
+      
+      body {
+  font-family: 'Satellite', sans-serif;
+  padding: 100px;
+  font-size: 15px;
+}
+
+#container {
+  position: absolute;
+  width: 760px;
+  height: 560px;
+  background-color: #f7ca18;
+  top: 0px;
+  left: 0px;
+}
+
+#logo {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#boxes-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.box {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+#searchbar-container {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-top: 325px;
+  margin-left: 130px;
+  text-align:center;
+}
+
+#search-input {
+  text-align: center; 
+  position: relative;
+  border: none;
+  width: 95%;
+  height: 95%;
+  color: #726E6D;
+  font-size: 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+#greeting {
+  position: absolute;
+  font-size: 60px;
+  margin-top: 150px;
+  margin-left: 160px;
+  
+}
+
+#question {
+  position: absolute;
+  font-size: 30px;
+  margin-top: 250px;
+  margin-left: 160px;
+}
+
+.button1 {
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  background-color: #5d5d5d;
+  font-family: 'Satellite', sans-serif;
+  font-size: 25px;
+  color: #f7ca18;
+  border-radius: 10px;
+  border: 0px;
+  margin-top:  400px; 
+  margin-left: 250px;
+}
+
+.button1:hover {
+  background-color: #303030;
+}
+
+.button2 {
+  position: absolute;
+  width: 70px;
+  height: 30px;
+  background-color: #3b5998;
+  font-family: 'Satellite', sans-serif;
+  font-size: 15px; 
+  color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 520px;
+  margin-left: 670px;
+}
+
+.button3 {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: #3b5998;
+  font-family: 'Satellite', sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 520px;
+  margin-left: 600px;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+<!-- logo -->
+<div id="logo"><img src="https://projects.invisionapp.com/assets/4409732/4246812/B8E00A184ADD6983DD84EDB9EB0782D7036C110EB833DA0333B8B4A69D6F478E/preview?w=758"/></div>
+
+<!-- icons -->
+  <div id="boxes-container">
+     <div class="box"><img src="https://projects.invisionapp.com/assets/4409732/4175954/A1A2CBCAC779E1450C40FE50AFC88BB0B05C75AF77621EC4C96A71CDE384EEA4/preview?w=758"/> </div>
+     <div class="box"><img src="https://projects.invisionapp.com/assets/4409732/4175952/0CCB0278F760E4AB7EDE3BED9215609EBE076F3404990A0D966672D5347B60CD/preview?w=758"/></div>
+     <div class="box"><img src="https://projects.invisionapp.com/assets/4409732/4175953/A83EE86FD84966F151DA803061987F56A9A78D167FDCF9CDE42AA723D10CD6F5/preview?w=758"/></div>
+     <div class="box"><img src="https://projects.invisionapp.com/assets/4409732/4175955/6FADA064604C38F200932318C92223CD55596D6B90B6A417627539DB7250053C/preview?w=758"/></div>
+     <div class="box"><img src="https://projects.invisionapp.com/assets/4409732/4175986/D4863CAF7643B793CF7CE4A612B08E73AB13515C46FF75F94DA7CAEC10C89A2E/preview?w=758"/></div>
+  </div>
+   
+<!-- searchbar -->
+  <div id="searchbar-container">
+    <input id="search-input" placeholder="Type and enter to search">
+    </input>
+  </div>
+   
+  <div id="wall">
+    <div id="greeting"> Hi, {{ user.name }}. </div>
     <p>Friends: {{ friends }}<p>
+
+    <!-- question -->
+    <div id="question"> Who would you like to tag today? </div>
+
+    <!-- randomize -->
+    <button type="button" class="button1"> Go random! </button>
+
+    <!-- share and like -->
+    <button type="button" class="button2"> Share </button>
+    <button type="button" class="button3"> Like </button>
+  </div>
 </div>
+
+  </body>
 {% endblock %}
