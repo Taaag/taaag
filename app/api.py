@@ -31,9 +31,9 @@ def api_tag_insert(user, payload):
 def api_tag_get_taggees(user, payload):
     # Payload: {'name': 'foo'}
     # Return: {'user1': 2, 'user2': 1}
-    tag = Tag.query_tags_by_name(payload['name'])
-    # TODO: Filter by friends
-    return {i[0]: i[1] for i in tag.get_taggees()}
+    tag = Tag.get_or_create(payload['name'])
+    friends = [_['id'] for _ in get_user_friends(user)]
+    return {i[0].id: i[1] for i in tag.get_taggees() if str(i[0].id) in friends}
 
 
 def api_user_my_tags(user, payload):
