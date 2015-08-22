@@ -97,6 +97,10 @@ def api_user_search_friends(user, payload):
         return []
 
 
+def api_user_all_friends(user, payload):
+    return get_user_friends(user)
+
+
 apis = {
     'all_tags': api_tag_all,
     'search_tags': api_tag_search,
@@ -106,5 +110,6 @@ apis = {
     'friend_tags': api_user_friend_tags,
     'add_tag': api_user_add_tag,
     'delete_tag': api_user_delete_tag,
-    'search_friends': api_user_search_friends
+    'search_friends': api_user_search_friends,
+    'all_friends': api_user_all_friends
 }
