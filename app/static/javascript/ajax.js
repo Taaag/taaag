@@ -72,6 +72,7 @@
     $.get(API_URL + 'delete_tag', { name: name }, function(response) {
         console.log(response);
     });
+    return false;
   }
 
   $(document).ready(function() {
