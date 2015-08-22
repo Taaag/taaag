@@ -17,7 +17,7 @@
   }
 
   function viewFriendTags (e) {
-    console.log(e.target);
+    console.log(e.target.data('uid'));
     // var uid = e.target.dataUid();
     // $.get(VIEW_URL + 'friend_tags', { id: id }, function(response) {
     //     console.log(response);
