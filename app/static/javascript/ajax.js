@@ -1,8 +1,6 @@
 (function($) {
   'use strict';
 
-  function query(method)
-
   var myTagUrl = "/api";
 
   $(document).ready(function() {
