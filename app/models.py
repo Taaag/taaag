@@ -128,8 +128,7 @@ class Tag(db.Model):
         if not tag or not tag.taggings.filter_by(taggee_id=user.id).delete():
             return False
         # If nobody has this tag, remove it
-        if not tag.taggings.all():
-            db.session.delete(tag)
+        tag.get_taggees()
         # Show success
         db.session.commit()
         return True
