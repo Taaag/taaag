@@ -23,9 +23,11 @@
     });
   }
 
-  function viewSearchFriends (e) {
-    var $input = $($(e.target).find('input').get(0));
-    var keyword = $input.val();
+  function viewSearchFriends (e, keyword) {
+    if(!keyword) {
+      var input = $($(e.target).find('input').get(0));
+      keyword = $input.val();
+    }
     
     $.get(VIEW_URL + 'search_friends', { keyword: keyword }, function(response) {
         console.log(response);
@@ -33,9 +35,11 @@
     return false;
   }
 
-  function viewSearchTags (e) {
-    var $input = $($(e.target).find('input').get(0));
-    var keyword = $input.val();
+  function viewSearchTags (e, keyword) {
+    if(!keyword) {
+      var input = $($(e.target).find('input').get(0));
+      keyword = $input.val();
+    }
 
     $.get(VIEW_URL + 'search_tags', { keyword: keyword }, function(response) {
         console.log(response);
@@ -75,6 +79,26 @@
     return false;
   }
 
+  function globalSearch(e) {
+    var $input = $($(e.target).find('input').get(0));
+    var content = $input.val();
+    var firstChar, keyword;
+    if(content.length >= 1) {
+      firstChar = content[0];
+      keyword = content.substring(1);
+      if(firstChar === '@') {
+        viewSearchFriends(e, keyword);
+      } else if(firstChar === '#') {
+        viewSearchTags(e, keyword);
+      } else {
+        console.log('Input must begin with @ or #');
+      }
+    } else {
+      console.log('Empty input');
+    }
+    return false;
+  }
+
   $(document).ready(function() {
     $('#viewMyTags').click(viewMyTags);
     $('#viewMyFriends').click(viewMyFriends);
@@ -84,6 +108,8 @@
     $('#viewSearchUserByTag').submit(viewSearchUserByTag);
     $('#apiAddTag').submit(apiAddTag);
     $('#apiDeleteTag').submit(apiDeleteTag);
+
+    $('#global-search-form').submit(globalSearch);
   });
 
 }(jQuery));
