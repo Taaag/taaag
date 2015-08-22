@@ -24,8 +24,8 @@
   }
 
   function viewSearchFriends (e, keyword) {
-    if(!keyword) {
-      var input = $($(e.target).find('input').get(0));
+    if(keyword !== '' && !keyword) {
+      var $input = $($(e.target).find('input').get(0));
       keyword = $input.val();
     }
     
@@ -36,8 +36,8 @@
   }
 
   function viewSearchTags (e, keyword) {
-    if(!keyword) {
-      var input = $($(e.target).find('input').get(0));
+    if(keyword !== '' && !keyword) {
+      var $input = $($(e.target).find('input').get(0));
       keyword = $input.val();
     }
 
