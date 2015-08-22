@@ -11,18 +11,17 @@
     });
 
     $('#my-tags').click(function() {
-        console.log('llllll');
-        // $.ajax({
-        //   type: 'GET',
-        //   url: myTagUrl,
-        //   data: {
-        //     target: "user",
-        //     method: "my_tags"
-        //   },
-        //   success: function(response) {
-        //     console.log(response);
-        //   }
-        // });
+        $.ajax({
+          type: 'GET',
+          url: myTagUrl,
+          data: {
+            target: "user",
+            method: "my_tags"
+          },
+          success: function(response) {
+            console.log(response);
+          }
+        });
     });
   });
 
