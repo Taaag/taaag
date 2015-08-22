@@ -152,9 +152,5 @@ class Tagging(db.Model):
     @classmethod
     def create(cls, **kwargs):
         tagging = cls(**kwargs)
-        try:
-            db.session.add(tagging)
-            db.session.commit()
-            return True
-        except:
-            return False
+        db.session.add(tagging)
+        db.session.commit()

@@ -1,3 +1,4 @@
+import sqlalchemy
 from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
@@ -71,10 +72,11 @@ def api_user_add_tag(user, payload):
     if not tag_name:
         raise APIException('Tag name not allowed!')
     tag = Tag.get_or_create(tag_name)
-    if Tagging.create(tagger=user, taggee=taggee, tag=tag):
+    try:
+        Tagging.create(tagger=user, taggee=taggee, tag=tag)
         return 'OK'
-    else:
-        return 'OK'
+    except sqlalchemy.exc.IntegrityError:
+        raise APIException('Already tagged!')
 
 
 def api_user_delete_tag(user, payload):
