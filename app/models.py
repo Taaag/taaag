@@ -88,7 +88,11 @@ class Tag(db.Model):
         return {'id': self.id, 'name': self.name}
 
     def get_taggees(self):
-        return self.taggees.with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+        taggees = self.taggees.with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+        if not taggees:
+            db.session.delete(self)
+            db.session.commit()
+        return taggees
 
     @classmethod
     def query_tags_by_name(cls, name):

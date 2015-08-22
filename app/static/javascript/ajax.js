@@ -1,61 +1,54 @@
 (function($) {
   'use strict';
 
-  var VIEW_URL = "/view";
-  var API_URL = "/api";
+  var VIEW_URL = "/view/";
+  var API_URL = "/api/";
 
   function viewMyTags (e) {
-    var data = { target: "user", method: "my_tags" };
-    $.get(VIEW_URL, data, function(response) {
+    $.get(VIEW_URL + 'my_tags', {}, function(response) {
         console.log(response);
     });
   }
 
   function viewFriendTags (e) {
     var uid = e.target.dataUid();
-    var data = { target: "user", method: "friend_tags", uid: uid };
-    $.get(VIEW_URL, data, function(response) {
+    $.get(VIEW_URL + 'friend_tags', { id: id }, function(response) {
         console.log(response);
     });
   }
 
   function viewSearchFriends (e) {
-    var name = e.target.value();
-    var data = { target: "user", method: "search_friends", name: name };
-    $.get(API_URL, data, function(response) {
+    var keyword = e.target.value();
+    $.get(VIEW_URL + 'search_friends', { keyword: keyword }, function(response) {
         console.log(response);
     });
   }
 
   function viewSearchTags (e) {
-    var name = e.target.value();
-    var data = { target: "tag", method: "search_tags", name: name };
-    $.get(API_URL, data, function(response) {
+    var keyword = e.target.value();
+    $.get(VIEW_URL + 'search_tags', { keyword: keyword }, function(response) {
         console.log(response);
     });
   }
 
   function viewSearchUserByTag (e) {
     var name = e.target.value();
-    var data = { target: "tag", method: "get_taggees", name: name };
-    $.get(API_URL, data, function(response) {
+    $.get(API_URL + 'get_taggees', { name: name }, function(response) {
         console.log(response);
     });
   }
-  
+
   function apiAddTag (e) {
-    var uid = e.target.dataUid();
-    var name = e.target.value();
-    var data = { target: "user", method: "add_tag", taggee: uid, name: name };
-    $.get(API_URL, data, function(response) {
+    var taggee = e.target.dataUid();
+    var tag = e.target.value();
+    $.get(API_URL + 'add_tag', { taggee: taggee, tag: tag }, function(response) {
         console.log(response);
     });
   }
   
   function apiDeleteTag (e) {
     var name = e.target.value();
-    var data = { target: "user", method: "delete_tag", name: name };
-    $.get(API_URL, data, function(response) {
+    $.get(API_URL + 'delete_tag', { name: name }, function(response) {
         console.log(response);
     });
   }
