@@ -54,8 +54,10 @@
   }
 
   function apiAddTag (e) {
-    var taggee = e.target.dataUid();
-    var tag = e.target.value();
+    var taggee = e.target.data('uid');
+    var $input = $($(e.target).find('input').get(0));
+    var tag = $input.val();
+    
     $.get(API_URL + 'add_tag', { taggee: taggee, tag: tag }, function(response) {
         console.log(response);
     });
