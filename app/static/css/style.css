@@ -95,6 +95,10 @@ body {
   margin-left: 160px;
 }
 
+#test-bottons.button {
+    display: block;
+}
+
 .button1 {
   position: absolute;
   width: 250px;
