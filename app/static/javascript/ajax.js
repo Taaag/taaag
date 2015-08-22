@@ -5,7 +5,14 @@
   var API_URL = "/api/";
 
   function viewMyTags (e) {
+    console.log("wtf");
     $.get(VIEW_URL + 'my_tags', {}, function(response) {
+        console.log(response);
+    });
+  }
+
+  function viewMyFriends (e) {
+    $.get(VIEW_URL + 'all_friends', {}, function(response) {
         console.log(response);
     });
   }
@@ -33,7 +40,7 @@
 
   function viewSearchUserByTag (e) {
     var name = e.target.value();
-    $.get(API_URL + 'get_taggees', { name: name }, function(response) {
+    $.get(VIEW_URL + 'get_taggees', { name: name }, function(response) {
         console.log(response);
     });
   }
