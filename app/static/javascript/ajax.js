@@ -80,8 +80,8 @@
     $('#viewSearchFriends').submit(viewSearchFriends);
     $('#viewSearchTags').submit(viewSearchTags);
     $('#viewSearchUserByTag').submit(viewSearchUserByTag);
-    $('#apiAddTag').click(apiAddTag);
-    $('#apiDeleteTag').click(apiDeleteTag);
+    $('#apiAddTag').submit(apiAddTag);
+    $('#apiDeleteTag').submit(apiDeleteTag);
   });
 
 }(jQuery));
