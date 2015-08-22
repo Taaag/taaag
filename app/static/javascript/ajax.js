@@ -1,7 +1,7 @@
 (function($) {
   'use strict';
 
-  var myTagUrl = "http://taaag.sshz.org/api";
+  var myTagUrl = "/api";
 
   $(document).ready(function() {
     console.log('wtf');
