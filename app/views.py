@@ -62,3 +62,6 @@ def get_current_user():
 
     g.uid = session.get('user')
     g.user = User.get_by_id(g.uid) if g.uid else None
+
+    if not g.user:
+        session['user'] = ''
