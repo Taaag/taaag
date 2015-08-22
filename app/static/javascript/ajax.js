@@ -6,7 +6,7 @@
   $('#my-tags').click(function() {
       $.ajax({
         type: 'GET',
-        url: 'myTagUrl',
+        url: myTagUrl,
         data: {
           target: "user",
           method: "my_tags"
