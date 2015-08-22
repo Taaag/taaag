@@ -1,7 +1,7 @@
 (function($) {
   'use strict';
 
-  var VIEW_URL = "/view/";
+  var VIEW_URL = "/api/";
   var API_URL = "/api/";
 
   function viewMyTags (e) {
