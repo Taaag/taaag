@@ -36,10 +36,10 @@
 	
 	<div class = "col-md-8">
 		<div class = "row profile">
-		<div class = "profilename" >Yiting Watt</div>
+		<div class = "profilename" >{{ user.name }}</div>
 	    </div>
         <div class = "row profile">
-       	<img class = "profilepic" src = "static/images/profilepic.jpg" alter = "profile pic" >
+       	<img class = "profilepic" src = "url(https://graph.facebook.com/{{ user.id }}/picture?type=large" alter = "profile pic" >
         </div>
 
 	</div>
