@@ -129,7 +129,7 @@ class Tag(db.Model):
             return False
         # If nobody has this tag, remove it
         if not tag.taggings.all():
-            tag.query.delete()
+            db.session.delete(tag)
         # Show success
         db.session.commit()
         return True
