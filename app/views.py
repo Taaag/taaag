@@ -40,7 +40,7 @@ def api(method):
 
 @app.route('/test')
 def test():
-    return render_template('test.html')
+    return render_template('test.html', user=g.user)
 
 
 @app.before_request
