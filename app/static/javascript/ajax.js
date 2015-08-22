@@ -17,10 +17,11 @@
   }
 
   function viewFriendTags (e) {
-    var uid = e.target.dataUid();
-    $.get(VIEW_URL + 'friend_tags', { id: id }, function(response) {
-        console.log(response);
-    });
+    console.log(e.target);
+    // var uid = e.target.dataUid();
+    // $.get(VIEW_URL + 'friend_tags', { id: id }, function(response) {
+    //     console.log(response);
+    // });
   }
 
   function viewSearchFriends (e) {
