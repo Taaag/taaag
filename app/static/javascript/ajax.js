@@ -5,7 +5,6 @@
   var API_URL = "/api/";
 
   function viewMyTags (e) {
-    console.log("wtf");
     $.get(VIEW_URL + 'my_tags', {}, function(response) {
         console.log(response);
     });
@@ -61,7 +60,14 @@
   }
 
   $(document).ready(function() {
-    $('#my-tags').click(viewMyTags);
+    $('#viewMyTags').click(viewMyTags);
+    $('#viewMyFriends').click(viewMyFriends);
+    $('#viewFriendTags').click(viewFriendTags);
+    $('#viewSearchFriends').click(viewSearchFriends);
+    $('#viewSearchTags').click(viewSearchTags);
+    $('#viewSearchUserByTag').click(viewSearchUserByTag);
+    $('#apiAddTag').click(apiAddTag);
+    $('#apiDeleteTag').click(apiDeleteTag);
   });
 
 }(jQuery));
