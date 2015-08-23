@@ -26,11 +26,9 @@ input {
 .logo {
     width: 60px;
     height: 60px;
-    margin: 10px;
-    margin-left: 20px;
-    margin-top: 20px;
+    margin: 20px 10px 10px 20px;
     border-radius: 50px;
-    padding: 0px;
+    padding: 0;
 }
 
 .sidebar {
@@ -47,22 +45,18 @@ input {
     margin-top: 25px;
     border-radius: 5px;
     background-color: #FFFFFF;
-    border-color: none;
 }
 
 .icon-btn-top {
     width: 60px;
     height: 60px;
-    margin: 10px;
-    margin-right: 20px;
-    margin-top: 20px;
+    margin: 20px 20px 10px 10px;
 }
 
 .icon-btn-normal {
     width: 60px;
     height: 60px;
-    margin: 10px;
-    margin-right: 20px;
+    margin: 10px 20px 10px 10px;
 }
 
 .fb-btn {
@@ -73,14 +67,13 @@ input {
     margin-left: 5px;
     border-radius: 5px;
     border: none;
-    outline-color: none;
+    outline: none;
     color: #FFFFFF;
 }
 
 .fb-share-btn {
     width: 70px;
     margin-right: 20px;
-
 }
 
 .fb-like-btn {
@@ -97,10 +90,7 @@ input {
 
 /*home page*/
 .home-page-hero {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 70px;
-    margin-bottom: 20px;
+    margin: 70px 10px 20px 10px;
     font-family: "Satellite";
     color: #303030;
     /*letter-spacing: 4.28px;*/
@@ -109,10 +99,7 @@ input {
 }
 
 .home-page-qns {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin: 20px 40px 25px 40px;
     font-size: 30px;
     color: #303030;
 }
