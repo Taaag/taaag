@@ -32,14 +32,21 @@
 
     <script>
         $(function () {
+            var friends = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {
+                    url: '/api/all_friends',
+                    transform: function (response) {
+                        return response['response']
+                    }
+                }
+            });
+
             $('#search-bar').typeahead({highlight: true},
                     {
                         name: 'friends',
-                        source: function (query, process) {
-                            return $.get('/api/search_friends', {keyword: query}, function (data) {
-                                return process(data.response);
-                            });
-                        },
+                        source: friends,
                         templates: {
                             header: '<h3>Friends</h3>',
                             suggestion: function (friend) {
