@@ -49,7 +49,7 @@ input {
 }
 
 .input-search {
-    height: 60px;
+    height: 100px;
     text-align: right;
 }
 
@@ -74,7 +74,7 @@ input {
 #menu {
     display: inline-block;
     width: 60px;
-    margin-top: 30px;
+    margin-top: 25px;
     max-width: 100%;
 }
 
