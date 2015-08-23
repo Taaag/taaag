@@ -2,11 +2,10 @@
     'use strict';
     $(document).ready(function () {
         $("#menu").mouseover(function () {
-            console.log('sf');
-            $("#menu-items").stop().slideDown("slow");
+            $("#menu-items").stop().slideDown("fast");
         });
         $("#menu").mouseout(function () {
-            $("#menu-items").stop().slideUp("slow");
+            $("#menu-items").stop().slideUp("fast");
         });
     });
 }(jQuery));
