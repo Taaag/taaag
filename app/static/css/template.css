@@ -83,9 +83,6 @@ input {
 .fb-btn {
     background-color: #3b5998;
     height: 30px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 5px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -93,13 +90,13 @@ input {
 }
 
 .fb-share-btn {
+    display: inline-block;
     width: 70px;
-    margin-right: 20px;
 }
 
 .fb-like-btn {
-    width: 60px;
-    margin-right: 5px;
+    display: inline-block;
+    width: 70px;
 }
 
 .content-area {
