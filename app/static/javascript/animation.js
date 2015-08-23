@@ -2,6 +2,7 @@
     'use strict';
 
     function showOrHideLogo() {
+        var width = $(window).width();
         if (width <= 360) {
             $("#logo-container").hide();
         } else {
