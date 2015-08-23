@@ -43,6 +43,15 @@
                 }
             });
 
+            var tags = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/search_tags?keyword=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
             $('#search-bar').typeahead({highlight: true},
                     {
                         name: 'friends',
@@ -56,11 +65,7 @@
                     },
                     {
                         name: 'tags',
-                        source: function (query, process) {
-                            return $.get('/api/search_tags', {keyword: query}, function (data) {
-                                return process(data.response);
-                            });
-                        },
+                        source: tags,
                         templates: {
                             header: '<h3>Tags</h3>'
                         }
