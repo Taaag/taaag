@@ -46,6 +46,7 @@ input {
 }
 
 .input-search {
+    height: 60px;
     text-align: right;
 }
 
