@@ -76,7 +76,11 @@
                     });
 
             $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
-                console.log('Selection: ' + suggestion);
+                if (suggestion.hasOwnProperty('name')) {
+                    console.log('Selected user ' + suggestion['id']);
+                } else {
+                    console.log('Selected tag ' + suggestion);
+                }
             });
         });
     </script>
