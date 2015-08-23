@@ -4,8 +4,6 @@
     <!-- Meta content -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Example Facebook app using Flask and Python for Facebook SDK">
-    <meta name="author" content="github.com/mylsb">
 
     <!-- These are Open Graph tags.-->
     <meta property="fb:app_id" content="{{ app_id }}"/>
@@ -28,6 +26,38 @@
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/static/javascript/ajax.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+
+    <script>
+        $('#search-bar').typeahead({highlight: true},
+            {
+                name: 'friends',
+                source: function (query, process) {
+                    return $.get('/api/search_friends', { keyword: query }, function (data) {
+                        return process(data.response);
+                    });
+                },
+                templates: {
+                    header: '<h3>Friends</h3>',
+                    suggestion: function (friend) {
+                        return '<p>' + friend.name + '</p>';
+                    }
+                }
+            },
+            {
+                name: 'friends',
+                source: function (query, process) {
+                    return $.get('/api/search_tags', { keyword: query }, function (data) {
+                        return process(data.response);
+                    });
+                },
+                templates: {
+                    header: '<h3>Tags</h3>'
+                }
+            });
+    </script>
+
 </head>
 
 <body class="overall">
@@ -72,7 +102,7 @@
         <!-- search bar top  -->
         <div class="row">
             <div class="col-sm-12 input-search no-padding">
-                <input class="searchbar" placeholder="@friends/#tag"></input>
+                <input class="searchbar" id="search-bar" placeholder="@friends/#tag"/>
             </div>
         </div>
 
