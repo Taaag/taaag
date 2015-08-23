@@ -67,11 +67,11 @@ input {
     display: inline-block;
     width: 60px;
     height: 60px;
-    margin: 10px;
+    margin: 5px;
 }
 
 #menu {
-    text-align: center;
+    text-align: right;
 }
 
 #menu-items {
