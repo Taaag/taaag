@@ -2,10 +2,6 @@ input {
     border: none;
 }
 
-body {
-    background-color: #F7CA18;
-}
-
 .no-padding {
     padding: 0;
 }
@@ -19,8 +15,12 @@ body {
     margin: 0;
 }
 
-.row-nonshare {
+#container {
     margin: 25px;
+}
+
+.row-nonshare {
+    background-color: #F7CA18;
     height: 520px;
 }
 

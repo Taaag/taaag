@@ -36,7 +36,7 @@
                     {
                         name: 'friends',
                         source: function (query, process) {
-                            return $.get('/api/search_friends', { keyword: query }, function (data) {
+                            return $.get('/api/search_friends', {keyword: query}, function (data) {
                                 return process(data.response);
                             });
                         },
@@ -50,7 +50,7 @@
                     {
                         name: 'friends',
                         source: function (query, process) {
-                            return $.get('/api/search_tags', { keyword: query }, function (data) {
+                            return $.get('/api/search_tags', {keyword: query}, function (data) {
                                 return process(data.response);
                             });
                         },
@@ -91,51 +91,53 @@
 
 <!-- share button 以外的部分(行) -->
 <div class="row row-nonshare">
-    <!-- logo left -->
-    <div class="col-md-2 no-padding" id="body-left">
-        <div id="logo-container">
-            <img id="logo" src="/static/images/tagicon.png" alter="app logo">
-        </div>
-    </div>
-    <!-- end logo left -->
-
-    <!-- main area -->
-    <div class="col-md-8 no-padding" id="body-middle">
-        <!-- search bar top  -->
-        <div class="row">
-            <div class="col-sm-12 input-search no-padding">
-                <input class="searchbar typeahead" id="search-bar" placeholder="@friends/#tag"/>
+    <div id="container">
+        <!-- logo left -->
+        <div class="col-md-2 no-padding" id="body-left">
+            <div id="logo-container">
+                <img id="logo" src="/static/images/tagicon.png" alter="app logo">
             </div>
         </div>
+        <!-- end logo left -->
 
-        <!-- dynamic change area -->
-        <div class="row content-area container no-padding">
-            <div class="col-sm-12 no-padding">
-                {% block content %} {% endblock %}
-                <!-- dynamic below -->
-                <!-- home page -->
-                <!-- <div class = "row home-page-hero">Hi, Namity Name.</div>
-                <div class = "row home-page-qns">Who would you like to tag today?</div>
-                <input class = "row home-page-input"></div> -->
-                <!-- 请无视这里  -->
+        <!-- main area -->
+        <div class="col-md-8 no-padding" id="body-middle">
+            <!-- search bar top  -->
+            <div class="row">
+                <div class="col-sm-12 input-search no-padding">
+                    <input class="searchbar typeahead" id="search-bar" placeholder="@friends/#tag"/>
+                </div>
+            </div>
 
+            <!-- dynamic change area -->
+            <div class="row content-area no-padding">
+                <div class="col-sm-12 no-padding">
+                    {% block content %} {% endblock %}
+                    <!-- dynamic below -->
+                    <!-- home page -->
+                    <!-- <div class = "row home-page-hero">Hi, Namity Name.</div>
+                    <div class = "row home-page-qns">Who would you like to tag today?</div>
+                    <input class = "row home-page-input"></div> -->
+                    <!-- 请无视这里  -->
+
+                </div>
             </div>
         </div>
-    </div>
-    <!-- end main area -->
+        <!-- end main area -->
 
-    <!-- icons right -->
-    <div class="col-md-2 sidebar no-padding" id="body-right">
-        <div id="menu">
-            <div class="icon-btn"><img src="/static/images/iconmenu.jpg" alter="menu"></div>
-            <div id="menu-items">
-                <div class="icon-btn"><img src="/static/images/iconhouse.jpg" alter="house"></div>
-                <div class="icon-btn"><img src="/static/images/iconme.jpg" alter="me"></div>
-                <div class="icon-btn"><img src="/static/images/iconsettings.jpg" alter="settings"></div>
+        <!-- icons right -->
+        <div class="col-md-2 sidebar no-padding" id="body-right">
+            <div id="menu">
+                <div class="icon-btn"><img src="/static/images/iconmenu.jpg" alter="menu"></div>
+                <div id="menu-items">
+                    <div class="icon-btn"><img src="/static/images/iconhouse.jpg" alter="house"></div>
+                    <div class="icon-btn"><img src="/static/images/iconme.jpg" alter="me"></div>
+                    <div class="icon-btn"><img src="/static/images/iconsettings.jpg" alter="settings"></div>
+                </div>
             </div>
         </div>
+        <!-- end sidebar -->
     </div>
-    <!-- end sidebar -->
 </div>
 <!-- end share button exclude area -->
 
