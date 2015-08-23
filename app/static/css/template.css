@@ -2,6 +2,10 @@ input {
     border: none;
 }
 
+.no-padding {
+    padding: 0;
+}
+
 .overall {
     max-width: 760px;
     max-height: 560px;
