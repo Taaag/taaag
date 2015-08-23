@@ -11,7 +11,7 @@
         $(window).resize(function () {
             console.log('dsf');
             if($(this).width() <= 360) {
-                $("#logo-container").hide()；
+                $("#logo-container").hide();
             }
         });
     });
