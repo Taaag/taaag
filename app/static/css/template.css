@@ -15,10 +15,6 @@ input {
     margin: 0;
 }
 
-#container {
-    margin: 5px;
-}
-
 .row-nonshare {
     background-color: #F7CA18;
     height: 520px;
