@@ -80,6 +80,10 @@ input {
     display: none;
 }
 
+.fb-btn-container {
+    display: inline-block;
+}
+
 .fb-btn {
     background-color: #3b5998;
     height: 30px;
@@ -90,7 +94,6 @@ input {
 }
 
 .fb-share-btn {
-    display: inline-block;
     width: 70px;
 }
 
