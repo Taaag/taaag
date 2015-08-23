@@ -48,7 +48,10 @@
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
                     url: '/api/search_tags?keyword=%QUERY',
-                    wildcard: '%QUERY'
+                    wildcard: '%QUERY',
+                    transform: function (response) {
+                        return response['response']
+                    }
                 }
             });
 
@@ -59,7 +62,7 @@
                         templates: {
                             header: '<h3>Friends</h3>',
                             suggestion: function (friend) {
-                                return '<p>' + friend.name + '</p>';
+                                return '<div>' + friend.name + '</div>';
                             }
                         }
                     },
