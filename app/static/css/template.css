@@ -86,7 +86,7 @@ input {
 
 .fb-btn {
     position: relative;
-    top: 10px;
+    bottom: 10px;
     background-color: #3b5998;
     height: 30px;
     border-radius: 5px;
