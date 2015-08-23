@@ -70,6 +70,10 @@ input {
     margin: 5px;
 }
 
+#icon-top {
+    margin-top: 0;
+}
+
 #menu {
     text-align: right;
 }
