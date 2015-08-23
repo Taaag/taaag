@@ -13,7 +13,11 @@
     <title>{{ app_name }}</title>
 
     <!-- Style -->
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/template.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/style.css"> -->
 
     <!--[if IE]>
       <script type="text/javascript">
@@ -25,7 +29,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/static/javascript/ajax.js"></script>
 </head>
-<body>
+
+<body class="overall">
     <script type="text/javascript">
         window.fbAsyncInit = function() {
             FB.init({
@@ -50,9 +55,52 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <div class="container">
-        {% block content %} {% endblock %}
-    </div>
+    <!-- share button 以外的部分(行) -->
+    <div class="row row-nonshare" >
+
+        <!-- logo left -->
+        <div class = "col-md-2">
+            <img class ="logo"  src = "/static/images/tagicon.jpg" alter = "app logo" > 
+        </div><!-- end logo left -->
+
+        <!-- main area -->
+        <div class = "col-md-8">
+            <!-- search bar top  -->
+            <div class = "row">
+                <div class = "col-sm-12 input-search">            
+                    <input class = "searchbar" placeholder = "@friends/#tag"></input>
+                </div>
+            </div>
+
+            <!-- dynamic change area -->
+            <div class = "row content-area container">
+                <div class = "col-sm-12">
+                    {% block content %} {% endblock %}
+                    <!-- dynamic below -->
+                    <!-- home page -->
+                    <!-- <div class = "row home-page-hero">Hi, Namity Name.</div>
+                    <div class = "row home-page-qns">Who would you like to tag today?</div>
+                    <input class = "row home-page-input"></div> -->
+                    <!-- 请无视这里  -->
+
+                </div> 
+            </div>
+        </div><!-- end main area -->
+
+        <!-- icons right -->
+        <div class = "col-md-2 sidebar">     
+            <img class = "icon-btn-top"src = "/static/images/iconmenu.jpg" alter = "menu" >
+            <img class = "icon-btn-normal" src = "/static/images/iconhouse.jpg" alter = "house" >
+            <img class = "icon-btn-normal" src = "/static/images/iconme.jpg" alter = "me" >
+            <img class = "icon-btn-normal" src = "/static/images/iconsettings.jpg" alter = "settings" >
+        </div> <!-- end sidebar -->
+    </div> <!-- end share button exclude area -->
+
+    <!-- share button area -->
+    <div class = "row row-share">
+       <button class = "fb-btn fb-like-btn">Like</button>
+       <button class = "fb-btn fb-share-btn">Share</button>
+    </div> <!-- end share button area -->
 
     <script>
         // document.getElementById('logout').onclick = function() {
