@@ -63,17 +63,13 @@ input {
 #search-bar-container {
     display: inline-block;
     vertical-align: bottom;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .icon-btn {
     display: inline-block;
     width: 60px;
     height: 60px;
-}
-
-#icon-top {
-    margin-top: 0;
 }
 
 #menu {
