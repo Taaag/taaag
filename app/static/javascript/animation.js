@@ -6,7 +6,7 @@
             $("#menu-items").stop().slideDown("slow");
         });
         $("#menu").mouseout(function () {
-            $("#menu-items").slideUp("slow");
+            $("#menu-items").stop().slideUp("slow");
         });
     });
 }(jQuery));
