@@ -26,10 +26,13 @@ input {
     text-align: right;
 }
 
-.logo {
+.logo-container {
+    text-align: center;
+}
+
+#logo {
     width: 60px;
     height: 60px;
-    margin: 20px 10px 10px 20px;
     border-radius: 50px;
     padding: 0;
 }
