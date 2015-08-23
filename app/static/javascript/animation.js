@@ -12,6 +12,8 @@
             console.log($(this).width());
             if($(this).width() <= 360) {
                 $("#logo-container").hide();
+            } else {
+                $("#logo-container").show();
             }
         });
     });
