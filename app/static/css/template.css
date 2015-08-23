@@ -11,10 +11,13 @@ input {
     max-height: 560px;
 }
 
+.row {
+    margin: 0;
+}
+
 .row-nonshare {
     background-color: #F7CA18;
     height: 520px;
-
 }
 
 .row-share {
