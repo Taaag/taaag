@@ -10,7 +10,7 @@
 
         $(window).resize(function () {
             console.log('dsf');
-            if($(this).width() <= 200) {
+            if($(this).width() <= 300) {
                 $("#logo-container").hide();
             }
         });
