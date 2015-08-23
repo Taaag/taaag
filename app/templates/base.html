@@ -74,6 +74,10 @@
                             header: '<h3>Tags</h3>'
                         }
                     });
+
+            $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
+                console.log('Selection: ' + suggestion);
+            });
         });
     </script>
 
