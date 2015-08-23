@@ -8,7 +8,7 @@
     <meta name="author" content="github.com/mylsb">
 
     <!-- These are Open Graph tags.-->
-    <meta property="fb:app_id" content="{{ app_id }}" />
+    <meta property="fb:app_id" content="{{ app_id }}"/>
 
     <title>{{ app_name }}</title>
 
@@ -31,81 +31,87 @@
 </head>
 
 <body class="overall">
-    <script type="text/javascript">
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '{{ app_id }}',
-                status     : true,
-                cookie     : true,
-                xfbml      : true
-            });
+<script type="text/javascript">
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '{{ app_id }}',
+            status: true,
+            cookie: true,
+            xfbml: true
+        });
 
-            FB.Event.subscribe('auth.login', function(response) {
-                window.location = window.location;
-            });
-        };
+        FB.Event.subscribe('auth.login', function (response) {
+            window.location = window.location;
+        });
+    };
 
-        // Load the SDK Asynchronously
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+    // Load the SDK Asynchronously
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
-    <!-- share button 以外的部分(行) -->
-    <div class="row row-nonshare" >
+<!-- share button 以外的部分(行) -->
+<div class="row row-nonshare">
 
-        <!-- logo left -->
-        <div class = "col-md-2">
-            <img class ="logo"  src = "/static/images/tagicon.jpg" alter = "app logo" > 
-        </div><!-- end logo left -->
+    <!-- logo left -->
+    <div class="col-md-2">
+        <img class="logo" src="/static/images/tagicon.jpg" alter="app logo">
+    </div>
+    <!-- end logo left -->
 
-        <!-- main area -->
-        <div class = "col-md-8">
-            <!-- search bar top  -->
-            <div class = "row">
-                <div class = "col-sm-12 input-search">            
-                    <input class = "searchbar" placeholder = "@friends/#tag"></input>
-                </div>
+    <!-- main area -->
+    <div class="col-md-8">
+        <!-- search bar top  -->
+        <div class="row">
+            <div class="col-sm-12 input-search">
+                <input class="searchbar" placeholder="@friends/#tag"></input>
             </div>
+        </div>
 
-            <!-- dynamic change area -->
-            <div class = "row content-area container">
-                <div class = "col-sm-12">
-                    {% block content %} {% endblock %}
-                    <!-- dynamic below -->
-                    <!-- home page -->
-                    <!-- <div class = "row home-page-hero">Hi, Namity Name.</div>
-                    <div class = "row home-page-qns">Who would you like to tag today?</div>
-                    <input class = "row home-page-input"></div> -->
-                    <!-- 请无视这里  -->
+        <!-- dynamic change area -->
+        <div class="row content-area container">
+            <div class="col-sm-12">
+                {% block content %} {% endblock %}
+                <!-- dynamic below -->
+                <!-- home page -->
+                <!-- <div class = "row home-page-hero">Hi, Namity Name.</div>
+                <div class = "row home-page-qns">Who would you like to tag today?</div>
+                <input class = "row home-page-input"></div> -->
+                <!-- 请无视这里  -->
 
-                </div> 
             </div>
-        </div><!-- end main area -->
+        </div>
+    </div>
+    <!-- end main area -->
 
-        <!-- icons right -->
-        <div class = "col-md-2 sidebar">     
-            <img class = "icon-btn-top"src = "/static/images/iconmenu.jpg" alter = "menu" >
-            <img class = "icon-btn-normal" src = "/static/images/iconhouse.jpg" alter = "house" >
-            <img class = "icon-btn-normal" src = "/static/images/iconme.jpg" alter = "me" >
-            <img class = "icon-btn-normal" src = "/static/images/iconsettings.jpg" alter = "settings" >
-        </div> <!-- end sidebar -->
-    </div> <!-- end share button exclude area -->
+    <!-- icons right -->
+    <div class="col-md-2 sidebar">
+        <img class="icon-btn-top" src="/static/images/iconmenu.jpg" alter="menu">
+        <img class="icon-btn-normal" src="/static/images/iconhouse.jpg" alter="house">
+        <img class="icon-btn-normal" src="/static/images/iconme.jpg" alter="me">
+        <img class="icon-btn-normal" src="/static/images/iconsettings.jpg" alter="settings">
+    </div>
+    <!-- end sidebar -->
+</div>
+<!-- end share button exclude area -->
 
-    <!-- share button area -->
-    <div class = "row row-share">
-       <button class = "fb-btn fb-like-btn">Like</button>
-       <button class = "fb-btn fb-share-btn">Share</button>
-    </div> <!-- end share button area -->
+<!-- share button area -->
+<div class="row row-share">
+    <button class="fb-btn fb-like-btn">Like</button>
+    <button class="fb-btn fb-share-btn">Share</button>
+</div>
+<!-- end share button area -->
 
-    <script>
-        // document.getElementById('logout').onclick = function() {
-        //     FB.logout(function(response) { });
-        // };
-    </script>
+<script>
+    // document.getElementById('logout').onclick = function() {
+    //     FB.logout(function(response) { });
+    // };
+</script>
 </body>
 </html>
