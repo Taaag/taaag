@@ -43,6 +43,18 @@
                 }
             });
 
+            var tags = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/search_tags?keyword=%QUERY',
+                    wildcard: '%QUERY',
+                    transform: function (response) {
+                        return response['response']
+                    }
+                }
+            });
+
             $('#search-bar').typeahead({highlight: true},
                     {
                         name: 'friends',
@@ -50,17 +62,13 @@
                         templates: {
                             header: '<h3>Friends</h3>',
                             suggestion: function (friend) {
-                                return '<p>' + friend.name + '</p>';
+                                return '<div>' + friend.name + '</div>';
                             }
                         }
                     },
                     {
                         name: 'tags',
-                        source: function (query, process) {
-                            return $.get('/api/search_tags', {keyword: query}, function (data) {
-                                return process(data.response);
-                            });
-                        },
+                        source: tags,
                         templates: {
                             header: '<h3>Tags</h3>'
                         }
