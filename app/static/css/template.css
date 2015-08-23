@@ -42,6 +42,7 @@ input {
 }
 
 #logo {
+    max-width: 100%;
     border-radius: 50px;
     padding: 0;
 }
