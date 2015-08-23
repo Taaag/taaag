@@ -54,13 +54,8 @@ input {
     background-color: #FFFFFF;
 }
 
-.icon-btn-top {
-    width: 60px;
-    height: 60px;
-    margin: 20px;
-}
-
-.icon-btn-normal {
+.icon-btn {
+    display: inline-block;
     width: 60px;
     height: 60px;
     margin: 20px;
