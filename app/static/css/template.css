@@ -26,7 +26,7 @@ input {
     text-align: right;
 }
 
-.logo-container {
+#logo-container {
     vertical-align: middle;
     width: 60px;
     height: 60px;
