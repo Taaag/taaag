@@ -70,6 +70,10 @@ input {
     margin: 10px 20px 10px 10px;
 }
 
+#menu-items {
+    display: none;
+}
+
 .fb-btn {
     background-color: #3b5998;
     height: 30px;
