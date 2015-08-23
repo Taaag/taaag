@@ -82,9 +82,7 @@ input {
 
 .fb-btn-container {
     display: inline-block;
-    position: relative;
-    bottom: 15px;
-    right: 5px;
+    vertical-align: top;
 }
 
 .fb-btn {
