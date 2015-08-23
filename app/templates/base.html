@@ -48,7 +48,7 @@
                         }
                     },
                     {
-                        name: 'friends',
+                        name: 'tags',
                         source: function (query, process) {
                             return $.get('/api/search_tags', {keyword: query}, function (data) {
                                 return process(data.response);
