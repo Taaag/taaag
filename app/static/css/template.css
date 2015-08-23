@@ -26,8 +26,12 @@ input {
     text-align: right;
 }
 
+#body-left {
+    text-align: center;
+}
+
 #logo-container {
-    vertical-align: middle;
+    display: inline-block;
     width: 60px;
     height: 60px;
 }
