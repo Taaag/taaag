@@ -51,12 +51,15 @@ input {
 }
 
 .searchbar {
-    display: table-cell;
-    vertical-align: bottom;
     width: 200px;
     height: 40px;
     border-radius: 5px;
     background-color: #FFFFFF;
+}
+
+#search-bar-container {
+    display: table-cell;
+    vertical-align: bottom;
 }
 
 .icon-btn {
