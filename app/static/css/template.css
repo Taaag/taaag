@@ -34,7 +34,6 @@ input {
 }
 
 .sidebar {
-    padding: 0px;
     text-align: right;
 }
 
@@ -93,7 +92,6 @@ input {
     width: 580px;
     height: 440px;
     text-align: center;
-    padding: 0px;
     margin: 0px;
 }
 
@@ -107,7 +105,7 @@ input {
     color: #303030;
     /*letter-spacing: 4.28px;*/
     font-size: 60px;
-    padding: none;
+    padding: 0;
 }
 
 .home-page-qns {
@@ -118,4 +116,3 @@ input {
     font-size: 30px;
     color: #303030;
 }
-
