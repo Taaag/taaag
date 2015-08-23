@@ -27,12 +27,12 @@ input {
 }
 
 .logo-container {
-    text-align: center;
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
 }
 
 #logo {
-    width: 60px;
-    height: 60px;
     border-radius: 50px;
     padding: 0;
 }
