@@ -30,32 +30,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 
     <script>
-        $('#search-bar').typeahead({highlight: true},
-            {
-                name: 'friends',
-                source: function (query, process) {
-                    return $.get('/api/search_friends', { keyword: query }, function (data) {
-                        return process(data.response);
+        $(function () {
+            $('#search-bar').typeahead({highlight: true},
+                    {
+                        name: 'friends',
+                        source: function (query, process) {
+                            return $.get('/api/search_friends', { keyword: query }, function (data) {
+                                return process(data.response);
+                            });
+                        },
+                        templates: {
+                            header: '<h3>Friends</h3>',
+                            suggestion: function (friend) {
+                                return '<p>' + friend.name + '</p>';
+                            }
+                        }
+                    },
+                    {
+                        name: 'friends',
+                        source: function (query, process) {
+                            return $.get('/api/search_tags', { keyword: query }, function (data) {
+                                return process(data.response);
+                            });
+                        },
+                        templates: {
+                            header: '<h3>Tags</h3>'
+                        }
                     });
-                },
-                templates: {
-                    header: '<h3>Friends</h3>',
-                    suggestion: function (friend) {
-                        return '<p>' + friend.name + '</p>';
-                    }
-                }
-            },
-            {
-                name: 'friends',
-                source: function (query, process) {
-                    return $.get('/api/search_tags', { keyword: query }, function (data) {
-                        return process(data.response);
-                    });
-                },
-                templates: {
-                    header: '<h3>Tags</h3>'
-                }
-            });
+        });
     </script>
 
 </head>
@@ -102,7 +104,7 @@
         <!-- search bar top  -->
         <div class="row">
             <div class="col-sm-12 input-search no-padding">
-                <input class="searchbar" id="search-bar" placeholder="@friends/#tag"/>
+                <input class="searchbar typeahead" id="search-bar" placeholder="@friends/#tag"/>
             </div>
         </div>
 
