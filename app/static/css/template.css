@@ -73,6 +73,7 @@ input {
 
 #menu {
     display: inline-block;
+    width: 60px;
     max-width: 100%;
 }
 
