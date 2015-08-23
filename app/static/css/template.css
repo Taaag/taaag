@@ -58,7 +58,7 @@ input {
 }
 
 #search-bar-container {
-    display: table-cell;
+    display: inline-block;
     vertical-align: bottom;
 }
 
