@@ -72,7 +72,7 @@ input {
 #menu {
     display: inline-block;
     width: 60px;
-    margin-top: 20px;
+    margin: 20px 10px;
     max-width: 100%;
 }
 
