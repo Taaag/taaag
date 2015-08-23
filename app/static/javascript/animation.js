@@ -9,8 +9,8 @@
         });
 
         $(window).resize(function () {
-            console.log('dsf');
-            if($(this).width() <= 300) {
+            console.log($(this).width());
+            if($(this).width() <= 360) {
                 $("#logo-container").hide();
             }
         });
