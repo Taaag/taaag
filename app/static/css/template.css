@@ -60,6 +60,7 @@ input {
 #search-bar-container {
     display: inline-block;
     vertical-align: bottom;
+    margin-top: 20px;
 }
 
 .icon-btn {
