@@ -3,6 +3,7 @@
 
     function showOrHideLogo() {
         var width = $(window).width();
+        console.log(width);
         if (width <= 360) {
             $("#logo-container").hide();
         } else {
