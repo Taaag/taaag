@@ -7,5 +7,11 @@
         $("#menu").mouseout(function () {
             $("#menu-items").stop().slideUp("fast");
         });
+
+        $(window).resize(function () {
+            if($(this).width() <= 360) {
+                $("#logo-container").hide()；
+            }
+        });
     });
 }(jQuery));
