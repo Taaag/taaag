@@ -51,9 +51,10 @@ input {
 }
 
 .searchbar {
+    display: table-cell;
+    vertical-align: bottom;
     width: 200px;
     height: 40px;
-    margin-right: 10px;
     border-radius: 5px;
     background-color: #FFFFFF;
 }
