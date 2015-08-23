@@ -1,151 +1,138 @@
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: center;
-    background-color: #2574b0;
-}
-
-.center {
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    width: 50%;
-    height: 50%;
-    min-width: 200px;
-    max-width: 400px;
-    padding: 40px;
-}
-
-.circle-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 100%;
-    display: block;
-}
-
-body {
-  font-family: 'Satellite', sans-serif;
-  padding: 100px;
-  font-size: 15px;
-}
-
-#container {
-  position: absolute;
-  width: 760px;
-  height: 560px;
-  background-color: #f7ca18;
-  top: 0px;
-  left: 0px;
-}
-
-#logo {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-#boxes-container {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.box {
-  position: relative;
-  width: 60px;
-  height: 60px;
-}
-
-#searchbar-container {
-  position: absolute;
-  width: 500px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  margin-top: 325px;
-  margin-left: 130px;
-  text-align:center;
-}
-
-#search-input {
-  text-align: center; 
-  position: relative;
-  border: none;
-  width: 95%;
-  height: 95%;
-  color: #726E6D;
-  font-size: 30px;
-  border-radius: 10px;
-  background-color: #ffffff;
-}
-
-#greeting {
-  position: absolute;
-  font-size: 60px;
-  margin-top: 150px;
-  margin-left: 160px;
-  
-}
-
-#question {
-  position: absolute;
-  font-size: 30px;
-  margin-top: 250px;
-  margin-left: 160px;
-}
-
-#test-bottons.button {
-    display: block;
-}
-
-.button1 {
-  position: absolute;
-  width: 250px;
-  height: 50px;
-  background-color: #5d5d5d;
-  font-family: 'Satellite', sans-serif;
-  font-size: 25px;
-  color: #f7ca18;
-  border-radius: 10px;
-  border: 0px;
-  margin-top:  400px; 
-  margin-left: 250px;
-}
-
-.button1:hover {
-  background-color: #303030;
-}
-
-.button2 {
-  position: absolute;
-  width: 70px;
-  height: 30px;
-  background-color: #3b5998;
-  font-family: 'Satellite', sans-serif;
-  font-size: 15px; 
-  color: #ffffff;
-  border-radius: 5px;
-  border: 0px;
-  margin-top: 520px;
-  margin-left: 670px;
-}
-
-.button3 {
-  position: absolute;
-  width: 60px;
-  height: 30px;
-  background-color: #3b5998;
-  font-family: 'Satellite', sans-serif;
-  font-size: 15px;
-  color: #ffffff;
-  border-radius: 5px;
-  border: 0px;
-  margin-top: 520px;
-  margin-left: 600px;
-}
-
 input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
 input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+
+input {
+    border: none;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.overall {
+    max-width: 760px;
+    max-height: 560px;
+}
+
+.row {
+    margin: 0;
+}
+
+.row-nonshare {
+    background-color: #F7CA18;
+    height: 520px;
+}
+
+.row-share {
+    background-color: #F7CA18; /**/
+    height: 40px;
+    text-align: right;
+}
+
+#body-left {
+    text-align: center;
+}
+
+#body-right {
+    text-align: right;
+}
+
+#logo-container {
+    display: inline-block;
+    margin: 20px;
+    height: 60px;
+    width: 60px;
+}
+
+#logo {
+    border-radius: 50px;
+    padding: 0;
+}
+
+.input-search {
+    height: 100px;
+    text-align: right;
+}
+
+.searchbar {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+#search-bar-container {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 30px 0 30px 0;
+}
+
+.icon-btn {
+    width: 60px;
+    height: 60px;
+}
+
+#menu {
+    display: inline-block;
+    width: 60px;
+    margin: 20px 10px;
+    max-width: 100%;
+}
+
+#menu-items {
+    display: none;
+}
+
+.fb-btn-container {
+    padding: 5px;
+    display: inline-block;
+}
+
+.fb-btn {
+    background-color: #3b5998;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    padding: 0;
+}
+
+.fb-share-btn {
+    width: 70px;
+}
+
+.fb-like-btn {
+    display: inline-block;
+    width: 70px;
+}
+
+.content-area {
+    width: 100%;
+    height: 420px;
+    text-align: center;
+    margin: 0px;
+}
+
+/*home page*/
+.home-page-hero {
+    margin: 70px 10px 20px 10px;
+    font-family: "Satellite";
+    color: #303030;
+    /*letter-spacing: 4.28px;*/
+    font-size: 60px;
+    padding: 0;
+}
+
+.home-page-qns {
+    margin: 20px 40px 25px 40px;
+    font-size: 30px;
+    color: #303030;
+}
+
+
+.tt-menu {
+    width: 200px;
+}
