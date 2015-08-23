@@ -37,12 +37,11 @@ input {
 #logo-container {
     display: inline-block;
     margin: 20px;
-    max-width: 100%;
     height: 60px;
+    width: 60px;
 }
 
 #logo {
-    max-width: 100%;
     border-radius: 50px;
     padding: 0;
 }
