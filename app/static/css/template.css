@@ -84,6 +84,7 @@ input {
     display: inline-block;
     position: relative;
     bottom: 15px;
+    right: 5px;
 }
 
 .fb-btn {
