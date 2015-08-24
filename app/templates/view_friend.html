@@ -42,7 +42,7 @@
                 }).click(function (e) {
                     console.log('click tag ' + e.target);
                     var tag = $(this).text();
-                    $.get('/api/add_tag', {taggee: {{ friend.id }}, tag: tag}, function (response) {
+                    $.get('/api/add_tag', {taggee: "{{ friend.id }}", tag: tag}, function (response) {
                         if (response['succeed']) {
                             var id = $(this).attr('id');
                             var index = parseInt(id.split("_").pop());
