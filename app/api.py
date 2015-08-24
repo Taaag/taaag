@@ -1,4 +1,6 @@
 import sqlalchemy
+
+from app.views import render_template
 from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
@@ -114,4 +116,15 @@ apis = {
     'delete_tag': api_user_delete_tag,
     'search_friends': api_user_search_friends,
     'all_friends': api_user_all_friends
+}
+
+
+def view_friend(user, payload):
+    friend = User.get_by_id(payload['id'])
+    tags = api_user_friend_tags(user, payload)
+    return render_template('view_friend.html', friend=friend, tags=tags)
+
+
+views = {
+    'friend': view_friend
 }
