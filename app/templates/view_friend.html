@@ -8,11 +8,14 @@
     ];
 
     $(function () {
-        $("#tag-cloud").jQCloud(word_array);
-        $(".tag-cloud-tag").hover(function (e) {
-            console.log('hover tag ' + e.target);
-        }).click(function (e) {
-            console.log('click tag ' + e.target);
+        $("#tag-cloud").jQCloud(word_array, {
+            afterCloudRender: function () {
+                $(".tag-cloud-tag").hover(function (e) {
+                    console.log('hover tag ' + e.target);
+                }).click(function (e) {
+                    console.log('click tag ' + e.target);
+                });
+            }
         });
     })
 </script>
