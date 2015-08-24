@@ -1,7 +1,7 @@
 /*home page*/
 #home-page-hero {
     margin: 70px 10px 20px;
-    font-family: "Satellite";
+    /*font-family: "Satellite";*/
     color: #303030;
     /*letter-spacing: 4.28px;*/
     font-size: 60px;
@@ -11,7 +11,7 @@
 #home-page-qns {
     padding: 20px 40px 25px;
     font-size: 30px;
-    font-family: 'Satellite', sans-serif;
+    /*font-family: 'Satellite', sans-serif;*/
     color: #303030;
     letter-spacing: 2.14px;
 }
