@@ -59,6 +59,7 @@
         $("#inputDescription").enterKey(function () {
             var tag = $(this).val();
             word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
+            console.log({{ friend.id }});
             $.get('/api/add_tag', {taggee: {{ friend.id }}, tag: tag}, function (response) {
                 console.log(response);
             });
