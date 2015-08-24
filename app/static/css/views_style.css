@@ -211,3 +211,8 @@
 .tagrank {
     margin: 0px;
 }
+
+#tag-cloud {
+    position: absolute;
+    top: 40px;
+}
