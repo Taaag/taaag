@@ -1,7 +1,22 @@
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
-input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
-input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+/* Firefox 18- */
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+/* Firefox 19+ */
+input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+/* oldIE ;) */
 
 input {
     border: none;
@@ -116,22 +131,49 @@ input {
     margin: 0px;
 }
 
+.view {
+    width: 100%;
+    height: 100%;
+}
+
 /*home page*/
-.home-page-hero {
-    margin: 70px 10px 20px 10px;
-    font-family: "Satellite";
+#home-page-hero {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 70px;
+    margin-bottom: 20px;
+    font-family: 'Satellite', sans-serif;
     color: #303030;
     /*letter-spacing: 4.28px;*/
     font-size: 60px;
-    padding: 0;
+    letter-spacing: 4.28px;
+    padding: none;
 }
 
-.home-page-qns {
-    margin: 20px 40px 25px 40px;
+#home-page-qns {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 25px;
     font-size: 30px;
+    font-family: 'Satellite', sans-serif;
     color: #303030;
+    letter-spacing: 2.14px;
 }
 
+#home-page-input {
+    border-radius: 5px;
+    width: 495px;
+    height: 50px;
+    background-color: white;
+    font-size: 35px;
+    text-align: left;
+    color: #303030;
+    border: none;
+    outline: none;
+    padding: 10px;
+    padding: none;
+}
 
 .tt-menu {
     width: 200px;
