@@ -213,6 +213,6 @@
 }
 
 #tag-cloud {
-    position: absolute;
     top: 40px;
+    position: absolute;
 }
