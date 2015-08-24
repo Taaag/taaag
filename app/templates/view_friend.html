@@ -61,6 +61,7 @@
             if(($.map(word_array, function(e) { return e.text}).indexOf(tag.toLowerCase())) > -1) {
                 alert('Cannot add existing tag');
             } else {
+                console.log(tag);
                 $.get('/api/add_tag', {taggee: "{{ friend.id }}", tag: tag}, function (response) {
                     if (response['succeed']) {
                         word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
