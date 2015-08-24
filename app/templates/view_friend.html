@@ -61,9 +61,7 @@
                 alert('Cannot add existing tag');
             } else {
                 $.get('/api/add_tag', {taggee: "{{ friend.id }}", tag: tag}, function (response) {
-                    console.log(tag);
                     if (response['succeed']) {
-                        console.log(tag);
                         word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
                         $('#tag-cloud').jQCloud('update', word_array);
                     } else {
