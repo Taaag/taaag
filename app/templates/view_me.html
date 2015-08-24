@@ -1,4 +1,36 @@
+<div id="view-me" class="view">
+    <div class="row">
+        <div class="profile-name">{{ user.name }}</div>
+    </div>
 
-<p>Hello {{ user.name }}.</p>
+    <div class="row">
+        <div id="tag-cloud" style="width: 100%; height: 200px;"></div>
+        <img class="profile-pic" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic">
+    </div>
 
-<p>Your tags: {{ tags }}</p>
+    <div class="row">
+        <div class="profile-selectbar">
+            <input class="profile-input" id="inputDescription"></input>
+        </div>
+    </div>
+</div>
+
+<script>
+    var word_array = [
+        {% for key, value in tags.items() %}
+            {text: "{{ key }}", weight: {{ value }}, html: {"class": "tag-cloud-tag"}},
+        {% endfor %}
+    ];
+
+    $(function () {
+        $("#tag-cloud").jQCloud(word_array, {
+            afterCloudRender: function () {
+                $(".tag-cloud-tag").hover(function (e) {
+                    console.log('hover tag ' + e.target);
+                }).click(function (e) {
+                    console.log('click tag ' + e.target);
+                });
+            }
+        });
+    })
+</script>
