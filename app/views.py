@@ -6,7 +6,7 @@ from flask import g, render_template, redirect, request, session, url_for, jsoni
 from app import app, db
 from app.models import User, Tag, Tagging
 from app.api import apis, APIException, views
-from app.utils import get_user_friends
+from app.utils import clear_friends_cache
 
 # Facebook app details
 FB_APP_ID = '687248731410966'
@@ -68,6 +68,8 @@ def get_current_user():
                 user = User.create(id=profile['id'], name=profile['name'],
                                    profile_url=profile['link'],
                                    access_token=access_token['access_token'])
+                clear_friends_cache(user)
+
             session['user'] = user.id
 
     g.uid = session.get('user')
