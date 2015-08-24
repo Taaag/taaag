@@ -131,5 +131,6 @@ def view_tag(user, payload):
 
 
 views = {
-    'friend': view_friend
+    'friend': view_friend,
+    'tag': view_tag
 }
