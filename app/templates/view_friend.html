@@ -3,7 +3,7 @@
 <script>
     var word_array = [
         {% for key, value in tags.items() %}
-            {text: "{{ key }}", weight: {{ value }}, "class": "tag-cloud-tag"},
+            {text: "{{ key }}", weight: {{ value }}, html: {"class": "tag-cloud-tag"}},
         {% endfor %}
     ];
 
