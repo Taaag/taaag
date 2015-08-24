@@ -1,3 +1,4 @@
+@charset "UTF-8";
 input:focus::-webkit-input-placeholder {
     color: transparent;
 }
