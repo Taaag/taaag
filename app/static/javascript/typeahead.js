@@ -7,6 +7,7 @@
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             prefetch: {
                 url: '/api/all_friends',
+                cache: false,
                 transform: function (response) {
                     return response['response']
                 }
