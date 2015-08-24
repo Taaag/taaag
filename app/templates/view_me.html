@@ -1,8 +1,7 @@
 <div id="view-me" class="view">
     <div class="row">
         {% for key, value in tags.items() %}
-            {% l = len(value) %}
-           <p> {{ key }} </p><p> { l } </p>
+           <p> {{ key }} </p><p> { value } </p>
         {% endfor %}
     </div>
     <div class="row">
