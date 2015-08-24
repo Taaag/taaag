@@ -30,6 +30,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <script src="/static/javascript/typeahead.js"></script>
+
+    <script>
+        $(function () {
+            $('#menu-me').click(function () {
+                $.get('/change_view/me', {}, function (response) {
+                    $('#content-view').html(response);
+                })
+            })
+        })
+    </script>
 </head>
 
 <body class="overall">
@@ -96,7 +106,7 @@
             <div class="icon-btn" id="icon-top"><img src="/static/images/iconmenu.jpg" alter="menu"></div>
             <div id="menu-items">
                 <div class="icon-btn"><img src="/static/images/iconhouse.jpg" alter="house"></div>
-                <div class="icon-btn"><img src="/static/images/iconme.jpg" alter="me"></div>
+                <div class="icon-btn" id="menu-me"><img src="/static/images/iconme.jpg" alter="me"></div>
                 <div class="icon-btn"><img src="/static/images/iconsettings.jpg" alter="settings"></div>
             </div>
         </div>

@@ -130,7 +130,13 @@ def view_tag(user, payload):
     return render_template('view_tag.html', tag=payload['name'], taggees=taggees)
 
 
+def view_me(user, payload):
+    tags = api_user_my_tags(user, payload)
+    return render_template('view_me.html', user=user.to_dict(), tags=tags)
+
+
 views = {
     'friend': view_friend,
-    'tag': view_tag
+    'tag': view_tag,
+    'me': view_me
 }
