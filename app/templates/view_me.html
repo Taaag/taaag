@@ -14,10 +14,9 @@
 </div>
 
 <script>
-    console.log({{ tags }});
     var word_array = [
         {% for key, value in tags.items() %}
-            {text: "{{ key }}", weight: {{ value }}, html: {"class": "tag-cloud-tag"}},
+            {text: "{{ key }}", weight: {{ len(value) }}, html: {"class": "tag-cloud-tag"}},
         {% endfor %}
     ];
 
