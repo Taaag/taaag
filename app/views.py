@@ -19,9 +19,8 @@ def index():
     # If a user was set in the get_current_user function before the request,
     # the user is logged in.
     if g.user:
-        return render_template('index.html', app_id=FB_APP_ID,
-                               app_name=FB_APP_NAME, user=g.user,
-                               friends=get_user_friends(g.user))
+        return render_template('base.html', app_id=FB_APP_ID,
+                               app_name=FB_APP_NAME)
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 

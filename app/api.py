@@ -119,6 +119,10 @@ apis = {
 }
 
 
+def view_index(user, payload):
+    return render_template('index.html', user=user.to_dict())
+
+
 def view_friend(user, payload):
     friend = User.get_by_id(payload['id'])
     tags = api_user_friend_tags(user, payload)
@@ -138,5 +142,6 @@ def view_me(user, payload):
 views = {
     'friend': view_friend,
     'tag': view_tag,
-    'me': view_me
+    'me': view_me,
+    'index': view_index
 }
