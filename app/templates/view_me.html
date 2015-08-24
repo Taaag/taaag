@@ -1,6 +1,8 @@
 <div id="view-me" class="view">
     <div class="row">
-        {{ tags }}
+        {% for key, value in tags %}
+           <p> {{ key }} </p><p> {{ len(value) }}</p>
+        {% endfor %}
     </div>
     <div class="row">
         <div class="profile-name">{{ user.name }}</div>
