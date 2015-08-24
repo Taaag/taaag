@@ -41,22 +41,20 @@
                     console.log('hover tag ' + e.target);
                 }).click(function (e) {
                     console.log('click tag ' + e.target);
+                    var id = $(this).attr('id');
+                    var index = parseInt(id.split("_").pop());
+                    word_array[index]['weight']++;
+                    console.log(word_array[index]['weight']);
+                    $('#tag-cloud').jQCloud('update', word_array);
                 });
             }
         });
         $("#inputDescription").enterKey(function () {
             var tag = $(this).val();
             word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
-            $.get('/api/add_tag', {taggee: {{ friend.id }}, tag: tag}, function(response) {
+            $.get('/api/add_tag', {taggee: {{ friend.id }}, tag: tag}, function (response) {
                 console.log(response);
             });
-            $('#tag-cloud').jQCloud('update', word_array);
-        });
-        $('.tag-cloud-tag').click(function() {
-            var id = $(this).attr('id');
-            var index = parseInt(id.split("_").pop());
-            word_array[index]['weight'] ++;
-            console.log(word_array[index]['weight']);
             $('#tag-cloud').jQCloud('update', word_array);
         });
     })
