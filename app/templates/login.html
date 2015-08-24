@@ -1,9 +1,107 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="center">
-    <h3>Taaag</h3>
-    <div class="fb-login-button" data-size='xlarge' data-scope="public_profile, email, user_friends">
-        Sign in
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+<head>
+    <!-- Meta content -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- These are Open Graph tags.-->
+    <meta property="fb:app_id" content="{{ app_id }}"/>
+
+    <title>{{ app_name }}</title>
+
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/style.css"> -->
+
+    <!--[if IE]>
+      <script type="text/javascript">
+        var tags = ['header', 'section'];
+        while(tags.length)
+          document.createElement(tags.pop());
+      </script>
+    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/static/javascript/ajax.js"></script>
+    <script src="/static/javascript/animation.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <script src="/static/javascript/typeahead.js"></script>
+    <script src="/static/javascript/change_view.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#menu-me').click(function () {
+                $.get('/change_view/me', {}, function (response) {
+                    $('#content-view').html(response);
+                })
+            })
+        })
+    </script>
+</head>
+
+<body class="overall">
+<script type="text/javascript">
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '{{ app_id }}',
+            status: true,
+            cookie: true,
+            xfbml: true
+        });
+
+        FB.Event.subscribe('auth.login', function (response) {
+            window.location = window.location;
+        });
+    };
+
+    // Load the SDK Asynchronously
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- share button 以外的部分(行) -->
+<div class="row row-nonshare">
+    <!-- logo left -->
+    <div class="col-xs-1 col-sm-2 col-md-2 no-padding" id="body-left">
+        <div id="logo-container">
+            <img id="logo" src="/static/images/tagicon.png" alter="app logo">
+        </div>
     </div>
+    <!-- end logo left -->
+
+    <!-- main area -->
+    <div class="col-xs-9 col-sm-8 col-md-8 no-padding" id="body-middle">
+        <!-- search bar top  -->
+        <div class="row col-sm-12 input-search no-padding">
+        </div>
+
+        <!-- dynamic change area -->
+        <div class="row col-sm-12 content-area no-padding" id="content-view">
+            <div class="fb-login-button" data-size='xlarge' data-scope="public_profile, email, user_friends">
+                Sign in
+            </div>
+        </div>
+    </div>
+    <!-- end main area -->
+
+    <!-- icons right -->
+    <div class="col-xs-2 col-sm-2 col-md-2 sidebar no-padding" id="body-right">
+    </div>
+    <!-- end sidebar -->
 </div>
-{% endblock %}
+<!-- end share button exclude area -->
+</body>
+</html>
