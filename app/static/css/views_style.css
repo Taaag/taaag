@@ -1,4 +1,17 @@
-.home-page-qns {
+/*home page*/
+#home-page-hero {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-family: "Satellite";
+    color: #303030;
+    /*letter-spacing: 4.28px;*/
+    font-size: 60px;
+    padding: none;
+}
+
+#home-page-qns {
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 20px;
@@ -9,7 +22,7 @@
     letter-spacing: 2.14px;
 }
 
-.home-page-input {
+#home-page-input {
     border-radius: 5px;
     width: 495px;
     height: 50px;
