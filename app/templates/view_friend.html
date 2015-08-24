@@ -5,7 +5,8 @@
 
     <div class="row">
         <div id="tag-cloud" style="width: 100%; height: 200px;"></div>
-        <img class="profile-pic" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large" alter="profile pic">
+        <img class="profile-pic" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
+             alter="profile pic">
     </div>
 
     <div class="row">
@@ -22,6 +23,17 @@
         {% endfor %}
     ];
 
+    $.fn.enterKey = function (fnc) {
+        return this.each(function () {
+            $(this).keypress(function (ev) {
+                var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                if (keycode == '13') {
+                    fnc.call(this, ev);
+                }
+            })
+        })
+    }
+
     $(function () {
         $("#tag-cloud").jQCloud(word_array, {
             afterCloudRender: function () {
@@ -31,6 +43,11 @@
                     console.log('click tag ' + e.target);
                 });
             }
+        });
+        $("#inputDescription").enterKey(function () {
+            var tag = $(this).val();
+            word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
+            $('#tag-cloud').jQCloud('update', word_array);
         });
     })
 </script>
