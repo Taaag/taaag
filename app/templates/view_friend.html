@@ -56,6 +56,7 @@
             var id = $(this).attr('id');
             var index = parseInt(id.split("_").pop());
             word_array[index]['weight'] ++;
+            console.log(word_array[index]['weight']);
             $('#tag-cloud').jQCloud('update', word_array);
         });
     })
