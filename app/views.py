@@ -5,7 +5,7 @@ from flask import g, render_template, redirect, request, session, url_for, jsoni
 
 from app import app, db
 from app.models import User, Tag, Tagging
-from app.api import apis, APIException
+from app.api import apis, APIException, views
 from app.utils import get_user_friends
 
 # Facebook app details
@@ -36,6 +36,17 @@ def api(method):
         except APIException as e:
             return jsonify({'succeed': False, 'message': e.message})
     return jsonify({'message': 'API endpoint is working!'})
+
+
+@app.route('/change_view/<view_type>', methods=['GET'])
+def view(view_type):
+    if not g.user:
+        abort(403)
+    if view_type in views:
+        try:
+            return views[view_type](g.user, request.args)
+        except APIException as e:
+            return e.message
 
 
 @app.route('/test')
