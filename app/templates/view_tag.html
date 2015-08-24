@@ -2,3 +2,7 @@
 <p>Viewing tag {{ tag }}.</p>
 
 <p>Taggees: {{ taggees }}</p>
+
+{% for taggee in taggees|sort(attribute='count') %}
+    <div>{{ taggee.name }} : {{ taggee.id }}</div>
+{% endfor %}
