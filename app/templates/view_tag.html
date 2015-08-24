@@ -6,7 +6,7 @@
     <div class="row">
         <div class="friendlist-box">
             {% for taggee in taggees|sort(attribute='count') %}
-                <div class="friendlist-friend">{{ taggee.name }} : {{ taggee.id }}</div>
+                <div class="friendlist-friend">{{ taggee.name }} : {{ taggee.count }}</div>
             {% endfor %}
         </div>
     </div>

@@ -59,6 +59,10 @@ div {
     text-align: right;
 }
 
+.to-home {
+    cursor: pointer;
+}
+
 #logo-container {
     display: inline-block;
     margin: 20px;
