@@ -1,5 +1,7 @@
 <div id="view-me" class="view">
-    <div class="row">{{ tags.items() }}</div>
+    <div class="row">        {% for tag in tags.items() %}
+          {{   tag[0] }} weight {{ count(tag[1]) }}
+        {% endfor %}</div>
     <div class="row">
         <div class="profile-name">{{ user.name }}</div>
     </div>
