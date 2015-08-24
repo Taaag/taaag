@@ -9,5 +9,8 @@
 
     $(document).ready(function () {
         loadView('index', {});
+        $('.to-home').click(function() {
+            loadView('index', {});
+        });
     });
 }(jQuery));
