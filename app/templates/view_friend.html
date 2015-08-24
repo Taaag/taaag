@@ -58,11 +58,18 @@
         });
         $("#inputDescription").enterKey(function () {
             var tag = $(this).val();
-            word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
-            $.get('/api/add_tag', {taggee: "{{ friend.id }}", tag: tag}, function (response) {
-                console.log(response);
-            });
-            $('#tag-cloud').jQCloud('update', word_array);
+            if(($.map(word_array, function(e) { return e.text}).indexOf(tag.toLowerCase())) > -1) {
+                alert('Cannot add existing tag');
+            } else {
+                $.get('/api/add_tag', {taggee: "{{ friend.id }}", tag: tag}, function (response) {
+                    if (response['succeed']) {
+                        word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
+                        $('#tag-cloud').jQCloud('update', word_array);
+                    } else {
+                        alert(response['message']);
+                    }
+                });
+            }
         });
     })
 </script>
