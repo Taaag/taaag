@@ -59,7 +59,7 @@ div {
     text-align: right;
 }
 
-#logo .icon-btn {
+#logo, .icon-btn {
     cursor: pointer;
 }
 
