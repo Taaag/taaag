@@ -120,7 +120,7 @@ apis = {
 
 
 def view_index(user, payload):
-    return render_template('index.html', user=user.to_dict())
+    return render_template('view_index.html', user=user.to_dict())
 
 
 def view_friend(user, payload):
