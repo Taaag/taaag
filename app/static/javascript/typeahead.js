@@ -47,9 +47,13 @@
 
         $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
             if (suggestion.hasOwnProperty('name')) {
-                console.log('Selected user ' + suggestion['id']);
+                $.get('/change_view/friend', {'id': suggestion['id']}, function (response) {
+                    $('#content-view').html(response);
+                })
             } else {
-                console.log('Selected tag ' + suggestion);
+                $.get('/change_view/tag', {'name': suggestion}, function (response) {
+                    $('#content-view').html(response);
+                })
             }
         });
     });

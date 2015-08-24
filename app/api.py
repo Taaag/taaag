@@ -125,6 +125,11 @@ def view_friend(user, payload):
     return render_template('view_friend.html', friend=friend, tags=tags)
 
 
+def view_tag(user, payload):
+    taggees = api_tag_get_taggees(user, payload)
+    return render_template('view_tag.html', tag=payload['name'], taggees=taggees)
+
+
 views = {
     'friend': view_friend
 }
