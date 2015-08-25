@@ -281,8 +281,9 @@ overflow:hidden;
 }
 
 .mytag-tagname-font{
-  text-align: center;
   font-size: 30px;
+  height:40px;
+  color:#303030;
 }
 
 .mytag-img{
