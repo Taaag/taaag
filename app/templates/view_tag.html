@@ -10,9 +10,10 @@
     <input class="tagrank-input" placeholder="{{ tag }}"></input>
 </div>
 <div class="row tagrank">
-    <table class="tagrank-chart">
+    <div class="tagrank-chart">
+        <table class = "tagchart-table">
         {% for taggee in taggees %}
-            <tr class="row tagrank-set" data-uid="{{ taggee.id }}">
+            <tr style = "" class="row tagrank-set" data-uid="{{ taggee.id }}">
                 <th class="col-sm-2"><img class="tagrank-img" src="https://graph.facebook.com/{{ taggee.id }}/picture"></th>
                 <th class="col-sm-7"><p class="tagrank-ranknum">{{ taggee.name }}</p></th>
                 <th class="col-sm-5">
@@ -21,4 +22,5 @@
             </tr>
         {% endfor %}
     </table>
+    <div>
 </div>
