@@ -24,6 +24,10 @@ def index():
     # Otherwise, a user is not logged in.
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
+@app.route('/test_login')
+def test_login():
+    return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
+
 
 @app.route('/api/<method>', methods=['GET'])
 def api(method):
