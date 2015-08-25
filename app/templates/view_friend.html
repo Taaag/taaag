@@ -4,14 +4,14 @@
     </div>
 
     <div class="row">
-        <div id="tag-cloud" style="width: 100%; height: 200px;"></div>
+        <div id="tag-cloud" style="width: 100%; height: 250px;"></div>
         <img class="profile-pic" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
              alter="profile pic">
     </div>
 
     <div class="row">
         <div class="profile-selectbar">
-            <input class="profile-add-tag-input" id="inputDescription"></input>
+            <input class="profile-add-tag-input" id="inputDescription" maxlength="32"></input>
         </div>
     </div>
 </div>
@@ -32,10 +32,13 @@
                 }
             })
         })
-    }
+    };
 
     $(function () {
+        $('#inputDescription').maxlength();
+
         $("#tag-cloud").jQCloud(word_array, {
+            removeOverflowing: false,
             afterCloudRender: function () {
                 $(".tag-cloud-tag").hover(function (e) {
                     console.log('hover tag ' + e.target);

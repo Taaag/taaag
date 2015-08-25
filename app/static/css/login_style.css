@@ -9,13 +9,15 @@ background-size:760px 560px;
 
 
 .fb_img{
+margin-top:2px;
+margin-left:2px;
 float:left;
-width: 30px;
-height: 30px;
-
+width: 29px;
+height: 29px;
 }
+
 .fb-login-btn {
-    width: 150px;
+    width: 200px;
     height: 50px;
     background-color: #3b5998;
     font-family: 'Satellite', sans-serif;
@@ -27,9 +29,9 @@ height: 30px;
     text-align: center;
     padding-top: 5px;
     margin-top: 255px;
-    margin-left: 325px;
+    margin-left: 280px;
     opacity: 1;
-    float:right;
+    
 }
 
 .fb-login-btn:hover {

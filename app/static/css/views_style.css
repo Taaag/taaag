@@ -4,16 +4,16 @@
     /*font-family: "Satellite";*/
     color: #303030;
     /*letter-spacing: 4.28px;*/
-    font-size: 60px;
+    height:60px;
     padding: 0;
 }
 
 #home-page-qns {
     padding: 20px 40px 25px;
-    font-size: 30px;
+    font-size: 25px;
     /*font-family: 'Satellite', sans-serif;*/
     color: #303030;
-    letter-spacing: 2.14px;
+    letter-spacing: 1.5px;
 }
 
 #home-page-input {
@@ -133,6 +133,7 @@
     font-size: 30px;
     text-align: center;
     padding: 10px;
+    color:#303030;
 }
 
 .tagrank-chart {

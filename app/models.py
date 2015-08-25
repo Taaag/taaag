@@ -113,10 +113,14 @@ class Tag(db.Model):
     def query_tags_by_name_filtered(cls, name, friends_list):
         name = name.strip().lower()
         if name:
-            return cls.query.filter(cls.name.like('%' + name + '%')).join(Tagging, Tagging.tag_id == Tag.id).\
+            return cls.query.filter(cls.name.like('%' + name + '%')).join(Tagging, Tagging.tag_id == Tag.id). \
                 filter(Tagging.taggee_id.in_(friends_list)).all()
         else:
             return None
+
+    @classmethod
+    def all_tags_filtered(cls, friends_list):
+        return [_[1] for _ in db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(Tagging.tag_id).join(cls, Tagging.tag_id == Tag.id).all()]
 
     @classmethod
     def all_tags(cls):

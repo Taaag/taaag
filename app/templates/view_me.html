@@ -4,7 +4,7 @@
     </div>
 
     <div class="row">
-        <div id="tag-cloud" style="width: 100%; height: 200px;"></div>
+        <div id="tag-cloud" style="width: 100%; height: 250px;"></div>
         <img class="profile-pic" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic">
     </div>
 
@@ -22,6 +22,7 @@
 
     $(function () {
         $("#tag-cloud").jQCloud(word_array, {
+            removeOverflowing: false,
             afterCloudRender: function () {
                 $(".tag-cloud-tag").hover(function (e) {
                     console.log('hover tag ' + e.target);

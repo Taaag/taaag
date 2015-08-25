@@ -17,9 +17,9 @@
         var tags = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: '/api/search_tags?keyword=%QUERY',
-                wildcard: '%QUERY',
+            prefetch: {
+                url: '/api/all_tags',
+                cache: false,
                 transform: function (response) {
                     return response['response']
                 }
@@ -48,13 +48,9 @@
 
         $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
             if (suggestion.hasOwnProperty('name')) {
-                $.get('/change_view/friend', {'id': suggestion['id']}, function (response) {
-                    $('#content-view').html(response);
-                })
+                $(document).trigger("viewChanging", ["friend", {'id': suggestion['id']}]);
             } else {
-                $.get('/change_view/tag', {'name': suggestion}, function (response) {
-                    $('#content-view').html(response);
-                })
+                $(document).trigger("viewChanging", ["tag", {'name': suggestion}]);
             }
         });
     });
