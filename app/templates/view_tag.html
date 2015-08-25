@@ -11,7 +11,7 @@
 </div>
 <div class="row tagrank">
     <div class="tagrank-chart">
-        {% for taggee in taggees|sort(attribute='count') %}
+        {% for taggee in taggees %}
             <div class="row tagrank-set" data-uid="{{ taggee.id }}">
                 <div class="col-sm-1"><p class="tagrank-ranknum">{{ loop.index }}</p></div>
                 <div class="col-sm-2"><img class="tagrank-img" src="https://graph.facebook.com/{{ taggee.id }}/picture"></div>
