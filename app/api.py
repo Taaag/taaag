@@ -14,7 +14,8 @@ class APIException(Exception):
 def api_tag_all(user, payload):
     # Payload: ignored
     # Return: list of tag dicts
-    return [_.to_dict() for _ in Tag.all_tags() or []]
+    # return [_.to_dict() for _ in Tag.all_tags() or []]
+    return Tag.all_tags_filtered(get_user_friends(user))
 
 
 def api_tag_search(user, payload):
