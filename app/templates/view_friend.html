@@ -72,14 +72,17 @@
                     word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
                     $('#tag-cloud').jQCloud('update', word_array);
                 } else {
-                    alert(response['message']);
+                    BootstrapDialog.show({
+                        title: 'Error',
+                        message: response['message']
+                    });
                 }
             });
         }
 
         $("#inputDescription").enterKey(function () {
             var tag = $(this).val();
-            BootstrapDialog.confirm("Add you sure to add" + tag + "?", function (result) {
+            BootstrapDialog.confirm("Add you sure to add " + tag + "?", function (result) {
                 if (result) {
                     addTag(tag);
                 }
