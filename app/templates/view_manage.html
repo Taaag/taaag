@@ -35,11 +35,11 @@
         });
     });
 
-    function deleteTag(tag, $row) {
+    function deleteTag(tag, row) {
         $.get('/api/delete_tag', {name: tag}, function (response) {
-            console.log($row);
             if (response['succeed']) {
-                $row.remove();
+                console.log($(row));
+{#                $row.remove();#}
             } else {
                 BootstrapDialog.show({
                     title: 'Error',
