@@ -36,7 +36,7 @@ def api_tag_get_taggees(user, payload):
     # Return: {'user1': 2, 'user2': 1}
     tag = Tag.get_or_create(payload['name'])
     friends = [_['id'] for _ in get_user_friends(user)]
-    return [{'id': i[0].id, 'name': i[0].name, 'count': i[1]} for i in tag.get_taggees() if str(i[0].id) in friends]
+    return [{'id': i[0].id, 'name': i[0].name, 'count': i[1]} for i in tag.get_taggees_filtered(friends)]
 
 
 def api_user_my_tags(user, payload):
