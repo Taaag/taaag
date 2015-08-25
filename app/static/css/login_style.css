@@ -17,7 +17,7 @@ height: 29px;
 }
 
 .fb-login-btn {
-    width: 150px;
+    width: 200px;
     height: 50px;
     background-color: #3b5998;
     font-family: 'Satellite', sans-serif;
@@ -29,7 +29,7 @@ height: 29px;
     text-align: center;
     padding-top: 5px;
     margin-top: 255px;
-    margin-left: 325px;
+    margin-left: 280px;
     opacity: 1;
     
 }
