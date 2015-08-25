@@ -7,6 +7,13 @@ background-size:760px 560px;
 /*background-attachment: fixed;*/
 }
 
+
+.fb_img{
+float:left;
+width: 30px;
+height: 30px;
+
+}
 .fb-login-btn {
     width: 150px;
     height: 50px;
@@ -22,8 +29,9 @@ background-size:760px 560px;
     margin-top: 255px;
     margin-left: 325px;
     opacity: 1;
+    float:right;
 }
 
 .fb-login-btn:hover {
-  opacity: 0.75;
+  opacity: 0.85;
 }
