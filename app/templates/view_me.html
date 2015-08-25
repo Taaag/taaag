@@ -31,7 +31,10 @@
             {text: {{ key|tojson|safe }}, weight: {{ value|length }}, html: {"class": "tag-cloud-tag"}},
         {% endfor %}
     ];
-    $('.modal').modal();
+
+    $('.modal').modal({
+        show: false
+    });
 
     $(function () {
         $("#tag-cloud").jQCloud(word_array, {
@@ -41,7 +44,7 @@
                     console.log('hover tag ' + e.target);
                 }).click(function (e) {
                     console.log('click tag ' + e.target);
-                    $('.model').modal('show');
+                    $('.modal').modal('show');
                 });
             }
         });
