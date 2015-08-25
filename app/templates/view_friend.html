@@ -58,6 +58,7 @@
                 });
             }
         });
+        
         $("#inputDescription").enterKey(function () {
             var tag = $(this).val();
             if(($.map(word_array, function(e) { return e.text}).indexOf(tag.toLowerCase())) > -1) {
