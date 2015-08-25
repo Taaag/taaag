@@ -14,41 +14,16 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login_style.css">
 
-
-
-
-    <!--[if IE]>
-      <script type="text/javascript">
-        var tags = ['header', 'section'];
-        while(tags.length)
-          document.createElement(tags.pop());
-      </script>
-    <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="/static/javascript/ajax.js"></script>
-    <script src="/static/javascript/animation.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-    <script src="/static/javascript/typeahead.js"></script>
-    <script src="/static/javascript/change_view.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
-
-    <script>
-        $(function () {
-            $('#menu-me').click(function () {
-                $.get('/change_view/me', {}, function (response) {
-                    $('#content-view').html(response);
-                })
-            })
-        })
-    </script>
 </head>
 
 <body class="background-login">
 <script type="text/javascript">
-    window.fbAsyncInit = function () {
+    
+$(function(){
+    $.getScript("https://connect.facebook.net/en_US/all.js", function() {
         FB.init({
             appId: '{{ app_id }}',
             status: true,
@@ -59,25 +34,21 @@
         FB.Event.subscribe('auth.login', function (response) {
             window.location = window.location;
         });
-    };
 
-    // Load the SDK Asynchronously
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+        $('.fb-login-btn').click(function () {
+            FB.login(function (response) {
+            }, {scope: 'public_profile, email, user_friends'});
+       });
+    });
+ });
 </script>
 
 <!-- share button 以外的部分(行) -->
 
 
-            <div class="fb-login-button fb-login-btn" data-size='xlarge' data-scope="public_profile, email, user_friends">
+            <button class="fb-login-btn" data-size='xlarge'>
                 Sign in
-            </div>
+            </button>
         
 
 <!-- end share button exclude area -->
