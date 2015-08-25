@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="profile-selectbar">
-            <input class="profile-add-tag-input" id="inputDescription"></input>
+            <input class="profile-add-tag-input" id="inputDescription" maxlength="32"></input>
         </div>
     </div>
 </div>
@@ -32,9 +32,11 @@
                 }
             })
         })
-    }
+    };
 
     $(function () {
+        $('#inputDescription').maxlength();
+
         $("#tag-cloud").jQCloud(word_array, {
             removeOverflowing: false,
             afterCloudRender: function () {
