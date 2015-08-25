@@ -72,6 +72,14 @@
             }
         });
 
+        BootstrapDialog.confirm('Hi Apple, are you sure?', function (result) {
+            if (result) {
+                alert('Yup.');
+            } else {
+                alert('Nope.');
+            }
+        });
+
         function addTag(tag) {
             if (($.map(word_array, function (e) {
                         return e.text
