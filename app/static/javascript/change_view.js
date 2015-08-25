@@ -32,8 +32,10 @@
             $(document).trigger("viewChanging", ["manage", {}]);
         });
         $('#back-btn').click(function () {
-            var data = historyStack.pop();
-            loadView(data[0], data[1]);
+            if (historyStack.length > 0) {
+                var data = historyStack.pop();
+                loadView(data[0], data[1]);
+            }
         });
     });
 }(jQuery));
