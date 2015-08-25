@@ -7,7 +7,7 @@
         <table class="table profile-taglist-table">
             {% for key, value in tags.items() %}
                 <tr class="my-tag-set">
-                    <th class="col-sm-1"><p class="mytaglist-delete-btn">x</p></th>
+                    <th class="col-sm-1"><div class="mytaglist-delete-btn">x</div></th>
                     <th class="col-sm-2">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ value|length }}</div>
                     </th>
@@ -24,8 +24,7 @@
 
 <script>
 $(function(){
-    $('.mytaglist-detete-btn').on('click',function(){
-
+    $('.mytaglist-detete-btn').click(function(){
          alert("lolololoo");
     });
 });
