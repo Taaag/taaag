@@ -141,9 +141,15 @@ def view_me(user, payload):
     return render_template('view_me.html', user=user.to_dict(), tags=tags)
 
 
+def view_manage(user, payload):
+    tags = api_user_my_tags(user, payload)
+    return render_template('view_manage.html', user=user.to_dict(), tags=tags)
+
+
 views = {
     'friend': view_friend,
     'tag': view_tag,
     'me': view_me,
+    'manage': view_manage,
     'index': view_index
 }

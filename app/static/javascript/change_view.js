@@ -28,6 +28,9 @@
         $('#menu-me').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
         });
+        $('#menu-settings').click(function () {
+            $(document).trigger("viewChanging", ["manage", {}]);
+        });
         $('#back-btn').click(function () {
             var data = historyStack.pop();
             loadView(data[0], data[1]);
