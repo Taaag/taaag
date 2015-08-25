@@ -142,7 +142,8 @@ def view_me(user, payload):
 
 
 def view_manage(user, payload):
-    tags = api_user_my_tags(user, payload)
+    tags = [{'name': _[0], 'taggers': _[1]} for _ in api_user_my_tags(user, payload).items()]
+    tags.sort(key=lambda _: len(_['taggers']), reverse=True)
     return render_template('view_manage.html', user=user.to_dict(), tags=tags)
 
 
