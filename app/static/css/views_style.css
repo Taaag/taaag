@@ -236,7 +236,7 @@ height: auto;
 
 .my-tag-set{
 width:480px;
-height:50px;
+height:40px;
 }
 
 
@@ -279,16 +279,10 @@ overflow:hidden;
   margin:auto;
 
 }
-.mytag-tagname{
-  float:left;
-  height:40px;
-  color:#303030;
-
-}
 
 .mytag-tagname-font{
   text-align: center;
-  font-size: 23px;
+  font-size: 30px;
 }
 
 .mytag-img{
