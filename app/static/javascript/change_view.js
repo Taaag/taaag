@@ -18,11 +18,6 @@
         loadView(view, data);
     });
 
-    $('#back-btn').click(function () {
-        var data = historyStack.pop();
-        loadView(data[0], data[1]);
-    });
-
     $(document).ready(function () {
         loadView('index', {});
         $('.to-home').click(function () {
@@ -30,6 +25,10 @@
         });
         $('#menu-me').click(function () {
             loadView('me', {});
+        });
+        $('#back-btn').click(function () {
+            var data = historyStack.pop();
+            loadView(data[0], data[1]);
         });
     });
 }(jQuery));
