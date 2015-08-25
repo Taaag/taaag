@@ -93,6 +93,7 @@
             $("#add-confirmation").modal('show');
             $("#add-yes").click(function () {
                 var tag = $("#inputDescription").val();
+                console.log(tag);
                 addTag(tag);
                 $("#inputDescription").val('');
             });
