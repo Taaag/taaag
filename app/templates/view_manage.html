@@ -26,9 +26,8 @@
 
 <script>
     $('.mytaglist-delete-btn').click(function () {
-        var $row = $(this).closest('.my-tag-set').get(0);
-        console.log($row);
-{#        var tag = $row.find('.mytag-tagname-font').text();#}
+        var $row = $(this).closest('.my-tag-set');
+        var tag = $row.find('.mytag-tagname-font').text();
         BootstrapDialog.confirm("Add you sure to delete " + tag + "?", function (result) {
             if (result) {
                 deleteTag(tag, $row);
@@ -36,10 +35,10 @@
         });
     });
 
-    function deleteTag(tag, row) {
+    function deleteTag(tag, $row) {
         $.get('/api/delete_tag', {name: tag}, function (response) {
             if (response['succeed']) {
-                row.remove();
+                console.log($row.remove());
             } else {
                 BootstrapDialog.show({
                     title: 'Error',
