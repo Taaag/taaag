@@ -242,7 +242,7 @@ height:30px;
 
 
 .mytaglist-delete-btn{
-font-size: 30px;
+font-size: 25px;
 color:#303030;
 font-weight: bold;
 float:left;
@@ -255,7 +255,7 @@ outline:none;
 
 .mytag-upvote-circle{
   height:30px;
-  float:left;
+  
   text-align: center;
 /*  padding:10px 10px 0px 10px;*/
 }
@@ -265,7 +265,7 @@ outline:none;
   height:30px;
   border-radius: 15px;
   background-color: #303030;
-  font-size: 18px;  /*need to resize*/
+  font-size: 15px;  /*need to resize*/
   color:white;
   text-align: center;
   margin:auto;
