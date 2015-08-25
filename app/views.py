@@ -30,6 +30,11 @@ def test_login():
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
 
+@app.route('/test_filter', methods=['GET'])
+def test_login():
+    return Tag.get_by_name('haha').get_taggees_filtered([1, 2, 3])
+
+
 @app.route('/api/<method>', methods=['GET'])
 def api(method):
     if not g.user:

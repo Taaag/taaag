@@ -94,6 +94,10 @@ class Tag(db.Model):
             db.session.commit()
         return taggees
 
+    def get_taggees_filtered(self, friends_list):
+        taggees = self.taggees.filter(User.id.in_([friends_list])).with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+        return taggees
+
     @classmethod
     def query_tags_by_name(cls, name):
         name = name.strip().lower()
