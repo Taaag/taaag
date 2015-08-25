@@ -48,13 +48,9 @@
 
         $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
             if (suggestion.hasOwnProperty('name')) {
-                $.get('/change_view/friend', {'id': suggestion['id']}, function (response) {
-                    $('#content-view').html(response);
-                })
+                $(document).trigger("viewChanging", ["friend", {'id': suggestion['id']}]);
             } else {
-                $.get('/change_view/tag', {'name': suggestion}, function (response) {
-                    $('#content-view').html(response);
-                })
+                $(document).trigger("viewChanging", ["tag", {'name': suggestion}]);
             }
         });
     });
