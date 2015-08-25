@@ -1,7 +1,7 @@
 (function ($) {
     'use strict';
 
-    var loading = '<div class="inner-circles-loader">Loading…</div>';
+    var loading = '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>';
 
     var historyStack = [];
     var currentView;
@@ -32,8 +32,10 @@
             $(document).trigger("viewChanging", ["manage", {}]);
         });
         $('#back-btn').click(function () {
-            var data = historyStack.pop();
-            loadView(data[0], data[1]);
+            if (historyStack.length > 0) {
+                var data = historyStack.pop();
+                loadView(data[0], data[1]);
+            }
         });
     });
 }(jQuery));
