@@ -1,50 +1,27 @@
-<html>
-<head>
-<link rel = "stylesheet" type = "text/css" href = "css/template_style.css">
-</head>
+<script>
+    $(function () {
+        $('.tagrank-set').click(function (e) {
+            $.get('/change_view/friend', {'id': e.target.data('id')}, function (response) {
+                $('#content-view').html(response);
+            });
+        });
+    });
+</script>
 
-<body>
- <div class = "row content-area">
-        
-            <!-- dynamic below -->
-            <!-- list friends -->
-            <div class = "row tagrank">
-              <input class = "tagrank-input" placeholder = "#tagtagtag"></input> 
-            </div>
-        	  <div class ="row tagrank">
-              <div class = "tagrank-chart">
-                <div class = "row tagrank-set">
-                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
-                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
-                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
-                </div>
-                <div class = "row tagrank-set">
-                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
-                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
-                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
-                </div>
-                <div class = "row tagrank-set">
-                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
-                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
-                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
-                </div>
-                <div class = "row tagrank-set">
-                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
-                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
-                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
-                </div>
-                <div class = "row tagrank-set">
-                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
-                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
-                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
-                </div>
-                <div class = "row tagrank-set">
-                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
-                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
-                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
-                </div>
-              </div>                      
-            </div>
+<div class="row tagrank">
+    <input class="tagrank-input" placeholder="{{ tag }}"></input>
 </div>
-</body>
-</html>
+<div class="row tagrank">
+    <div class="tagrank-chart">
+        {% for taggee in taggees|sort(attribute='count') %}
+            <div class="row tagrank-set" data-uid="{{ taggee.id }}">
+                <div class="col-sm-1"><p class="tagrank-ranknum">{{ loop.index }}</p></div>
+                <div class="col-sm-2"><img class="tagrank-img" src="https://graph.facebook.com/{{ taggee.id }}/picture"></div>
+                <div class="col-sm-9">
+                    {{ taggee.name }}
+                    <div class="tagrank-upvote-circle"><p class="tagrank-upvote-num">{{ taggee.count }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
