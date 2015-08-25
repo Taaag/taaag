@@ -11,7 +11,7 @@
 </div>
 <div class="row tagrank">
     <div class="tagrank-chart">
-        <table class = "tagchart-table">
+        <table class = "tagchart-table table table-hover table-striped">
         {% for taggee in taggees %}
             <tr style = "" class="row tagrank-set" data-uid="{{ taggee.id }}">
                 <th class="col-sm-2"><img class="tagrank-img" src="https://graph.facebook.com/{{ taggee.id }}/picture"></th>
