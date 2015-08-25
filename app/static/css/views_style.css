@@ -29,6 +29,20 @@
     padding: 10px;
 }
 
+#home-page-input::-webkit-input-placeholder{
+    animation: type 5s steps(50, end) 1;    
+
+}
+#home-page-input::-moz-placeholder{
+    animation: type 5s steps(50, end) 1;    
+
+}
+
+@keyframes type{
+    from{ width: 0;}
+}
+
+
 .friendlist-input {
     outline: none;
     background-color: white;
