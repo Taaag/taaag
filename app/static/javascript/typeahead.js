@@ -17,9 +17,9 @@
         var tags = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: '/api/search_tags?keyword=%QUERY',
-                wildcard: '%QUERY',
+            prefetch: {
+                url: '/api/all_tags',
+                cache: false,
                 transform: function (response) {
                     return response['response']
                 }
