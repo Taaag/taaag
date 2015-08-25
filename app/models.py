@@ -88,14 +88,17 @@ class Tag(db.Model):
         return {'id': self.id, 'name': self.name}
 
     def get_taggees(self):
-        taggees = self.taggees.with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+        taggees = self.taggees.with_entities(User, func.count(Tagging.id).label('votes')).\
+            group_by(User.id).order_by('votes DESC').all()
         if not taggees:
             db.session.delete(self)
             db.session.commit()
         return taggees
 
     def get_taggees_filtered(self, friends_list):
-        taggees = self.taggees.filter(User.id.in_(friends_list)).with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+        taggees = self.taggees.filter(User.id.in_(friends_list)).\
+            with_entities(User, func.count(Tagging.id).label('votes')).\
+            group_by(User.id).order_by('votes DESC').all()
         return taggees
 
     @classmethod
