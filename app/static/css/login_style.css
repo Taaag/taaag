@@ -9,11 +9,12 @@ background-size:760px 560px;
 
 
 .fb_img{
+margin-top:2px;
 float:left;
 width: 29px;
 height: 29px;
-
 }
+
 .fb-login-btn {
     width: 150px;
     height: 50px;
