@@ -20,7 +20,7 @@
         $('.to-home').click(function () {
             loadView('index', {});
         });
-        $('.menu-me').click(function () {
+        $('#menu-me').click(function () {
             loadView('me', {});
         });
     });
