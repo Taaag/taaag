@@ -136,6 +136,7 @@
 }
 
 .tagrank-chart {
+    overflow:auto;
     width: 490px;
     height: 300px;
     background-color: white;
@@ -203,4 +204,86 @@
 .tag-cloud-tag {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 2px;
+}
+
+
+.profile-taglist-img{
+width: 100px;
+height: 100px;
+border-radius: 75px;
+margin:auto;
+margin-top: 0px;
+margin-bottom:35px;
+}
+
+
+.profile-taglist{
+width:490px;
+height:250px;
+background-color:white;
+color:white;
+overflow-y:scroll;
+}
+
+.my-tag-set{
+height:60px;
+width:490px;
+ text-align:none;
+
+}
+
+.my-tag-delete{
+  background-color:#F7CA18;
+  float:left;
+  height:60px;
+}
+
+.taglist-delete-btn{
+ font-weight: bold;
+ font-size: 30px;
+ border: none;
+ outline:none;
+ background-color:#F7CA18;
+ margin-top: 12px;
+
+}
+
+.my-tag-gray{
+
+  background-color: #E8E8E8;
+  height:60px;
+  float:left;
+  
+  
+}
+
+.my-tag-upvote{
+width: 30px;
+height: 30px;
+border-radius: 15px;
+background-color: #303030;
+text-align: center;
+margin-top: 15px;
+margin-left: 15px;
+
+}
+
+.taglist-upvotenum{
+font-size: 25px;
+
+}
+
+.my-tag-name{
+margin-left: 50px;
+
+}
+.taglist-tag-name{
+font-size: 10px;
+color: #303030;
+
+}
+
+.taglist-person-img{
+width: 40px;
+height: 40px;
 }
