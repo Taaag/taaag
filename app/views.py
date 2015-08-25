@@ -53,11 +53,6 @@ def view(view_type):
             return e.message
 
 
-@app.route('/test')
-def test():
-    return render_template('test.html', user=g.user)
-
-
 @app.before_request
 def get_current_user():
     if not session.get('user'):
