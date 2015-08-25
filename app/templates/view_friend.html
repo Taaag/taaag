@@ -78,13 +78,13 @@
         }
 
         $("#inputDescription").enterKey(function () {
-            BootstrapDialog.confirm('Hi Apple, are you sure?', function (result) {
+            var tag = $(this).val();
+            BootstrapDialog.confirm("Add you sure to add" + tag + "?", function (result) {
                 if (result) {
-                    var tag = $(this).val();
                     addTag(tag);
-                    $(this).val('');
                 }
             });
+            $(this).val('');
         });
     })
 </script>
