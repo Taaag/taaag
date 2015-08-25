@@ -90,6 +90,7 @@ div {
 #search-bar-container {
     display: inline-block;
     vertical-align: bottom;
+    max-height: none;
     margin: 30px 0 30px 0;
 }
 
