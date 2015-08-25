@@ -1,5 +1,5 @@
 .background-login {
-    background-image: url(static/images/loginpage.jpg);
+    background-image: url("/app/static/images/loginpage.jpg");
     background-repeat: no-repeat;
     max-width: 760px;
     max-height: 560px;
