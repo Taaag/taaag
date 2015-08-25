@@ -47,6 +47,7 @@
   -webkit-box-shadow: 0 5px 10px rgba(247,202,24,.2);
      -moz-box-shadow: 0 5px 10px rgba(247,202,24,.2);
           box-shadow: 0 5px 10px rgba(247,202,24,.2);
+  overflow-y:auto;
 }
 
 .tt-suggestion {
