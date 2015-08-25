@@ -90,10 +90,9 @@
         }
 
         $("#inputDescription").enterKey(function () {
-            var tag = $(this).val();
             $("#add-confirmation").modal('show');
             $("#add-yes").click(function () {
-                console.log('what');
+                var tag = $("#inputDescription").val();
                 addTag(tag);
             });
             $(this).val('');
