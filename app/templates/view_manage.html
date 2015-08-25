@@ -36,7 +36,7 @@
     });
 
     function deleteTag(tag, $row) {
-        $.get('/api/delete_tag', {tag: tag}, function (response) {
+        $.get('/api/delete_tag', {name: tag}, function (response) {
             console.log($row);
             if (response['succeed']) {
                 $row.remove();
