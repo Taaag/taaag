@@ -25,6 +25,11 @@ def index():
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
 
+@app.route('/test_login')
+def test_login():
+    return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
+
+
 @app.route('/api/<method>', methods=['GET'])
 def api(method):
     if not g.user:
@@ -46,11 +51,6 @@ def view(view_type):
             return views[view_type](g.user, request.args)
         except APIException as e:
             return e.message
-
-
-@app.route('/test')
-def test():
-    return render_template('test.html', user=g.user)
 
 
 @app.before_request
