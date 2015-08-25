@@ -117,7 +117,7 @@ class Tag(db.Model):
 
     @classmethod
     def all_tags_filtered(cls, friends_list):
-        return db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(Tagging.tag_id).join(cls, Tagging.tag_id == Tag.id).all()
+        return [_[1] for _ in db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(Tagging.tag_id).join(cls, Tagging.tag_id == Tag.id).all()]
 
     @classmethod
     def all_tags(cls):
