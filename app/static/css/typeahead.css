@@ -21,6 +21,7 @@
 
 .typeahead {
   background-color: #fff;
+  border: none;
 }
 
 .typeahead:focus {
