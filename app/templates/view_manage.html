@@ -7,7 +7,9 @@
         <table class="table profile-taglist-table">
             {% for tag in tags %}
                 <tr class="my-tag-set">
-                    <th class="col-sm-1"><div class="mytaglist-delete-btn">x</div></th>
+                    <th class="col-sm-1">
+                        <div class="mytaglist-delete-btn">x</div>
+                    </th>
                     <th class="col-sm-2">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.taggers|length }}</div>
                     </th>
@@ -23,7 +25,26 @@
 </div>
 
 <script>
-    $('.mytaglist-delete-btn').click(function(){
-         alert("lolololoo");
+    $('.mytaglist-delete-btn').click(function () {
+        var $row = $(this).closest('.my-tag-set');
+        var tag = $row.find('.mytag-tagname-font').text();
+        BootstrapDialog.confirm("Add you sure to delete " + tag + "?", function (result) {
+            if (result) {
+                deleteTag(tag, $row);
+            }
+        });
     });
+
+    function deleteTag(tag, $row) {
+        $.get('/api/delete_tag', {tag: tag}, function (response) {
+            if (response['succeed']) {
+                $row.remove();
+            } else {
+                BootstrapDialog.show({
+                    title: 'Error',
+                    message: response['message']
+                });
+            }
+        });
+    }
 </script>
