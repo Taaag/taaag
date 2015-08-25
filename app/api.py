@@ -15,7 +15,8 @@ def api_tag_all(user, payload):
     # Payload: ignored
     # Return: list of tag dicts
     # return [_.to_dict() for _ in Tag.all_tags() or []]
-    return Tag.all_tags_filtered(get_user_friends(user))
+    friends = [_['id'] for _ in get_user_friends(user)]
+    return Tag.all_tags_filtered(friends)
 
 
 def api_tag_search(user, payload):
