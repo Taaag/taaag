@@ -61,7 +61,10 @@
                     word_array[index]['weight']++;
                     $('#tag-cloud').jQCloud('update', word_array);
                 } else {
-                    alert(response['message']);
+                    BootstrapDialog.show({
+                        title: 'Error',
+                        message: response['message']
+                    });
                 }
             });
         }
