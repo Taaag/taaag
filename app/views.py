@@ -31,7 +31,7 @@ def test_login():
 
 
 @app.route('/test_filter', methods=['GET'])
-def test_login():
+def test_filter():
     return Tag.get_by_name('haha').get_taggees_filtered([1, 2, 3])
 
 
