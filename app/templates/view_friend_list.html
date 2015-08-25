@@ -1,0 +1,13 @@
+<div id="view-tag" class="view">
+    <div class="row">
+        <div>People tagged as {{ tag }}</div>
+{#        <input class="friendlist-input" placeholder="Search Your Friends..."> </input>#}
+    </div>
+    <div class="row">
+        <div class="friendlist-box">
+            {% for taggee in taggees|sort(attribute='count') %}
+                <div class="friendlist-friend">{{ taggee.name }} : {{ taggee.count }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

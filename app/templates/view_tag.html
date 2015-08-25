@@ -1,13 +1,50 @@
-<div id="view-tag" class="view">
-    <div class="row">
-        <div>People tagged as {{ tag }}</div>
-{#        <input class="friendlist-input" placeholder="Search Your Friends..."> </input>#}
-    </div>
-    <div class="row">
-        <div class="friendlist-box">
-            {% for taggee in taggees|sort(attribute='count') %}
-                <div class="friendlist-friend">{{ taggee.name }} : {{ taggee.count }}</div>
-            {% endfor %}
-        </div>
-    </div>
+<html>
+<head>
+<link rel = "stylesheet" type = "text/css" href = "css/template_style.css">
+</head>
+
+<body>
+ <div class = "row content-area">
+        
+            <!-- dynamic below -->
+            <!-- list friends -->
+            <div class = "row tagrank">
+              <input class = "tagrank-input" placeholder = "#tagtagtag"></input> 
+            </div>
+        	  <div class ="row tagrank">
+              <div class = "tagrank-chart">
+                <div class = "row tagrank-set">
+                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
+                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
+                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
+                </div>
+                <div class = "row tagrank-set">
+                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
+                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
+                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
+                </div>
+                <div class = "row tagrank-set">
+                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
+                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
+                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
+                </div>
+                <div class = "row tagrank-set">
+                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
+                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
+                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
+                </div>
+                <div class = "row tagrank-set">
+                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
+                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
+                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
+                </div>
+                <div class = "row tagrank-set">
+                    <div class = "col-sm-1"><p class = "tagrank-ranknum">1</p></div>
+                    <div class = "col-sm-2"><img class ="tagrank-img" src = "asset/profilepic.jpg"></div>
+                    <div class = "col-sm-9"><div class = "tagrank-upvote-circle"><p class = "tagrank-upvote-num">30</div></div>
+                </div>
+              </div>                      
+            </div>
 </div>
+</body>
+</html>

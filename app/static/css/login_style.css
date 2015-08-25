@@ -1,9 +1,10 @@
 .background-login {
-    background-image: url("../images/loginpage.jpg");
-    background-repeat: no-repeat;
-    max-width: 760px;
-    max-height: 560px;
-    background-attachment: fixed;
+background-image: url("../images/loginpage.jpg");
+background-repeat: no-repeat;
+max-width:760px;
+max-height: 560px;
+background-size:760px 560px;
+/*background-attachment: fixed;*/
 }
 
 .fb-login-btn {
