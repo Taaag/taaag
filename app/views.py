@@ -32,7 +32,8 @@ def test_login():
 
 @app.route('/test_filter', methods=['GET'])
 def test_filter():
-    taggees = Tag.query_tags_by_name_filtered('haha', [10153502543282593])
+    taggees = Tag.query_tags_by_name_filtered('haha', [10153502543282593])[0].\
+        get_taggees_filtered([10153502543282593, 10206287264593411, 977010685653665])
     return render_template('test_filter.html', a=taggees)
 
 
