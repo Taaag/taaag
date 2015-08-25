@@ -4,17 +4,17 @@ background-repeat: no-repeat;
 max-width:760px;
 max-height: 560px;
 background-size:760px 560px;
-text-align: center;
 /*background-attachment: fixed;*/
 }
 
 
 .fb_img{
+margin-top:2px;
 float:left;
 width: 29px;
 height: 29px;
-
 }
+
 .fb-login-btn {
     width: 150px;
     height: 50px;
