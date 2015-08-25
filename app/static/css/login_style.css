@@ -21,4 +21,9 @@ background-size:760px 560px;
     padding-top: 5px;
     margin-top: 255px;
     margin-left: 325px;
+    opacity: 1;
+}
+
+.fb-login-btn:hover {
+  opacity: 0.75;
 }
