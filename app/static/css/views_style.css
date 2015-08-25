@@ -157,7 +157,7 @@
 
 .tagrank-set {
 
-    height: 50px;
+    height: 40px;
     /*text-align: none;*/
     margin-left: 0px;
     margin-right: 0px;
@@ -184,13 +184,14 @@
 .tagrank-upvote-circle {
     width: 40px;
     height: 40px;
-    border-radius: 50px;
+    border-radius: 20px;
     background-color: #303030;
     color: white;
     font-size: 12px;
     float: right;
     margin: 10px 15px;
     text-align: center;
+    vertical-align: center;
 }
 
 .tagrank-upvote-num {
