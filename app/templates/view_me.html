@@ -31,10 +31,10 @@
             {text: {{ key|tojson|safe }}, weight: {{ value|length }}, html: {"class": "tag-cloud-tag"}},
         {% endfor %}
     ];
-    $('.modal').modal({show: false});
-    $('.tag-cloud-tag').click(function () {
-        $('.model').modal('show');
-    });
+{#    $('.modal').modal({show: false});#}
+{#    $('.tag-cloud-tag').click(function () {#}
+{#        $('.model').modal('show');#}
+{#    });#}
 
     $(function () {
         $("#tag-cloud").jQCloud(word_array, {
