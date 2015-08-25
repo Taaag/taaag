@@ -28,9 +28,9 @@ height: 29px;
     text-align: center;
     padding-top: 5px;
     margin-top: 255px;
-    /*margin-left: 325px;*/
+    margin-left: 325px;
     opacity: 1;
-    float:right;
+    
 }
 
 .fb-login-btn:hover {
