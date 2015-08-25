@@ -137,10 +137,14 @@
 }
 
 .tagrank-chart {
-    overflow: auto;
+    overflow-y: auto;
     width: 490px;
     height: 300px;
     background-color: white;
+}
+
+.tagchart-table{
+    height: auto;
 }
 
 .chart-scrollbar {

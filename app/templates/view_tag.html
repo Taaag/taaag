@@ -11,15 +11,16 @@
 </div>
 <div class="row tagrank">
     <div class="tagrank-chart">
+        <table class = "tagchart-table table table-hover table-striped">
         {% for taggee in taggees %}
-            <div class="row tagrank-set" data-uid="{{ taggee.id }}">
-                <div class="col-sm-1"><p class="tagrank-ranknum">{{ loop.index }}</p></div>
-                <div class="col-sm-2"><img class="tagrank-img" src="https://graph.facebook.com/{{ taggee.id }}/picture"></div>
-                <div class="col-sm-9">
-                    {{ taggee.name }}
+            <tr style = "" class="row tagrank-set" data-uid="{{ taggee.id }}">
+                <th class="col-sm-2"><img class="tagrank-img" src="https://graph.facebook.com/{{ taggee.id }}/picture"></th>
+                <th class="col-sm-7"><p class="tagrank-ranknum">{{ taggee.name }}</p></th>
+                <th class="col-sm-5">
                     <div class="tagrank-upvote-circle"><p class="tagrank-upvote-num">{{ taggee.count }}</div>
-                </div>
-            </div>
+                </th>
+            </tr>
         {% endfor %}
-    </div>
+    </table>
+    <div>
 </div>
