@@ -20,5 +20,8 @@
         $('.to-home').click(function () {
             loadView('index', {});
         });
+        $('.menu-me').click(function () {
+            loadView('me', {});
+        });
     });
 }(jQuery));
