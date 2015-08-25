@@ -1,8 +1,8 @@
 .background-login {
     background-image: url("../images/loginpage.jpg");
     background-repeat: no-repeat;
-    max-width: 760px;
-    max-height: 560px;
+    width: 760px;
+    height: 560px;
     background-attachment: fixed;
 }
 
