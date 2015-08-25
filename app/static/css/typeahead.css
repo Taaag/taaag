@@ -25,7 +25,7 @@
 }
 
 .typeahead:focus {
-  border: 2px solid #0097cf;
+  border: none;
 }
 
 .tt-query {
@@ -64,7 +64,7 @@
 
 .tt-suggestion.tt-cursor {
   color: #fff;
-  background-color: #0097cf;
+  background-color: #303030;
 
 }
 
