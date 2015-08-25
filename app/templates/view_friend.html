@@ -85,6 +85,15 @@
 
         $("#inputDescription").enterKey(function () {
             var tag = $(this).val();
+            if (($.map(word_array, function (e) {
+                        return e.text
+                    }).indexOf(tag.toLowerCase())) > -1) {
+                BootstrapDialog.show({
+                    title: 'Error',
+                    message: 'Cannot add existing tag'
+                });
+                return;
+            }
             BootstrapDialog.confirm("Add you sure to add " + tag + "?", function (result) {
                 if (result) {
                     addTag(tag);
