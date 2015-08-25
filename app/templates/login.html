@@ -13,6 +13,7 @@
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login_style.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud.css">
 
     <!-- <link rel="stylesheet" type="text/css" href="/static/css/style.css"> -->
@@ -46,7 +47,7 @@
     </script>
 </head>
 
-<body class="overall">
+<body class="overall background-login">
 <script type="text/javascript">
     window.fbAsyncInit = function () {
         FB.init({
@@ -73,11 +74,12 @@
 </script>
 
 <!-- share button 以外的部分(行) -->
+
 <div class="row row-nonshare">
     <!-- logo left -->
     <div class="col-xs-1 col-sm-2 col-md-2 no-padding" id="body-left">
         <div id="logo-container">
-            <img id="logo" src="/static/images/tagicon.png" alter="app logo">
+           <!--  <img id="logo" src="/static/images/tagicon.png" alter="app logo"> -->
         </div>
     </div>
     <!-- end logo left -->
@@ -90,7 +92,7 @@
 
         <!-- dynamic change area -->
         <div class="row col-sm-12 content-area no-padding" id="content-view">
-            <div class="fb-login-button" data-size='xlarge' data-scope="public_profile, email, user_friends">
+            <div class="fb-login-button fb-login-btn" data-size='xlarge' data-scope="public_profile, email, user_friends">
                 Sign in
             </div>
         </div>

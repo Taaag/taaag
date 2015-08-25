@@ -223,65 +223,62 @@
     overflow-y: scroll;
 }
 
-.my-tag-set {
-    height: 60px;
-    width: 490px;
-    text-align: none;
+
+.my-tag-set{
+width:480px;
+height:50px;
+}
+
+
+
+.mytaglist-delete-btn{
+font-size: 30px;
+color:#303030;
+font-weight: bold;
+float:left;
+margin:0px;
+height:50px;
+background-color:#F7CA18;
+height: 50px;
+border: none;
+outline:none;
+}
+
+.mytaglist-tag{
+height: 60px;
+width:210px;
+background-color: #E8E8E8;
+margin-left: 40px;
+overflow:hidden;
 
 }
 
-.my-tag-delete {
-    background-color: #F7CA18;
-    float: left;
-    height: 60px;
+.mytag-upvote-circle{
+  height:40px;
+  background-color: #8E8E8E;
+  float:left;
+  text-align: center;
+  padding:10px 10px 0px 10px;
 }
-
-.taglist-delete-btn {
-    font-weight: bold;
-    font-size: 30px;
-    border: none;
-    outline: none;
-    background-color: #F7CA18;
-    margin-top: 12px;
-
-}
-
-.my-tag-gray {
-
-    background-color: #E8E8E8;
-    height: 60px;
-    float: left;
+.mytag-upvote-num{
+  text-align: center;
+  width:30px;
+  height:30px;
+  border-radius: 50px;
+  background-color: #303030;
+  font-size: 23px;  /*need to resize*/
+  color:white;
+  text-align: center;
+  margin:auto;
 
 }
-
-.my-tag-upvote {
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    background-color: #303030;
-    text-align: center;
-    margin-top: 15px;
-    margin-left: 15px;
-
+.mytag-tagname{
+  float:left;
+  height:40px;
+  background-color: #8E8E8E;
 }
 
-.taglist-upvotenum {
-    font-size: 25px;
-
-}
-
-.my-tag-name {
-    margin-left: 50px;
-
-}
-
-.taglist-tag-name {
-    font-size: 10px;
-    color: #303030;
-
-}
-
-.taglist-person-img {
-    width: 40px;
-    height: 40px;
+.mytag-tagname-font{
+  text-align: center;
+  font-size: 23px;
 }
