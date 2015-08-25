@@ -1,7 +1,7 @@
 <script>
     $(function () {
-        $('.tagrank-set').click(function (e) {
-            $.get('/change_view/friend', {'id': e.target.data('id')}, function (response) {
+        $('.tagrank-set').click(function () {
+            $.get('/change_view/friend', {'id': $(this).data('id')}, function (response) {
                 $('#content-view').html(response);
             });
         });
