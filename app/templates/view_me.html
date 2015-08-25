@@ -13,28 +13,12 @@
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            Are you sure to delete this tag?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-</div>
-
 <script>
     var word_array = [
         {% for key, value in tags.items() %}
             {text: {{ key|tojson|safe }}, weight: {{ value|length }}, html: {"class": "tag-cloud-tag"}},
         {% endfor %}
     ];
-
-    $('.modal').modal({
-        show: false
-    });
 
     $(function () {
         $("#tag-cloud").jQCloud(word_array, {
@@ -44,7 +28,6 @@
                     console.log('hover tag ' + e.target);
                 }).click(function (e) {
                     console.log('click tag ' + e.target);
-                    $('.modal').modal('show');
                 });
             }
         });

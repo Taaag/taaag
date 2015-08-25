@@ -19,12 +19,8 @@
         });
     }
 
-    function displayConfirmation(type) {
-        $('#confirmation-'+type).modal();
-    }
-
     $(document).ready(function () {
-        displayConfirmation('delete');
+        $('.modal').modal({show: false});
         showOrHideLogo();
 
         toggleMenu();
