@@ -32,14 +32,12 @@
 
 }
 
-#home-page-input::-webkit-input-placeholder{
+#home-page-input::placeholder{
     font-size:30px;
-    animation: type 4 steps(50, end) 1;    
-
-}
-#home-page-input::-moz-placeholder{
-    font-size:30px;
-    animation: type 4 steps(50, end) 1;    
+  
+    -webkit-animation: type 4 steps(50, end) 1;   
+    -moz-animation: type 4 steps(50, end) 1;
+    animation: type 4 steps(50, end) 1; 
 
 }
 
