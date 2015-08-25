@@ -6,7 +6,6 @@
     var historyStack = [];
 
     function loadView(view, data) {
-        historyStack.push([view, data]);
         $('#content-view').html(loading);
         $.get('/change_view/' + view, data, function (response) {
             $('#content-view').html(response);
@@ -15,16 +14,17 @@
     }
 
     $(document).on("viewChanging", function (event, view, data) {
+        historyStack.push([view, data]);
         loadView(view, data);
     });
 
     $(document).ready(function () {
-        loadView('index', {});
+        $(document).trigger("viewChanging", ["index", {}]);
         $('.to-home').click(function () {
-            loadView('index', {});
+            $(document).trigger("viewChanging", ["index", {}]);
         });
         $('#menu-me').click(function () {
-            loadView('me', {});
+            $(document).trigger("viewChanging", ["me", {}]);
         });
         $('#back-btn').click(function () {
             var data = historyStack.pop();
