@@ -109,7 +109,7 @@ class Tag(db.Model):
     @classmethod
     def query_tags_by_name_filtered(cls, name, friends_list):
         name = name.strip().lower()
-        taggings = Tagging.filter(Tagging.taggee_id.in_(friends_list))
+        taggings = Tagging.query.filter(Tagging.taggee_id.in_(friends_list))
         if name:
             return cls.query.filter(cls.name.like('%' + name + '%')).join(taggings, taggings.tag_id == Tag.id).all()
         else:
