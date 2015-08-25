@@ -94,8 +94,8 @@
             $("#add-yes").click(function () {
                 var tag = $("#inputDescription").val();
                 addTag(tag);
+                $("#inputDescription").val('');
             });
-            $(this).val('');
         });
     })
 </script>
