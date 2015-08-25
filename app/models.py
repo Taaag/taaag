@@ -95,7 +95,7 @@ class Tag(db.Model):
         return taggees
 
     def get_taggees_filtered(self, friends_list):
-        taggees = self.taggees.filter(User.id.in_(tuple(friends_list))).with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
+        taggees = self.taggees.filter(User.id.in_(friends_list)).with_entities(User, func.count(Tagging.id)).group_by(User.id).all()
         return taggees
 
     @classmethod
