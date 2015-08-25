@@ -16,19 +16,6 @@
     </div>
 </div>
 
-<div id="add-confirmation" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
-     aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            Are you sure to delete this tag?
-        </div>
-        <div class="modal-footer">
-            <button id="add-yes" type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
-            <button type="button" class="btn btn-primary">No</button>
-        </div>
-    </div>
-</div>
-
 <script>
     var word_array = [
         {% for key, value in tags.items() %}
@@ -72,13 +59,6 @@
             }
         });
 
-        BootstrapDialog.confirm('Hi Apple, are you sure?', function (result) {
-            if (result) {
-                alert('Yup.');
-            } else {
-                alert('Nope.');
-            }
-        });
 
         function addTag(tag) {
             if (($.map(word_array, function (e) {
@@ -98,12 +78,12 @@
         }
 
         $("#inputDescription").enterKey(function () {
-            $("#add-confirmation").modal('show');
-            $("#add-yes").click(function () {
-                var tag = $("#inputDescription").val();
-                console.log(tag);
-                addTag(tag);
-                $("#inputDescription").val('');
+            BootstrapDialog.confirm('Hi Apple, are you sure?', function (result) {
+                if (result) {
+                    var tag = $(this).val();
+                    addTag(tag);
+                    $(this).val('');
+                }
             });
         });
     })
