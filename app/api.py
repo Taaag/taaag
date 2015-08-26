@@ -94,12 +94,12 @@ def api_user_add_tags(user, payload):
     if not user.can_tag(taggee):
         raise APIException('Cannot tag the user!')
     tags_name = [_.strip().lower() for _ in json.loads(payload['tags']) if _]
-    succeeded = 0
+    succeeded = []
     for tag_name in tags_name:
         tag = Tag.get_or_create(tag_name)
         try:
             Tagging.create(tagger=user, taggee=taggee, tag=tag)
-            succeeded += 1
+            succeeded.append(tag_name)
         except sqlalchemy.exc.IntegrityError:
             pass
     return succeeded
