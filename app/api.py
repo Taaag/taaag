@@ -93,7 +93,7 @@ def api_user_add_tags(user, payload):
         raise APIException('Taggee does not exist!')
     if not user.can_tag(taggee):
         raise APIException('Cannot tag the user!')
-    tags_name = [_.strip().lower() for _ in json.loads(payload['tag']) if _]
+    tags_name = [_.strip().lower() for _ in json.loads(payload['tags']) if _]
     succeeded = 0
     for tag_name in tags_name:
         tag = Tag.get_or_create(tag_name)
