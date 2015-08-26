@@ -30,6 +30,7 @@ div {
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #F7CA18;
+    margin-auto: auto;
 }
 
 .no-padding {
