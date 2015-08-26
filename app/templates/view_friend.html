@@ -77,7 +77,7 @@
                     console.log(response['response']);
                     $.each(response['response'], function (index, value) {
                         var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
-                        console.log($(".tag-cloud-tag")[0]);
+                        console.log($(".tag-cloud-tag")[0].data('name'));
                         if($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
                             $tag.addClass('tagged');
