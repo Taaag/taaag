@@ -61,6 +61,8 @@
                          }
                          });*/
                         $('#inputDescription').tagsinput('add', $(this).text());
+                    }).dblclick(function (e) {
+                        $(document).trigger("viewChanging", ["tag", {'name': $(this).text(); }]);
                     });
                 }
             });
