@@ -11,7 +11,10 @@
 
     <div class="row">
         <div class="profile-selectbar">
-            <input class="profile-add-tag-input" id="inputDescription" maxlength="32" placeholder="Add more tag..."></input>
+            <input class="profile-add-tag-input" id="inputDescription" placeholder="Add more tag..."/>
+            <button type="button" class="btn btn-warning" id="btnSubmit">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Submit
+            </button>
         </div>
     </div>
 </div>
@@ -23,7 +26,7 @@
         {% endfor %}
     ];
 
-    $.fn.enterKey = function (fnc) {
+    /*$.fn.enterKey = function (fnc) {
         return this.each(function () {
             $(this).keypress(function (ev) {
                 var keycode = (ev.keyCode ? ev.keyCode : ev.which);
@@ -32,31 +35,53 @@
                 }
             })
         })
-    };
+    };*/
 
     $(function () {
-        $('#inputDescription').maxlength();
+        //$('#inputDescription').maxlength();
 
-        $("#tag-cloud").jQCloud(word_array, {
-            removeOverflowing: true,
-            shape: 'rectangular',
-            afterCloudRender: function () {
-                $(".tag-cloud-tag").hover(function (e) {
-                    console.log('hover tag ' + e.target);
-                }).click(function (e) {
-                    console.log('click tag ' + e.target);
+        function updateCloud(word_array) {
+            $("#tag-cloud").jQCloud(word_array, {
+                removeOverflowing: true,
+                shape: 'rectangular',
+                afterCloudRender: function () {
+                    $(".tag-cloud-tag").hover(function (e) {
+                        // console.log('hover tag ' + e.target);
+                    }).click(function (e) {
+                        /*console.log('click tag ' + e.target);
                     var tag = $(this).text();
                     var index = parseInt($(this).attr('id').split("_").pop());
                     BootstrapDialog.confirm("Add you sure to upvote " + tag + "?", function (result) {
                         if (result) {
                             voteTag(tag, index);
                         }
+                    });*/
+                        $('#inputDescription').tagsinput('add', $(this).text());
                     });
-                });
+                }
+            });
+        }
+
+        updateCloud(word_array);
+
+        $('#inputDescription').tagsinput({maxChars: 32, trimValue: true});
+
+        $('#btnSubmit').click(function() {
+            var tags = JSON.stringify($('#inputDescription').tagsinput('items'));
+            $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {
+                if (response['succeed']) {
+                    console.log(response['response'] + 'tagged.');
+                    alert('Not implemented, manually refresh this view please');
+                } else {
+                    BootstrapDialog.show({
+                        title: 'Error',
+                        message: response['message']
+                    });
+                }
             }
         });
 
-        function voteTag(tag, index) {
+        /*function voteTag(tag, index) {
             $.get('/api/add_tag', {taggee: "{{ friend.id }}", tag: tag}, function (response) {
                 if (response['succeed']) {
                     word_array[index]['weight']++;
@@ -111,7 +136,7 @@
                 }
             });
             $(this).val('');
-        });
+        });*/
 
         var allTags = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,

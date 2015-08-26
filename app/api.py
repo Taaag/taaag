@@ -4,6 +4,8 @@ from app.views import render_template
 from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
+import json
+
 
 class APIException(Exception):
     def __init__(self, message):
@@ -83,6 +85,26 @@ def api_user_add_tag(user, payload):
         raise APIException('Already tagged!')
 
 
+def api_user_add_tags(user, payload):
+    # Payload: {'taggee': 'uid', 'tag': 'foo'}
+    # Return: ???
+    taggee = User.get_by_id(payload['taggee'])
+    if not taggee:
+        raise APIException('Taggee does not exist!')
+    if not user.can_tag(taggee):
+        raise APIException('Cannot tag the user!')
+    tags_name = [_.strip().lower() for _ in json.loads(payload['tag']) if _]
+    succeeded = 0
+    for tag_name in tags_name:
+        tag = Tag.get_or_create(tag_name)
+        try:
+            Tagging.create(tagger=user, taggee=taggee, tag=tag)
+            succeeded += 1
+        except sqlalchemy.exc.IntegrityError:
+            pass
+    return succeeded
+
+
 def api_user_delete_tag(user, payload):
     # Payload: {'name': 'foo'}
     # Return: ???
@@ -115,6 +137,7 @@ apis = {
     'my_tags': api_user_my_tags,
     'friend_tags': api_user_friend_tags,
     'add_tag': api_user_add_tag,
+    'add_tags': api_user_add_tags,
     'delete_tag': api_user_delete_tag,
     'search_friends': api_user_search_friends,
     'all_friends': api_user_all_friends
