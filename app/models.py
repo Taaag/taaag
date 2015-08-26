@@ -154,6 +154,11 @@ class Tag(db.Model):
         db.session.commit()
         return True
 
+    @classmethod
+    def get_by_tagger_and_taggee(cls, tagger_id, taggee_id):
+        return cls.join(Tagging, Tagging.tag_id == Tag.id).filter(Tagging.tagger_id == tagger_id).\
+            filter(Tagging.taggee_id == taggee_id).with_entities(Tag.name).all()
+
 
 class Tagging(db.Model):
     __tablename__ = 'taggings'

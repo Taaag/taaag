@@ -61,7 +61,8 @@ def api_user_friend_tags(user, payload):
     # Return: {'tag': 2, 'tag2': 1}
     if is_friend_of(user, payload['id']):
         tags = User.get_tags_for_user(payload['id'])
-        return {_[0]: _[1] for _ in tags}
+        tags_added_by_me = Tag.get_by_tagger_and_taggee(user.id, payload['id'])
+        return {_[0]: (_[1], _[0] in tags_added_by_me) for _ in tags}
     else:
         raise APIException('You are not friends!')
 
