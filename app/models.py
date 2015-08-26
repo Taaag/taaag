@@ -5,6 +5,7 @@ from app.enums import UserPrivacy
 from app.utils import is_friend_of
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
+from sqlalchemy.exc import IntegrityError
 
 
 class User(db.Model):
@@ -175,5 +176,9 @@ class Tagging(db.Model):
     @classmethod
     def create(cls, **kwargs):
         tagging = cls(**kwargs)
-        db.session.add(tagging)
-        db.session.commit()
+        try:
+            db.session.add(tagging)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            raise
