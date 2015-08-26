@@ -12,8 +12,8 @@ div.jqcloud {
 
 div.jqcloud span {
     opacity: 1;
-    border-radius: 3px;
-    padding: 2px;
+    border-radius: 10px;
+    padding: 5px 8px;
 }
 
 div.jqcloud {
