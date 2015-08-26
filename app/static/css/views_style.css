@@ -249,7 +249,7 @@
         to {-webkit-transform: scale(0.9);}    
     }
         
-    @-moz-keyframes scale{
+  @-moz-keyframes scale{
         from {-moz-transform: scale(0.9);}
         65% {-moz-transform: scale(1.0);}
         to {-moz-transform: scale(0.9);}    

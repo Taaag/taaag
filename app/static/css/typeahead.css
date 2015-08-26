@@ -36,8 +36,8 @@
 
 .tt-menu {
   width: 200px;
-  /*margin: 12px 0;
-  padding: 8px 0;*/
+/*  margin: 12px 0;*/
+  padding: 8px 0;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(247, 202, 24, 0.2);
