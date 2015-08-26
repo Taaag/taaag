@@ -27,6 +27,12 @@ div {
     max-height: 100%;*/
 }
 
+body{
+
+    font-family: 'Josefin Sans', sans-serif;
+     
+}
+
 .no-padding {
     padding: 0;
 }
