@@ -46,7 +46,7 @@
                 shape: 'rectangular',
                 afterCloudRender: function () {
                     $(".tag-cloud-tag").each(function(index, value) {
-                        $(this).data('name', $(this).text());
+                        $(this).attr('data-name', $(this).text());
 {#                        console.log($(this).data('name'));#}
                     });
                     $(".tag-cloud-tag").hover(function (e) {
