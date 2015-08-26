@@ -226,7 +226,7 @@
 .tag-cloud-tag {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 5px;
-    border: #fff 1px dotted;
+    border: #fff 2px solid;
 }
 
 .profile-taglist-img {
