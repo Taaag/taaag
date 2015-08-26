@@ -45,9 +45,9 @@
                 removeOverflowing: true,
                 shape: 'rectangular',
                 afterCloudRender: function () {
-                    $(".tag-cloud-tag").each(function(index, value) {
+                    $(".tag-cloud-tag").each(function (index, value) {
                         $(this).attr('data-name', $(this).text());
-{#                        console.log($(this).data('name'));#}
+                        {#                        console.log($(this).data('name'));#}
                     });
                     $(".tag-cloud-tag").hover(function (e) {
                         // console.log('hover tag ' + e.target);
@@ -74,12 +74,17 @@
             var tags = JSON.stringify($('#inputDescription').tagsinput('items'));
             $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {
                 if (response['succeed']) {
-                    console.log(response['response']);
+                    if (response['response'].length < 1) {
+                        BootstrapDialog.show({
+                            title: 'Error',
+                            message: 'No tag added since you added them already'
+                        });
+                    }
                     $.each(response['response'], function (index, value) {
                         var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
                         console.log($(".tag-cloud-tag").first().attr('data-name'));
                         console.log($tag);
-                        if($tag.length > 0) {
+                        if ($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
                             $tag.addClass('tagged');
                             word_array[index]['weight']++;
