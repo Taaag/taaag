@@ -32,7 +32,7 @@ def test_login():
 
 @app.route('/test_filter', methods=['GET'])
 def test_filter():
-    return render_template('test_filter.html', a=apis['friend_tags'](g.user, {id: 977010685653665}))
+    return render_template('test_filter.html', a=apis['friend_tags'](g.user, {'id': 977010685653665}))
 
 
 @app.route('/api/<method>', methods=['GET'])
