@@ -63,7 +63,7 @@
                     }).dblclick(function (e) {
                         $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
                     });
-                    $(".tag-cloud-tag:not(.tagged)").click(function (e) {
+                    $(".tag-cloud-tag:not(.btnSubmit)").click(function (e) {
                         $('#inputDescription').tagsinput('add', $(this).text());
                     })
                 }
