@@ -1,11 +1,12 @@
 <div id="view-index" class="view">
     <div class="row" id="home-page-hero"><span>Hi, {{ user.name }}!</span></div>
-    <div class="row" id="home-page-qns">Choose a friend to tag today!</div>
+    <div class="row" id="home-page-qns">Tag your impression on your friends now.</div>
     <!-- <input class="row" id="home-page-input"> -->
     <div class = "row home-page-suggested">
-               <img class = "home-page-suggest-img"></img>
-               <img class = "home-page-suggest-img"></img>
-               <img class = "home-page-suggest-img"></img>
+               <img class = "home-page-suggest-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"/>
+               <img class = "home-page-suggest-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"/>
+               <img class = "home-page-suggest-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"/>
+               
   
     </div>
 </div>
