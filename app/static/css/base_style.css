@@ -23,14 +23,13 @@ input {
 }
 
 div {
-/*    max-width: 100%;
-    max-height: 100%;*/
+    /*    max-width: 100%;
+        max-height: 100%;*/
 }
 
-body{
-
+body {
     font-family: 'Josefin Sans', sans-serif;
-     
+    background-color: #F7CA18;
 }
 
 .no-padding {
