@@ -38,7 +38,8 @@
         $('#inputDescription').maxlength();
 
         $("#tag-cloud").jQCloud(word_array, {
-            removeOverflowing: false,
+            removeOverflowing: true,
+            shape: 'rectangular',
             afterCloudRender: function () {
                 $(".tag-cloud-tag").hover(function (e) {
                     console.log('hover tag ' + e.target);
