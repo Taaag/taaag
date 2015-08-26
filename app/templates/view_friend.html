@@ -79,6 +79,7 @@
                             title: 'Error',
                             message: 'No tag added since you added them already'
                         });
+                        return;
                     }
                     $.each(response['response'], function (index, value) {
                         var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
