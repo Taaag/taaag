@@ -3,13 +3,13 @@
     margin: 70px 10px 20px;
     /*font-family: "Satellite";*/
     color: #303030;
-    /*letter-spacing: 4.28px;*/
-    height:60px;
+    letter-spacing: 4.28px;
+    height:80px;
     padding: 0;
 }
 
 #home-page-qns {
-    padding: 20px  25px;
+    padding: 10px  25px;
     font-size: 25px;
     /*font-family: 'Satellite', sans-serif;*/
     color: #303030;
