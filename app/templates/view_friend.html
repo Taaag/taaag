@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="profile-selectbar">
-            <input class="profile-add-tag-input" id="inputDescription" maxlength="32"></input>
+            <input class="profile-add-tag-input" id="inputDescription" maxlength="32" placeholder="Add more tag..."></input>
         </div>
     </div>
 </div>
@@ -112,5 +112,19 @@
             });
             $(this).val('');
         });
+
+        var allTags = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.whitespace,
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            remote: {
+                url: '/api/search_tags?keyword=%QUERY',
+                wildcard: '%QUERY',
+                transform: function (response) {
+                    return response['response']
+                }
+            }
+        });
+
+        $('#inputDescription').typeahead({highlight: true}, {source: allTags});
     })
 </script>
