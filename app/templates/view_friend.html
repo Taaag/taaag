@@ -70,7 +70,7 @@
             var tags = JSON.stringify($('#inputDescription').tagsinput('items'));
             $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {
                 if (response['succeed']) {
-                    console.log(response['response'] + 'tagged.');
+                    console.log(response['response'] + ' tagged.');
                     alert('Not implemented, manually refresh this view please');
                 } else {
                     BootstrapDialog.show({
