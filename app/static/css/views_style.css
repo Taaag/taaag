@@ -9,7 +9,7 @@
 }
 
 #home-page-qns {
-    padding: 20px 40px 25px;
+    padding: 20px  25px;
     font-size: 25px;
     /*font-family: 'Satellite', sans-serif;*/
     color: #303030;
@@ -30,6 +30,24 @@
     white-space:nowrap;
     overflow: hidden;
 
+}
+
+.home-page-suggested{
+    height:100px;
+}
+
+
+.home-page-suggest-img{
+width: 100px;
+height: 100px;
+border-radius: 50px;
+background-color: #303030;
+margin:25px;
+border: none;
+}
+
+.home-page-suggest-img:hover{
+    opacity: 0.8;
 }
 
 #home-page-input::placeholder{
