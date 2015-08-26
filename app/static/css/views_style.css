@@ -107,6 +107,7 @@
     width: 370px;
     height: 65px;
     margin: auto;
+    padding-top: 10px;
     border-radius: 10px;
     background-color: #FFFF99;
 }
@@ -114,7 +115,7 @@
 .profile-add-tag-input {
     width: 350px;
     height: 35px;
-    text-align: center;
+    /*text-align: center;*/
     margin-top: 15px;
     margin-bottom: 15px;
     background-color: #FFFFFF;
@@ -223,8 +224,9 @@
 }
 
 .tag-cloud-tag {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    border: #303030 1px dotted;
 }
 
 .profile-taglist-img {
