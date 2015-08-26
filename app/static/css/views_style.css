@@ -110,7 +110,9 @@ border: none;
 
 .profile-name {
     font-size: 30px;
-    color: #000000;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    color: #303030;
   
 }
 
