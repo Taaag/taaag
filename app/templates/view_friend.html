@@ -47,6 +47,7 @@
                 afterCloudRender: function () {
                     $(".tag-cloud-tag").each(function(index, value) {
                         $(this).data('name', $(this).text());
+{#                        console.log($(this).data('name'));#}
                     });
                     $(".tag-cloud-tag").hover(function (e) {
                         // console.log('hover tag ' + e.target);
@@ -75,7 +76,7 @@
                 if (response['succeed']) {
                     console.log(response['response']);
                     $.each(response['response'], function (index, value) {
-                        var $tag = $('.tag-cloud-tag[data-name=' + value + ']');
+                        var $tag = $('.tag-cloud-tag[data-name="' + value + '"]');
                         console.log($tag);
                         if($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
