@@ -76,8 +76,8 @@
                 if (response['succeed']) {
                     console.log(response['response']);
                     $.each(response['response'], function (index, value) {
-                        var $tag = $("#tag-cloud").find('[dataName="' + value + '"]');
-                        console.log($(".tag-cloud-tag").first().attr());
+                        var $tag = $("#tag-cloud").find('[data-name=' + value + ']');
+                        console.log($(".tag-cloud-tag").first().attr('data-name'));
                         console.log($tag);
                         if($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
