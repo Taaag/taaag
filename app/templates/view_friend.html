@@ -36,7 +36,8 @@
                         $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
                     });
                     $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-                        $('#inputDescription').tagsinput('add', $(this).text()).tagsinput('focus');
+                        $('#inputDescription').tagsinput('add', $(this).text());
+                        $('#inputDescription').tagsinput('focus')
                     });
                     $(".tag-cloud-tag.tagged").click(function (e) {
                         $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
