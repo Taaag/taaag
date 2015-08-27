@@ -1,7 +1,6 @@
 import sqlalchemy
 
 from app.views import render_template
-from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
 import json
@@ -18,7 +17,7 @@ def api_tag_all(user, payload):
     # Payload: ignored
     # Return: list of tag dicts
     # return [_.to_dict() for _ in Tag.all_tags() or []]
-    friends = [_['id'] for _ in get_user_friends(user)]
+    friends = [_['id'] for _ in user.get_friends()]
     return Tag.all_tags_filtered(friends)
 
 
@@ -40,7 +39,7 @@ def api_tag_get_taggees(user, payload):
     # Payload: {'name': 'foo'}
     # Return: {'user1': 2, 'user2': 1}
     tag = Tag.get_or_create(payload['name'])
-    friends = [_['id'] for _ in get_user_friends(user)]
+    friends = [_['id'] for _ in user.get_friends()]
     return [{'id': i[0].id, 'name': i[0].name, 'count': i[1]} for i in tag.get_taggees_filtered(friends)]
 
 
@@ -60,7 +59,7 @@ def api_user_my_tags(user, payload):
 def api_user_friend_tags(user, payload):
     # Payload: {'id': 'foo'}
     # Return: {'tag': 2, 'tag2': 1}
-    if is_friend_of(user, payload['id']):
+    if user.is_friend_of(payload['id']):
         tags = User.get_tags_for_user(payload['id'])
         tags_added_by_me = [_[0] for _ in Tag.get_by_tagger_and_taggee(user.id, payload['id'])]
         return {_[0]: (_[1], _[0] in tags_added_by_me) for _ in tags}
@@ -121,14 +120,14 @@ def api_user_search_friends(user, payload):
     # Return: [{'name': 'foo', 'id': 123}]
     keyword = payload['keyword'].strip().lower()
     if keyword:
-        friends = get_user_friends(user)
+        friends = user.get_friends()
         return [_ for _ in friends if keyword in _['name'].lower()]
     else:
         return []
 
 
 def api_user_all_friends(user, payload):
-    return get_user_friends(user)
+    return user.get_friends()
 
 
 apis = {
@@ -147,7 +146,7 @@ apis = {
 
 
 def view_index(user, payload):
-    all_friends = get_user_friends(user)
+    all_friends = user.get_friends()
     if len(all_friends) >= 3:
         selected_friends = random.sample(all_friends, 3)
     else:
