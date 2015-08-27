@@ -26,20 +26,7 @@
         {% endfor %}
     ];
 
-    /*$.fn.enterKey = function (fnc) {
-     return this.each(function () {
-     $(this).keypress(function (ev) {
-     var keycode = (ev.keyCode ? ev.keyCode : ev.which);
-     if (keycode == '13') {
-     fnc.call(this, ev);
-     }
-     })
-     })
-     };*/
-
     $(function () {
-        //$('#inputDescription').maxlength();
-
         function updateCloud(word_array) {
             $("#tag-cloud").jQCloud(word_array, {
                 removeOverflowing: true,
@@ -73,7 +60,7 @@
                         return;
                     }
                     $.each(response['response'], function (index, value) {
-                        $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center'});
+                        $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center', 'type': 'success'});
                         var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
                         if ($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
@@ -89,65 +76,6 @@
                 }
             });
         });
-
-        /*function voteTag(tag, index) {
-         $.get('/api/add_tag', {taggee: "
-        {{ friend.id }}", tag: tag}, function (response) {
-         if (response['succeed']) {
-         word_array[index]['weight']++;
-         $('#tag-cloud').jQCloud('update', word_array);
-         } else {
-         BootstrapDialog.show({
-         title: 'Error',
-         message: response['message']
-         });
-         }
-         });
-         }
-
-
-         function addTag(tag) {
-         if (($.map(word_array, function (e) {
-         return e.text
-         }).indexOf(tag.toLowerCase())) > -1) {
-         BootstrapDialog.show({
-         title: 'Error',
-         message: 'Cannot add existing tag'
-         });
-         return;
-         }
-         $.get('/api/add_tag', {taggee: "
-        {{ friend.id }}", tag: tag}, function (response) {
-         if (response['succeed']) {
-         word_array.push({text: tag, weight: 1, html: {"class": "tag-cloud-tag"}});
-         $('#tag-cloud').jQCloud('update', word_array);
-         } else {
-         BootstrapDialog.show({
-         title: 'Error',
-         message: response['message']
-         });
-         }
-         });
-         }
-
-         $("#inputDescription").enterKey(function () {
-         var tag = $(this).val();
-         if (($.map(word_array, function (e) {
-         return e.text
-         }).indexOf(tag.toLowerCase())) > -1) {
-         BootstrapDialog.show({
-         title: 'Error',
-         message: 'Cannot add existing tag'
-         });
-         return;
-         }
-         BootstrapDialog.confirm("Add you sure to add " + tag + "?", function (result) {
-         if (result) {
-         addTag(tag);
-         }
-         });
-         $(this).val('');
-         });*/
 
         var allTags = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,

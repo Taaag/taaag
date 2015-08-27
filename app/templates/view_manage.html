@@ -39,12 +39,10 @@
     function deleteTag(tag, $row) {
         $.get('/api/delete_tag', {name: tag}, function (response) {
             if (response['succeed']) {
-                console.log($row.remove());
+                $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
+                $row.remove();
             } else {
-                BootstrapDialog.show({
-                    title: 'Error',
-                    message: response['message']
-                });
+                $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
             }
         });
     }
