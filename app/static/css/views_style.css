@@ -126,7 +126,7 @@
 
 .profile-selectbar {
     width: 370px;
-    height: 65px;
+    height: 100px;
     margin: auto;
     border-radius: 10px;
     background-color: #FFFF99;
@@ -136,9 +136,9 @@
 .bootstrap-tagsinput {
     height: 100%;
     width: 75%;
-    padding: 15px 0;
+    padding: 0;
     margin: 0;
-    font-size: 35px;
+    font-size: 20px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
