@@ -7,17 +7,21 @@ def get_friends_key(uid):
     return 'friends:' + str(uid)
 
 
-def get_user_friends(user):
-    cached_data = mc.get(get_friends_key(user.id))
-    if cached_data:
-        return cached_data
-
+def get_paginated_data(user, resource_id, connection_name):
     graph = facebook.GraphAPI(user.access_token)
-    data = graph.get_connections(str(user.id), "friends")
+    data = graph.get_connections(resource_id, connection_name)
     combined_data = data['data']
     while 'next' in data['paging']:
         data = requests.get(data['paging']['next']).json()
         combined_data.extend(data['data'])
+    return combined_data
+
+
+def get_user_friends(user):
+    cached_data = mc.get(get_friends_key(user.id))
+    if cached_data:
+        return cached_data
+    combined_data = get_paginated_data(user, str(user.id), "friends")
     mc.set(get_friends_key(user.id), combined_data, time=1800)
     return combined_data
 
