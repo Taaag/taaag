@@ -130,13 +130,15 @@
     margin: auto;
     border-radius: 10px;
     background-color: #FFFF99;
+    font-size: 0;
 }
 
 .bootstrap-tagsinput {
     height: 100%;
-    width: 75%
+    width: 75%;
     padding: 4px 0;
     margin: 0;
+    font-size: 35px;
 }
 
 #btnSubmit {
@@ -144,6 +146,7 @@
     width: 25%;
     margin: 0;
     padding: 0;
+    font-size: 34px;
 }
 
 .profile-add-tag-input {
