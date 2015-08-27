@@ -60,7 +60,7 @@
                         return;
                     }
                     $.each(response['response'], function (index, value) {
-                        $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center'});
+                        $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center', 'type': 'success'});
                         var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
                         if ($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
