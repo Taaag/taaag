@@ -1,7 +1,6 @@
 import facebook
 import requests
 from app import mc
-from app.models import User
 
 
 def get_friends_key(uid):
@@ -23,7 +22,6 @@ def get_user_friends(user):
     if cached_data:
         return cached_data
     combined_data = get_paginated_data(user, str(user.id), "friends")
-    combined_data = [_ for _ in combined_data if User.get_by_id(_['id'])]
     mc.set(get_friends_key(user.id), combined_data, time=1800)
     return combined_data
 
