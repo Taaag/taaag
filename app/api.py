@@ -5,6 +5,7 @@ from app.utils import get_user_friends, is_friend_of
 from app.models import User, Tag, Tagging
 
 import json
+import random
 
 
 class APIException(Exception):
@@ -146,7 +147,12 @@ apis = {
 
 
 def view_index(user, payload):
-    return render_template('view_index.html', user=user.to_dict())
+    all_friends = get_user_friends(user)
+    if len(all_friends) >= 3:
+        selected_friends = random.sample(all_friends, 3)
+    else:
+        selected_friends = all_friends
+    return render_template('view_index.html', user=user.to_dict(), friends=selected_friends)
 
 
 def view_friend(user, payload):
