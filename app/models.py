@@ -35,7 +35,7 @@ class User(db.Model):
         return [_ for _ in get_user_friends(self) if User.get_by_id(_['id'])]
 
     def is_friend_of(self, other_id):
-        return is_friend_of(self, other_id)
+        return User.get_by_id(other_id) and is_friend_of(self, other_id)
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
