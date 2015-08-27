@@ -2,19 +2,23 @@
     <div class="row" id="home-page-hero"><span>Hey, {{ user.name }}.</span></div>
     <div class="row" id="home-page-qns">Tag your impression on them now!</div>
     <!-- <input class="row" id="home-page-input"> -->
-    <div class = "row home-page-suggested">
-               <img class = "home-page-suggest-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"/>
-               <img class = "home-page-suggest-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"/>
-               <img class = "home-page-suggest-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"/>
-               
-  
+    <div class="row home-page-suggested">
+        {% for friend in friends %}
+            <img class="home-page-suggest-img" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large" data-uid="{{ friend.id }}"/>
+        {% endfor %}
+        {% if friends|length < 3 %}
+            <img class="home-page-suggest-img" id="home-page-suggest-invite" src="/static/images/iconme.jpg"/>
+        {% endif %}
     </div>
 </div>
 
 
 <script>
-$(function(){
-     $('#home-page-hero').textfill();
-});
+    $(function () {
+        $('#home-page-hero').textfill();
+        $('.home-page-suggest-img').click(function () {
+            $(document).trigger("viewChanging", ["friend", {'id': $(this).data['uid']}]);
+        });
+    });
 
 </script>
