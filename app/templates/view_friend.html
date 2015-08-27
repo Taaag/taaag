@@ -47,24 +47,15 @@
                 afterCloudRender: function () {
                     $(".tag-cloud-tag").each(function (index, value) {
                         $(this).attr('data-name', $(this).text());
-                    });
-                    $(".tag-cloud-tag").hover(function (e) {
-                        // console.log('hover tag ' + e.target);
-                    }).click(function (e) {
-                        /*console.log('click tag ' + e.target);
-                         var tag = $(this).text();
-                         var index = parseInt($(this).attr('id').split("_").pop());
-                         BootstrapDialog.confirm("Add you sure to upvote " + tag + "?", function (result) {
-                         if (result) {
-                         voteTag(tag, index);
-                         }
-                         });*/
                     }).dblclick(function (e) {
                         $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
                     });
                     $(".tag-cloud-tag:not(.tagged)").click(function (e) {
                         $('#inputDescription').tagsinput('add', $(this).text());
-                    })
+                    });
+                    $(".tag-cloud-tag.tagged").click(function (e) {
+                        $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
+                    });
                 }
             });
         }
@@ -78,13 +69,11 @@
             $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {
                 if (response['succeed']) {
                     if (response['response'].length < 1) {
-                        BootstrapDialog.show({
-                            title: 'Error',
-                            message: 'No tag added since you added them already'
-                        });
+                        $.bootstrapGrowl("Oops, you have tagged 'em all!", {align: 'center', 'type': 'warning'});
                         return;
                     }
                     $.each(response['response'], function (index, value) {
+                        $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center'});
                         var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
                         if ($tag.length > 0) {
                             var index = parseInt($tag.attr('id').split("_").pop());
@@ -96,10 +85,7 @@
                     });
                     $('#tag-cloud').jQCloud('update', word_array);
                 } else {
-                    BootstrapDialog.show({
-                        title: 'Error',
-                        message: response['message']
-                    });
+                    $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
             });
         });
