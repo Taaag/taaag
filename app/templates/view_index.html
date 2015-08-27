@@ -16,8 +16,16 @@
 <script>
     $(function () {
         $('#home-page-hero').textfill();
-        $('.home-page-suggest-img').click(function () {
+        $('.home-page-suggest-img:not(#home-page-suggest-invite)').click(function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+        });
+        $('#home-page-suggest-invite').click(function () {
+            FB.ui({method: 'apprequests',
+                filters: ['app_non_users'],
+                message: 'Come and join Taaag to tag your friends!'
+            }, function (response) {
+                $.bootstrapGrowl('Successfully invited ' + response.to.length.toString() + ' friends.');
+            });
         });
     });
 
