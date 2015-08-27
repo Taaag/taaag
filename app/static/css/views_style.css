@@ -145,9 +145,10 @@
 }
 
 .bootstrap-tagsinput input {
-    width: 100%;
-    position: relative;
-    top: 75px;
+    width: 275px;
+    position: absolute;
+    left: 70px;
+    bottom: 0;
     background-color: #ffffff;
     border-radius: 10px;
     font-size: 30px;
