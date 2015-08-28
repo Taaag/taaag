@@ -15,11 +15,12 @@
 
         <div id="tags">
          <ul>
-        <li><a href="http://www.google.com" target="_blank">Google</a></li>
-        <li><a href="/fish">Fish</a></li>
-        <li><a href="/chips">Chips</a></li>
-        <li><a href="/salt">Salt</a></li>
-        <li><a href="/vinegar">Vinegar</a></li>
+        
+
+         {% for key, value in tags.items() %}
+         <li> {{ key|tojson|safe }}</li>
+         {% endfor %}
+        
         </ul>
         </div>
     
