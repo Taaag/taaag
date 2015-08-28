@@ -61,6 +61,13 @@
     // new
 
       $(document).ready(function() {
+
+        var gradient = {
+        0:   'red',            // red
+        0.5: 'orange',         // orange
+        1:   'rgba(0,0,0,0.1)' // black, but 90% transparent
+        };
+
         if(!$('#myCanvas').tagcanvas({
           textColour:null,
           weight:true,
@@ -68,10 +75,12 @@
           depth: 0.8,
           maxSpeed: 0.02,
           zoomMax:1.0,
+          weightMode:"both";
           weightSizeMax:40,
           weightSizeMin:10,
           weightFrom:"data-weight",
           centreImage:"https://graph.facebook.com/{{ user.id }}/picture?type=normal"
+
         },'tags')) {
           // something went wrong, hide the canvas container
           $('#myCanvasContainer').hide();
