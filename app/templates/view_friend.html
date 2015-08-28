@@ -11,7 +11,7 @@
             <div id="tags">
                 <ul>
                     {% for key, value in tags.items() %}
-                        <li><a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;" class="tag-cloud-tag">{{ key }}</a></li>
+                        <li><a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;" class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -57,8 +57,18 @@
 
         {#        updateCloud(word_array);#}
 
-        $(".tag-cloud-tag").click(function (e) {
-            console.log($(this));
+        $(".tag-cloud-tag").each(function (index, value) {
+            $(this).attr('data-name', $(this).text());
+        }).dblclick(function (e) {
+            $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
+        });
+
+        $(".tag-cloud-tag:not(.tagged)").click(function (e) {
+            $('#inputDescription').tagsinput('add', $(this).text());
+            $('#inputDescription').tagsinput('focus')
+        });
+        $(".tag-cloud-tag.tagged").click(function (e) {
+            $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
         $('#inputDescription').tagsinput({maxChars: 32, trimValue: true});
