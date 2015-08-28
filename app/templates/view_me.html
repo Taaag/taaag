@@ -4,11 +4,6 @@
     </div>
 
     <div class="row" id="myCanvasContainer">
-        <!-- <div id="tag-cloud" style="width: 100%; height: 250px;"></div> -->
-        <!-- <img class="profile-pic" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"> -->
-
-
-        <!-- new -->
         <canvas width="490" height="300" id="myCanvas">
             <div id="tags">
                 <ul>
@@ -17,10 +12,7 @@
                     {% endfor %}
                 </ul>
             </div>
-
         </canvas>
-
-
     </div>
 
     <div class="row">
@@ -30,43 +22,11 @@
 
 <script>
     $(function () {
-
         $(".profile-view-manage-btn").click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
         });
-
-        var gradient = {
-            0: '#e74c3c',           // red
-            0.2: '#d2527f',
-            0.4: '#22a7f0',
-            0.6: '#1BBC9B',
-            0.8: '#16A085',        // orange
-            1: '#22313f' // black, but 90% transparent
-        };
-
-        $('#myCanvas').tagcanvas({
-            activeCursor: "pointer",
-            textColour: null,
-            weight: true,
-            reverse: true,
-            depth: 0.8,
-            maxSpeed: 0.02,
-            zoomMin: 0.5,
-            weightMode: "both",
-            weightGradient: gradient,
-            weightSizeMax: 40,
-            weightSizeMin: 15,
-            weightFrom: "data-weight",
-            centreImage: "https://graph.facebook.com/{{ user.id }}/picture?type=normal",
-            // dragControl:true,
-            // dragThreshold:4,
-            textFont: 'Josefin Sans, sans-serif',
-            bgOutline: null,
-            fadeIn: 20,
-            outlineColour: "#6c7a89",
-            outlineMethod: "block"
-        }, 'tags');
     });
-
-
 </script>
+
+{% set uid = user.id %}
+{% include 'tag_cloud.html' %}
