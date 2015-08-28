@@ -16,7 +16,7 @@
 
          {% for key, value in tags.items() %}
         
-         <li><a href="#">{{ key }}</a></li>
+         <li><a href="#" data-weight = "{{ value|length }}">{{ key }}</a></li>
          {% endfor %}
         
         </ul>
@@ -62,11 +62,14 @@
 
       $(document).ready(function() {
         if(!$('#myCanvas').tagcanvas({
-          textColour: null,
+          textColour:null,
           weight:true,
           reverse: true,
           depth: 0.8,
-          maxSpeed: 0.05,
+          maxSpeed: 0.02,
+          zoomMax:1.0,
+          weightSizeMax:100px;
+          weightSizeMin:10px;
           centreImage:"https://graph.facebook.com/{{ user.id }}/picture?type=normal"
         },'tags')) {
           // something went wrong, hide the canvas container
