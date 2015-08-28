@@ -3,9 +3,26 @@
         <div class="profile-name">{{ user.name }}</div>
     </div>
 
-    <div class="row">
-        <div id="tag-cloud" style="width: 100%; height: 250px;"></div>
-        <img class="profile-pic" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic">
+    <div class="row" id="myCanvasContainer">
+        <!-- <div id="tag-cloud" style="width: 100%; height: 250px;"></div> -->
+        <!-- <img class="profile-pic" src="https://graph.facebook.com/{{ user.id }}/picture?type=large" alter="profile pic"> -->
+
+
+        <!-- new -->
+        <canvas width="300" height="300" id="myCanvas">
+
+        </canvas>
+
+        <div id="tags">
+         <ul>
+        <li><a href="http://www.google.com" target="_blank">Google</a></li>
+        <li><a href="/fish">Fish</a></li>
+        <li><a href="/chips">Chips</a></li>
+        <li><a href="/salt">Salt</a></li>
+        <li><a href="/vinegar">Vinegar</a></li>
+        </ul>
+        </div>
+    
     </div>
 
     <div class="row">
@@ -14,28 +31,44 @@
 </div>
 
 <script>
-    var word_array = [
-        {% for key, value in tags.items() %}
-            {text: {{ key|tojson|safe }}, weight: {{ value|length }}, html: {"class": "tag-cloud-tag"}},
-        {% endfor %}
-    ];
+    // var word_array = [
+    //     {% for key, value in tags.items() %}
+    //         {text: {{ key|tojson|safe }}, weight: {{ value|length }}, html: {"class": "tag-cloud-tag"}},
+    //     {% endfor %}
+    // ];
 
-    $(function () {
-        $("#tag-cloud").jQCloud(word_array, {
-            removeOverflowing: true,
-            shape: 'rectangular',
-            afterCloudRender: function () {
-                $(".tag-cloud-tag").hover(function (e) {
-                    console.log('hover tag ' + e.target);
-                }).click(function (e) {
-                    console.log('click tag ' + e.target);
-                });
-            }
-        });
-        $(".profile-view-manage-btn").click(function () {
-            $(document).trigger("viewChanging", ["manage", {}]);
-        });
-    })
+    // $(function () {
+    //     $("#tag-cloud").jQCloud(word_array, {
+    //         removeOverflowing: true,
+    //         shape: 'rectangular',
+    //         afterCloudRender: function () {
+    //             $(".tag-cloud-tag").hover(function (e) {
+    //                 console.log('hover tag ' + e.target);
+    //             }).click(function (e) {
+    //                 console.log('click tag ' + e.target);
+    //             });
+    //         }
+    //     });
+    //     $(".profile-view-manage-btn").click(function () {
+    //         $(document).trigger("viewChanging", ["manage", {}]);
+    //     });
+    // })
 
+
+    // new
+
+      $(document).ready(function() {
+        if(!$('#myCanvas').tagcanvas({
+          textColour: '#ff0000',
+          outlineColour: '#ff00ff',
+          reverse: true,
+          depth: 0.8,
+          maxSpeed: 0.05
+        },'tags')) {
+          // something went wrong, hide the canvas container
+          $('#myCanvasContainer').hide();
+        }
+      });
+   
 
 </script>
