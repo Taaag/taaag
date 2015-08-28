@@ -16,7 +16,7 @@
 
          {% for key, value in tags.items() %}
         
-         <li><a href="#" data-weight = "{{ value|length }}">{{ key }}</a></li>
+         <li><a href="#" data-weight = "{{ value|length }}" style = "font-weight:bold;">{{ key }}</a></li>
          {% endfor %}
         
         </ul>
@@ -78,13 +78,18 @@
           reverse: true,
           depth: 0.8,
           maxSpeed: 0.02,
-          zoomMax:1.0,
+          zoomMin:0.5,
           weightMode:"both",
           weightGradient:gradient,
           weightSizeMax:40,
-          weightSizeMin:10,
+          weightSizeMin:15,
           weightFrom:"data-weight",
-          centreImage:"https://graph.facebook.com/{{ user.id }}/picture?type=normal"
+          centreImage:"https://graph.facebook.com/{{ user.id }}/picture?type=normal",
+          dragControl:true,
+          dragThreshold:4,
+          textFont:'Josefin Sans, sans-serif',
+          bgOutline:null,
+          fadeIn:20
 
         },'tags')) {
           // something went wrong, hide the canvas container
