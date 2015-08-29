@@ -379,7 +379,7 @@ text-align: center;
 
 
 .th-upvote-num{
-    ;
+    padding-left:10px;
     
 }
 
@@ -412,14 +412,20 @@ text-align: center;
 }
 
 
+.th-mytag-img{
 
 
+}
 .mytag-img {
     margin:5px;
     width: 25px;
     height: 25px;
     background-color: #303030;
     float: right;  
+}
+
+.th-mytag-viewmore{
+
 }
 
 
