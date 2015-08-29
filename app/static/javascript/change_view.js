@@ -38,8 +38,5 @@
                 loadView(data[0], data[1]);
             }
         });
-        $('#manage-to-view-btn').click(function() {
-            $(document).trigger("viewChanging", ["me", {}]);
-        });
     });
 }(jQuery));

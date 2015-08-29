@@ -45,6 +45,9 @@
 
 <script>
     $(function () {
+        $('#manage-to-view-btn').click(function() {
+            $(document).trigger("viewChanging", ["me", {}]);
+        });
         
         $(".mytag-img").click(function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
