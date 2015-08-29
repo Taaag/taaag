@@ -52,7 +52,6 @@
                             var added = [];
                             var num = $("#myCanvas").find('li').length;
                             $.each(response['response'], function (index, value) {
-                                console.log(response['response']);
                                 var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
                                 if ($tag.length > 0) {
                                     $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
@@ -62,7 +61,6 @@
                                     var newList = "<li><a href='#' data-weight=1 id='tag-" + num +
                                             "' style='font-weight:bold;' " +
                                             "class='tag-cloud-tag tagged' data-name='" + value + "'>" + value + "</a></li>";
-                                    console.log(newList);
                                     $('#tag-list').append(newList);
                                     added.push(num.toString());
                                     num++;
@@ -75,6 +73,7 @@
                             $.when(update()).done(function () {
                                 if($('#tag-'+ added[0])) {
                                     console.log($('#tag-'+ (added[0])));
+                                    console.log('tag-' + (added[0] - 1));
                                     $('#myCanvas').tagcanvas("tagtofront", {
                                     id: 'tag-' + (added[0] - 1),
                                     active: true,
