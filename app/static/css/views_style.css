@@ -467,10 +467,10 @@
 }
 
 .dialog-img {
-    width: 30px;
-    height: 30px;
-    background-color: #303030;
+    width: 25px;
+    height: 25px;
     padding:10px;
+    border-radius: 20px;
 }
 
 
