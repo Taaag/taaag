@@ -191,6 +191,11 @@
     border: none;
 }
 
+#manage-to-view-btn {
+    width: 180px;
+    margin-top: 10px;
+}
+
 .tagrank-input {
     height: 55px;
     margin: 20px auto 30px;
