@@ -154,7 +154,8 @@
     font-size: 20px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    top: -50px;
+    top: -60px;
+    position: relative;
 }
 
 .profile-add-tag-input {
