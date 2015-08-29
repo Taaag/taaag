@@ -86,7 +86,7 @@
             var index = parseInt($(this).attr('data-index'));
             var taggers = tagger_array[index]['taggers'];
             var msg = '<table><tbody>';
-            $.each([ 52, 97 ], function(index, value) {
+            $.each([ 52, 97 ], function(index, tagger) {
                 msg += '<tr><td><img class="dialog-img" src="https://graph.facebook.com/' + tagger.id + '/picture"></td><td><p class="dialog-name">' + tagger.name + '</p></td></tr>';
             });
             msg += '</tbody></table>';
