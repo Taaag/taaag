@@ -450,7 +450,7 @@
 
 .upvoteList-dialog {
      width:400px;
-     max-height: 200px;
+
      margin:auto;
      margin-top:200px;
      overflow-y:scroll;
@@ -485,7 +485,7 @@
 }
 
 .bootstrap-dialog {
-
+   overflow-y:scroll;
 }
 
 .bootstrap-dialog-title {
