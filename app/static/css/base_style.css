@@ -22,6 +22,9 @@ th {
    border-top:none;
    border: 0px;
 }
+tr{
+    border: none;
+}
 
 div {
     /*    max-width: 100%;
