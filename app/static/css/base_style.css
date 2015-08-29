@@ -20,6 +20,7 @@ input:focus:-ms-input-placeholder {
 
 th {
    border-top:none;
+   border: 0px;
 }
 
 div {
