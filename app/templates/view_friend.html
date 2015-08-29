@@ -40,10 +40,10 @@
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
-        $('#inputDescription').tagsInput({maxChars: 32});
+        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['\n']});
 
         $('#btnSubmit').click(function () {
-            var tags = JSON.stringify($('#inputDescription').val());
+            var tags = JSON.stringify($('.profile-add-tag-input').val());
             console.log(tags);
 {#            $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {#}
 {#                if (response['succeed']) {#}
