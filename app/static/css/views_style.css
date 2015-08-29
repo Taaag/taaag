@@ -452,9 +452,21 @@
 
 .upvoteList-dialog {
     vertical-align: middle;
-    
+
+
 }
 
+
+
+
+.bootstrap-dialog{
+   
+
+}
+.bootstrap-dialog-title{
+    color:#f7ca18;
+
+}
 
 .modal-dialog{
     vertical-align: middle;
@@ -462,12 +474,14 @@
 
 .modal-header{
     background-color: #303030;
-    color:#f7ca18;
+    
 }
 
 .fa:hover {
     font-color: #FF0000;
 }
+
+
 
 
 
