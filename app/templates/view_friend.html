@@ -42,13 +42,11 @@
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
-        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['\n']});
+        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭']});
 
         $('#btnSubmit').click(function () {
-            var tags = JSON.stringify($('.tagsinput').children('.tag').children('span').map(function (_, e) {
-                return $(e).text().trim()
-            }));
-            $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {
+            var tags = $('.profile-add-tag-input').val().split('☭');
+            $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: JSON.stringify(tags)}, function (response) {
                 if (response['succeed']) {
                     if (response['response'].length < 1) {
                         $.bootstrapGrowl("Oops, you have tagged 'em all!", {align: 'center', 'type': 'warning'});
