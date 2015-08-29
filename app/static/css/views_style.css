@@ -47,7 +47,7 @@
     cursor: pointer;
 }
 
-.home-page-suggest-img:hover {
+.home-page-suggest-img:hover, .voter-img:hover {
     opacity: 0.8;
 }
 
@@ -431,7 +431,7 @@
     width: 25px;
     border-radius: 20px;
     border: none;
-
+    cursor: pointer;
 }
 
 .th-mytag-viewmore {
