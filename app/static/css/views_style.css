@@ -334,13 +334,18 @@
 }
 
 .profile-taglist {
-    width: 490px;
-    height: 210px;
+    width: 500px;
+    height: 220px;
     background-color: white;
     color: white;
     overflow-y: scroll;
   /*  border-right: 10px solid  #ddd ;*/
 
+}
+
+.profile-taglist:overflow-y{
+    background: #fff;
+    width: 10px;
 }
 
 
@@ -351,7 +356,7 @@
 }
 
 .my-tag-set {
-    width: 480px;
+    width: 500px;
     /*height: 20px;*/
     border-bottom: 1px dotted #f7ca18;
 }
