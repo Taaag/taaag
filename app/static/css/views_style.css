@@ -520,7 +520,5 @@
 
 .tagsinput {
     display: inline-block;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
 }
