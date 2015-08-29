@@ -50,8 +50,7 @@
         $('.mytaglist-delete-btn').click(function () {
             var $row = $(this).closest('.my-tag-set');
             var tag = $row.find('.mytag-tagname-font').text();
-            BootstrapDialog.confirm(
-                 
+            BootstrapDialog.confirm(     
             {
             title:'Detele',
             type: 'none', 
@@ -62,9 +61,9 @@
                 if (result) {
                     deleteTag(tag, $row);
                 }
-            });
-
             }
+
+            });
         });
 
         function deleteTag(tag, $row) {
