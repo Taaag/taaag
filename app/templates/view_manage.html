@@ -50,7 +50,12 @@
         $('.mytaglist-delete-btn').click(function () {
             var $row = $(this).closest('.my-tag-set');
             var tag = $row.find('.mytag-tagname-font').text();
-            BootstrapDialog.confirm("Add you sure to delete " + tag + "?", function (result) {
+            BootstrapDialog.confirm(
+                "Add you sure to delete " + tag + "?", 
+                {
+                 type: 'none',   
+                },
+                function (result) {
                 if (result) {
                     deleteTag(tag, $row);
                 }
