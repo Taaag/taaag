@@ -455,6 +455,12 @@
 
 }
 
+.dialog-title{
+
+    color:#f7ca18;
+    overflow: hidden;
+}
+
 .dialog-img {
     width: 20px;
     height: 20px;
@@ -489,3 +495,4 @@
 .fa-times:hover {
     color: #FF0000;
 }
+
