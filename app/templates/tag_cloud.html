@@ -71,8 +71,6 @@
                                 return;
                             }
 
-                            $.when(update()).done(fuck);
-
                             function fuck() {
                                 console.log($('#myCanvas').find('a').last().attr('id'));
                                 $('#myCanvas').tagcanvas("tagtofront", {
@@ -82,7 +80,10 @@
                                 });
                             }
 
-{#                            setTimeout(fuck, 10000);#}
+                            $.when(update()).done(fuck);
+
+
+                            {#                            setTimeout(fuck, 10000);#}
 
                             $('.profile-add-tag-input').importTags('');
                         } else {
