@@ -78,6 +78,8 @@
             });
         }
 
+        var taggers_array = {{ tags|tojson }};
+        console.log(taggers_array);
 
         $('.span-viewmore').click(function () {
             var $row = $(this).closest('.my-tag-set');
