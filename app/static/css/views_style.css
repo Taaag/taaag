@@ -437,13 +437,13 @@
     width: 3%;
 }
 
-.img-viewmore {
+.span-viewmore {
     width: 10px;
     height: 10px;
     cursor: pointer;
 }
 
-.img-viewmore:hover {
+.span-viewmore:hover {
     opacity: 0.4;
     color: white;
 }
