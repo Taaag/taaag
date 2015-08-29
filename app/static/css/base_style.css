@@ -19,10 +19,11 @@ input:focus:-ms-input-placeholder {
 /* oldIE ;) */
 
 th {
-   border-top:none;
-   border: 0px;
+    padding:0px;
+   
 }
 tr{
+    padding:0px;
     border: none;
 }
 
