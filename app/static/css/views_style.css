@@ -342,7 +342,6 @@
     color: white;
     overflow-y: scroll;
   /*  border-right: 10px solid  #ddd ;*/
-
 }
 
 
@@ -350,8 +349,8 @@
 .profile-taglist-table {
     width: 500px;
     height: auto;
-    border: none;
-    background-color: white;
+    border-bottom: 1px solid #f7ca18;
+   
 }
 
 .my-tag-set {
