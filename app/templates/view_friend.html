@@ -8,8 +8,12 @@
             <div id="tags">
                 <ul id="tag-list">
                     {% for key, value in tags.items() %}
-                        <li><a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
-                               class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a></li>
+                        <li>
+                            <a href="#" data-weight="{{ value[0] }}" data-index="{{ loop.index0 }}"
+                               style="font-weight:bold;" class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">
+                               {{ key }}
+                            </a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -56,20 +60,27 @@
                         align: 'center',
                         'type': 'success'
                     });
+                    var added = [];
+                    var num = $("#myCanvas").find('li').length;
                     $.each(response['response'], function (index, value) {
                         var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
                         if ($tag.length > 0) {
                             $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
                             $tag.addClass('tagged');
+                            added.push(parseInt($tag.attr('data-index')));
                         } else {
-                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;"' +
+                            var newList = '<li><a href="#" data-weight="1" data-index="' + num +
+                                    '" style="font-weight:bold;"' +
                                     'class="tag-cloud-tag tagged">' + value + '</a></li>';
                             $('#tag-list').append(newList);
+                            added.push(num);
+                            num ++;
+
                         }
                     });
                     $('#myCanvas').tagcanvas("update");
-                    console.log(response['response'][0]);
-                    $('#myCanvas').tagcanvas("tagtofront", {index: 0, active: true});
+                    console.log(added);
+                    $('#myCanvas').tagcanvas("tagtofront", {index: 0, active: 'true'});
                     $('.profile-add-tag-input').importTags('');
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
