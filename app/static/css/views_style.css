@@ -197,10 +197,11 @@
     border-radius: 10px;
     border: none;
     outline: none;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
     padding: 10px;
     color: #303030;
+    font-weight: bold;
 }
 
 .tagrank-chart {
