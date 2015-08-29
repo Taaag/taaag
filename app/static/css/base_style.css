@@ -18,13 +18,8 @@ input:focus:-ms-input-placeholder {
 
 /* oldIE ;) */
 
-th {
-    padding:0px;
-   
-}
-tr{
-    padding:0px;
-    border: none;
+.table>tbody>tr>th{
+padding:0px;
 }
 
 div {
