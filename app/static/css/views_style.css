@@ -451,14 +451,17 @@
 }
 
 .upvoteList-dialog {
-    vertical-align: middle;
-
+     width:400px;
+     margin:auto;
+     margin-top:200px;
+     overflow-y:scroll;
 }
 
 .dialog-title{
-
     color:#f7ca18;
     overflow: hidden;
+    font-size: 15px;
+    margin-bottom: 0px;
 }
 
 .dialog-img {

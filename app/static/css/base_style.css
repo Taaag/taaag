@@ -133,6 +133,11 @@ body {
 
 }
 
+.fb-btn:hover{
+    opacity:0.8;
+    color:white;
+}
+
 .fb-share-btn {
     width: 70px;
 }
@@ -158,6 +163,6 @@ body {
     width: 200px;
 }
 
-.back-btn{
+#back-btn{
   width: 70px;  
 }

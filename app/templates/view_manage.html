@@ -16,7 +16,7 @@
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
                         <!-- 循环照片。。。 -->
-                        {% for tagger in tag.taggers[0:4] %}
+                        {% for tagger in tag.taggers[0:5] %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
@@ -87,7 +87,7 @@
             var taggers = tagger_array(index);
             var msg = '<table><tbody>' + $.map(taggers, function(tagger, _){return '<td><img class="dialog-img" src="https://graph.facebook.com/' + tagger.id + '/picture"></td><td><p class="dialog-name">' + tagger.name + '</p></td>';}) + '</tbody></table>';
             BootstrapDialog.show({
-                title:'<div class = "dialog-title"' + upvoteNum + ' people have upvoted ' + tag + '</div>',
+                title:'<p class = "dialog-title">' + upvoteNum + ' people have upvoted ' + tag + ' </p>',
                 message: msg,
                 type: 'none',
                 closable: true,
