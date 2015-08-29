@@ -359,6 +359,7 @@
 
 /* th : background setting for the detele button cell*/
 .th-detele-btn{
+width: 5%;
 background-color:#f7ca18;
 text-align: center;
 }
