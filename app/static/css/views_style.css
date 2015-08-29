@@ -452,10 +452,11 @@
     width: 3%;
 }
 
-
-.upvoteList-dialog{
+.upvoteList-dialog {
     vertical-align: middle;
 }
 
-
+.tooltip-inner {
+    font-size: 15px;
+}
 
