@@ -86,7 +86,7 @@
             console.log({{ tags|tojson }});
             var msg = '<table><tbody><tr><td><div class = "dialog-img"></div></td><td><p class = "dialog-name" >Vicky Zheng Yuan</div></row></td></tr><tbody><table>';
             BootstrapDialog.show({
-                title:'' + upvoteNum + ' people have upvoted ' + tag + '',
+                title:'<div class = "dialog-title"' + upvoteNum + ' people have upvoted ' + tag + '</div>',
                 message: msg,
                 type: 'none',
                 closable: true,
