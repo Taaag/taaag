@@ -51,15 +51,20 @@
             var $row = $(this).closest('.my-tag-set');
             var tag = $row.find('.mytag-tagname-font').text();
             BootstrapDialog.confirm(
-                "Add you sure to delete " + tag + "?", 
-                {
-                 type: 'none',   
-                },
-                function (result) {
+                 
+            {
+            title:'Detele',
+            type: 'none', 
+            message:"Add you sure to delete " + tag + "?", 
+            size: BootstrapDialog.SIZE_SMALL,
+            closable: true,      
+            callback:function (result) {
                 if (result) {
                     deleteTag(tag, $row);
                 }
             });
+
+            }
         });
 
         function deleteTag(tag, $row) {
