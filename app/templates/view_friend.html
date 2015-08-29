@@ -33,25 +33,26 @@
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-            $('#inputDescription').addTag($(this).text());
+            if (!$('.profile-add-tag-input').tagExist($(this).text())) {
+                $('.profile-add-tag-input').addTag($(this).text());
+            }
             //$('#inputDescription').tagsinput('focus')
         });
         $(".tag-cloud-tag.tagged").click(function (e) {
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
-        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['\n']});
+        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭']});
 
         $('#btnSubmit').click(function () {
-            var tags = JSON.stringify($('.profile-add-tag-input').val());
-            console.log(tags);
-{#            $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: tags}, function (response) {#}
-{#                if (response['succeed']) {#}
-{#                    if (response['response'].length < 1) {#}
-{#                        $.bootstrapGrowl("Oops, you have tagged 'em all!", {align: 'center', 'type': 'warning'});#}
-{#                        return;#}
-{#                    }#}
-{#                    $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center', 'type': 'success'});#}
+            var tags = $('.profile-add-tag-input').val().split('☭');
+            $.get('/api/add_tags', {taggee: "{{ friend.id }}", tags: JSON.stringify(tags)}, function (response) {
+                if (response['succeed']) {
+                    if (response['response'].length < 1) {
+                        $.bootstrapGrowl("Oops, you have tagged 'em all!", {align: 'center', 'type': 'warning'});
+                        return;
+                    }
+                    $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center', 'type': 'success'});
                     {#                    $.each(response['response'], function (index, value) {#}
                     {#                        var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');#}
                     {#                        if ($tag.length > 0) {#}
@@ -63,11 +64,11 @@
                     {#                        }#}
                     {#                    });#}
                     {#                    $('#tag-cloud').jQCloud('update', word_array);#}
-{#                    $('#inputDescription').tagsinput('removeAll');#}
-{#                } else {#}
-{#                    $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});#}
-{#                }#}
-{#            });#}
+                    $('.profile-add-tag-input').importTags('');
+                } else {
+                    $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
+                }
+            });
         });
 
 
