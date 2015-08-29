@@ -60,7 +60,7 @@
                                 } else {
                                     var newList = "<li><a href='#' data-weight=1 id='tag-" + num +
                                             "' style='font-weight:bold;' " +
-                                            "class='tag-cloud-tag tagged'>" + value + "</a></li>";
+                                            "class='tag-cloud-tag tagged' data-name='" + value + "'>" + value + "</a></li>";
                                     console.log(newList);
                                     $('#tag-list').append(newList);
                                     added.push(num.toString());
