@@ -69,8 +69,8 @@
                             $tag.addClass('tagged');
                             added.push($tag.attr('data-index'));
                         } else {
-                            var newList = "<li><a href='#' data-weight='1' id=tag-" + num +
-                                    " style='font-weight:bold;'" +
+                            var newList = "<li><a href='#' data-weight='1' id=tag-'" + num +
+                                    "' style='font-weight:bold;'" +
                                     "class='tag-cloud-tag tagged'>" + value + "</a></li>";
                             console.log(newList);
                             $('#tag-list').append(newList);
