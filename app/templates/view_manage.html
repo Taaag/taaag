@@ -1,5 +1,5 @@
 <div class="row tagrank">
-    <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large"></img>
+    <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
 </div>
 <div class="row tagrank">
 
@@ -21,7 +21,7 @@
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
                         {% endfor %}
-{#                        <div class="mytag-img .th-mytag-img"></div>#}
+                        {#                        <div class="mytag-img .th-mytag-img"></div>#}
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
                         <span class="span-viewmore"><i class="fa fa-chevron-circle-right"></i></span>
@@ -34,76 +34,74 @@
         </table>
     </div>
 
-<!--     <div id="dialog" title="Basic dialog">
-    <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-    </div> -->
+    <!--     <div id="dialog" title="Basic dialog">
+        <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+        </div> -->
 
 </div>
 
 <script>
-    $(".mytag-img").click(function() {
-        $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
-    }).tooltip({placement: "bottom", container: "body"});
+    $(function () {
+        
+        $(".mytag-img").click(function () {
+            $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+        }).tooltip({placement: "bottom", container: "body"});
 
-    $('.mytaglist-delete-btn').click(function () {
-        var $row = $(this).closest('.my-tag-set');
-        var tag = $row.find('.mytag-tagname-font').text();
-        BootstrapDialog.confirm("Add you sure to delete " + tag + "?", function (result) {
-            if (result) {
-                deleteTag(tag, $row);
-            }
+        $('.mytaglist-delete-btn').click(function () {
+            var $row = $(this).closest('.my-tag-set');
+            var tag = $row.find('.mytag-tagname-font').text();
+            BootstrapDialog.confirm("Add you sure to delete " + tag + "?", function (result) {
+                if (result) {
+                    deleteTag(tag, $row);
+                }
+            });
+        });
+
+        function deleteTag(tag, $row) {
+            $.get('/api/delete_tag', {name: tag}, function (response) {
+                if (response['succeed']) {
+                    $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
+                    $row.remove();
+                } else {
+                    $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
+                }
+            });
+        }
+
+
+        $('.span-viewmore').click(function () {
+            var $row = $(this).closest('.my-tag-set');
+            var tag = $row.find('.mytag-tagname-font').text();
+            var upvoteNum = $row.find('.mytag-upvote-num').text();
+            BootstrapDialog.show({
+                title: '<div style = "color:#f7ca18";' + upvoteNum + ' people have upvoted ' + tag + '<div>',
+                message: 'none',
+                type: 'none',
+                closable: true,
+                size: BootstrapDialog.SIZE_SMALL,
+                cssClass: 'upvoteList-dialog'
+            });
         });
     });
 
-    function deleteTag(tag, $row) {
-        $.get('/api/delete_tag', {name: tag}, function (response) {
-            if (response['succeed']) {
-                $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
-                $row.remove();
-            } else {
-                $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
-            }
-        });
-    }
 
-   
-   $('.span-viewmore').click(function () {
-        var $row = $(this).closest('.my-tag-set');
-        var tag = $row.find('.mytag-tagname-font').text();
-        var upvoteNum = $row.find('.mytag-upvote-num').text();
-        BootstrapDialog.show({
-         title: '<div style = "color:#f7ca18";' + upvoteNum + ' people have upvoted ' + tag + '<div>',
-         message:'none',
-         type:'none',
-         closable:true,
-         size:BootstrapDialog.SIZE_SMALL,
-         cssClass:'upvoteList-dialog'
-        });
-    });
-  
+    // $(function() {
+    //   $( "#dialog" ).dialog({
+    //     autoOpen: false,
+    //     show: {
+    //       effect: "blind",
+    //       duration: 1000
+    //     },
+    //     hide: {
+    //       effect: "explode",
+    //       duration: 1000
+    //     }
+    //   });
 
-
-
-
-
-  // $(function() {
-  //   $( "#dialog" ).dialog({
-  //     autoOpen: false,
-  //     show: {
-  //       effect: "blind",
-  //       duration: 1000
-  //     },
-  //     hide: {
-  //       effect: "explode",
-  //       duration: 1000
-  //     }
-  //   });
- 
-  //   $( ".img-viewmore" ).click(function() {
-  //     $( "#dialog" ).dialog( "open" );
-  //   });
-  // });
-  
+    //   $( ".img-viewmore" ).click(function() {
+    //     $( "#dialog" ).dialog( "open" );
+    //   });
+    // });
 
 
 </script>
