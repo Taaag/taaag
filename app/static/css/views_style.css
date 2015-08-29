@@ -181,7 +181,7 @@
 }
 
 #profile-view-manage-btn, #manage-to-view-btn {
-    width: 150px;
+    width: 200px;
     height: 35px;
     background-color: #303030;
     border-radius: 5px;
@@ -189,6 +189,8 @@
     color: #f7ca18;
     outline: none;
     border: none;
+    text-align: center;
+    margin-top:10px;
 }
 
 #manage-to-view-btn {
