@@ -80,7 +80,7 @@
                     });
                     $('#myCanvas').tagcanvas("update");
                     console.log(added);
-                    $('#myCanvas').tagcanvas("tagtofront", {index: 0, active: 'true'});
+                    $('#myCanvas').tagcanvas("tagtofront", {index: added[0], active: 'true'});
                     $('.profile-add-tag-input').importTags('');
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
