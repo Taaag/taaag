@@ -4,9 +4,16 @@
     </div>
 
     <div class="row">
-        <div id="tag-cloud" style="width: 100%; height: 250px;"></div>
-        <img class="profile-pic" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
-             alter="profile pic">
+        <canvas width="490" height="300" id="myCanvas">
+            <div id="tags">
+                <ul>
+                    {% for key, value in tags.items() %}
+                        <li><a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
+                               class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </canvas>
     </div>
 
     <div class="row">
@@ -18,35 +25,20 @@
 </div>
 
 <script>
-    var word_array = [
-        {% for key, value in tags.items() %}
-            {text: {{ key|tojson|safe }}, weight: {{ value[0] }}, html: {"class": "tag-cloud-tag {{ 'tagged' if value[1] else '' }}"  }},
-        {% endfor %}
-    ];
-
     $(function () {
-        function updateCloud(word_array) {
-            $("#tag-cloud").jQCloud(word_array, {
-                removeOverflowing: true,
-                shape: 'rectangular',
-                afterCloudRender: function () {
-                    $(".tag-cloud-tag").each(function (index, value) {
-                        $(this).attr('data-name', $(this).text());
-                    }).dblclick(function (e) {
-                        $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
-                    });
-                    $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-                        $('#inputDescription').tagsinput('add', $(this).text());
-                        $('#inputDescription').tagsinput('focus')
-                    });
-                    $(".tag-cloud-tag.tagged").click(function (e) {
-                        $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
-                    });
-                }
-            });
-        }
+        $(".tag-cloud-tag").each(function (index, value) {
+            $(this).attr('data-name', $(this).text());
+        }).dblclick(function (e) {
+            $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
+        });
 
-        updateCloud(word_array);
+        $(".tag-cloud-tag:not(.tagged)").click(function (e) {
+            $('#inputDescription').tagsinput('add', $(this).text());
+            $('#inputDescription').tagsinput('focus')
+        });
+        $(".tag-cloud-tag.tagged").click(function (e) {
+            $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
+        });
 
         $('#inputDescription').tagsinput({maxChars: 32, trimValue: true});
 
@@ -59,17 +51,17 @@
                         return;
                     }
                     $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center', 'type': 'success'});
-                    $.each(response['response'], function (index, value) {
-                        var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');
-                        if ($tag.length > 0) {
-                            var index = parseInt($tag.attr('id').split("_").pop());
-                            $tag.addClass('tagged');
-                            word_array[index]['weight']++;
-                        } else {
-                            word_array.push({text: value, weight: 1, html: {"class": "tag-cloud-tag tagged"}});
-                        }
-                    });
-                    $('#tag-cloud').jQCloud('update', word_array);
+                    {#                    $.each(response['response'], function (index, value) {#}
+                    {#                        var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');#}
+                    {#                        if ($tag.length > 0) {#}
+                    {#                            var index = parseInt($tag.attr('id').split("_").pop());#}
+                    {#                            $tag.addClass('tagged');#}
+                    {#                            word_array[index]['weight']++;#}
+                    {#                        } else {#}
+                    {#                            word_array.push({text: value, weight: 1, html: {"class": "tag-cloud-tag tagged"}});#}
+                    {#                        }#}
+                    {#                    });#}
+                    {#                    $('#tag-cloud').jQCloud('update', word_array);#}
                     $('#inputDescription').tagsinput('removeAll');
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
@@ -92,3 +84,6 @@
         //$('#inputDescription').typeahead({highlight: true}, {source: allTags});
     })
 </script>
+
+{% set uid = friend.id %}
+{% include 'tag_cloud.html' %}
