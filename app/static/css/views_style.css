@@ -352,7 +352,7 @@
 }
 
 .mytaglist-delete-btn {
-    font-size: 25px;
+    font-size: 30px;
     color: #303030;
     font-weight: bold;
     float: left;
@@ -404,7 +404,7 @@
 
 .taglist-th-tn {
     width: 250px;
-    padding:7.5px;
+    padding:8px;
     
 }
 
@@ -414,4 +414,5 @@
 background-color:#f7ca18;
 border:none;
 text-align: center;
+padding-top:10px;
 }
