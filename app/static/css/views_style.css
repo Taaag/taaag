@@ -47,7 +47,7 @@
     cursor: pointer;
 }
 
-.home-page-suggest-img:hover {
+.home-page-suggest-img:hover, .voter-img:hover {
     opacity: 0.8;
 }
 
