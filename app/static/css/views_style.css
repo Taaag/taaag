@@ -412,5 +412,6 @@
 /* th : background setting for the detele button cell*/
 .th-detele-btn{
 background-color:#f7ca18;
-border: none;
+border:none;
+text-align: center;
 }
