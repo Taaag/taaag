@@ -154,6 +154,7 @@
     font-size: 20px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    top: -50px;
 }
 
 .profile-add-tag-input {
@@ -516,4 +517,7 @@
     border: none;
 }
 
-
+.tagsinput {
+    width: 75%;
+    display: inline-block;
+}
