@@ -431,7 +431,7 @@
     width: 25px;
     border-radius: 20px;
     border: none;
-
+    cursor: pointer;
 }
 
 .th-mytag-viewmore {
