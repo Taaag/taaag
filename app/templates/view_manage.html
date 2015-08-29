@@ -77,14 +77,13 @@
             });
         }
 
-        var taggers_array = {{ tags|tojson }};
 
         $('.span-viewmore').click(function () {
             var $row = $(this).closest('.my-tag-set');
             var tag = $row.find('.mytag-tagname-font').text();
             var upvoteNum = $row.find('.mytag-upvote-num').text();
-            var index = $(this).attr('data-index');
-            console.log(taggers_array[index]);
+            var index = parseInt($(this).attr('data-index'));
+            console.log({{ tags|tojson }});
             var msg = '<table><tbody><tr><td><div class = "dialog-img"></div></td><td><p class = "dialog-name" >Vicky Zheng Yuan</div></row></td></tr><tbody><table>';
             BootstrapDialog.show({
                 title:'' + upvoteNum + ' people have upvoted ' + tag + '',
