@@ -70,7 +70,7 @@
                     $('#myCanvas').tagcanvas("update");
                     console.log(response['response'][0]);
                     $('#myCanvas').tagcanvas("tagtofront", {text: response['response'][0], active: true, callback: function() {
-                        $("#myCanvas").find('a[data-name="' + response['response'][0] + '"]').css('background-color', '#FF0000');
+                        $("#myCanvas").find('[data-name="' + response['response'][0] + '"]')[0].css('color', '#FF0000');
                     }});
                     $('.profile-add-tag-input').importTags('');
                 } else {
