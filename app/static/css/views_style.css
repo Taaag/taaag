@@ -321,6 +321,9 @@
 
 }
 
+
+/*my tag manage*/
+
 .profile-taglist-img {
     width: 150px;
     height: 150px;
@@ -336,7 +339,7 @@
     background-color: white;
     color: white;
     overflow-y: scroll;
-    border-right: 10px solid gray ;
+    border-right: 10px solid  #ddd ;
 
 }
 
@@ -349,8 +352,14 @@
 .my-tag-set {
     width: 480px;
     height: 30px;
-    padding:3px;
-    border: 1px dotted #f7ca18;
+    border-bottom: 1px dotted #f7ca18;
+}
+
+/* th : background setting for the detele button cell*/
+.th-detele-btn{
+background-color:#f7ca18;
+border:none;
+text-align: center;
 }
 
 .mytaglist-delete-btn {
@@ -359,10 +368,15 @@
     font-weight: bold;
     float: left;
     margin: 0px;
-    height: 30px;
+    /*height: 30px;*/
     border: none;
     outline: none;
     text-align: center;
+}
+
+.th-upvote-num{
+
+  /*  padding:7.5px;*/
 }
 
 .mytag-upvote-circle {
@@ -385,6 +399,12 @@
 
 }
 
+.taglist-th-tn {
+    width: 250px;
+    /*padding:8px;*/
+    border-right: 1px dotted #f7ca18;
+}
+
 .mytag-tagname-font {
     font-size: 15px;
     height: 30px;
@@ -392,33 +412,16 @@
     margin:none;
 }
 
+
+
+
 .mytag-img {
     width: 25px;
     height: 25px;
     background-color: #303030;
-    float: left;
-    /*margin: 5px;*/
-    margin:none;
-}
-
-.th-upvote-num{
-
-    padding:7.5px;
-}
-
-.taglist-th-tn {
-    width: 250px;
-    padding:8px;
-    border-right: 1px dotted #f7ca18;
+    float: right;
+    margin: 5px;
 }
 
 
-/* th : background setting for the detele button cell*/
-.th-detele-btn{
-background-color:#f7ca18;
 
-border:none;
-text-align: center;
-padding-top:10px;
-
-}
