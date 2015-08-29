@@ -342,13 +342,14 @@
 .profile-taglist-table {
     height: auto;
 
+
 }
 
 .my-tag-set {
     width: 480px;
     height: 30px;
     padding:3px;
-
+    border: 1px dotted #f7ca18;
 }
 
 .mytaglist-delete-btn {
@@ -360,6 +361,7 @@
     height: 30px;
     border: none;
     outline: none;
+    text-align: center;
 }
 
 .mytag-upvote-circle {
@@ -405,6 +407,7 @@
 .taglist-th-tn {
     width: 250px;
     padding:8px;
+    border-right: 1px dotted #f7ca18;
     
 }
 
