@@ -50,7 +50,7 @@
                                 'type': 'success'
                             });
                             var added = [];
-                            var num = $("#myCanvas").find('li').length;
+                            var num = $("#myCanvas").find('a').length;
                             $.each(response['response'], function (index, value) {
                                 var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
                                 if ($tag.length > 0) {
@@ -73,9 +73,9 @@
                             $.when(update()).done(function () {
                                 if($('#tag-'+ added[0])) {
                                     console.log($('#tag-'+ (added[0])));
-                                    console.log($('#myCanvas').find('li').last());
+                                    console.log($('#myCanvas').find('a').last().attr('id'));
                                     $('#myCanvas').tagcanvas("tagtofront", {
-                                    id: $('#myCanvas').find('li').last().attr('id'),
+                                    id: $('#myCanvas').find('a').last().attr('id'),
                                     active: true,
                                     time: 100
                                     });
