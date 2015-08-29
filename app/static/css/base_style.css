@@ -18,6 +18,11 @@ input:focus:-ms-input-placeholder {
 
 /* oldIE ;) */
 
+
+th{
+    border: none;
+}
+
 input {
     border: none;
 }

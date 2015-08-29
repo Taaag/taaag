@@ -332,7 +332,7 @@
 
 .profile-taglist {
     width: 490px;
-    height: 240px;
+    height: 210px;
     background-color: white;
     color: white;
     overflow-y: scroll;
@@ -388,7 +388,7 @@
     font-size: 15px;
     height: 30px;
     color: #303030;
-    margin-bottom:0px;
+    margin:none;
 }
 
 .mytag-img {
@@ -396,7 +396,8 @@
     height: 25px;
     background-color: #303030;
     float: left;
-    margin: 5px;
+    /*margin: 5px;*/
+    margin:none;
 }
 
 .th-upvote-num{
@@ -408,7 +409,6 @@
     width: 250px;
     padding:8px;
     border-right: 1px dotted #f7ca18;
-    
 }
 
 
