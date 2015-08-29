@@ -464,6 +464,10 @@
      overflow-y:scroll;
 }
 
+.dialog-set{
+    border-bottom: 1px dotted #f7ca18;
+}
+
 .dialog-title{
     color:#f7ca18;
     overflow: hidden;
@@ -472,10 +476,12 @@
 }
 
 .dialog-img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background-color: #303030;
+    padding:10px;
 }
+
 
 .dialog-name {
     font-size: 15px;
