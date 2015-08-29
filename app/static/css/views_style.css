@@ -427,6 +427,11 @@ padding-right: 10px;
     float: right;  
 }
 
+.voter-img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .th-mytag-viewmore{
 width: 3%;
 }
