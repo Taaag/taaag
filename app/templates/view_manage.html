@@ -8,7 +8,7 @@
             {% for tag in tags %}
                 <tr class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
-                        <div class="mytaglist-delete-btn"><i class="fa fa-minus-square"></i></div>
+                        <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
                     <th class="col-sm-1 th-upvote-num">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.taggers|length }}</div>
@@ -18,7 +18,8 @@
                         <!-- 循环照片。。。 -->
                         {% for tagger in tag.taggers[0:4] %}
                             <div class="mytag-img .th-mytag-img" data-uid="{{ tagger.id }}">
-                                <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
+                                <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture"
+                                     data-toggle="tooltip" title="{{ tagger.name }}">
                             </div>
                         {% endfor %}
 {#                        <div class="mytag-img .th-mytag-img"></div>#}
@@ -41,6 +42,7 @@
 </div>
 
 <script>
+    $('.voter-img').tooltip({placement: "bottom"});
     $(".mytag-img").click(function() {
         $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
     });
