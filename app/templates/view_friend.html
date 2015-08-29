@@ -68,6 +68,7 @@
                         }
                     });
                     $('#myCanvas').tagcanvas("update");
+                    console.log(response['response'][0]);
                     $('#myCanvas').tagcanvas("tagtofront", {text: response['response'][0], active: true});
                     $('.profile-add-tag-input').importTags('');
                 } else {
