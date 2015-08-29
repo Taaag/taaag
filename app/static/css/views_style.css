@@ -343,11 +343,6 @@
 
 }
 
-.profile-taglist:overflow-y{
-    background: #fff;
-    width: 10px;
-}
-
 
 
 .profile-taglist-table {
@@ -357,20 +352,16 @@
 
 .my-tag-set {
     width: 500px;
-    /*height: 20px;*/
     border-bottom: 1px dotted #f7ca18;
 }
 
 /* th : background setting for the detele button cell*/
 .th-detele-btn{
 background-color:#f7ca18;
-border:none;
-text-align: center;
-/*padding:8px;*/
 }
 
 .mytaglist-delete-btn {
-    margin:5px;
+    
     font-size: 30px;
     color: #303030;
     font-weight: bold;
@@ -379,11 +370,14 @@ text-align: center;
     outline: none;
     text-align: center;
     margin:auto;
+    margin:5px;
+    vertical-align: middle;;
 }
 
-.th-upvote-num{
 
-    /*padding:8px;*/
+.th-upvote-num{
+    padding-left:2px;
+    
 }
 
 .mytag-upvote-circle {
