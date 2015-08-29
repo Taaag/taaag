@@ -450,6 +450,7 @@
 
 .upvoteList-dialog {
      width:400px;
+     max-height: 200px;
      margin:auto;
      margin-top:200px;
      overflow-y:scroll;
