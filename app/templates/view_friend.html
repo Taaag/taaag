@@ -70,7 +70,7 @@
                             $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
                             $tag.addClass('tagged');
                         } else {
-                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged">' + value + '</a></li>';
+                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged" data-name="' + value + '">' + value + '</a></li>';
                             $('#tag-list').append(newList);
                         }
                     });
