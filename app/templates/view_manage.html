@@ -10,19 +10,22 @@
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn">x</div>
                     </th>
-                    <th class="col-sm-1 th-upvote-num" >
+                    <th class="col-sm-1 th-upvote-num">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.taggers|length }}</div>
                     </th>
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
                         <!-- 循环照片。。。 -->
-                        <div class="mytag-img .th-mytag-img"></div>
+                        {% for tagger in tag.taggers %}
+                            <div class="mytag-img .th-mytag-img" src="https://graph.facebook.com/{{ tagger.id }}/picture?width=25&height=25"></div>
+                        {% endfor %}
+{#                        <div class="mytag-img .th-mytag-img"></div>#}
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
                         <img class="img-viewmore" src="/static/images/manage-more.png"></img>
                     </th>
                     <th class="col-sm-1 th-mytag-scroll">
-                       
+
                     </th>
                 </tr>
             {% endfor %}
