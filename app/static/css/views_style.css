@@ -424,7 +424,6 @@
     float: right;
     border-radius: 20px;
     border: none;
-    cursor: pointer;
 }
 
 .voter-img {
@@ -432,7 +431,7 @@
     width: 25px;
     border-radius: 20px;
     border: none;
-
+    cursor: pointer;
 }
 
 .th-mytag-viewmore {
