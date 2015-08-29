@@ -127,7 +127,7 @@
 
 .profile-selectbar {
     width: 370px;
-    height: 120px;
+    height: 90px;
     margin: auto;
     border-radius: 10px;
     background-color: #FFFF99;
@@ -154,7 +154,7 @@
     font-size: 20px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    top: -60px;
+    top: -45px;
     position: relative;
 }
 
@@ -520,4 +520,7 @@
 
 .tagsinput {
     display: inline-block;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-radius: 10px;
 }
