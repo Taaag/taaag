@@ -52,6 +52,7 @@
                             var added = [];
                             var num = $("#myCanvas").find('li').length;
                             $.each(response['response'], function (index, value) {
+                                console.log(response['response']);
                                 var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
                                 if ($tag.length > 0) {
                                     $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
