@@ -135,24 +135,15 @@
 }
 
 .bootstrap-tagsinput {
+    text-align: left;
     height: 100%;
     width: 75%;
-    padding: 0;
     margin: 0;
     font-size: 20px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background-color: transparent;
-}
-
-.bootstrap-tagsinput input {
-    width: 275px;
-    position: absolute;
-    left: 70px;
-    bottom: 0;
-    background-color: #ffffff;
-    border-radius: 10px;
-    font-size: 30px;
+    overflow: scroll;
 }
 
 #btnSubmit {
