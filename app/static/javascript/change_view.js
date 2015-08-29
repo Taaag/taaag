@@ -12,6 +12,7 @@
         $.get('/change_view/' + view, data, function (response) {
             $('#content-view').html(response);
             $('#search-bar').typeahead('val', '');
+            $('.tooltip').remove();
         });
     }
 
