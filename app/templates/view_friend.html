@@ -9,10 +9,8 @@
                 <ul id="tag-list">
                     {% for key, value in tags.items() %}
                         <li>
-                            <a href="#" data-weight="{{ value[0] }}" id="tag-{{ loop.index0 }}"
-                               style="font-weight:bold;" class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">
-                                {{ key }}
-                            </a>
+                            <a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
+                               class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -75,9 +73,7 @@
                             $tag.addClass('tagged');
                             //added.push($tag.attr('id').split('-')[1]);
                         } else {
-                            var newList = '<li><a href="#" data-weight="1" id="tag-' + num +
-                                    '" style="font-weight:bold;" ' +
-                                    'class="tag-cloud-tag tagged">' + value + '</a></li>';
+                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged">' + value + '</a></li>';
                             $('#tag-list').append(newList);
                             //added.push(num.toString());
                             //num++;
