@@ -350,7 +350,8 @@
     width: 500px;
     height: auto;
     border-bottom: 1px solid #f7ca18;
-   
+    background-color: white;
+    margin-bottom:0px;
 }
 
 .my-tag-set {
