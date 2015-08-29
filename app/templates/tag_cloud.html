@@ -67,13 +67,19 @@
                                     num++;
                                 }
                             });
-                            $('#myCanvas').tagcanvas("update");
+                            function update() {
+                                $('#myCanvas').tagcanvas("update");
+                            }
+
                             console.log(added);
-                            $('#myCanvas').tagcanvas("tagtofront", {
-                                id: 'tag-' + added[0],
-                                active: 'true',
-                                time: '100'
+                            $.when(update()).done(function () {
+                                $('#myCanvas').tagcanvas("tagtofront", {
+                                    id: 'tag-' + added[0],
+                                    active: 'true',
+                                    time: '100'
+                                });
                             });
+
                             $('.profile-add-tag-input').importTags('');
                         } else {
                             {#                    $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});#}
