@@ -68,7 +68,6 @@
         });
     }
 
-     var types = 
    
    $('.img-viewmore').click(function () {
         var $row = $(this).closest('.my-tag-set');
@@ -77,7 +76,7 @@
         BootstrapDialog.show({
          title: upvoteNum + ' people have upvoted ' + tag,
          message:'none',
-         
+         type:'none',
          size:BootstrapDialog.SIZE_SMALL,
          cssClass:'upvoteList-dialog'
         });
