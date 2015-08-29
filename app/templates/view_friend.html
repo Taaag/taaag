@@ -64,35 +64,36 @@
                         'type': 'success'
                     });
 
+                    var idsToMove = [];
+
                     $.each(response['response'], function (index, value) {
                         var $tag = $("#tag-list").find('a[data-name="' + value + '"]');
+                        var idToCreate = "tag-to-move-" + idsToMove.length.toString();
                         if ($tag.length > 0) {
                             $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
+                            $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
-                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged" data-name="' + value + '">' + value + '</a></li>';
+                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged" id="' + idToCreate + '">' + value + '</a></li>';
                             $('#tag-list').append(newList);
                         }
+                        idsToMove.push(idToCreate);
                     });
 
                     $('#myCanvas').tagcanvas("update");
 
-                    function moveUpdatedTagToFront(index) {
+                    function moveUpdatedTagToFront() {
                         $('#myCanvas').tagcanvas("tagtofront", {
-                            text: response['response'][index],
+                            'id': idsToMove.shift(),
                             active: true,
                             time: 500
                         });
-                        if (index + 1 < response['response'].length) {
-                            setTimeout(function () {
-                                moveUpdatedTagToFront(index + 1);
-                            }, 1500);
+                        if (idsToMove.length > 0) {
+                            setTimeout(moveUpdatedTagToFront, 1500);
                         }
                     }
 
-                    setTimeout(function () {
-                        moveUpdatedTagToFront(0);
-                    }, 100);
+                    setTimeout(moveUpdatedTagToFront, 100);
 
                     $('.profile-add-tag-input').importTags('');
                 } else {
