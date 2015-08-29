@@ -71,7 +71,6 @@
 
 
                             function fuck() {
-                                console.log($('#myCanvas').find('a').last().attr('id'));
                                 $('#myCanvas').tagcanvas("tagtofront", {
                                     id: $('#myCanvas').find('a').last().attr('id'),
                                     active: true,
@@ -79,7 +78,7 @@
                                 });
                             }
 
-                            setTimeout(fuck, 1000);
+                            setTimeout(fuck, 500);
 
                             $('.profile-add-tag-input').importTags('');
                         } else {
