@@ -437,9 +437,9 @@
 }
 
 .span-viewmore {
-    width: 10px;
-    height: 10px;
     cursor: pointer;
+    font-size: 15px;
+    margin: 5px;
 }
 
 .span-viewmore:hover {
@@ -453,46 +453,35 @@
 .upvoteList-dialog {
     vertical-align: middle;
 
+}
+
+.dialog-img {
+    width: 20px;
+    height: 20px;
+    background-color: #303030;
+}
+
+.dialog-name {
+    font-size: 15px;
+    color: #303030;
+}
+
+.bootstrap-dialog {
 
 }
 
-.dialog-img{
-width: 20px;
-height: 20px;
-background-color: #303030;
+.bootstrap-dialog-title {
+    color: #f7ca18;
 }
 
-.dialog-name{
-font-size: 15px;
-color: #303030;
-}
-
-
-
-.bootstrap-dialog{
-   
-
-}
-.bootstrap-dialog-title{
-    color:#f7ca18;
-
-}
-
-.modal-dialog{
+.modal-dialog {
     vertical-align: middle;
 }
 
-.modal-header{
+.modal-header {
     background-color: #303030;
-    
 }
 
 .fa-times:hover {
     color: #FF0000;
 }
-
-
-
-
-
-
