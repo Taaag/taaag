@@ -16,7 +16,7 @@
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
                         <!-- 循环照片。。。 -->
-                        {% for tagger in tag.taggers %}
+                        {% for tagger in tag.taggers[0:4] %}
                             <div class="mytag-img .th-mytag-img">
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
