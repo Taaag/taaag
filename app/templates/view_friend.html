@@ -66,36 +66,42 @@
                         align: 'center',
                         'type': 'success'
                     });
-                    var added = [];
-                    var num = $("#myCanvas").find('a').length;
+                    //var added = [];
+                    //var num = $("#myCanvas").find('a').length;
                     $.each(response['response'], function (index, value) {
-                        var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
+                        var $tag = $("#tag-list").find('a[data-name="' + value + '"]');
                         if ($tag.length > 0) {
                             $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
                             $tag.addClass('tagged');
-                            added.push($tag.attr('id').split('-')[1]);
+                            //added.push($tag.attr('id').split('-')[1]);
                         } else {
-                            var newList = "<li><a href='#' data-weight=1 id='tag-" + num +
-                                    "' style='font-weight:bold;' " +
-                                    "class='tag-cloud-tag tagged' data-name='" + value + "'>" + value + "</a></li>";
+                            var newList = '<li><a href="#" data-weight="1" id="tag-' + num +
+                                    '" style="font-weight:bold;" ' +
+                                    'class="tag-cloud-tag tagged">' + value + '</a></li>';
                             $('#tag-list').append(newList);
-                            added.push(num.toString());
-                            num++;
+                            //added.push(num.toString());
+                            //num++;
                         }
                     });
 
                     $('#myCanvas').tagcanvas("update");
 
-                    $('#myCanvas').tagcanvas("setspeed", [0, 0]);
-                    function fuck() {
+                    function moveUpdatedTagToFront(index) {
                         $('#myCanvas').tagcanvas("tagtofront", {
-                            id: $('#myCanvas').find('a').last().attr('id'),
+                            name: response['response'][index],
                             active: true,
                             time: 500
                         });
+                        if (index + 1 < response['response'].length) {
+                            setTimeout(function () {
+                                moveUpdatedTagToFront(index + 1);
+                            }, 1500);
+                        }
                     }
 
-                    setTimeout(fuck, 100);
+                    setTimeout(function () {
+                        moveUpdatedTagToFront(0);
+                    }, 100);
 
                     $('.profile-add-tag-input').importTags('');
                 } else {
