@@ -69,7 +69,9 @@
                     });
                     $('#myCanvas').tagcanvas("update");
                     console.log(response['response'][0]);
-                    $('#myCanvas').tagcanvas("tagtofront", {text: response['response'][0], time: 1,active: true});
+                    $('#myCanvas').tagcanvas("tagtofront", {text: response['response'][0], active: true, callback: function() {
+                        $("#myCanvas").find('a[data-name="' + response['response'][0] + '"]').css('background-color', '#FF0000');
+                    }});
                     $('.profile-add-tag-input').importTags('');
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
