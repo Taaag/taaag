@@ -208,12 +208,12 @@
     overflow-y: auto;
     width: 490px;
     height: 300px;
-    background-color: #f7ca18;
+    
 }
 
 .tagchart-table {
     height: auto;
-    background-color: white;
+   
 }
 
 /*.chart-scrollbar {
@@ -337,7 +337,7 @@
 .profile-taglist {
     width: 500px;
     height: 220px;
-    background-color: white;
+    background-color: #f7ca18;
     color: white;
     overflow-y: scroll;
   /*  border-right: 10px solid  #ddd ;*/
@@ -349,6 +349,7 @@
 .profile-taglist-table {
     height: auto;
     border: none;
+    background-color: white;
 }
 
 .my-tag-set {
