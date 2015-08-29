@@ -434,6 +434,7 @@ width: 3%;
 .img-viewmore{
 width:10px;
 height: 10px;
+cursor: pointer;
 }
 
 .img-viewmore:hover{
