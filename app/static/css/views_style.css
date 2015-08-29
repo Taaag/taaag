@@ -428,8 +428,8 @@ padding-right: 10px;
 }
 
 .voter-img {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 25px;
+    max-width: 25px;
 }
 
 .th-mytag-viewmore{
