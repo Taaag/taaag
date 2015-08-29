@@ -71,8 +71,8 @@
                                 $('#myCanvas').tagcanvas("update");
                             }
 
-                            console.log(added);
                             $.when(update()).done(function () {
+                                console.log(0);
                                 $('#myCanvas').tagcanvas("tagtofront", {
                                     id: 'tag-' + added[0],
                                     active: true,
