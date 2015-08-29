@@ -23,7 +23,7 @@
                         {% endfor %}
                         {#                        <div class="mytag-img .th-mytag-img"></div>#}
                     </th>
-                    <th class="col-sm-1 th-mytag-viewmore">
+                    <th class="col-sm-1 th-mytag-viewmore" data-index="{{ loop.index0 }}">
                         <span class="span-viewmore"><i class="fa fa-caret-right"></i></span>
                     </th>
                     <th class="col-sm-1 th-mytag-scroll">
@@ -74,12 +74,13 @@
         }
 
         var taggers_array = {{ tags|tojson }};
-        console.log(taggers_array);
 
         $('.span-viewmore').click(function () {
             var $row = $(this).closest('.my-tag-set');
             var tag = $row.find('.mytag-tagname-font').text();
             var upvoteNum = $row.find('.mytag-upvote-num').text();
+            var index = $(this).attr('data-index');
+            console.log(taggers_array[index]);
             var msg = '<table><tbody><tr><td><div class = "dialog-img"></div></td><td><p class = "dialog-name" >Vicky Zheng Yuan</div></row></td></tr><tbody><table>';
             BootstrapDialog.show({
                 title:'' + upvoteNum + ' people have upvoted ' + tag + '',
