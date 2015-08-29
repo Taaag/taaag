@@ -396,14 +396,15 @@ padding:8px;
 
 .taglist-th-tn {
     width: 250px;
-    /*padding:8px;*/
+    padding:8px;
     border-right: 2px dotted #f7ca18;
     padding:8px;
 }
 
 .mytag-tagname-font {
     font-size: 15px;
-    color: #303030;   
+    color: #303030;
+    margin-bottom:0px;   
 }
 
 
