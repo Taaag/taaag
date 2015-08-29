@@ -361,7 +361,7 @@
 background-color:#f7ca18;
 border:none;
 text-align: center;
-padding:8px;
+/*padding:8px;*/
 }
 
 .mytaglist-delete-btn {
@@ -372,19 +372,21 @@ padding:8px;
     border: none;
     outline: none;
     text-align: center;
+    margin:auto;
 }
 
 .th-upvote-num{
 
-    padding:8px;
+    /*padding:8px;*/
 }
 
 .mytag-upvote-circle {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 15px;
     background-color: #303030;
     vertical-align: middle;
+    margin:5px;
 }
 
 .mytag-upvote-num {
@@ -397,20 +399,22 @@ padding:8px;
 .taglist-th-tn {
     width: 250px;
     padding:8px;
-    border-right: 2px dotted #f7ca18;
-    padding:8px;
+    
+    /*padding:8px;*/
 }
 
 .mytag-tagname-font {
     font-size: 15px;
     color: #303030;
-    margin-bottom:0px;   
+    margin-bottom:0px; 
+    border-left: 2px dotted #f7ca18;  
 }
 
 
 
 
 .mytag-img {
+    margin:5px;
     width: 25px;
     height: 25px;
     background-color: #303030;
