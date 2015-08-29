@@ -70,20 +70,16 @@
                                 $('#myCanvas').tagcanvas("update");
                             }
 
-                            $.when(update()).done(function () {
-                                if($('#tag-'+ added[0])) {
-                                    console.log($('#tag-'+ (added[0])));
-                                    console.log($('#myCanvas').find('a').last().attr('id'));
-                                    $('#myCanvas').tagcanvas("tagtofront", {
+                            function fuck() {
+                                console.log($('#myCanvas').find('a').last().attr('id'));
+                                $('#myCanvas').tagcanvas("tagtofront", {
                                     id: $('#myCanvas').find('a').last().attr('id'),
                                     active: true,
                                     time: 100
-                                    });
-                                } else {
-                                    console.log('abc');
-                                }
+                                });
+                            }
 
-                            });
+                            setTimeout(fuck, 10000);
 
                             $('.profile-add-tag-input').importTags('');
                         } else {
