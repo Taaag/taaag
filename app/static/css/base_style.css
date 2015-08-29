@@ -18,18 +18,8 @@ input:focus:-ms-input-placeholder {
 
 /* oldIE ;) */
 
-table{
-    border: none;
-}
-tr{
-    border: none;
-}
-th{
-    border: none;
-}
-
-input {
-    border: none;
+th {
+   border-top:none;
 }
 
 div {
