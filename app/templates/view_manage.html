@@ -17,7 +17,7 @@
                     <th class="col-sm-4">
                         <!-- 循环照片。。。 -->
                         {% for tagger in tag.taggers[0:4] %}
-                            <div class="mytag-img .th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}>
+                            <div class="mytag-img .th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
                         {% endfor %}
