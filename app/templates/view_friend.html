@@ -6,7 +6,7 @@
     <div class="row">
         <canvas width="490" height="270" id="myCanvas">
             <div id="tags">
-                <ul>
+                <ul id="tag-list">
                     {% for key, value in tags.items() %}
                         <li><a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
                                class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a></li>
@@ -29,7 +29,7 @@
         $(".tag-cloud-tag").each(function (index, value) {
             $(this).attr('data-name', $(this).text());
         }).dblclick(function (e) {
-            $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
+            $(document).trigger("viewChanging", ["tag", {'name': $(this).text()}]);
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
@@ -52,18 +52,22 @@
                         $.bootstrapGrowl("Oops, you have tagged 'em all!", {align: 'center', 'type': 'warning'});
                         return;
                     }
-                    $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {align: 'center', 'type': 'success'});
-                    {#                    $.each(response['response'], function (index, value) {#}
-                    {#                        var $tag = $("#tag-cloud").find('[data-name="' + value + '"]');#}
-                    {#                        if ($tag.length > 0) {#}
-                    {#                            var index = parseInt($tag.attr('id').split("_").pop());#}
-                    {#                            $tag.addClass('tagged');#}
-                    {#                            word_array[index]['weight']++;#}
-                    {#                        } else {#}
-                    {#                            word_array.push({text: value, weight: 1, html: {"class": "tag-cloud-tag tagged"}});#}
-                    {#                        }#}
-                    {#                    });#}
-                    {#                    $('#tag-cloud').jQCloud('update', word_array);#}
+                    $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {
+                        align: 'center',
+                        'type': 'success'
+                    });
+                    $.each(response['response'], function (index, value) {
+                        var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
+                        if ($tag.length > 0) {
+                            $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
+                            $tag.addClass('tagged');
+                        } else {
+                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;"' +
+                                    'class="tag-cloud-tag tagged">value</a></li>';
+                            $('#tag-list').append(newList);
+                        }
+                    });
+                    $('#myCanvas').tagcanvas("update");
                     $('.profile-add-tag-input').importTags('');
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
