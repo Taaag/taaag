@@ -29,7 +29,7 @@
         $(".tag-cloud-tag").each(function (index, value) {
             $(this).attr('data-name', $(this).text());
         }).dblclick(function (e) {
-            $(document).trigger("viewChanging", ["tag", {'name': $(this).text() }]);
+            $(document).trigger("viewChanging", ["tag", {'name': $(this).text(), delimiter: []}]);
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
