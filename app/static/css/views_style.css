@@ -451,7 +451,10 @@
 }
 
 .upvoteList-dialog {
-    vertical-align: middle;
+     margin:auto;
+     width:300px;
+     margin:350px;
+     vertical-align: middle;
 
 }
 
