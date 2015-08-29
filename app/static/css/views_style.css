@@ -186,7 +186,7 @@
     background-color: #303030;
     border-radius: 5px;
     font-size: 15px;
-    color: white;
+    color: #f7ca18;
     outline: none;
     border: none;
 }
@@ -498,4 +498,16 @@
 .fa-times:hover {
     color: #FF0000;
 }
+
+.manage-to-view-btn {
+    width: 200px;
+    height: 35px;
+    background-color: #303030;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #f7ca18;
+    outline: none;
+    border: none;
+}
+
 
