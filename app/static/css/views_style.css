@@ -361,6 +361,7 @@
 background-color:#f7ca18;
 border:none;
 text-align: center;
+padding:8px;
 }
 
 .mytaglist-delete-btn {
@@ -368,8 +369,6 @@ text-align: center;
     color: #303030;
     font-weight: bold;
     float: left;
-    margin: 0px;
-    /*height: 30px;*/
     border: none;
     outline: none;
     text-align: center;
@@ -377,7 +376,7 @@ text-align: center;
 
 .th-upvote-num{
 
-  /*  padding:7.5px;*/
+    padding:8px;
 }
 
 .mytag-upvote-circle {
@@ -385,7 +384,7 @@ text-align: center;
     height: 30px;
     border-radius: 15px;
     background-color: #303030;
-    text-align: center;
+    vertical-align: middle;
 }
 
 .mytag-upvote-num {
@@ -399,6 +398,7 @@ text-align: center;
     width: 250px;
     /*padding:8px;*/
     border-right: 1px dotted #f7ca18;
+    padding:8px;
 }
 
 .mytag-tagname-font {
