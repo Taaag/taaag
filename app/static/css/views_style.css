@@ -209,12 +209,12 @@
     overflow-y: auto;
     width: 490px;
     height: 300px;
-    
+
 }
 
 .tagchart-table {
     height: auto;
-   
+
 }
 
 /*.chart-scrollbar {
@@ -263,11 +263,11 @@
 }
 
 .tagrank-upvote-num {
-    text-align: center;
+    margin: 12px 0;
 }
 
 .tagrank {
-    margin: 0px;
+    margin: 0;
 }
 
 #tag-cloud {
@@ -323,13 +323,12 @@
 
 }
 
-
 /*my tag manage*/
 
 .profile-taglist-img {
     width: 150px;
     height: 150px;
-    border-radius:100px;
+    border-radius: 100px;
     margin: auto;
     margin-top: 0px;
     margin-bottom: 35px;
@@ -341,17 +340,15 @@
     background-color: #f7ca18;
     color: white;
     overflow-y: scroll;
-  /*  border-right: 10px solid  #ddd ;*/
-
+    /*  border-right: 10px solid  #ddd ;*/
 }
-
-
 
 .profile-taglist-table {
     width: 500px;
     height: auto;
-    border: none;
+    border-bottom: 1px solid #f7ca18;
     background-color: white;
+    margin-bottom: 0px;
 }
 
 .my-tag-set {
@@ -360,14 +357,14 @@
 }
 
 /* th : background setting for the detele button cell*/
-.th-detele-btn{
-width: 5%;
-background-color:#f7ca18;
-text-align: center;
+.th-detele-btn {
+    width: 5%;
+    background-color: #f7ca18;
+    text-align: center;
 }
 
 .mytaglist-delete-btn {
-    
+
     font-size: 30px;
     color: #303030;
     font-weight: bold;
@@ -375,15 +372,14 @@ text-align: center;
     border: none;
     outline: none;
     text-align: center;
-    margin:auto;
-    margin:5px;
+    margin: auto;
+    margin: 5px;
     vertical-align: middle;;
 }
 
+.th-upvote-num {
+    padding-left: 10px;
 
-.th-upvote-num{
-    padding-left:10px;
-    
 }
 
 .mytag-upvote-circle {
@@ -392,62 +388,69 @@ text-align: center;
     border-radius: 15px;
     background-color: #303030;
     vertical-align: middle;
-    margin:5px;
+    margin: 5px;
+    padding: 2px 0;
 }
 
 .mytag-upvote-num {
     font-size: 15px; /*need to resize*/
-    color: white;
+    color: #f7ca18;
     text-align: center;
     margin: auto;
 }
 
 .taglist-th-tn {
     width: 250px;
-    border-right: 1px dotted #f7ca18;  
+    border-right: 1px dotted #f7ca18;
 }
 
 .mytag-tagname-font {
     font-size: 15px;
     color: #303030;
-    margin-bottom:0px; 
-    
-}
-
-
-.th-mytag-img{
-padding-right: 10px;
+    margin-bottom: 0px;
 
 }
+
+.th-mytag-img {
+    padding-right: 10px;
+
+}
+
 .mytag-img {
-    margin:5px;
+    margin: 3px;
     width: 25px;
     height: 25px;
     background-color: #303030;
-    float: right;  
+    float: right;
+    border-radius: 20px;
+    border: none;
 }
 
 .voter-img {
-    max-height: 25px;
-    max-width: 25px;
+    height: 25px;
+    width: 25px;
+    border-radius: 20px;
+    border: none;
+
 }
 
-.th-mytag-viewmore{
-width: 3%;
+.th-mytag-viewmore {
+    width: 3%;
 }
 
-.img-viewmore{
-width:10px;
-height: 10px;
-cursor: pointer;
+.img-viewmore {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
 }
 
-.img-viewmore:hover{
+.img-viewmore:hover {
     opacity: 0.4;
     color: white;
 }
-.th-mytag-scroll{
-width: 3%;
+
+.th-mytag-scroll {
+    width: 3%;
 }
 
 
