@@ -42,7 +42,7 @@
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
-        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭']});
+        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭'], height: "75%", width: "100%"});
 
         $('#btnSubmit').click(function () {
             var tags = $('.profile-add-tag-input').val().split('☭');
