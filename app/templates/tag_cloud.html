@@ -66,10 +66,9 @@
                                     num++;
                                 }
                             });
-                            function update() {
-                                $('#myCanvas').tagcanvas("update");
-                                return;
-                            }
+
+                            $('#myCanvas').tagcanvas("update");
+
 
                             function fuck() {
                                 console.log($('#myCanvas').find('a').last().attr('id'));
@@ -80,10 +79,7 @@
                                 });
                             }
 
-                            $.when(update()).done(fuck);
-
-
-                            {#                            setTimeout(fuck, 10000);#}
+                            setTimeout(fuck, 2000);
 
                             $('.profile-add-tag-input').importTags('');
                         } else {
