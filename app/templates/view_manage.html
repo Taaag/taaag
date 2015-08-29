@@ -87,7 +87,7 @@
             var taggers = tagger_array[index]['taggers'];
             var msg = '<table><tbody>';
             $.each(taggers, function(index, tagger) {
-                msg += '<tr><td><img class="dialog-img" src="https://graph.facebook.com/' + tagger.id + '/picture"></td><td><p class="dialog-name">' + tagger.name + '</p></td></tr>';
+                msg += '<tr><td><img class="dialog-img" src="https://graph.facebook.com/' + tagger.id.toString() + '/picture"></td><td><p class="dialog-name">' + tagger.name + '</p></td></tr>';
             });
             msg += '</tbody></table>';
             BootstrapDialog.show({
