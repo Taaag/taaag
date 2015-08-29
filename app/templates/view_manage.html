@@ -18,7 +18,7 @@
                         <!-- 循环照片。。。 -->
                         {% for tagger in tag.taggers %}
                             <div class="mytag-img .th-mytag-img">
-                                <img src="https://graph.facebook.com/{{ tagger.id }}/picture?width=25&height=25">
+                                <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
                         {% endfor %}
 {#                        <div class="mytag-img .th-mytag-img"></div>#}
