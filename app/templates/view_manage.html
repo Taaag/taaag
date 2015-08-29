@@ -84,8 +84,8 @@
             var tag = $row.find('.mytag-tagname-font').text();
             var upvoteNum = $row.find('.mytag-upvote-num').text();
             var index = parseInt($(this).attr('data-index'));
-            console.log(index);
             var taggers = tagger_array[index];
+            console.log(taggers);
             var msg = '<table><tbody>' + $.map(taggers, function(tagger, _){return '<td><img class="dialog-img" src="https://graph.facebook.com/' + tagger.id + '/picture"></td><td><p class="dialog-name">' + tagger.name + '</p></td>';}) + '</tbody></table>';
             console.log(msg);
             BootstrapDialog.show({
