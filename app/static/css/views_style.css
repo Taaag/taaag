@@ -500,6 +500,7 @@
 }
 
 .manage-to-view-btn {
+    margin-top: 15px;
     width: 200px;
     height: 35px;
     background-color: #303030;
