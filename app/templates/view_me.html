@@ -8,7 +8,7 @@
             <div id="tags">
                 <ul>
                     {% for key, value in tags.items() %}
-                        <li><a href="#" data-weight="{{ value|length }}" style="font-weight:bold;">{{ key }}</a></li>
+                        <li><a data-weight="{{ value|length }}" style="font-weight:bold;">{{ key }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
