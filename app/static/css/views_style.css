@@ -44,6 +44,7 @@
     background-color: #303030;
     margin: 25px;
     border: none;
+    cursor: pointer;
 }
 
 .home-page-suggest-img:hover {
