@@ -42,7 +42,7 @@ class User(db.Model):
         return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created.desc()).with_entities(Tag.name, tagger).all()
 
     def to_dict(self):
-        return {'id': self.id, 'name': self.name}
+        return {'id': str(self.id), 'name': self.name}
 
     def allow_tag(self):
         return self.privacy == UserPrivacy.OPEN  # TODO
