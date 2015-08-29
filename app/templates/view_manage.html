@@ -74,9 +74,11 @@
         var tag = $row.find('.mytag-tagname-font').text();
         var upvoteNum = $row.find('.mytag-upvote-num').text();
         BootstrapDialog.show({
-         title: '<h3>' + upvoteNum + '</h3> people have upvoted <h3>' + tag + '</h3>',
+         title: '<h4>' + upvoteNum + '</h4> people have upvoted <h4>' + tag + '<h4>',
          message:'none',
          type:'none',
+         draggable: true,
+         closable:true,
          size:BootstrapDialog.SIZE_SMALL,
          cssClass:'upvoteList-dialog'
         });

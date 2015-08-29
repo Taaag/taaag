@@ -452,6 +452,7 @@
 
 .upvoteList-dialog {
     vertical-align: middle;
+    width:300px;
 }
 
 
@@ -461,6 +462,7 @@
 
 .modal-header{
     background-color: #303030;
+    color:#f7ca18;
 }
 
 
