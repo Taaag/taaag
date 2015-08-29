@@ -75,7 +75,7 @@
                                     console.log($('#tag-'+ (added[0])));
                                     console.log('tag-' + (added[0] - 1));
                                     $('#myCanvas').tagcanvas("tagtofront", {
-                                    id: 'tag-' + (added[0] - 1),
+                                    id: $('#myCanvas').find('li').last().attr('id'),
                                     active: true,
                                     time: 100
                                     });
