@@ -20,7 +20,7 @@ input:focus:-ms-input-placeholder {
 
 .table>tbody>tr>th{
 padding:0px;
-border: none;
+border: 0px;
 vertical-align:middle;
 }
 
