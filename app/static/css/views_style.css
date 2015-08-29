@@ -338,7 +338,6 @@
     width: 500px;
     height: 220px;
     background-color: #f7ca18;
-    color: white;
     overflow-y: scroll;
     /*  border-right: 10px solid  #ddd ;*/
 }
@@ -445,7 +444,6 @@
 
 .span-viewmore:hover {
     opacity: 0.4;
-    color: white;
 }
 
 .th-mytag-scroll {
