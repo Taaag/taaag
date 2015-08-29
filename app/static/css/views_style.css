@@ -455,8 +455,14 @@
 
 
 .upvoteList-dialog{
+    
+}
+
+.modal-dialog{
     vertical-align: middle;
 }
 
-
+.modal-header{
+    background-color: #303030;
+}
 
