@@ -364,8 +364,7 @@
 }
 
 .mytaglist-delete-btn {
-
-    font-size: 30px;
+    font-size: 15px;
     color: #303030;
     font-weight: bold;
     float: left;
@@ -451,6 +450,11 @@
 
 .th-mytag-scroll {
     width: 3%;
+}
+
+
+.upvoteList-dialog{
+    vertical-align: middle;
 }
 
 

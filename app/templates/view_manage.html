@@ -8,7 +8,7 @@
             {% for tag in tags %}
                 <tr class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
-                        <div class="mytaglist-delete-btn">x</div>
+                        <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
                     <th class="col-sm-1 th-upvote-num">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.taggers|length }}</div>
@@ -77,7 +77,9 @@
         BootstrapDialog.show({
          title: upvoteNum + ' people have upvoted ' + tag,
          message:'none',
-         type:'BootstrapDialog.TYPE_WARNING'
+         type: BootstrapDialog.TYPE_WARNING,
+         size:BootstrapDialog.SIZE_SMALL,
+         cssClass:'upvoteList-dialog'
         });
     });
   
