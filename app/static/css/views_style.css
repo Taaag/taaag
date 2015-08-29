@@ -454,6 +454,7 @@
      width:400px;
      margin:auto;
      margin-top:200px;
+     overflow-y:scroll;
 }
 
 .dialog-title{
