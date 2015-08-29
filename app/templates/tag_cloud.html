@@ -57,7 +57,7 @@
                                 if ($tag.length > 0) {
                                     $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
                                     $tag.addClass('tagged');
-                                    added.push($tag.attr('data-index'));
+                                    added.push($tag.attr('id').split('-')[1]);
                                 } else {
                                     var newList = "<li><a href='#' data-weight=1 id='tag-" + num +
                                             "' style='font-weight:bold;' " +
