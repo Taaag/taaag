@@ -456,6 +456,15 @@
 
 }
 
+.dialog-img{
+width: 20px;
+height: 20px;
+}
+
+.dialog-name{
+font-size: 15px;
+color: #303030;
+}
 
 
 
