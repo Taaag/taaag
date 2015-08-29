@@ -347,13 +347,12 @@
 
 .profile-taglist-table {
     height: auto;
-
-
+    border: none;
 }
 
 .my-tag-set {
     width: 480px;
-    height: 20px;
+    /*height: 20px;*/
     border-bottom: 1px dotted #f7ca18;
 }
 
@@ -382,23 +381,18 @@ text-align: center;
 }
 
 .mytag-upvote-circle {
-    height: 30px;
-
-    text-align: center;
-    /*  padding:10px 10px 0px 10px;*/
-}
-
-.mytag-upvote-num {
-    text-align: center;
     width: 30px;
     height: 30px;
     border-radius: 15px;
     background-color: #303030;
+    text-align: center;
+}
+
+.mytag-upvote-num {
     font-size: 15px; /*need to resize*/
     color: white;
     text-align: center;
     margin: auto;
-
 }
 
 .taglist-th-tn {
@@ -409,9 +403,7 @@ text-align: center;
 
 .mytag-tagname-font {
     font-size: 15px;
-    height: 30px;
-    color: #303030;
-    
+    color: #303030;   
 }
 
 
