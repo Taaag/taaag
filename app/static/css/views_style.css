@@ -429,5 +429,15 @@ text-align: center;
 width: 8%;
 }
 
+.img-viewmore{
+width:10px;
+height: 10px;
+}
+
+.img-viewmore:hover{
+    opacity: 0.5;
+    color: white;
+}
+
 
 
