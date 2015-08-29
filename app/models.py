@@ -39,7 +39,7 @@ class User(db.Model):
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
-        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created).with_entities(Tag.name, tagger).all()
+        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created.desc()).with_entities(Tag.name, tagger).all()
 
     def to_dict(self):
         return {'id': self.id, 'name': self.name}
