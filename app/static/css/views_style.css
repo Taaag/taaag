@@ -467,6 +467,7 @@
     vertical-align: middle;
     padding-left: 10px;
     margin-bottom: 0px;
+    overflow: hidden;
 }
 
 .bootstrap-dialog {
