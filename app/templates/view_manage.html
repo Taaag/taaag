@@ -65,14 +65,16 @@
             }
         });
     }
+    
 
+    var messagecontent = "";
    
    $('.span-viewmore').click(function () {
         var $row = $(this).closest('.my-tag-set');
         var tag = $row.find('.mytag-tagname-font').text();
         var upvoteNum = $row.find('.mytag-upvote-num').text();
         BootstrapDialog.show({
-         title: '<div style = "color:#f7ca18";' + upvoteNum + ' people have upvoted ' + tag + '<div>',
+         title: '' + upvoteNum + ' people have upvoted ' + tag + '',
          message:'none',
          type:'none',
          closable:true,
