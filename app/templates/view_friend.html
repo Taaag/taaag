@@ -29,7 +29,7 @@
         $(".tag-cloud-tag").each(function (index, value) {
             $(this).attr('data-name', $(this).text());
         }).dblclick(function (e) {
-            $(document).trigger("viewChanging", ["tag", {'name': $(this).text(), delimiter: []}]);
+            $(document).trigger("viewChanging", ["tag", {'name': $(this).text()}]);
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
@@ -40,7 +40,7 @@
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
-        $('#inputDescription').tagsInput({maxChars: 32});
+        $('#inputDescription').tagsInput({maxChars: 32, delimiter: [';']});
 
         $('#btnSubmit').click(function () {
             var tags = JSON.stringify($('#inputDescription').val());
