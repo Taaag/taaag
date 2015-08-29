@@ -1,35 +1,85 @@
 <script>
     $(function () {
-        var gradient = {
-            0: '#e74c3c',           // red
-            0.2: '#d2527f',
-            0.4: '#22a7f0',
-            0.6: '#1BBC9B',
-            0.8: '#16A085',        // orange
-            1: '#22313f' // black, but 90% transparent
-        };
+                var gradient = {
+                    0: '#e74c3c',           // red
+                    0.2: '#d2527f',
+                    0.4: '#22a7f0',
+                    0.6: '#1BBC9B',
+                    0.8: '#16A085',        // orange
+                    1: '#22313f' // black, but 90% transparent
+                };
 
-        $('#myCanvas').tagcanvas({
-            activeCursor: "pointer",
-            textColour: null,
-            weight: true,
-            reverse: true,
-            depth: 0.8,
-            maxSpeed: 0.02,
-            zoomMin: 0.5,
-            weightMode: "both",
-            weightGradient: gradient,
-            weightSizeMax: 40,
-            weightSizeMin: 15,
-            weightFrom: "data-weight",
-            centreImage: "https://graph.facebook.com/{{ uid }}/picture?type=normal",
-            // dragControl:true,
-            // dragThreshold:4,
-            textFont: 'Josefin Sans, sans-serif',
-            bgOutline: null,
-            fadeIn: 20,
-            outlineColour: "rgba(253,227,167,0.7)",
-            outlineMethod: "block"
-        }, 'tags');
-    });
+                $('#myCanvas').tagcanvas({
+                    activeCursor: "pointer",
+                    textColour: null,
+                    weight: true,
+                    reverse: true,
+                    depth: 0.8,
+                    maxSpeed: 0.02,
+                    zoomMin: 0.5,
+                    weightMode: "both",
+                    weightGradient: gradient,
+                    weightSizeMax: 40,
+                    weightSizeMin: 15,
+                    weightFrom: "data-weight",
+                    centreImage: "https://graph.facebook.com/{{ uid }}/picture?type=normal",
+                    // dragControl:true,
+                    // dragThreshold:4,
+                    textFont: 'Josefin Sans, sans-serif',
+                    bgOutline: null,
+                    fadeIn: 20,
+                    outlineColour: "rgba(253,227,167,0.7)",
+                    outlineMethod: "block"
+                }, 'tags');
+                $('#btnSubmit').click(function () {
+                    var tags = $('.profile-add-tag-input').val().split('☭');
+                    $.get('/api/add_tags', {
+                        taggee: "{{ friend.id }}",
+                        tags: JSON.stringify(tags)
+                    }, function (response) {
+                        if (response['succeed']) {
+                            if (response['response'].length < 1) {
+                                $.bootstrapGrowl("Oops, you have tagged 'em all!", {
+                                    align: 'center',
+                                    'type': 'warning'
+                                });
+                                return;
+                            }
+                            $.bootstrapGrowl("Successfully tagged as " + response['response'].join(", "), {
+                                align: 'center',
+                                'type': 'success'
+                            });
+                            var added = [];
+                            var num = $("#myCanvas").find('li').length;
+                            $.each(response['response'], function (index, value) {
+                                var $tag = $("#myCanvas").find('a[data-name="' + value + '"]');
+                                if ($tag.length > 0) {
+                                    $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
+                                    $tag.addClass('tagged');
+                                    added.push($tag.attr('data-index'));
+                                } else {
+                                    var newList = "<li><a href='#' data-weight=1 id='tag-" + num +
+                                            "' style='font-weight:bold;' " +
+                                            "class='tag-cloud-tag tagged'>" + value + "</a></li>";
+                                    console.log(newList);
+                                    $('#tag-list').append(newList);
+                                    added.push(num.toString());
+                                    num++;
+                                }
+                            });
+                            {#                    $('#myCanvas').tagcanvas("update");#}
+                            console.log(added);
+                            $('#myCanvas').tagcanvas("tagtofront", {
+                                id: 'tag-' + added[0],
+                                active: 'true',
+                                time: '100'
+                            });
+                            $('.profile-add-tag-input').importTags('');
+                        } else {
+                            {#                    $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});#}
+                        }
+                    });
+                });
+            }
+    );
 </script>
