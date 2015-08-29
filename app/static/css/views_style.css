@@ -208,11 +208,12 @@
     overflow-y: auto;
     width: 490px;
     height: 300px;
-    background-color: white;
+    background-color: #f7ca18;
 }
 
 .tagchart-table {
     height: auto;
+    background-color: white;
 }
 
 /*.chart-scrollbar {
@@ -377,7 +378,7 @@ text-align: center;
 
 
 .th-upvote-num{
-    padding-left:2px;
+    ;
     
 }
 
@@ -399,8 +400,7 @@ text-align: center;
 
 .taglist-th-tn {
     width: 250px;
-    border-right: 2px dotted #f7ca18;  
-    
+    border-right: 1px dotted #f7ca18;  
 }
 
 .mytag-tagname-font {
@@ -418,8 +418,7 @@ text-align: center;
     width: 25px;
     height: 25px;
     background-color: #303030;
-    float: right;
-   
+    float: right;  
 }
 
 
