@@ -347,6 +347,7 @@
 
 
 .profile-taglist-table {
+    width: 500px;
     height: auto;
     border: none;
     background-color: white;
@@ -426,16 +427,16 @@ text-align: center;
 }
 
 .th-mytag-viewmore{
-width: 5%;
+width: 6%;
 }
 
 .img-viewmore{
-width:10px;
-height: 10px;
+width:4%;
+
 }
 
 .img-viewmore:hover{
-    opacity: 0.5;
+    opacity: 0.4;
     color: white;
 }
 
