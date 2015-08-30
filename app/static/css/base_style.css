@@ -142,7 +142,7 @@ opacity: 0.8;
     color: white;
     padding: 0;
     vertical-align: middle;
-
+    width: 70px;
 }
 
 
@@ -155,14 +155,6 @@ opacity: 0.8;
 
 }
 
-
-.fb-share-btn {
-    width: 70px;
-}
-.fb-like-btn {
-    display: inline-block;
-    width: 70px;
-}
 
 .content-area {
     width: 100%;
@@ -180,17 +172,6 @@ opacity: 0.8;
 .tt-menu {
     width: 200px;
 }
-
-#back-btn{
-  width: 70px;  
-}
-
-#back-btn:hover{
-
-    background-color: #303030;
-    opacity: 0.8;
-}
-
 
 /*dont delete*/
 .icon-open{
