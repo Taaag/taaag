@@ -123,19 +123,23 @@ body {
 }
 
 .fb-btn {
-    background-color: #3b5998;
+    background-color: #303030;
     height: 30px;
     border-radius: 5px;
     border: none;
     outline: none;
-    color: #FFFFFF;
+    /*color: #F7CA18;*/
     padding: 0;
 
 }
 
+
+
 .fb-btn:hover{
-    opacity:0.8;
+    
+    background-color:#3b5998;
     color:white;
+
 }
 
 .fb-share-btn {
