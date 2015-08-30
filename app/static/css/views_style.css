@@ -530,13 +530,14 @@ span.friendlist-friendname span {
 }
 
 .select2-container {
-    border-radius: 10px 0 0 10px;
+    /*border-radius: 10px 0 0 10px;*/
     width: 75%;
     height: 100%;
     overflow-x: hidden;
 }
 
 .select2-selection {
+    border: 0;
     height: 100%;
     overflow-y: scroll;
 }
