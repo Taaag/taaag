@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="profile-selectbar">
-            <input class="profile-add-tag-input" id="inputDescription" placeholder="Add more tag..."/>
+            <select class="profile-add-tag-input" id="inputDescription"></select>
             <button type="button" class="btn btn-warning" id="btnSubmit">Submit</button>
         </div>
     </div>
@@ -35,18 +35,37 @@
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-            if (!$('.profile-add-tag-input').tagExist($(this).text())) {
-                $('.profile-add-tag-input').addTag($(this).text());
+            if ($('#inputDescription').val().indexOf($(this).text()) == -1) {
+                var tags = $('#inputDescription').val();
+                tags.push($(this).text());
+                $('#inputDescription').val(tags).trigger("change");
             }
         });
         $(".tag-cloud-tag.tagged").click(function (e) {
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
-        $('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭'], width: "75%", height: "100%"});
+        //$('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭'], width: "75%", height: "100%"});
+        $('#inputDescription').select2({
+            tags: true,
+            ajax: {
+                url: '/api/search_tags',
+                data: function (params) {
+                    var queryParameters = {
+                        keyword: params.term
+                    };
+                    return queryParameters;
+                },
+                processResults: function (data) {
+                    return {
+                        results: data['response']
+                    };
+                }
+            }
+        });
 
         $('#btnSubmit').click(function () {
-            var tags = $('.profile-add-tag-input').val().split('☭');
+            var tags = $('#inputDescription').val();
             $.get('/api/add_tags', {
                 taggee: "{{ friend.id }}",
                 tags: JSON.stringify(tags)
@@ -88,7 +107,7 @@
                             'id': id,
                             active: true,
                             time: 500,
-                            callback: function(){
+                            callback: function () {
                                 $('#' + id).removeAttr('id');
                             }
                         });
@@ -99,7 +118,7 @@
 
                     setTimeout(moveUpdatedTagToFront, 100);
 
-                    $('.profile-add-tag-input').importTags('');
+                    $('.profile-add-tag-input').val(null).trigger("change");
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
