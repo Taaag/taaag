@@ -20,7 +20,13 @@
 
     <div class="row">
         <div class="profile-selectbar">
-            <select class="profile-add-tag-input" id="inputDescription" multiple="multiple"></select>
+            <select class="profile-add-tag-input" id="inputDescription" multiple="multiple">
+                {% for key, value in tags.items() %}
+                    {% if not value[1] %}
+                        <option>{{ key }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
             <button type="button" class="btn btn-warning" id="btnSubmit">Submit</button>
         </div>
     </div>
@@ -60,7 +66,8 @@
                     return {
                         results: data['response']
                     };
-                }
+                },
+                cache: true
             }
         });
 
