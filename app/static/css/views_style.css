@@ -66,7 +66,7 @@
     }
 }
 
-.friendlist-title{
+#friendlist-title{
     outline: none;
     background-color: white;
     height: 55px;
@@ -103,7 +103,8 @@
 }
 
 .friendlist-friend:hover{
-    opacity: 0.8;
+    opacity: 0.3;
+    background: #303030;
 
 }
 
