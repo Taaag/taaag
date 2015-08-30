@@ -117,8 +117,8 @@ span.friendlist-friendname {
   left: 0;
   position: absolute;
   top: 0;
-  width: 150px;
-  opacity: 0;
+  width: 120px;
+  /*opacity: 0;*/
   -webkit-transition: opacity 500ms;
   -moz-transition: opacity 500ms;
   -o-transition: opacity 500ms;
@@ -132,7 +132,7 @@ span.friendlist-friendname span {
 }
 
 .friendlist-friend:hover span.friendlist-friendname{
-    opacity: 1;
+   opacity: 1;
 }
 
 
