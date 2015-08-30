@@ -7,7 +7,7 @@
         <div class="friendlist-box">
             <table>
                 <tbody>
-                {% for friend_row in friends|slice(3) %}
+                {% for friend_row in friends|batch(3) %}
                     <tr>
                         {% for friend in friend_row %}
                             <td>
