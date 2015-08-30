@@ -1,4 +1,5 @@
 import json
+from itertools import groupby
 
 import sqlalchemy
 from app.views import render_template
@@ -26,7 +27,7 @@ def api_tag_search(user, payload):
     if not payload.get('keyword', ''):
         return []
     result = [_.name for _ in Tag.query_tags_by_name(payload['keyword']) or [] if _.name != payload['keyword']]
-    return result
+    return [e for e, _ in groupby(result)]
 
 
 # Debug purpose
