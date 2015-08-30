@@ -44,6 +44,13 @@
                 loadView(data[0], data[1]);
             }
         });
+        $('#forward-btn').click(function () {
+            if (futureStack.length > 0) {
+                var data = futureStack.pop();
+                historyStack.push(data);
+                loadView(data[0], data[1]);
+            }
+        });
         $('#like-btn').click(function () {
             FB.ui({
                 method: 'share_open_graph',
