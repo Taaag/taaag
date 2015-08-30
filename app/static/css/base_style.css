@@ -104,11 +104,11 @@ body {
 .icon-btn {
     width: 60px;
     height: 60px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .icon-btn:hover{
-opacity: 0.8;
+opacity: 0.7;
 
 }
 
@@ -186,20 +186,7 @@ opacity: 0.8;
     opacity: 0.8;
 }
 
+
+/*dont delete*/
 .icon-open{
-
-
 }
-
-  /* Tooltip */
-  .test + .tooltip > .tooltip-inner {
-      background-color: #303030; 
-      color: #FFFFFF; 
-      border: 1px solid white; 
-      padding: 5px;
-      font-size: 10px;
-  }
-  /* Tooltip on top */
-  .test + .tooltip.top > .tooltip-arrow {
-      border-top: 5px solid white;
-  }
