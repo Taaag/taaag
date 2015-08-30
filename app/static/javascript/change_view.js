@@ -32,6 +32,9 @@
         $('#menu-settings').click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
         });
+        $('#menu-friends').click(function () {
+            $(document).trigger("viewChanging", ["friends", {}]);
+        });
         $('#back-btn').click(function () {
             if (historyStack.length > 0) {
                 var data = historyStack.pop();
@@ -49,7 +52,8 @@
             });
         });
         $('#invite-btn').click(function () {
-            FB.ui({method: 'apprequests',
+            FB.ui({
+                method: 'apprequests',
                 filters: ['app_non_users'],
                 message: 'Come and join Taaag to tag your friends!'
             }, function (response) {
