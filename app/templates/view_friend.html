@@ -64,7 +64,9 @@
                 },
                 processResults: function (data) {
                     return {
-                        results: data['response']
+                        results: data['response'].map(function (_, e) {
+                            return {name: e, id: e};
+                        })
                     };
                 },
                 cache: true
