@@ -12,6 +12,8 @@
                         {% for friend in friend_row %}
                             <td>
                                 <img class="friendlist-friend" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"></img>
+                                <figcaption><p>{{friend.name}}<p></figcaption>
+
                             </td>
                         {% endfor %}
                     </tr>

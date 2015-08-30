@@ -107,6 +107,25 @@
 
 }
 
+.friendlist-box figcaption p{  
+    background: rgba(108,119,236,0.1);
+    color: white;
+    display: table;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: 100;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    transition-delay: 100ms;
+}
+
 .profile {
 
     text-align: center;
@@ -522,4 +541,8 @@
 .tagsinput {
     display: inline-block;
     border-radius: 10px 0 0 10px;
+}
+
+.hover_friendname{
+    display:none;
 }
