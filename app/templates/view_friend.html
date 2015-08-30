@@ -64,7 +64,7 @@
                 },
                 processResults: function (data) {
                     var results =  {
-                        results: data['response'].map(function (_, e) {
+                        results: data['response'].map(function (e, _) {
                             return {text: e, id: e};
                         })
                     };
