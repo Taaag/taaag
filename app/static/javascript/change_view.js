@@ -71,5 +71,9 @@
                 $.bootstrapGrowl('Successfully invited ' + response.to.length.toString() + ' friends.');
             });
         });
+        $('.friendlist-friend').click(function() {
+            var uid = $(this).attr('data-uid');
+            $(document).trigger('viewChanging', ['friend', uid])
+        });
     });
 }(jQuery));
