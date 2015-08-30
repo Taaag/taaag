@@ -533,9 +533,10 @@ span.friendlist-friendname span {
 
 .profile-selectbar>.select2-container {
     /*border-radius: 10px 0 0 10px;*/
-    width: 74%;
+    width: 75%;
     height: 100%;
     overflow-x: hidden;
+    font-size: 20px;
 }
 
 .select2-selection {
