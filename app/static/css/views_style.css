@@ -66,7 +66,7 @@
     }
 }
 
-#friendlist-title{
+#friendlist-title {
     outline: none;
     font-weight: bold;
     text-align: center;
@@ -74,7 +74,7 @@
     margin-bottom: 10px;
     margin-top: 25px;
     border: none;
-    color:#303030;
+    color: #303030;
 }
 
 .friendlist-box {
@@ -83,7 +83,7 @@
     background-color: white;
     margin: 20px auto;
     padding: 10px;
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 /*.friendlist-box-shadow{
@@ -101,40 +101,38 @@
     cursor: pointer;
 }
 
-.friendlist-friend:hover{
+.friendlist-friend:hover {
     opacity: 0.3;
     background: #303030;
-
 
 }
 
 span.friendlist-friendname {
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  display: table;
-  height: 120px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 120px;
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    display: table;
+    height: 120px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 120px;
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
 }
 
 span.friendlist-friendname span {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 
-.friendlist-friend:hover span.friendlist-friendname span{
-   opacity: 1;
+.friendlist-friend:hover span.friendlist-friendname span {
+    opacity: 1;
 }
-
 
 .profile {
 
@@ -162,19 +160,6 @@ span.friendlist-friendname span {
     margin: auto;
     border-radius: 10px;
     background-color: #FFFF99;
-    font-size: 0;
-}
-
-.bootstrap-tagsinput {
-    text-align: left;
-    height: 100%;
-    width: 75%;
-    margin: 0;
-    font-size: 20px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: transparent;
-    overflow: scroll;
 }
 
 #btnSubmit {
@@ -214,7 +199,7 @@ span.friendlist-friendname span {
     outline: none;
     border: none;
     text-align: center;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 #manage-to-view-btn {
@@ -484,16 +469,16 @@ span.friendlist-friendname span {
 }
 
 .upvoteList-dialog {
-     padding-top: 200px;
-     overflow-y:scroll;
+    padding-top: 200px;
+    overflow-y: scroll;
 }
 
-.dialog-set{
+.dialog-set {
     border-bottom: 1px dotted #f7ca18;
 }
 
-.dialog-title{
-    color:#f7ca18;
+.dialog-title {
+    color: #f7ca18;
     overflow: hidden;
     font-size: 15px;
     margin-bottom: 0px;
@@ -502,10 +487,9 @@ span.friendlist-friendname span {
 .dialog-img {
     width: 25px;
     height: 25px;
-    margin:5px;
+    margin: 5px;
     border-radius: 20px;
 }
-
 
 .dialog-name {
     font-size: 15px;
@@ -517,7 +501,7 @@ span.friendlist-friendname span {
 }
 
 .bootstrap-dialog {
-   overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 .bootstrap-dialog-title {
@@ -553,6 +537,6 @@ span.friendlist-friendname span {
     border-radius: 10px 0 0 10px;
 }
 
-.hover_friendname{
-    display:none;
+.hover_friendname {
+    display: none;
 }
