@@ -41,18 +41,15 @@
         $('#back-btn').click(function () {
             if (historyStack.length > 0) {
                 var data = historyStack.pop();
-                futureStack.push(data);
-                console.log(futureStack);
+                futureStack.push(currentView);
                 loadView(data[0], data[1]);
             }
         });
         $('#forward-btn').click(function () {
             if (futureStack.length > 0) {
                 var data = futureStack.pop();
-                historyStack.push(data);
+                historyStack.push(currentView);
                 loadView(data[0], data[1]);
-            } else {
-                console.log(futureStack);
             }
         });
         $('#like-btn').click(function () {
