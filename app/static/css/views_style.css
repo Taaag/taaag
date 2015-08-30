@@ -66,18 +66,16 @@
     }
 }
 
-.friendlist-input {
+.friendlist-title{
     outline: none;
     background-color: white;
     height: 55px;
-    width: 350px;
     text-align: center;
     font-size: 25px;
     margin-bottom: 15px;
     margin-top: 25px;
     border: none;
-    outline: none;
-    border-radius: 5px;
+    color:#303030;
 }
 
 .friendlist-box {
@@ -87,7 +85,6 @@
     margin: 20px auto;
     padding: 10px;
     overflow-y:scroll;
-
 }
 
 /*.friendlist-box-shadow{
