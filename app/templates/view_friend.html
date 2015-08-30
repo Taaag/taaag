@@ -35,8 +35,8 @@
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-            if ($('#inputDescription').val().indexOf($(this).text()) == -1) {
-                var tags = $('#inputDescription').val();
+            var tags = $('#inputDescription').val() || [];
+            if (tags.indexOf($(this).text()) == -1) {
                 tags.push($(this).text());
                 $('#inputDescription').val(tags).trigger("change");
             }
