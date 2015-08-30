@@ -83,6 +83,10 @@ body {
     padding: 0;
 }
 
+#logo:hover{
+opacity: 0.8;
+}
+
 .input-search {
     height: 100px;
     text-align: right;
