@@ -191,4 +191,15 @@ opacity: 0.8;
 
 }
 
-.icon-open:tooltip;
+  /* Tooltip */
+  .test + .tooltip > .tooltip-inner {
+      background-color: #303030; 
+      color: #FFFFFF; 
+      border: 1px solid white; 
+      padding: 5px;
+      font-size: 10px;
+  }
+  /* Tooltip on top */
+  .test + .tooltip.top > .tooltip-arrow {
+      border-top: 5px solid white;
+  }
