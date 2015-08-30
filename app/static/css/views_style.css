@@ -529,7 +529,7 @@ span.friendlist-friendname span {
     display: none;
 }
 
-.select2-container--default {
+.profile-selectbar>.select2-container {
     /*border-radius: 10px 0 0 10px;*/
     width: 74%;
     height: 100%;
