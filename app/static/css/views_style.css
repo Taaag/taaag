@@ -170,8 +170,6 @@ span.friendlist-friendname span {
     font-size: 20px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    top: -45px;
-    position: relative;
 }
 
 .profile-add-tag-input {
@@ -529,4 +527,16 @@ span.friendlist-friendname span {
 
 .hover_friendname {
     display: none;
+}
+
+.select2-container {
+    border-radius: 10px 0 0 10px;
+    width: 75%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.select2-selection {
+    height: 100%;
+    overflow-y: scroll;
 }
