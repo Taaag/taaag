@@ -110,9 +110,9 @@
         <div id="menu">
             <div class="icon-btn" id="icon-top"><img src="/static/images/iconmenu.jpg" alter="menu"></div>
             <div id="menu-items">
-                <div class="icon-btn to-home"><img src="/static/images/iconhouse.png" alter="home"></div>
-                <div class="icon-btn" id="menu-me"><img src="/static/images/iconme.png" alter="me"></div>
-                <div class="icon-btn" id="menu-settings"><img src="/static/images/iconsettings.png" alter="settings"></div>
+                <div class="icon-btn to-home" ><img class = "icon-open" src="/static/images/iconhouse.png" alter="home" data-toggle="tooltip" data-placement="bottom" title = "home"></div>
+                <div class="icon-btn" id="menu-me"><img  class = "icon-open" src="/static/images/iconme.png" alter="me" data-toggle="tooltip" data-placement="bottom" title = "me" ></div>
+                <div class="icon-btn" id="menu-settings"><img  class = "icon-open" src="/static/images/iconsettings.png" alter="settings" data-toggle="tooltip" data-placement="bottom" title = "settings"></div>
             </div>
         </div>
     </div>
@@ -134,6 +134,10 @@
     // document.getElementById('logout').onclick = function() {
     //     FB.logout(function(response) { });
     // };
+
+$(document).ready(function(){
+    $('.icon-open').tooltip(); 
+});
 
 
 </script>
