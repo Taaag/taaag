@@ -115,7 +115,7 @@ class Tag(db.Model):
     def query_tags_by_name(cls, name):
         name = name.strip().lower()
         if name:
-            return cls.query.filter(cls.name.like('%' + name + '%')).all()
+            return cls.query.filter(cls.name.like('%' + name + '%')).order_by(cls.name).all()
         else:
             return None
 

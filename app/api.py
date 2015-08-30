@@ -28,7 +28,6 @@ def api_tag_search(user, payload):
         return []
     result = [_.name for _ in Tag.query_tags_by_name(payload['keyword']) or []]
     result.remove(payload['keyword'])
-    result.sort()
     return result
 
 
