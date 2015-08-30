@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="profile-selectbar">
-            <select class="profile-add-tag-input" id="inputDescription" multiple="multiple">
+            <select id="inputDescription" multiple="multiple">
                 {% for key, value in tags.items() %}
                     {% if not value[1] %}
                         <option>{{ key }}</option>
