@@ -20,6 +20,7 @@
     $(document).on("viewChanging", function (event, view, data) {
         historyStack.push(currentView);
         futureStack.clear();
+        console.log(futureStack);
         loadView(view, data);
     });
 
@@ -41,6 +42,7 @@
             if (historyStack.length > 0) {
                 var data = historyStack.pop();
                 futureStack.push(data);
+                console.log(futureStack);
                 loadView(data[0], data[1]);
             }
         });
@@ -49,6 +51,8 @@
                 var data = futureStack.pop();
                 historyStack.push(data);
                 loadView(data[0], data[1]);
+            } else {
+                console.log(futureStack);
             }
         });
         $('#like-btn').click(function () {
