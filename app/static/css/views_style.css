@@ -173,7 +173,7 @@ span.friendlist-friendname span {
 }
 
 .profile-add-tag-input {
-    width: 75%;
+    width: 74%;
     height: 100%;
 }
 
@@ -531,7 +531,6 @@ span.friendlist-friendname span {
 
 .select2-container {
     /*border-radius: 10px 0 0 10px;*/
-    width: 74%;
     height: 100%;
     overflow-x: hidden;
 }
