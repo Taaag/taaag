@@ -19,7 +19,7 @@
 
     $(document).on("viewChanging", function (event, view, data) {
         historyStack.push(currentView);
-        futureStack.clear();
+        futureStack = [];
         console.log(futureStack);
         loadView(view, data);
     });
