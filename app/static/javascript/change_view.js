@@ -4,6 +4,7 @@
     var loading = '<div class="spinner"></div>';
 
     var historyStack = [];
+    var futureStack = [];
     var currentView;
 
     function loadView(view, data) {
@@ -18,6 +19,7 @@
 
     $(document).on("viewChanging", function (event, view, data) {
         historyStack.push(currentView);
+        futureStack.clear();
         loadView(view, data);
     });
 
@@ -38,6 +40,14 @@
         $('#back-btn').click(function () {
             if (historyStack.length > 0) {
                 var data = historyStack.pop();
+                futureStack.push(data);
+                loadView(data[0], data[1]);
+            }
+        });
+        $('#forward-btn').click(function () {
+            if (futureStack.length > 0) {
+                var data = futureStack.pop();
+                historyStack.push(data);
                 loadView(data[0], data[1]);
             }
         });
