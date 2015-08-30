@@ -52,6 +52,7 @@
         $(".mytag-img").click(function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
         }).tooltip({placement: "bottom", container: "body"});
+        
 
         $('.mytaglist-delete-btn').click(function () {
             var $row = $(this).closest('.my-tag-set');
