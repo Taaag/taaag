@@ -119,6 +119,10 @@ span.friendlist-friendname {
   top: 0;
   width: 150px;
   opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
 }
 
 span.friendlist-friendname span {
