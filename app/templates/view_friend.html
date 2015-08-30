@@ -63,11 +63,12 @@
                     return queryParameters;
                 },
                 processResults: function (data) {
-                    return {
+                    var results =  {
                         results: data['response'].map(function (_, e) {
-                            return {name: e, id: e};
+                            return {text: e, id: e};
                         })
                     };
+                    return results;
                 },
                 cache: true
             }
