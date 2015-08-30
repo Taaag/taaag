@@ -40,37 +40,38 @@
 
 </div>
 <div class="row tagrank">
-        <button id="manage-to-view-btn">Check out your tag cloud!</button>
+    <button id="manage-to-view-btn">Check out your tag cloud!</button>
 </div>
 
 <script>
     $(function () {
-        $('#manage-to-view-btn').click(function() {
+        $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
         });
-        
+
         $(".mytag-img").click(function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
         }).tooltip({placement: "bottom", container: "body"});
-        
+
 
         $('.mytaglist-delete-btn').click(function () {
             var $row = $(this).closest('.my-tag-set');
             var tag = $row.find('.mytag-tagname-font').text();
-            BootstrapDialog.confirm(     
-            {
-            title:'Detele',
-            type: 'none', 
-            message:"<h4> Are you sure to delete " + tag + "? </h4>", 
-            size: BootstrapDialog.SIZE_SMALL,
-            closable: true,      
-            callback:function (result) {
-                if (result) {
-                    deleteTag(tag, $row);
-                }
-            }
+            BootstrapDialog.confirm(
+                    {
+                        title: 'Detele',
+                        type: 'none',
+                        message: "<h4> Are you sure to delete " + tag + "? </h4>",
+                        size: BootstrapDialog.SIZE_SMALL,
+                        closable: true,
+                        closeByBackdrop: true,
+                        callback: function (result) {
+                            if (result) {
+                                deleteTag(tag, $row);
+                            }
+                        }
 
-            });
+                    });
         });
 
         function deleteTag(tag, $row) {
@@ -86,31 +87,31 @@
 
         var tagger_array = {{ tags|tojson }}
 
-        $('.span-viewmore').click(function () {
-            var $row = $(this).closest('.my-tag-set');
-            var tag = $row.find('.mytag-tagname-font').text();
-            var upvoteNum = $row.find('.mytag-upvote-num').text();
-            var index = parseInt($(this).attr('data-index'));
-            var taggers = tagger_array[index]['taggers'];
-            var msg = '<table><tbody>';
-            $.each(taggers, function(index, tagger) {
-                msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
-                        'src="https://graph.facebook.com/' + tagger.id +
-                        '/picture"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
-                        '</p></td></tr>';
-            });
-            msg += '</tbody></table>';
-            BootstrapDialog.show({
-                title:'<p class = "dialog-title">' + upvoteNum + ' people have upvoted ' + tag + ' </p>',
-                message: msg,
-                type: 'none',
-                closable: true,
-                size: BootstrapDialog.SIZE_SMALL,
-                cssClass: 'upvoteList-dialog'
-            });
-        });
+                $('.span-viewmore').click(function () {
+                    var $row = $(this).closest('.my-tag-set');
+                    var tag = $row.find('.mytag-tagname-font').text();
+                    var upvoteNum = $row.find('.mytag-upvote-num').text();
+                    var index = parseInt($(this).attr('data-index'));
+                    var taggers = tagger_array[index]['taggers'];
+                    var msg = '<table><tbody>';
+                    $.each(taggers, function (index, tagger) {
+                        msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
+                                'src="https://graph.facebook.com/' + tagger.id +
+                                '/picture"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
+                                '</p></td></tr>';
+                    });
+                    msg += '</tbody></table>';
+                    BootstrapDialog.show({
+                        title: '<p class = "dialog-title">' + upvoteNum + ' people have upvoted ' + tag + ' </p>',
+                        message: msg,
+                        type: 'none',
+                        closable: true,
+                        closeByBackdrop: true,
+                        size: BootstrapDialog.SIZE_SMALL,
+                        cssClass: 'upvoteList-dialog'
+                    });
+                });
     });
-
 
 
 </script>
