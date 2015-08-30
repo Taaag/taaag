@@ -2,7 +2,7 @@ from datetime import datetime
 
 from app import db
 from app.enums import UserPrivacy
-from app.utils import is_friend_of, get_user_friends
+from app.utils import is_friend_of, get_user_friends, has_friends_permission
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 from sqlalchemy.exc import IntegrityError
@@ -30,6 +30,9 @@ class User(db.Model):
 
     # def get_tags(self):
     # return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
+
+    def friends_api_authorized(self):
+        return has_friends_permission(self)
 
     def get_friends(self):
         return [_ for _ in get_user_friends(self) if User.get_by_id(_['id'])]
