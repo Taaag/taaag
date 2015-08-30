@@ -83,10 +83,14 @@
                     $('#myCanvas').tagcanvas("update");
 
                     function moveUpdatedTagToFront() {
+                        var id = idsToMove.shift();
                         $('#myCanvas').tagcanvas("tagtofront", {
-                            'id': idsToMove.shift(),
+                            'id': id,
                             active: true,
-                            time: 500
+                            time: 500,
+                            callback: function(){
+                                $('#' + id).removeAttr('id');
+                            }
                         });
                         if (idsToMove.length > 0) {
                             setTimeout(moveUpdatedTagToFront, 1500);
