@@ -98,7 +98,7 @@ class Tag(db.Model):
         return {'id': self.id, 'name': self.name}
 
     def get_taggees(self):
-        taggees = self.taggees.with_entities(User, func.count(Tagging.id).label('votes')).\
+        taggees = self.taggees.with_entities(User, func.count(Tagging.id).label('votes')). \
             group_by(User.id).order_by('votes DESC').all()
         if not taggees:
             db.session.delete(self)
@@ -106,8 +106,8 @@ class Tag(db.Model):
         return taggees
 
     def get_taggees_filtered(self, friends_list):
-        taggees = self.taggees.filter(User.id.in_(friends_list)).\
-            with_entities(User, func.count(Tagging.id).label('votes')).\
+        taggees = self.taggees.filter(User.id.in_(friends_list)). \
+            with_entities(User, func.count(Tagging.id).label('votes')). \
             group_by(User.id).order_by('votes DESC').all()
         return taggees
 
@@ -115,7 +115,8 @@ class Tag(db.Model):
     def query_tags_by_name(cls, name):
         name = name.strip().lower()
         if name:
-            return cls.query.filter(cls.name.like('%' + name + '%')).order_by(cls.name).all()
+            return cls.query.filter(cls.name.like(name + '%')).sort_by(cls.name).all() + \
+                   cls.query.filter(cls.name.like('% ' + name + '%')).sort_by(cls.name).all()
         else:
             return None
 
@@ -130,7 +131,8 @@ class Tag(db.Model):
 
     @classmethod
     def all_tags_filtered(cls, friends_list):
-        return [_[1] for _ in db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(Tagging.tag_id).join(cls, Tagging.tag_id == Tag.id).all()]
+        return [_[1] for _ in db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(Tagging.tag_id).join(cls,
+                                                                                                                                                   Tagging.tag_id == Tag.id).all()]
 
     @classmethod
     def all_tags(cls):
@@ -165,7 +167,7 @@ class Tag(db.Model):
 
     @classmethod
     def get_by_tagger_and_taggee(cls, tagger_id, taggee_id):
-        return cls.query.join(Tagging, Tagging.tag_id == Tag.id).filter(Tagging.tagger_id == tagger_id).\
+        return cls.query.join(Tagging, Tagging.tag_id == Tag.id).filter(Tagging.tagger_id == tagger_id). \
             filter(Tagging.taggee_id == taggee_id).with_entities(Tag.name).all()
 
 
