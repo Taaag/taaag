@@ -172,7 +172,7 @@ body {
   width: 70px;  
 }
 
-#back-btn{
+#back-btn:hover{
 
     background-color: #303030;
     opacity: 0.8;
