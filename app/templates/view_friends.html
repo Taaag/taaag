@@ -11,7 +11,7 @@
                     <tr>
                         {% for friend in friend_row %}
                             <td>
-                                <div class="friendlist-friend"> {{ friend.name }}</div>
+                                <div class="friendlist-friend"> {{ friend.name }} {{ friend_row|length }} </div>
                             </td>
                         {% endfor %}
                     </tr>
