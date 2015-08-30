@@ -33,6 +33,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #F7CA18;
     margin: auto;
+    overflow-x:hidden;
 }
 
 .no-padding {
