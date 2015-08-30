@@ -109,7 +109,7 @@
 }
 
 span.friendlist-friendname {
-  background: rgba(0,0,0,0.5);
+  background: transparent;
   color: white;
   cursor: pointer;
   display: table;
@@ -131,7 +131,7 @@ span.friendlist-friendname span {
   vertical-align: middle;
 }
 
-.friendlist-friend:hover span.friendlist-friendname{
+.friendlist-friend:hover span.friendlist-friendname span{
    opacity: 1;
 }
 
