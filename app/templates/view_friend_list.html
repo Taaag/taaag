@@ -1,35 +1,23 @@
-<div id="view-tag" class="view">
+<div id="view-friends" class="view">
     <div class="row">
-        <div>People tagged as {{ tag }}</div>
-{#        <input class="friendlist-input" placeholder="Search Your Friends..."> </input>#}
+        <div>Friends List</div>
+        {#        <input class="friendlist-input" placeholder="Search Your Friends..."> </input>#}
     </div>
     <div class="row">
         <div class="friendlist-box">
-
             <table>
-                    <tbody>
-                        <tr>
+                <tbody>
+                {% for friend_row in friends|slice(3) %}
+                    <tr>
+                        {% for friend in friend_row %}
                             <td>
-                                <div class = "friendlist-friend"></div>
+                                <div class="friendlist-friend"></div>
                             <td>
-                            <td>
-                                <div class = "friendlist-friend"></div>
-                            <td>
-                            <td>
-                                <div class = "friendlist-friend"></div>
-                            <td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class = "friendlist-friend"></div>
-                            <td>
-                            <td>
-                                <div class = "friendlist-friend"></div>
-                            <td>
-                            <td>
-                                <div class = "friendlist-friend"></div>
-                            <td>
-                </tr>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
