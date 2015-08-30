@@ -38,3 +38,13 @@ def clear_friends_cache(user):
     friends = get_user_friends(user)
     for friend in friends:
         mc.delete(get_friends_key(friend['id']))
+
+
+def has_friends_permission(user):
+    graph = facebook.GraphAPI(user.access_token)
+    for i in graph.get_connections("me", "permissions")['data']:
+        if i['permission'] == 'user_friends' and i['status'] == 'granted':
+            return True
+    return False
+
+
