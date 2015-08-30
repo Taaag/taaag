@@ -374,7 +374,8 @@
     text-align: center;
     margin: auto;
     margin: 5px;
-    vertical-align: middle;;
+    vertical-align: middle;
+    cursor: pointer;
 }
 
 .th-upvote-num {
