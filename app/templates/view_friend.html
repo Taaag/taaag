@@ -76,7 +76,8 @@
                     return results;
                 },
                 cache: true
-            }
+            },
+            selectOnClose: true
         });
 
         $('.select2-search__field').keypress(function (e) {
@@ -88,12 +89,6 @@
 
         $('#btnSubmit').click(function () {
             var tags = $('#inputDescription').val() || [];
-            var potentialNewTag = $('.select2-search__field').val();
-            console.log(potentialNewTag);
-            if (potentialNewTag != '' && tags.indexOf(potentialNewTag) == -1) {
-                tags.push(potentialNewTag);
-                insertNewTag(potentialNewTag);
-            }
             $.get('/api/add_tags', {
                 taggee: "{{ friend.id }}",
                 tags: JSON.stringify(tags)
