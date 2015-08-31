@@ -1,5 +1,7 @@
 import json
 
+from collections import OrderedDict
+
 import sqlalchemy
 from app.views import render_template
 from app.models import User, Tag, Tagging
@@ -26,7 +28,7 @@ def api_tag_search(user, payload):
     if not payload.get('keyword', ''):
         return []
     result = [_.name for _ in Tag.query_tags_by_name(payload['keyword']) or [] if _.name != payload['keyword']]
-    return result
+    return list(OrderedDict.fromkeys(result))
 
 
 # Debug purpose

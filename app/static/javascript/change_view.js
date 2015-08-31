@@ -20,7 +20,6 @@
     $(document).on("viewChanging", function (event, view, data) {
         historyStack.push(currentView);
         futureStack = [];
-        console.log(futureStack);
         loadView(view, data);
     });
 
