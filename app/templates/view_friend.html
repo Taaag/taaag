@@ -79,6 +79,13 @@
             }
         });
 
+        $('.select2-search__field').keypress(function (e) {
+            var key = e.which;
+            if (key == 13 && $(this).val() == '') {
+                $('#btnSubmit').trigger('click');
+            }
+        });
+
         $('#btnSubmit').click(function () {
             if ($('.select2-search__field').val() != '') {
                 insertNewTag($('.select2-search__field').val());
