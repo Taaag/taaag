@@ -41,15 +41,19 @@
         });
 
         $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-            var tags = $('#inputDescription').val() || [];
-            if (tags.indexOf($(this).text()) == -1) {
-                tags.push($(this).text());
-                $('#inputDescription').val(tags).trigger("change");
-            }
+            insertNewTag($(this).text());
         });
         $(".tag-cloud-tag.tagged").click(function (e) {
             $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
+
+        function insertNewTag(text) {
+            var tags = $('#inputDescription').val() || [];
+            if (tags.indexOf(text) == -1) {
+                tags.push(text);
+                $('#inputDescription').val(tags).trigger("change");
+            }
+        }
 
         //$('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭'], width: "75%", height: "100%"});
         $('#inputDescription').select2({
@@ -64,19 +68,21 @@
                     return queryParameters;
                 },
                 processResults: function (data) {
-                    var results =  {
+                    var results = {
                         results: data['response'].map(function (e, _) {
                             return {text: e, id: e};
                         })
                     };
                     return results;
                 },
-                cache: true,
-                selectOnClose: true
+                cache: true
             }
         });
 
         $('#btnSubmit').click(function () {
+            if ($('.select2-search__field').val() != '') {
+                insertNewTag($('.select2-search__field').val());
+            }
             var tags = $('#inputDescription').val();
             $.get('/api/add_tags', {
                 taggee: "{{ friend.id }}",
