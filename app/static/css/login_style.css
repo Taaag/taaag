@@ -4,8 +4,8 @@ body {
 
 .background-login {
     background: url("../images/loginpage.jpg") no-repeat;
-    max-width: 760px;
-    max-height: 560px;
+    width: 760px;
+    height: 560px;
     background-size: 760px 560px;
     /*background-attachment: fixed;*/
     font-family: 'Josefin Sans', sans-serif;
