@@ -89,6 +89,7 @@
         $('#btnSubmit').click(function () {
             var tags = $('#inputDescription').val() || [];
             var potentialNewTag = $('.select2-search__field').val();
+            console.log(potentialNewTag);
             if (potentialNewTag != '' && tags.indexOf(potentialNewTag) == -1) {
                 tags.push(potentialNewTag);
                 insertNewTag(potentialNewTag);
