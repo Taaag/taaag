@@ -1,19 +1,24 @@
-.background-login {
-background-image: url("../images/loginpage.jpg");
-background-repeat: no-repeat;
-max-width:760px;
-max-height: 560px;
-background-size:760px 560px;
-/*background-attachment: fixed;*/
+body {
+    background: #F7CA18;
 }
 
+.background-login {
+    background: url("../images/loginpage.jpg") no-repeat;
+    max-width: 760px;
+    max-height: 560px;
+    background-size: 760px 560px;
+    /*background-attachment: fixed;*/
+    font-family: 'Josefin Sans', sans-serif;
+    margin: auto;
+    overflow-x: hidden;
+}
 
-.fb_img{
-margin-top:2px;
-margin-left:2px;
-float:left;
-width: 29px;
-height: 29px;
+.fb_img {
+    margin-top: 2px;
+    margin-left: 2px;
+    float: left;
+    width: 29px;
+    height: 29px;
 }
 
 .fb-login-btn {
@@ -30,9 +35,9 @@ height: 29px;
     margin-top: 255px;
     margin-left: 280px;
     opacity: 1;
-    
+
 }
 
 .fb-login-btn:hover {
-  opacity: 0.85;
+    opacity: 0.85;
 }

@@ -7,7 +7,7 @@
 
     <!-- These are Open Graph tags.-->
     <meta property="fb:app_id" content="{{ app_id }}"/>
-    <meta property="og:description" content="Tag your friends!" />
+    <meta property="og:description" content="Tag your friends!"/>
 
     <title>{{ app_name }}</title>
 
@@ -20,38 +20,37 @@
 
 </head>
 
-<body class="background-login">
+<body>
 <script type="text/javascript">
-    
-$(function(){
-    $.getScript("https://connect.facebook.net/en_US/all.js", function() {
-        FB.init({
-            appId: '{{ app_id }}',
-            status: true,
-            cookie: true,
-            xfbml: true
-        });
 
-        FB.Event.subscribe('auth.login', function (response) {
-            window.location = window.location;
-        });
+    $(function () {
+        $.getScript("https://connect.facebook.net/en_US/all.js", function () {
+            FB.init({
+                appId: '{{ app_id }}',
+                status: true,
+                cookie: true,
+                xfbml: true
+            });
 
-        $('.fb-login-btn').click(function () {
-            FB.login(function (response) {
-            }, {scope: 'public_profile, user_friends'});
-       });
+            FB.Event.subscribe('auth.login', function (response) {
+                window.location = window.location;
+            });
+
+            $('.fb-login-btn').click(function () {
+                FB.login(function (response) {
+                }, {scope: 'public_profile, user_friends'});
+            });
+        });
     });
- });
 </script>
 
-<!-- share button 以外的部分(行) -->
-
-
-            <button class="fb-login-btn" data-size='xlarge'>
-                <img src = "static/images/fbloginlogo_official.png" class = "fb_img">
-                Login Now
-            </button>
-        
+<div class="background-login">
+    <!-- share button 以外的部分(行) -->
+    <button class="fb-login-btn" data-size='xlarge'>
+        <img src="static/images/fbloginlogo_official.png" class="fb_img">
+        Login Now
+    </button>
+</div>
 
 <!-- end share button exclude area -->
 </body>
