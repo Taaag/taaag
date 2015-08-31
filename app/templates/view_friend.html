@@ -87,10 +87,12 @@
         });
 
         $('#btnSubmit').click(function () {
-            if ($('.select2-search__field').val() != '') {
-                insertNewTag($('.select2-search__field').val());
+            var tags = $('#inputDescription').val() || [];
+            var potentialNewTag = $('.select2-search__field').val();
+            if (potentialNewTag != '' && tags.indexOf(potentialNewTag) == -1) {
+                tags.push(potentialNewTag);
+                insertNewTag(potentialNewTag);
             }
-            var tags = $('#inputDescription').val();
             $.get('/api/add_tags', {
                 taggee: "{{ friend.id }}",
                 tags: JSON.stringify(tags)
