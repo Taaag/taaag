@@ -1,9 +1,10 @@
-import sqlalchemy
+import json
 
+from collections import OrderedDict
+
+import sqlalchemy
 from app.views import render_template
 from app.models import User, Tag, Tagging
-
-import json
 import random
 
 
@@ -24,7 +25,10 @@ def api_tag_all(user, payload):
 def api_tag_search(user, payload):
     # Payload: {'keyword': 'foo'}
     # Return: list of tag dicts
-    return [_.name for _ in Tag.query_tags_by_name(payload['keyword']) or []]
+    if not payload.get('keyword', ''):
+        return []
+    result = [_.name for _ in Tag.query_tags_by_name(payload['keyword']) or [] if _.name != payload['keyword']]
+    return list(OrderedDict.fromkeys(result))
 
 
 # Debug purpose

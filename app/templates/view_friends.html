@@ -1,7 +1,7 @@
 <div id="view-friends" class="view">
     <div class="row">
-        <div id = "friendlist-title">Friends List</div>
         {#        <input class="friendlist-input" placeholder="Search Your Friends..."> </input>#}
+        <div id="friendlist-title">Friends List</div>
     </div>
     <div class="row">
         <div class="friendlist-box">
@@ -11,9 +11,10 @@
                     <tr>
                         {% for friend in friend_row %}
                             <td>
-                                <img class="friendlist-friend" src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"></img>
-                                <!-- <span class="friendlist-friendname"><span>{{friend.name}}</span></span> -->
-
+                                <img class="friendlist-friend"
+                                     src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
+                                     data-uid="{{ friend.id }}">
+{#                                <span class="friendlist-friendname"><span>{{friend.name}}</span></span>#}
                             </td>
                         {% endfor %}
                     </tr>
@@ -23,3 +24,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function () {
+        $('.friendlist-friend').click(function () {
+            var uid = $(this).attr('data-uid');
+            $(document).trigger('viewChanging', ['friend', {id: uid}])
+        });
+    });
+</script>
+
