@@ -7,7 +7,7 @@
         <table class="table profile-taglist-table">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
-                <tr class="my-tag-set">
+                <tr id="tag-set-{{ tag.name }}" class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
@@ -25,7 +25,7 @@
                         {#                        <div class="mytag-img .th-mytag-img"></div>#}
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
-                        <span class="span-viewmore"><i
+                        <span class="span-viewmore" data-name="{{ tag.name }}"><i
                                 class="fa fa-caret-right"></i></span>
                     </th>
                     <th class="col-sm-1 th-mytag-scroll">
@@ -56,8 +56,8 @@
 {#                            '<span class="span-viewmore" data-index="{{ loop.index0 }}"><i#}
 {#                                class="fa fa-caret-right"></i></span>#}
 {#                    </th>'#}
-            time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th><th class="col-sm-5">' + tag.name +
-                          '</th><th class="col-sm-4">' + tag.created_time + '</th><th><th></tr>';
+            time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th><th class="col-sm-5"><p class="mytag-tagname-font">' + tag.name +
+                          '</p></th><th class="col-sm-4">' + tag.created_time + '</th><th><th></tr>';
         });
         time_table += '</tbody>';
 {#        $('.profile-taglist-table').html(time_table);#}
@@ -72,7 +72,7 @@
 
 
         $('.mytaglist-delete-btn').click(function () {
-            var $row = $(this).closest('.my-tag-set');
+            var $row = $('#tag-set' + $(this).attr('data-name'));
             var tag = $row.find('.mytag-tagname-font').text();
             BootstrapDialog.confirm(
                     {
