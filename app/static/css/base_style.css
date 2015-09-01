@@ -61,7 +61,7 @@ body {
 .overall {
     max-width: 760px;
     max-height: 560px;
-    background-color: #F7CA18;
+    background-color: #fae066;
     margin:auto;
     border-left: 15px solid #fff;
     border-left: 15px solid #fff;
@@ -72,12 +72,12 @@ body {
 }
 
 .row-nonshare {
-    background-color: #F7CA18;
+    background-color: #fae066;
     height: 520px;
 }
 
 .row-share {
-    background-color: #F7CA18; /**/
+    background-color: #fae066; /**/
     height: 40px;
     text-align: right;
 }
