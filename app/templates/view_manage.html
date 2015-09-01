@@ -67,8 +67,8 @@
 
         var time_table = '<tbody id="tag-time-table">';
         {% for tag in tags_order_by_time %}
-            time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th>' + tagName(tag.name) +
-                          createdTime(tag.created_time) + viewMore(tag.name) + scroll + '</tr>';
+            time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th>' + tagName({{ tag.name }}) +
+                          createdTime({{ tag.created_time }}) + viewMore({{ tag.name }}) + scroll + '</tr>';
         {% endfor %}
         {#        var tags_order_by_time = {{ tags_order_by_time|tojson }};#}
 
