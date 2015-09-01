@@ -29,8 +29,22 @@
             var canvas = document.getElementById('myCanvas');
             console.log('Start uploading...');
             $.post('/store_image/', {data: canvas.toDataURL('image/png')}, function (response) {
-                console.log(response);
-                alert(response);
+                var uri = response['uri'];
+                FB.api(
+                        'me/objects/cstaaag:tag',
+                        'post',
+                        {'object': {
+                            'og:url': 'https://taaag.sshz.org/tag_cloud/{{ user.id }}',
+                            'og:title': 'Tag Cloud',
+                            'og:type': 'cstaaag:tag',
+                            'og:image': uri,
+                            'fb:app_id': '687248731410966'
+                        }},
+
+                        function (response) {
+                            console.log(response);
+                        }
+                );
             });
         });
     });
