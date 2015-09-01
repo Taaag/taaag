@@ -18,6 +18,7 @@
     }
 
     $(document).on("viewChanging", function (event, view, data) {
+        ga('send', 'event', 'view', 'change', {'view': view, 'data': data});
         historyStack.push(currentView);
         futureStack = [];
         loadView(view, data);
