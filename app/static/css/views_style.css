@@ -572,3 +572,7 @@ span.friendlist-friendname span {
     width: 5%;
     padding: 0;
 }
+
+.tag-created-time {
+    text-align: center;
+}
