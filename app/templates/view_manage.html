@@ -2,21 +2,15 @@
     <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
 </div>
 <div class="row tagrank">
-
     <ul class="nav nav-tabs" id="taglist-tab">
-        <li role="presentaion" id="tab-votes"><a href="#">Top</a></li>
+        <li role="presentation" id="tab-votes"><a href="#">Top</a></li>
         <li role="presentation" id="tab-time"><a href="#">Recent</a></li>
-
     </ul>
     <div class="profile-taglist">
-        <!-- {#        <div id="tab-placeholder" class="col-sm-1"></div>#}
-{#        <div id="tab-votes" class="tab">By votes</div>#}
-{#        <div id="tab-time" class="tab">By time</div>#} -->
-
-        <table class="table profile-taglist-table">
+        <table class="table profile-taglist-table" id="taglist-table-votes">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
-                <tr id="tag-set-{{ tag.name }}" class="my-tag-set">
+                <tr id="tag-set-{{ tag.name }}-votes" class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
@@ -25,13 +19,11 @@
                     </th>
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
-                        <!-- 循环照片。。。 -->
                         {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
                         {% endfor %}
-                        <!-- {#                                                <div class="mytag-img .th-mytag-img"></div>#} -->
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
                         <span class="span-viewmore"><i
@@ -43,11 +35,23 @@
             {% endfor %}
             </tbody>
         </table>
+        <table class="table profile-taglist-table" id="taglist-table-time" style="display: none">
+            <tbody id="tag-votes-table">
+            {% for tag in tags_order_by_time %}
+                <tr id="tag-set-{{ tag.name }}-time" class="my-tag-set">
+                    <th class="col-sm-1 th-detele-btn">
+                        <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
+                    </th>
+                    <th class="col-sm-1 th-upvote-num"><p class="mytag-upvote-num"></p></th>
+                    <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
+                    <th class="col-sm-4 tag-created-time">{{ tag.created_time }}</th>
+                    <th class="col-sm-1 th-mytag-viewmore"><span class="span-viewmore"><i class="fa fa-caret-right"></i></span></th>
+                    <th class="col-sm-1 th-mytag-scroll"></th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
-
-    <!--     <div id="dialog" title="Basic dialog">
-        <p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
-        </div> -->
 
 </div>
 <div class="row tagrank">
@@ -79,10 +83,7 @@
         }
 
         var time_table = '<tbody id="tag-time-table">';
-        {% for tag in tags_order_by_time %}
-            time_table += '<tr class="my-tag-set">' + deleteButton + numVotes('', false) + tagName({{ tag.name|tojson|safe }}) +
-                    createdTime({{ tag.created_time|tojson|safe }}) + viewMore + scroll + '</tr>';
-        {% endfor %}
+
         time_table += '</tbody>';
 
         var votes_table = '<tbody id="tag-votes-table">';
@@ -101,11 +102,12 @@
         {% endfor %}
         votes_table += '</tbody>';
 
-        function deleteTag(tag, $row) {
+        function deleteTag(tag) {
             $.get('/api/delete_tag', {name: tag}, function (response) {
                 if (response['succeed']) {
                     $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
-                    $row.remove();
+                    $('#tag-set-' + tag + '-votes').remove();
+                    $('#tag-set-' + tag + '-time').remove();
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
@@ -116,7 +118,6 @@
         $(document).on('click', '.span-viewmore', function () {
             var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
             var taggers = tagger_array[tag];
-            console.log(taggers);
             var msg = '<table><tbody>';
             $.each(taggers, function (index, tagger) {
                 msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
@@ -137,7 +138,6 @@
         }).on('click', '.mytag-img', function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
         }).on('click', '.mytaglist-delete-btn', function () {
-            var $row = $(this).closest('tr');
             var tag = $row.find('.mytag-tagname-font').text();
             BootstrapDialog.confirm(
                     {
@@ -149,7 +149,7 @@
                         closeByBackdrop: true,
                         callback: function (result) {
                             if (result) {
-                                deleteTag(tag, $row);
+                                deleteTag(tag);
                             }
                         }
 
@@ -157,20 +157,23 @@
         });
 
         $('#tab-time').click(function () {
-            $('.profile-taglist-table').html(time_table);
             $(this).addClass('tab-selected');
             $('#tab-votes').removeClass('tab-selected');
+            $('#taglist-table-votes').hide();
+            $('#taglist-table-time').show();
         });
         $('#tab-votes').click(function () {
-            $('.profile-taglist-table').html(votes_table);
             $(this).addClass('tab-selected');
             $('#tab-time').removeClass('tab-selected');
-            $(".mytag-img").tooltip({placement: "bottom", container: "body"});
+            $('#taglist-table-time').hide();
+            $('#taglist-table-votes').show();
         });
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
         });
+
+        $(".mytag-img").tooltip({placement: "bottom", container: "body"});
         {#        $('#tab-votes').trigger("active");#}
     });
 
