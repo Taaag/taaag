@@ -62,6 +62,7 @@ body {
     max-width: 760px;
     max-height: 560px;
     background-color: #F7CA18;
+    margin:auto;
 }
 
 .row {
