@@ -1,6 +1,8 @@
 import facebook
 import requests
 from app import mc
+from app import app
+from datetime import timezone
 
 
 def get_friends_key(uid):
@@ -48,3 +50,5 @@ def has_friends_permission(user):
     return False
 
 
+def display_time(time):
+    return time.replace(tzinfo=timezone.utc).astimezone(app.config['DEFAULT_TIMEZONE']).strftime('%m-%d, %H:%M')

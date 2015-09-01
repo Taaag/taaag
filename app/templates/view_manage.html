@@ -45,6 +45,9 @@
 
 <script>
     $(function () {
+        var tags_order_by_time = {{ tags_order_by_time|tojson }};
+        console.log(tags_order_by_time);
+
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
         });

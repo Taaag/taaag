@@ -5,6 +5,7 @@ from collections import OrderedDict
 import sqlalchemy
 from app.views import render_template
 from app.models import User, Tag, Tagging
+from app.utils import display_time
 import random
 
 
@@ -180,9 +181,12 @@ def view_me(user, payload):
 
 
 def view_manage(user, payload):
-    tags = [{'name': _[0], 'taggers': _[1]} for _ in api_user_my_tags(user, payload).items()]
-    tags.sort(key=lambda _: len(_['taggers']), reverse=True)
-    return render_template('view_manage.html', user=user.to_dict(), tags=tags)
+    tags_order_by_votes = [{'name': _[0], 'taggers': _[1]} for _ in api_user_my_tags(user, payload).items()]
+    tags_order_by_votes.sort(key=lambda _: len(_['taggers']), reverse=True)
+    tags_order_by_time = [{'name': _[0],
+                           'created_time': display_time(_[1])} for _ in user.get_tags_order_by_time()]
+    return render_template('view_manage.html', user=user.to_dict(), tags_order_by_votes=tags_order_by_votes,
+                           tags_order_by_time=tags_order_by_time)
 
 
 views = {
