@@ -7,14 +7,14 @@
         <table class="table profile-taglist-table">
             {% for tag in tags_order_by_votes %}
                 <tr class="my-tag-set">
-                    <th class="col-sm-1 th-detele-btn">
+                    <td class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
-                    </th>
-                    <th class="col-sm-1 th-upvote-num">
+                    </td>
+                    <td class="col-sm-1 th-upvote-num">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.taggers|length }}</div>
-                    </th>
-                    <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
-                    <th class="col-sm-4">
+                    </td>
+                    <td class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></td>
+                    <td class="col-sm-4">
                         <!-- 循环照片。。。 -->
                         {% for tagger in tag.taggers[0:5] %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
@@ -22,14 +22,14 @@
                             </div>
                         {% endfor %}
                         {#                        <div class="mytag-img .th-mytag-img"></div>#}
-                    </th>
-                    <th class="col-sm-1 th-mytag-viewmore">
+                    </td>
+                    <td class="col-sm-1 th-mytag-viewmore">
                         <span class="span-viewmore" data-index="{{ loop.index0 }}"><i
                                 class="fa fa-caret-right"></i></span>
-                    </th>
-                    <th class="col-sm-1 th-mytag-scroll">
+                    </td>
+                    <td class="col-sm-1 th-mytag-scroll">
 
-                    </th>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
