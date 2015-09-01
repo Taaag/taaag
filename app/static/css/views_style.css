@@ -620,10 +620,7 @@ height: 30px;
     
 }
 
-.nav>li>a:hover {
-    background-color: #303030;
-    color:white;
-}
+
 #tab-votes{
     cursor: pointer;
     border: 0px;
