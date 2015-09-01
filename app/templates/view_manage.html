@@ -5,6 +5,10 @@
 
     <div class="profile-taglist">
         <table class="table profile-taglist-table">
+            <thead>
+                <th>By votes</th>
+                <th>By time</th>
+            </thead>
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
                 <tr id="tag-set-{{ tag.name }}" class="my-tag-set">
