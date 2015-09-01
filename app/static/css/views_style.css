@@ -533,7 +533,7 @@ span.friendlist-friendname span {
     display: none;
 }
 
-.profile-selectbar>.select2-container {
+.profile-selectbar > .select2-container {
     /*border-radius: 10px 0 0 10px;*/
     width: 70%;
     height: 100%;
@@ -563,7 +563,12 @@ span.friendlist-friendname span {
     line-height: 0;
 }
 
-
 #shareMyCloudBtn:hover {
     cursor: pointer;
 }
+
+#tab-placeholder {
+    height: 20px;
+    display: inline-block;
+}
+
