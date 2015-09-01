@@ -7,6 +7,7 @@ from app import app, db
 from app.models import User, Tag, Tagging
 from app.api import apis, APIException, views
 from app.utils import clear_friends_cache
+from datetime import timezone
 
 # Facebook app details
 FB_APP_ID = '687248731410966'
@@ -33,7 +34,8 @@ def test_login():
 
 @app.route('/test_filter', methods=['GET'])
 def test_filter():
-    return render_template('test_filter.html', a=g.user.get_tags_order_by_time(), tz=app.config['DEFAULT_TIMEZONE'])
+    return render_template('test_filter.html', a=g.user.get_tags_order_by_time(), tz=app.config['DEFAULT_TIMEZONE'],
+                           timezone=timezone)
 
 
 @app.route('/api/<method>', methods=['GET'])
