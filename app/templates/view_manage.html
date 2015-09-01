@@ -95,10 +95,7 @@
                     numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
                     taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
-        console.log(numVotes(123, true));
         votes_table += '</tbody>';
-
-        $("#tab-votes").trigger("click");
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
@@ -144,7 +141,6 @@
                 $(document).on('click', '.span-viewmore', function() {
                     var tag = $(this).attr('data-name');
                     var taggers = tagger_array[tag];
-                    console.log(taggers);
                     var msg = '<table><tbody>';
                     $.each(taggers, function (index, tagger) {
                         msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
@@ -173,6 +169,8 @@
             $(this).addClass('tab-selected');
             $('#tab-time').removeClass('tab-selected');
         });
+
+        $('#tab-votes').trigger("click");
     });
 
 
