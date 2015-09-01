@@ -203,4 +203,4 @@ views = {
 
 def public_cloud(user):
     tags = User.get_tags_for_user(user.id)
-    return render_template('public_cloud.html', user=user, tags={_[0]: (_[1], _[0]) for _ in tags})
+    return render_template('public_cloud.html', user=user, tags={_[0]: _[1] for _ in tags})
