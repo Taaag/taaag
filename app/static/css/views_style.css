@@ -84,6 +84,7 @@
     margin: 20px auto;
     padding: 10px;
     overflow-y: auto;
+    overflow-x:hidden;
 }
 
 /*.friendlist-box-shadow{
@@ -357,6 +358,7 @@ span.friendlist-friendname span {
     background-color: white;
     margin-bottom: 0px;
     overflow-y: auto;
+    overflow-x:hidden;
 }
 
 .my-tag-set {
@@ -463,6 +465,7 @@ span.friendlist-friendname span {
 .upvoteList-dialog {
     padding-top: 200px;
     overflow-y: auto;
+    overflow-x:hidden;
 }
 
 .dialog-set {
@@ -494,6 +497,7 @@ span.friendlist-friendname span {
 
 .bootstrap-dialog {
     overflow-y: auto;
+    overflow-x:hidden;
 }
 
 .bootstrap-dialog-title {
@@ -545,6 +549,7 @@ span.friendlist-friendname span {
     border: 0 !important;
     height: 100%;
     overflow-y: auto;
+    overflow-x:hidden;
 }
 
 .select2-selection {
