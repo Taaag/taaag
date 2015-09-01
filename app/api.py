@@ -186,7 +186,7 @@ def view_manage(user, payload):
     tags_order_by_votes = sorted(api_user_my_tags(user, payload).items(), key=lambda _: len(_[1]), reverse=True)
     tags_order_by_time = [{'name': _[0],
                            'created_time': display_time(_[1])} for _ in user.get_tags_order_by_time()]
-    return tags_order_by_votes[0]
+    return dict(tags_order_by_votes)
     # return render_template('view_manage.html', user=user.to_dict(), tags_order_by_votes=tags_order_by_votes,
     #                        tags_order_by_time=tags_order_by_time)
 
