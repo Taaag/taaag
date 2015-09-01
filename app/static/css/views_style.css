@@ -354,7 +354,7 @@ span.friendlist-friendname span {
     height: 210px;   /*orginal 200px*/
     background-color: #f7ca18;
     overflow-x: hidden;
-    overflow-y:hidden;
+    overflow-y:auto;
     /*  border-right: 10px solid  #ddd ;*/
 }
 
