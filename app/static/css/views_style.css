@@ -179,7 +179,7 @@ span.friendlist-friendname span {
     font-size: 20px;
 }
 
-#profile-view-manage-btn, #manage-to-view-btn {
+#profile-view-manage-btn, #manage-to-view-btn, #public-join-btn {
     width: 200px;
     height: 35px;
     background-color: #303030;

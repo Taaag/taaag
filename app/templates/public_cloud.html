@@ -39,6 +39,12 @@
 
     ga('create', 'UA-61576953-2', 'auto');
     ga('send', 'pageview');
+
+    $(function () {
+        $('#public-join-btn').click(function () {
+            window.location.href = 'https://apps.facebook.com/687248731410966';
+        })
+    })
 </script>
 <div class="row row-nonshare">
     <!-- logo left -->
@@ -51,14 +57,14 @@
 
     <!-- main area -->
     <div class="col-xs-8 col-sm-8 col-md-8 no-padding" id="body-middle">
-    
+
         <div class="row col-sm-12 input-search no-padding">
         </div>
 
         <div class="row col-sm-12 content-area no-padding" id="content-view">
             <div class="view">
                 <div class="row">
-                    <div class="profile-name">{{ user.name }}</div>
+                    <div class="profile-name">{{ user.name }}'s Tag Cloud</div>
                 </div>
 
                 <div class="row">
@@ -74,14 +80,15 @@
                         </div>
                     </canvas>
                 </div>
+
+                <div class="row">
+                    <button id="public-join-btn">Join Taaag</button>
+                </div>
             </div>
             {% set uid = user.id %}
             {% include 'tag_cloud.html' %}
         </div>
     </div>
-    <!-- end main area -->
-
-
 </div>
 </body>
 </html>
