@@ -93,7 +93,7 @@
         {% endfor %}
         votes_table += '</tbody>';
 
-{#        $('.profile-taglist-table').html(votes_table);#}
+        $('.profile-taglist-table').html(votes_table);
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
