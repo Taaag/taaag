@@ -137,7 +137,8 @@
         }).on('click', '.mytag-img', function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
         }).on('click', '.mytaglist-delete-btn', function () {
-            var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
+            var $row = $(this).closest('tr');
+            var tag = $row.find('.mytag-tagname-font').text();
             BootstrapDialog.confirm(
                     {
                         title: 'Detele',
