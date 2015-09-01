@@ -340,12 +340,13 @@ span.friendlist-friendname span {
     border-radius: 100px;
     margin: auto;
     margin-top: 0px;
-    margin-bottom: 35px;
+    margin-bottom: 25px;   /*orginal 35px*/
+    border: 2px solid #fff;
 }
 
 .profile-taglist {
-    /*width: 500px;*/
-    height: 200px;
+    
+    height: 210px;   /*orginal 200px*/
     background-color: #f7ca18;
     overflow-x: hidden;
     /*  border-right: 10px solid  #ddd ;*/
@@ -590,5 +591,10 @@ span.friendlist-friendname span {
 #shareMyCloudBtn{
 width: 50px;
 height: 30px;
+
+}
+
+#taglist-tab{
+   height: 10px;
 
 }
