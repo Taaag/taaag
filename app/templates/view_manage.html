@@ -47,7 +47,12 @@
 <script>
     $(function () {
         var tags_order_by_time = {{ tags_order_by_time|tojson }};
-        console.log(tags_order_by_time);
+        var time_table = '';
+        $.each(tags_order_by_time, function (index, tag) {
+            time_table += '<tr><td class="col-sm-1"></td><td class="col-sm-5">' + tag.name +
+                         '</td><td class="col-sm-6">' + tag.created_time+ '</td></tr>';
+        });
+        console.log(time_table);
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
