@@ -78,6 +78,17 @@ def image_proxy(uid):
     return Response(generate(), headers=headers)
 
 
+@app.route('/store_image/', methods=['POST'])
+def store_image():
+    if not g.user:
+        abort(403)
+    data = request.form['data']
+    print(data)
+    if data.find('data:image/png;base64,') == 0:
+        data = data.replace('data:image/png;base64,', '')
+    return 'TEST'
+
+
 @app.before_request
 def get_current_user():
     if not session.get('user'):

@@ -1,6 +1,6 @@
 <div id="view-me" class="view">
     <div class="row">
-        <div class="profile-name">{{ user.name }}</div>
+        <div class="profile-name">{{ user.name }} <i class="fa fa-camera-retro" id="shareMyCloudBtn"></i></div>
     </div>
 
     <div class="row" id="myCanvasContainer">
@@ -24,6 +24,13 @@
     $(function () {
         $("#profile-view-manage-btn").click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
+        });
+        $("#shareMyCloudBtn").click(function () {
+            var canvas = document.getElementById('myCanvas');
+            console.log('Start uploading...');
+            $.post('/store_image/', {data: canvas.toDataURL('image/png')}, function (response) {
+                alert(response);
+            });
         });
     });
 </script>
