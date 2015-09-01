@@ -49,7 +49,14 @@
                                 alert(response.error);
                                 return;
                             }
-                            console.log("Done! id: " + response['id'])
+                            FB.ui({
+                                method: 'share_open_graph',
+                                action_type: 'og.likes',
+                                action_properties: JSON.stringify({
+                                    object: response['id'],
+                                })
+                            }, function (response) {
+                            });
                         }
                 );
             });
