@@ -351,7 +351,7 @@ span.friendlist-friendname span {
 
 .profile-taglist {
     
-    height: 210px;   /*orginal 200px*/
+    height: 200px;   /*orginal 200px*/
     background-color: #f7ca18;
     overflow-x: hidden;
     overflow-y:auto;
