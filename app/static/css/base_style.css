@@ -36,6 +36,14 @@ body {
     overflow-x: hidden;
 }
 
+.outer-contrainer{
+
+    background: url("../images/border.png") cover;
+    text-align: center;
+    width: 100%;
+    margin:auto;
+}
+
 .spinner-overlay {
     position: fixed;
     top: 0;
