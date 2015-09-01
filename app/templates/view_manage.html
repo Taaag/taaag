@@ -60,8 +60,9 @@
                     '"><i class="fa fa-caret-right"></i></span></th>';
         }
 
-        function numVotes(num) {
-            return '<th class="col-sm-1 th-upvote-num"><div class="mytag-upvote-circle"><p class="mytag-upvote-num">' +
+        function numVotes(num, isVoteTable) {
+            var circle = '<div class="mytag-upvote-circle">';
+            return '<th class="col-sm-1 th-upvote-num">'+ isVoteTable ? circle : '' +'<p class="mytag-upvote-num">' +
                     num + '</div></th>';
         }
 
