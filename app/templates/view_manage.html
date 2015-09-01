@@ -107,9 +107,9 @@
             $(document).trigger("viewChanging", ["me", {}]);
         });
 
-        $(".mytag-img").click(function () {
+        $(document).on('click', '.mytag-img', function(){
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
-        }).tooltip({placement: "bottom", container: "body"});
+        });
 
 
         $('.mytaglist-delete-btn').click(function () {
@@ -175,6 +175,7 @@
             $('.profile-taglist-table').html(votes_table);
             $(this).addClass('tab-selected');
             $('#tab-time').removeClass('active');
+            $(".mytag-img").tooltip({placement: "bottom", container: "body"});
         });
 
 {#        $('#tab-votes').trigger("active");#}
