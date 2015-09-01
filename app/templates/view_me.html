@@ -42,7 +42,17 @@
                         }},
 
                         function (response) {
-                            console.log(response);
+                            FB.api(
+                                    'me/cstaaag:have',
+                                    'post',
+                                    {
+                                        'tag': 'https://taaag.sshz.org/tag_cloud/{{ user.id }}'
+                                    },
+
+                                    function (response) {
+                                        console.log(response);
+                                    }
+                            );
                         }
                 );
             });
