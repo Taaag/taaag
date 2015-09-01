@@ -29,6 +29,10 @@
             var canvas = document.getElementById('myCanvas');
             console.log('Start uploading...');
             $.post('/store_image/', {data: canvas.toDataURL('image/png')}, function (response) {
+                if (response.error) {
+                    alert(response.error);
+                    return;
+                }
                 var uri = response['uri'];
                 FB.api(
                         'me/objects/cstaaag:tag',
@@ -40,19 +44,12 @@
                             'og:image': uri,
                             'fb:app_id': '687248731410966'
                         }},
-
                         function (response) {
-                            FB.api(
-                                    'me/cstaaag:have',
-                                    'post',
-                                    {
-                                        'tag': response['id']
-                                    },
-
-                                    function (response) {
-                                        console.log(response);
-                                    }
-                            );
+                            if (response.error) {
+                                alert(response.error);
+                                return;
+                            }
+                            console.log("Done! id: " + response['id'])
                         }
                 );
             });
