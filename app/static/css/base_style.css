@@ -195,3 +195,10 @@ body {
 /*dont delete*/
 .icon-open {
 }
+
+#back-btn{
+    float: left;
+}
+#forward-btn{
+    float:left;
+}
