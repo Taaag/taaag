@@ -602,6 +602,8 @@ height: 30px;
 
 #taglist-tab{
    height: 20px;
+   margin-left: 25px;
+   
 
 }
 
@@ -609,10 +611,6 @@ height: 30px;
 
     margin-bottom: 0px;
     margin-top: 0px;
-    margin-left: 25px;
+    
 }
 
-.single-tab{
-    background-color: #303030;
-    color: white;
-}
