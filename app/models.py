@@ -44,6 +44,10 @@ class User(db.Model):
         tagger = aliased(User, name="tagger")
         return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created.desc()).with_entities(Tag.name, tagger).all()
 
+    def get_tags_order_by_time(self):
+        return self.tags.with_entities(Tag.name, func.max(Tagging.created).label('added_time')).group_by(Tag.name).\
+            order_by('added_time DESC').all()
+
     def to_dict(self):
         return {'id': str(self.id), 'name': self.name}
 
