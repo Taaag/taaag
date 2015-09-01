@@ -98,7 +98,7 @@
         console.log(numVotes(123, true));
         votes_table += '</tbody>';
 
-        $('.profile-taglist-table').html(votes_table);
+        $("#tab-votes").trigger("click");
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
