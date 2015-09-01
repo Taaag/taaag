@@ -1,4 +1,4 @@
 {% for tag in a %}
     <p>{{ tag[0] }}</p>
-    <p>{{ tag[1].replace(tzinfo=timezone.utc).astimezone(default_tz).strftime('%m-%d, %H:%M') }}</p>
+    <p>{{ tag[1].timezone }}</p>
 {% endfor %}

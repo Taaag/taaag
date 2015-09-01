@@ -6,6 +6,7 @@ from app.utils import is_friend_of, get_user_friends, has_friends_permission
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 from sqlalchemy.exc import IntegrityError
+from datetime import timezone
 
 
 class User(db.Model):
@@ -184,7 +185,7 @@ class Tagging(db.Model):
     __tablename__ = 'taggings'
 
     id = db.Column(db.Integer, nullable=False, primary_key=True)
-    created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    created = db.Column(db.DateTime, default=datetime.utcnow.replace(tzinfo=timezone.utc), nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
     tagger_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False)
