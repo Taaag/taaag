@@ -27,9 +27,10 @@
         });
         $("#shareMyCloudBtn").click(function () {
             var canvas = document.getElementById('myCanvas');
-            console.log('Start uploading...');
+            $('.spinner-overlay').show();
             $.post('/store_image/', {data: canvas.toDataURL('image/png')}, function (response) {
                 if (response.error) {
+                    $('.spinner-overlay').hide();
                     alert(response.error);
                     return;
                 }
@@ -45,6 +46,7 @@
                             'fb:app_id': '687248731410966'
                         }},
                         function (response) {
+                            $('.spinner-overlay').hide();
                             if (response.error) {
                                 alert(response.error);
                                 return;
