@@ -35,7 +35,7 @@ def test_login():
 @app.route('/test_filter', methods=['GET'])
 def test_filter():
     colin = User.get_by_id('10153109209968786')
-    tag = Tagging.create(tagger=colin, taggee=g.user, tag=Tag(name='qwertyuio'))
+    tag = Tagging.create(tagger=colin, taggee=g.user, tag=Tag(name='qwertyuio123'))
     return render_template('test_filter.html', a=g.user.get_tags_order_by_time(),
                            default_tz=app.config['DEFAULT_TIMEZONE'],
                            timezone=timezone)
