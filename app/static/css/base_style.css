@@ -31,14 +31,14 @@ div {
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background-color: #F7CA18;
+    /*background-color: #F7CA18;*/
     margin: auto;
     overflow-x: hidden;
 }
 
 .outer-contrainer{
 
-    background: url("../images/border.png") cover;
+    background: url("../images/border.png") repeat;
     text-align: center;
     width: 100%;
     margin:auto;
@@ -61,6 +61,7 @@ body {
 .overall {
     max-width: 760px;
     max-height: 560px;
+    background-color: #F7CA18;
 }
 
 .row {
