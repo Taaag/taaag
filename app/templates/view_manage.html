@@ -73,7 +73,8 @@
         }
 
         var tagger_array = {{ tag_with_taggers|tojson }};
-        $(document).on('click', '.span-viewmore', function () {
+
+        $('.span-viewmore').click(function () {
             var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
             var taggers = tagger_array[tag];
             var msg = '<table><tbody>';
@@ -93,25 +94,27 @@
                 size: BootstrapDialog.SIZE_SMALL,
                 cssClass: 'upvoteList-dialog'
             });
-        }).on('click', '.mytag-img', function () {
-            $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
-        }).on('click', '.mytaglist-delete-btn', function () {
-            var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
-            BootstrapDialog.confirm(
-                    {
-                        title: 'Detele',
-                        type: 'none',
-                        message: "<h4> Are you sure to delete " + tag + "? </h4>",
-                        size: BootstrapDialog.SIZE_SMALL,
-                        closable: true,
-                        closeByBackdrop: true,
-                        callback: function (result) {
-                            if (result) {
-                                deleteTag(tag);
-                            }
-                        }
+        });
 
-                    });
+        $('.mytag-img').click(function () {
+            $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+        });
+
+        $('.mytaglist-delete-btn').click(function () {
+            var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
+            BootstrapDialog.confirm({
+                title: 'Detele',
+                type: 'none',
+                message: "<h4> Are you sure to delete " + tag + "? </h4>",
+                size: BootstrapDialog.SIZE_SMALL,
+                closable: true,
+                closeByBackdrop: true,
+                callback: function (result) {
+                    if (result) {
+                        deleteTag(tag);
+                    }
+                }
+            });
         });
 
         $('#tab-time').click(function () {
