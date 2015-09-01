@@ -60,7 +60,7 @@
                           '</p></th><th class="col-sm-4">' + tag.created_time + '</th>' + view_more +'</tr>';
         });
         time_table += '</tbody>';
-{#        $('.profile-taglist-table').html(time_table);#}
+        $('.profile-taglist-table').html(time_table);
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
@@ -105,11 +105,7 @@
         var tagger_array = {{ tag_with_taggers|tojson }}
 
                 $('.span-viewmore').click(function () {
-{#                    var $row = $(this).closest('.my-tag-set');#}
-{#                    var tag = $row.find('.mytag-tagname-font').text();#}
                     var tag = $(this).attr('data-name');
-{#                    var upvoteNum = $row.find('.mytag-upvote-num').text();#}
-{#                    var index = parseInt($(this).attr('data-index'));#}
                     var taggers = tagger_array[tag];
                     var msg = '<table><tbody>';
                     $.each(taggers, function (index, tagger) {
