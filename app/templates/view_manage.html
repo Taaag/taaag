@@ -75,6 +75,7 @@
             time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th>' + tagName({{ tag.name|tojson|safe }}) +
                     createdTime({{ tag.created_time|tojson|safe }}) + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
+        time_table += '</tbody>';
 
         var votes_table = '<tbody id="tag-votes-table">';
         var taggers;
@@ -86,11 +87,11 @@
                         {{ tagger.id|tojson|safe }} +'/picture"></div>';
             {% endfor %}
             taggers += '</th>';
-            time_table += '<tr>' + deleteButton + numVotes({{ tag.votes|tojson|safe }}) + tagName({{ tag.name|tojson|safe }}) +
+            votes_table += '<tr>' + deleteButton + numVotes({{ tag.votes|tojson|safe }}) + tagName({{ tag.name|tojson|safe }}) +
                     taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
+        votes_table += '</tbody>';
 
-        time_table += '</tbody>';
         $('.profile-taglist-table').html(votes_table);
 
         $('#manage-to-view-btn').click(function () {
