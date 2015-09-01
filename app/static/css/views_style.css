@@ -342,10 +342,11 @@ span.friendlist-friendname span {
 }
 
 .profile-taglist {
-    width: 500px;
+    /*width: 500px;*/
     height: 180px;
     background-color: #f7ca18;
     overflow-y: auto;
+    overflow-x: hidden;
     /*  border-right: 10px solid  #ddd ;*/
 }
 
