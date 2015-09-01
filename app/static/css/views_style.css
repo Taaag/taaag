@@ -66,6 +66,11 @@
     }
 }
 
+.nav-tabs>li>a{
+
+    border: none;
+}
+
 #friendlist-title {
     outline: none;
     font-weight: bold;
@@ -598,4 +603,16 @@ height: 30px;
 #taglist-tab{
    height: 20px;
 
+}
+
+#taglist-tab a{
+
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 25px;
+}
+
+.single-tab{
+    background-color: #303030;
+    color: white;
 }
