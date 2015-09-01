@@ -3,16 +3,16 @@
 </div>
 <div class="row tagrank">
 
-    <ul class = "nav nav-tabs" id = "taglist-tab">
-        <li role="presentaion"  id="tab-votes" ><a href="#">Top</a></li>
-        <li role="presentation"   id="tab-time"><a href="#">Recent</a></li>
+    <ul class="nav nav-tabs" id="taglist-tab">
+        <li role="presentaion" id="tab-votes"><a href="#">Top</a></li>
+        <li role="presentation" id="tab-time"><a href="#">Recent</a></li>
 
     </ul>
     <div class="profile-taglist">
-<!-- {#        <div id="tab-placeholder" class="col-sm-1"></div>#}
+        <!-- {#        <div id="tab-placeholder" class="col-sm-1"></div>#}
 {#        <div id="tab-votes" class="tab">By votes</div>#}
 {#        <div id="tab-time" class="tab">By time</div>#} -->
-    
+
         <table class="table profile-taglist-table">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
@@ -31,7 +31,7 @@
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
                         {% endfor %}
-<!-- {#                                                <div class="mytag-img .th-mytag-img"></div>#} -->
+                        <!-- {#                                                <div class="mytag-img .th-mytag-img"></div>#} -->
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
                         <span class="span-viewmore" data-name="{{ tag.name }}"><i
@@ -68,7 +68,7 @@
 
         function numVotes(num, isVoteTable) {
             var circle = '<div class="mytag-upvote-circle">';
-            return '<th class="col-sm-1 th-upvote-num">'+ (isVoteTable ? circle : '') +'<p class="mytag-upvote-num">' +
+            return '<th class="col-sm-1 th-upvote-num">' + (isVoteTable ? circle : '') + '<p class="mytag-upvote-num">' +
                     num + '</p></div></th>';
         }
 
@@ -107,11 +107,6 @@
             $(document).trigger("viewChanging", ["me", {}]);
         });
 
-        $(document).on('click', '.mytag-img', function(){
-            $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
-        });
-
-
         $('.mytaglist-delete-btn').click(function () {
             var $row = $('#tag-set' + $(this).attr('data-name'));
             var tag = $row.find('.mytag-tagname-font').text();
@@ -143,29 +138,32 @@
             });
         }
 
-        var tagger_array = {{ tag_with_taggers|tojson }}
-                $(document).on('click', '.span-viewmore', function() {
-                    var tag = $(this).attr('data-name');
-                    var taggers = tagger_array[tag];
-                    var msg = '<table><tbody>';
-                    $.each(taggers, function (index, tagger) {
-                        msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
-                                'src="https://graph.facebook.com/' + tagger.id +
-                                '/picture"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
-                                '</p></td></tr>';
-                    });
-                    msg += '</tbody></table>';
-                    BootstrapDialog.show({
-                        title: '<p class = "dialog-title">' + taggers.length + ' people have upvoted ' + tag + ' </p>',
-                        message: msg,
-                        type: 'none',
-                        closable: true,
-                        closeByBackdrop: true,
-                        size: BootstrapDialog.SIZE_SMALL,
-                        cssClass: 'upvoteList-dialog'
-                    });
-                });
-        
+        var tagger_array = {{ tag_with_taggers|tojson }};
+        $(document).on('click', '.span-viewmore', function () {
+            var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
+            var taggers = tagger_array[tag];
+            console.log(taggers);
+            var msg = '<table><tbody>';
+            $.each(taggers, function (index, tagger) {
+                msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
+                        'src="https://graph.facebook.com/' + tagger.id +
+                        '/picture"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
+                        '</p></td></tr>';
+            });
+            msg += '</tbody></table>';
+            BootstrapDialog.show({
+                title: '<p class = "dialog-title">' + taggers.length + ' people have upvoted ' + tag + ' </p>',
+                message: msg,
+                type: 'none',
+                closable: true,
+                closeByBackdrop: true,
+                size: BootstrapDialog.SIZE_SMALL,
+                cssClass: 'upvoteList-dialog'
+            });
+        }).on('click', '.mytag-img', function () {
+            $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+        });
+
         $('#tab-time').click(function () {
             $('.profile-taglist-table').html(time_table);
             $(this).addClass('tab-selected');
@@ -178,7 +176,7 @@
             $(".mytag-img").tooltip({placement: "bottom", container: "body"});
         });
 
-{#        $('#tab-votes').trigger("active");#}
+        {#        $('#tab-votes').trigger("active");#}
     });
 
 
