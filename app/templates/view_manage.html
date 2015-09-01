@@ -161,6 +161,12 @@
                         cssClass: 'upvoteList-dialog'
                     });
                 });
+        $('#tab-time').click(function () {
+            $('.profile-taglist-table').html(time_table);
+        });
+        $('#tab-votes').click(function () {
+            $('.profile-taglist-table').html(votes_table);
+        });
     });
 
 

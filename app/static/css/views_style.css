@@ -560,10 +560,11 @@ span.friendlist-friendname span {
     display: inline-block;
     height: 20px;
     width: 80px;
-    line-height: 0;
+    float: left;
 }
 
 #tab-placeholder {
     height: 20px;
-    display: inline-block;
+    width: 5%;
+    padding: 0;
 }
