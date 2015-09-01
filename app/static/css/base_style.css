@@ -80,7 +80,10 @@ body {
 .row-share {
     background-color: #fae066; /**/
     height: 40px;
-    text-align: right;
+    padding-bottom: 5px;
+    padding-left:5px; 
+    padding-right:5px; 
+    /*text-align: right;*/
 }
 
 #body-left {
@@ -151,9 +154,16 @@ body {
     display: none;
 }
 
-.fb-btn-container {
+.fb-btn-container{
     padding: 5px;
     display: inline-block;
+    float: right;
+}
+.b-f-btn-container {
+    padding: 5px;
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
 }
 
 .fb-btn {
@@ -166,6 +176,7 @@ body {
     padding: 0;
     vertical-align: middle;
     width: 70px;
+    
 }
 
 .fb-btn:hover {
@@ -196,9 +207,4 @@ body {
 .icon-open {
 }
 
-#back-btn{
-    float: left;
-}
-#forward-btn{
-    float:left;
-}
+
