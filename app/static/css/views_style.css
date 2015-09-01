@@ -562,3 +562,8 @@ span.friendlist-friendname span {
     width: 80px;
     line-height: 0;
 }
+
+
+#shareMyCloudBtn:hover {
+    cursor: pointer;
+}
