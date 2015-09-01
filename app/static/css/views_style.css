@@ -603,6 +603,7 @@ height: 30px;
 #taglist-tab{
    height: 20px;
    margin-left: 25px;
+   border: 0px;
 
 }
 
@@ -618,9 +619,9 @@ height: 30px;
 
 #tab-time{
     cursor: pointer;
-    width: 30px;
+    width: 60px;
 }
 #tab-time{
     cursor: pointer;
-    width: 30px;
+    width: 60px;
 }
