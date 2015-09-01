@@ -1,7 +1,5 @@
 from datetime import timezone
 
-from io import BytesIO
-
 import base64
 
 from facebook import get_user_from_cookie, GraphAPI
@@ -91,9 +89,17 @@ def store_image():
     data = request.form['data'].encode('ascii')
     if data.find(b'data:image/png;base64,') == 0:
         data = data.replace(b'data:image/png;base64,', b'')
-        payload = {'file': BytesIO(base64.b64decode(data))}
+        payload = {'file': ('cloud.png', base64.b64decode(data), 'image/png')}
         values = {'access_token': g.user.access_token}
-        return requests.post("https://graph.facebook.com/me/staging_resources", files=payload, data=values)
+        r = requests.post("https://graph.facebook.com/me/staging_resources", files=payload, data=values)
+
+        def generate():
+            for chunk in r.iter_content(1024):
+                yield chunk
+
+        return Response(generate(), headers=dict(r.headers))
+    else:
+        abort(400)
 
 
 @app.before_request
