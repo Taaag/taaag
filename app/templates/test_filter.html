@@ -1,5 +1,5 @@
 {% for tag in a %}
     <p>{{ tag[0] }}</p>
     <p>{{ tag[1].strftime('%m-%d, %H:%M') }}</p>
-    <p>{{ tag[1].astimezone(tz.gettz('Asia/Singapore')) }}</p>
+    <p>{{ tag[1].astimezone(pytz.timezone("Asia/Singapore")) }}</p>
 {% endfor %}
