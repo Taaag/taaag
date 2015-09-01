@@ -1,4 +1,4 @@
 {% for tag in a %}
     <p>{{ tag[0] }}</p>
-    <p>{{ tag[1].strftime('%m-%d, %H:%M') }}</p>
+    <p>{{ tag[1].timezone(tz).strftime('%m-%d, %H:%M') }}</p>
 {% endfor %}
