@@ -1,9 +1,12 @@
-<div class="row tagrank">
+<div id='manage-photo' class="row tagrank">
     <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
 </div>
 <div class="row tagrank">
 
     <div class="profile-taglist">
+        <div class="col-sm-1"></div>
+        <div id="tab-votes" class="tab">By votes</div>
+        <div id="tab-time" class="tab">By time</div>
         <table class="table profile-taglist-table">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
@@ -48,7 +51,7 @@
 <script>
     $(function () {
         var deleteButton = '<th class="col-sm-1 th-detele-btn">' +
-                           '<div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div></th>';
+                '<div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div></th>';
 
         var scroll = '<th class="col-sm-1 th-mytag-scroll"></th>';
 
@@ -57,8 +60,13 @@
                     '"><i class="fa fa-caret-right"></i></span></th>';
         }
 
+        function numVotes(num) {
+            return '<th class="col-sm-1 th-upvote-num"><div class="mytag-upvote-circle"><p class="mytag-upvote-num">' +
+                    num + '</div></th>';
+        }
+
         function tagName(name) {
-            return '<th class="col-sm-5"><p class="mytag-tagname-font">' + name + '</p></th>';
+            return '<th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">' + name + '</p></th>';
         }
 
         function createdTime(time) {
@@ -67,14 +75,28 @@
 
         var time_table = '<tbody id="tag-time-table">';
         {% for tag in tags_order_by_time %}
-            time_table += {{ tag.name }};
-{#            time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th>' + tagName({{ tag.name }}) +#}
-{#                          createdTime({{ tag.created_time }}) + viewMore({{ tag.name }}) + scroll + '</tr>';#}
+            time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th>' + tagName({{ tag.name|tojson|safe }}) +
+                    createdTime({{ tag.created_time|tojson|safe }}) + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
-        {#        var tags_order_by_time = {{ tags_order_by_time|tojson }};#}
-
         time_table += '</tbody>';
-        $('.profile-taglist-table').html(time_table);
+
+        var votes_table = '<tbody id="tag-votes-table">';
+        var taggers;
+        {% for tag in tags_order_by_votes %}
+            taggers = '<th class="col-sm-4">';
+            {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
+                taggers += '<div class="mytag-img th-mytag-img" data-uid="' + {{ tagger.id|tojson|safe }} +'" title="' +
+                        {{ tagger.name|tojson|safe }} +'"><img class="voter-img" src="https://graph.facebook.com/' +
+                        {{ tagger.id|tojson|safe }} +'/picture"></div>';
+            {% endfor %}
+            taggers += '</th>';
+            votes_table += '<tr id="tag-set-{{ tag.name|tojson|safe }}" class="my-tag-set">' + deleteButton +
+                    numVotes({{ tag.votes|tojson|safe }}) + tagName({{ tag.name|tojson|safe }}) +
+                    taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
+        {% endfor %}
+        votes_table += '</tbody>';
+
+        $('.profile-taglist-table').html(votes_table);
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);

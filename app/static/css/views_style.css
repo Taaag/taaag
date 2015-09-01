@@ -275,6 +275,7 @@ span.friendlist-friendname span {
 
 .tagrank {
     margin: 0;
+    height: auto;
 }
 
 #tag-cloud {
@@ -343,7 +344,7 @@ span.friendlist-friendname span {
 
 .profile-taglist {
     /*width: 500px;*/
-    height: 180px;
+    height: 200px;
     background-color: #f7ca18;
     overflow-y: auto;
     overflow-x: hidden;
@@ -548,4 +549,16 @@ span.friendlist-friendname span {
 
 .select2-selection {
     border: 0 !important;
+}
+
+#manage-photo {
+    height: 160px;
+}
+
+.tab {
+    background-color: #ffffff;
+    display: inline-block;
+    height: 20px;
+    width: 80px;
+    line-height: 0;
 }
