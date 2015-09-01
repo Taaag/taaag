@@ -60,48 +60,6 @@
 
 <script>
     $(function () {
-        var deleteButton = '<th class="col-sm-1 th-detele-btn">' +
-                '<div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div></th>';
-
-        var scroll = '<th class="col-sm-1 th-mytag-scroll"></th>';
-
-        var viewMore = '<th class="col-sm-1 th-mytag-viewmore"><span class="span-viewmore">' +
-                '<i class="fa fa-caret-right"></i></span></th>';
-
-        function numVotes(num, isVoteTable) {
-            var circle = '<div class="mytag-upvote-circle">';
-            return '<th class="col-sm-1 th-upvote-num">' + (isVoteTable ? circle : '') + '<p class="mytag-upvote-num">' +
-                    num + '</p></div></th>';
-        }
-
-        function tagName(name) {
-            return '<th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">' + name + '</p></th>';
-        }
-
-        function createdTime(time) {
-            return '<th class="col-sm-4 tag-created-time">' + time + '</th>';
-        }
-
-        var time_table = '<tbody id="tag-time-table">';
-
-        time_table += '</tbody>';
-
-        var votes_table = '<tbody id="tag-votes-table">';
-        var taggers;
-        {% for tag in tags_order_by_votes %}
-            taggers = '<th class="col-sm-4">';
-            {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
-                taggers += '<div class="mytag-img th-mytag-img" data-uid="' + {{ tagger.id|tojson|safe }} +'" title="' +
-                        {{ tagger.name|tojson|safe }} +'"><img class="voter-img" src="https://graph.facebook.com/' +
-                        {{ tagger.id|tojson|safe }} +'/picture"></div>';
-            {% endfor %}
-            taggers += '</th>';
-            votes_table += '<tr class="my-tag-set">' + deleteButton +
-                    numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
-                    taggers + viewMore + scroll + '</tr>';
-        {% endfor %}
-        votes_table += '</tbody>';
-
         function deleteTag(tag) {
             $.get('/api/delete_tag', {name: tag}, function (response) {
                 if (response['succeed']) {
