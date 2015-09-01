@@ -48,7 +48,6 @@
 
 <script>
     $(function () {
-        {% for tag in tags_order_by_votes %}
         var tags_order_by_time = {{ tags_order_by_time|tojson }};
         var time_table = '<tbody id="tag-time-table">';
         var deleteButton = '<th class="col-sm-1 th-detele-btn">' +
