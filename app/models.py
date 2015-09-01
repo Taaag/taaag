@@ -6,6 +6,7 @@ from app.utils import is_friend_of, get_user_friends, has_friends_permission
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 from sqlalchemy.exc import IntegrityError
+from datetime import timezone
 
 
 class User(db.Model):
@@ -24,8 +25,10 @@ class User(db.Model):
     # tags = db.relationship('Tagging', backref='taggee', foreign_keys='Tagging.taggee_id', lazy='dynamic')
     # tag_others = db.relationship('Tagging', backref='tagger', foreign_keys='Tagging.tagger_id', lazy='dynamic')
 
-    tags = db.relationship('Tag', backref=db.backref('taggees', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
-    tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings', primaryjoin='Tagging.tagger_id==User.id',
+    tags = db.relationship('Tag', backref=db.backref('taggees', lazy='dynamic'), secondary='taggings',
+                           primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
+    tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings',
+                                 primaryjoin='Tagging.tagger_id==User.id',
                                  lazy='dynamic')
 
     # def get_tags(self):
@@ -42,7 +45,12 @@ class User(db.Model):
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
-        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created.desc()).with_entities(Tag.name, tagger).all()
+        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created.desc()).with_entities(
+            Tag.name, tagger).all()
+
+    def get_tags_order_by_time(self):
+        return self.tags.with_entities(Tag.name, func.min(Tagging.created).label('first')).group_by(Tag.name). \
+            order_by('first desc').all()
 
     def to_dict(self):
         return {'id': str(self.id), 'name': self.name}
@@ -131,8 +139,10 @@ class Tag(db.Model):
 
     @classmethod
     def all_tags_filtered(cls, friends_list):
-        return [_[1] for _ in db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(Tagging.tag_id).join(cls,
-                                                                                                                                                   Tagging.tag_id == Tag.id).all()]
+        return [_[1] for _ in
+                db.session.query(Tagging.tag_id, Tag.name).filter(Tagging.taggee_id.in_(friends_list)).group_by(
+                    Tagging.tag_id).join(cls,
+                                         Tagging.tag_id == Tag.id).all()]
 
     @classmethod
     def all_tags(cls):
@@ -175,7 +185,7 @@ class Tagging(db.Model):
     __tablename__ = 'taggings'
 
     id = db.Column(db.Integer, nullable=False, primary_key=True)
-    created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    created = db.Column(db.DateTime, default=datetime.utcnow().replace(tzinfo=timezone.utc), nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
     tagger_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False)
