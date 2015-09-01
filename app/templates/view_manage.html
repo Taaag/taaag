@@ -4,8 +4,8 @@
 <div class="row tagrank">
 
     <ul class = "nav nav-tabs" id = "taglist-tab">
-        <li role="presentaion" class = "active" id="tab-votes"><a href="#">Top</a></li>
-        <li role="presentation"  class = "active" id="tab-time"><a href="#">Recent</a></li>
+        <li role="presentaion"  id="tab-votes" class="active"><a href="#">Top</a></li>
+        <li role="presentation"   id="tab-time"><a href="#">Recent</a></li>
 
     </ul>
     <div class="profile-taglist">
@@ -168,7 +168,7 @@
         
         $('#tab-time').click(function () {
             $('.profile-taglist-table').html(time_table);
-            $(this).addClass('tab-selected');
+            $(this).addClass('active');
             $('#tab-votes').removeClass('active');
         });
         $('#tab-votes').click(function () {
@@ -177,7 +177,7 @@
             $('#tab-time').removeClass('active');
         });
 
-{#        $('#tab-votes').trigger("click");#}
+{#        $('#tab-votes').trigger("active");#}
     });
 
 

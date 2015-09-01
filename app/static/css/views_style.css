@@ -346,7 +346,7 @@ span.friendlist-friendname span {
     margin: auto;
     margin-top: 0px;
     margin-bottom: 25px;   /*orginal 35px*/
-    border: 2px solid #fff;
+    border: 5px solid #fff;
 }
 
 .profile-taglist {
@@ -618,11 +618,10 @@ height: 30px;
     
 }
 
-#tab-time{
+#tab-votes{
     cursor: pointer;
     border: 0px;
     text-align: center;
-    color:white;
     width: 40px;
     
 }
@@ -630,7 +629,6 @@ height: 30px;
     cursor: pointer;
     border: 0px;
     text-align: center;
-    color:white;
     width: 80px;
     
 }
