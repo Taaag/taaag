@@ -6,7 +6,7 @@
     <div class="profile-taglist">
         <table class="table profile-taglist-table">
             <tbody id="tag-votes-table">
-            {% for tag, tagger in tags_order_by_votes %}
+            {% for tag, tagger in tags_order_by_votes.items() %}
                 <tr class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
