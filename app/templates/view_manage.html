@@ -17,7 +17,7 @@
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
                         <!-- 循环照片。。。 -->
-                        {% for tagger in tag_with_taggers[tag.name][0:5] %}
+                        {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
@@ -54,7 +54,7 @@
         $.each(tags_order_by_time, function (index, tag) {
             var view_more = '<th class="col-sm-1 th-mytag-viewmore">' +
                             '<span class="span-viewmore" data-name="' + tag.name +
-                            "><i class="fa fa-caret-right"></i></span></th>'
+                            '><i class="fa fa-caret-right"></i></span></th>';
             time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th><th class="col-sm-5"><p class="mytag-tagname-font">' + tag.name +
                           '</p></th><th class="col-sm-4">' + tag.created_time + '</th>' + view_more +'</tr>';
         });
