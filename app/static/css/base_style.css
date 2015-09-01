@@ -31,7 +31,7 @@ div {
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background-color: #F7CA18;
+    /*background-color: #F7CA18;*/
     margin: auto;
     overflow-x: hidden;
 }
@@ -61,6 +61,7 @@ body {
 .overall {
     max-width: 760px;
     max-height: 560px;
+    background-color: #F7CA18;
 }
 
 .row {
