@@ -1,5 +1,4 @@
 {% for tag in a %}
     <p>{{ tag[0] }}</p>
     <p>{{ tag[1].strftime('%m-%d, %H:%M') }}</p>
-    <p>{{ tag[1].astimezone("Asia/Singapore") }}</p>
 {% endfor %}
