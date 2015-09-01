@@ -141,8 +141,7 @@
         }
 
         var tagger_array = {{ tag_with_taggers|tojson }}
-
-                $('.span-viewmore').click(function () {
+                $(document).on('click', '.span-viewmore', function() {
                     var tag = $(this).attr('data-name');
                     var taggers = tagger_array[tag];
                     console.log(taggers);
