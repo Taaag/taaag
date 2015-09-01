@@ -4,9 +4,9 @@
 <div class="row tagrank">
 
     <div class="profile-taglist">
-        <div id="tab-placeholder" class="col-sm-1"></div>
-        <div id="tab-votes" class="tab">By votes</div>
-        <div id="tab-time" class="tab">By time</div>
+{#        <div id="tab-placeholder" class="col-sm-1"></div>#}
+{#        <div id="tab-votes" class="tab">By votes</div>#}
+{#        <div id="tab-time" class="tab">By time</div>#}
         <table class="table profile-taglist-table">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
@@ -25,7 +25,7 @@
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
                         {% endfor %}
-                        {#                        <div class="mytag-img .th-mytag-img"></div>#}
+                                                <div class="mytag-img .th-mytag-img"></div>
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
                         <span class="span-viewmore" data-name="{{ tag.name }}"><i
@@ -170,7 +170,7 @@
             $('#tab-time').removeClass('tab-selected');
         });
 
-        $('#tab-votes').trigger("click");
+{#        $('#tab-votes').trigger("click");#}
     });
 
 
