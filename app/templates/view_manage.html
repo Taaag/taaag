@@ -61,10 +61,8 @@
 
         var scroll = '<th class="col-sm-1 th-mytag-scroll"></th>';
 
-        function viewMore(name) {
-            return '<th class="col-sm-1 th-mytag-viewmore">' + '<span class="span-viewmore" data-name="' + name +
-                    '"><i class="fa fa-caret-right"></i></span></th>';
-        }
+        var viewMore = '<th class="col-sm-1 th-mytag-viewmore"><span class="span-viewmore">' +
+                '<i class="fa fa-caret-right"></i></span></th>';
 
         function numVotes(num, isVoteTable) {
             var circle = '<div class="mytag-upvote-circle">';
@@ -83,7 +81,7 @@
         var time_table = '<tbody id="tag-time-table">';
         {% for tag in tags_order_by_time %}
             time_table += '<tr class="my-tag-set">' + deleteButton + numVotes('', false) + tagName({{ tag.name|tojson|safe }}) +
-                    createdTime({{ tag.created_time|tojson|safe }}) + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
+                    createdTime({{ tag.created_time|tojson|safe }}) + viewMore + scroll + '</tr>';
         {% endfor %}
         time_table += '</tbody>';
 
@@ -99,7 +97,7 @@
             taggers += '</th>';
             votes_table += '<tr id="tag-set-{{ tag.name|tojson|safe }}" class="my-tag-set">' + deleteButton +
                     numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
-                    taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
+                    taggers + viewMore + scroll + '</tr>';
         {% endfor %}
         votes_table += '</tbody>';
 
