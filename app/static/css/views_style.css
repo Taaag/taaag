@@ -603,6 +603,7 @@ height: 30px;
 #taglist-tab{
    height: 20px;
    margin-left: 25px;
+   cursor: pointer;
 
 
 
