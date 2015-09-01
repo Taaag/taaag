@@ -76,7 +76,7 @@
 
         var time_table = '<tbody id="tag-time-table">';
         {% for tag in tags_order_by_time %}
-            time_table += '<tr class="my-tag-set">' + deleteButton + numVotes('') + tagName({{ tag.name|tojson|safe }}) +
+            time_table += '<tr class="my-tag-set">' + deleteButton + numVotes('', false) + tagName({{ tag.name|tojson|safe }}) +
                     createdTime({{ tag.created_time|tojson|safe }}) + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
         time_table += '</tbody>';
@@ -92,7 +92,7 @@
             {% endfor %}
             taggers += '</th>';
             votes_table += '<tr id="tag-set-{{ tag.name|tojson|safe }}" class="my-tag-set">' + deleteButton +
-                    numVotes({{ tag.votes|tojson|safe }}) + tagName({{ tag.name|tojson|safe }}) +
+                    numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
                     taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
         votes_table += '</tbody>';
