@@ -32,7 +32,7 @@ div {
 body {
     font-family: 'Josefin Sans', sans-serif;
     /*background-color: #F7CA18;*/
-    margin: auto;
+    /*margin: auto;*/
     overflow-x: hidden;
 }
 
@@ -41,7 +41,7 @@ body {
     background: url("../images/border.png") repeat;
     text-align: center;
     width: 100%;
-    margin:auto;
+    /*margin:auto;*/
 }
 
 .spinner-overlay {
