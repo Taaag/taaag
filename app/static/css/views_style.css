@@ -549,3 +549,7 @@ span.friendlist-friendname span {
 .select2-selection {
     border: 0 !important;
 }
+
+.tab {
+    display: inline-block;
+}
