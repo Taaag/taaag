@@ -157,9 +157,10 @@ body {
     float: right;
 }
 .b-f-btn-container {
-     padding: 5px;
+    padding: 5px;
     display: inline-block;
     float: left;
+    margin-left: 10px;
 }
 
 .fb-btn {
@@ -172,6 +173,7 @@ body {
     padding: 0;
     vertical-align: middle;
     width: 70px;
+    margin:5px;
 }
 
 .fb-btn:hover {
@@ -202,9 +204,4 @@ body {
 .icon-open {
 }
 
-#back-btn{
-    float: left;
-}
-#forward-btn{
-    float:left;
-}
+
