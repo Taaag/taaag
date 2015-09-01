@@ -352,7 +352,7 @@ span.friendlist-friendname span {
 .profile-taglist {
     
     height: 180px;   /*orginal 200px*/
-    background-color: #f7ca18;
+    background-color: #fae066;
     overflow-x: hidden;
     overflow-y:auto;
     /*  border-right: 10px solid  #ddd ;*/
@@ -361,7 +361,7 @@ span.friendlist-friendname span {
 .profile-taglist-table {
     width: 500px;
     height: auto;
-    border-bottom: 1px solid #f7ca18;
+    border-bottom: 1px solid #fae066;
     background-color: white;
     margin-bottom: 0px;
     overflow-y: auto;
@@ -370,13 +370,13 @@ span.friendlist-friendname span {
 
 .my-tag-set {
     width: 500px;
-    border-bottom: 1px dotted #f7ca18;
+    border-bottom: 1px dotted #fae066;
 }
 
 /* th : background setting for the detele button cell*/
 .th-detele-btn {
     width: 5%;
-    background-color: #f7ca18;
+    background-color: #fae066;
     text-align: center;
 }
 
@@ -411,14 +411,14 @@ span.friendlist-friendname span {
 
 .mytag-upvote-num {
     font-size: 15px; /*need to resize*/
-    color: #f7ca18;
+    color: #fae066;
     text-align: center;
     margin: auto;
 }
 
 .taglist-th-tn {
     width: 250px;
-    border-right: 1px dotted #f7ca18;
+    border-right: 1px dotted #fae066;
 }
 
 .mytag-tagname-font {
@@ -476,11 +476,11 @@ span.friendlist-friendname span {
 }
 
 .dialog-set {
-    border-bottom: 1px dotted #f7ca18;
+    border-bottom: 1px dotted #fae066;
 }
 
 .dialog-title {
-    color: #f7ca18;
+    color: #fae066;
     overflow: hidden;
     font-size: 15px;
     margin-bottom: 0px;
@@ -508,7 +508,7 @@ span.friendlist-friendname span {
 }
 
 .bootstrap-dialog-title {
-    color: #f7ca18;
+    color: #fae066;
 }
 
 .modal-dialog {
@@ -530,7 +530,7 @@ span.friendlist-friendname span {
     background-color: #303030;
     border-radius: 5px;
     font-size: 15px;
-    color: #f7ca18;
+    color: #fae066;
     outline: none;
     border: none;
 }
