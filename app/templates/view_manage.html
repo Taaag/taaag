@@ -107,9 +107,11 @@
             $(document).trigger("viewChanging", ["me", {}]);
         });
 
-        $(".mytag-img").click(function () {
+        $(".mytag-img").tooltip({placement: "bottom", container: "body"});
+
+        $(document).on('click', '.mytag-img', function(){
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
-        }).tooltip({placement: "bottom", container: "body"});
+        });
 
 
         $('.mytaglist-delete-btn').click(function () {
