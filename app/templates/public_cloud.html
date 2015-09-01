@@ -85,7 +85,7 @@
                     <button id="public-join-btn">Join Taaag</button>
                 </div>
             </div>
-            {% set uid = user.id %}
+            {% set user_image = 'https://graph.facebook.com/'+ user.id +'/picture?type=large' %}
             {% include 'tag_cloud.html' %}
         </div>
     </div>
