@@ -576,3 +576,7 @@ span.friendlist-friendname span {
 .tag-created-time {
     text-align: center;
 }
+
+.tab-selected {
+    background-color: #dddddd;
+}
