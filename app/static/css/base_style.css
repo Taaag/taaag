@@ -80,7 +80,7 @@ body {
 .row-share {
     background-color: #fae066; /**/
     height: 40px;
-    text-align: right;
+    /*text-align: right;*/
 }
 
 #body-left {
@@ -154,6 +154,7 @@ body {
 .fb-btn-container {
     padding: 5px;
     display: inline-block;
+    float: right;
 }
 
 .fb-btn {
