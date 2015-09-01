@@ -29,6 +29,7 @@
             var canvas = document.getElementById('myCanvas');
             console.log('Start uploading...');
             $.post('/store_image/', {data: canvas.toDataURL('image/png')}, function (response) {
+                console.log(response);
                 alert(response);
             });
         });

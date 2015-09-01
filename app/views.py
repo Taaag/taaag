@@ -1,5 +1,9 @@
 from datetime import timezone
 
+from io import BytesIO
+
+import base64
+
 from facebook import get_user_from_cookie, GraphAPI
 import requests
 
@@ -8,6 +12,8 @@ from app import app
 from app.models import User, Tag, Tagging
 from app.api import apis, APIException, views
 from app.utils import clear_friends_cache
+
+
 
 
 # Facebook app details
@@ -82,11 +88,12 @@ def image_proxy(uid):
 def store_image():
     if not g.user:
         abort(403)
-    data = request.form['data']
-    print(data)
-    if data.find('data:image/png;base64,') == 0:
-        data = data.replace('data:image/png;base64,', '')
-    return 'TEST'
+    data = request.form['data'].encode('ascii')
+    if data.find(b'data:image/png;base64,') == 0:
+        data = data.replace(b'data:image/png;base64,', b'')
+        payload = {'file': BytesIO(base64.b64decode(data))}
+        values = {'access_token': g.user.access_token}
+        return requests.post("https://graph.facebook.com/me/staging_resources", files=payload, data=values)
 
 
 @app.before_request
