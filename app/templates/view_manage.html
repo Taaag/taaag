@@ -57,7 +57,7 @@
                             '<span class="span-viewmore" data-name="' + tag.name +
                             '"><i class="fa fa-caret-right"></i></span></th>';
             time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th><th class="col-sm-5"><p class="mytag-tagname-font">' + tag.name +
-                          '</p></th><th class="col-sm-4">' + tag.created_time + '</th>' + view_more +'</tr>';
+                          '</p></th><th class="col-sm-4">' + tag.created_time + '</th>' + view_more +'<th class="col-sm-1 th-mytag-scroll"></th></tr>';
         });
         time_table += '</tbody>';
         $('.profile-taglist-table').html(time_table);
