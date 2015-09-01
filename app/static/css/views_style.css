@@ -349,6 +349,7 @@ span.friendlist-friendname span {
     height: 210px;   /*orginal 200px*/
     background-color: #f7ca18;
     overflow-x: hidden;
+    overflow-y:hidden;
     /*  border-right: 10px solid  #ddd ;*/
 }
 
@@ -595,6 +596,6 @@ height: 30px;
 }
 
 #taglist-tab{
-   height: 10px;
+   height: 20px;
 
 }
