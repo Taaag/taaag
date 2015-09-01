@@ -165,5 +165,5 @@
     })
 </script>
 
-{% set user_image = 'https://graph.facebook.com/'+ str(friend.id) +'/picture?type=large' %}
+{% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?type=large' %}
 {% include 'tag_cloud.html' %}

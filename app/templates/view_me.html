@@ -66,5 +66,5 @@
     });
 </script>
 
-{% set user_image = '/image_proxy/' + str(user.id) %}
+{% set user_image = '/image_proxy/' ~ user.id %}
 {% include 'tag_cloud.html' %}
