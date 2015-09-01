@@ -7,7 +7,7 @@
         <canvas width="490" height="270" id="myCanvas">
             <div id="tags">
                 <ul id="tag-list">
-                    {% for key, value in tags %}
+                    {% for key, value in tags.items() %}
                         <li>
                             <a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
                                class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a>
