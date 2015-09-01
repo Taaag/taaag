@@ -169,12 +169,12 @@
         $('#tab-time').click(function () {
             $('.profile-taglist-table').html(time_table);
             $(this).addClass('tab-selected');
-            $('#tab-votes').removeClass('tab-selected');
+            $('#tab-votes').removeClass('active');
         });
         $('#tab-votes').click(function () {
             $('.profile-taglist-table').html(votes_table);
             $(this).addClass('tab-selected');
-            $('#tab-time').removeClass('tab-selected');
+            $('#tab-time').removeClass('active');
         });
 
 {#        $('#tab-votes').trigger("click");#}
