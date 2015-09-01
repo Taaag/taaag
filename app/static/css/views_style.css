@@ -556,5 +556,9 @@ span.friendlist-friendname span {
 }
 
 .tab {
+    background-color: #ffffff;
     display: inline-block;
+    height: 20px;
+    width: 80px;
+    line-height: 0;
 }
