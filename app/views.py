@@ -1,13 +1,14 @@
-import json
+import base64
 
 from facebook import get_user_from_cookie, GraphAPI
-from flask import g, render_template, redirect, request, session, url_for, jsonify, abort
-from datetime import timezone
+import requests
 
-from app import app, db
+from flask import g, render_template, request, session, jsonify, abort, Response
+from app import app
 from app.models import User, Tag, Tagging
 from app.api import apis, APIException, views
 from app.utils import clear_friends_cache
+
 
 # Facebook app details
 FB_APP_ID = '687248731410966'
@@ -34,8 +35,6 @@ def test_login():
 
 @app.route('/test_filter', methods=['GET'])
 def test_filter():
-    colin = User.get_by_id('10153109209968786')
-    tag = Tagging.create(tagger=colin, taggee=g.user, tag=Tag(name='qwertyuio123'))
     return render_template('test_filter.html', a=g.user.get_tags_order_by_time(),
                            default_tz=app.config['DEFAULT_TIMEZONE'],
                            timezone=timezone)
@@ -62,6 +61,39 @@ def view(view_type):
             return views[view_type](g.user, request.args)
         except APIException as e:
             return e.message
+
+
+@app.route('/image_proxy/<uid>', methods=['GET'])
+def image_proxy(uid):
+    url = 'https://graph.facebook.com/%s/picture?type=normal' % uid
+    r = requests.get(url, stream=True, params=request.args)
+    headers = dict(r.headers)
+
+    def generate():
+        for chunk in r.iter_content(1024):
+            yield chunk
+
+    return Response(generate(), headers=headers)
+
+
+@app.route('/store_image/', methods=['POST'])
+def store_image():
+    if not g.user:
+        abort(403)
+    data = request.form['data'].encode('ascii')
+    if data.find(b'data:image/png;base64,') == 0:
+        data = data.replace(b'data:image/png;base64,', b'')
+        payload = {'file': ('cloud.png', base64.b64decode(data), 'image/png')}
+        values = {'access_token': g.user.access_token}
+        r = requests.post("https://graph.facebook.com/me/staging_resources", files=payload, data=values)
+
+        def generate():
+            for chunk in r.iter_content(1024):
+                yield chunk
+
+        return Response(generate(), headers=dict(r.headers))
+    else:
+        abort(400)
 
 
 @app.before_request

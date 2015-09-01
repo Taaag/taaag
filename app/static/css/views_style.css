@@ -275,6 +275,7 @@ span.friendlist-friendname span {
 
 .tagrank {
     margin: 0;
+    height: auto;
 }
 
 #tag-cloud {
@@ -342,10 +343,10 @@ span.friendlist-friendname span {
 }
 
 .profile-taglist {
-    width: 500px;
-    height: 180px;
+    /*width: 500px;*/
+    height: 200px;
     background-color: #f7ca18;
-    overflow-y: auto;
+    overflow-x: hidden;
     /*  border-right: 10px solid  #ddd ;*/
 }
 
@@ -355,6 +356,7 @@ span.friendlist-friendname span {
     border-bottom: 1px solid #f7ca18;
     background-color: white;
     margin-bottom: 0px;
+    overflow-y: auto;
 }
 
 .my-tag-set {
@@ -385,7 +387,7 @@ span.friendlist-friendname span {
 
 .th-upvote-num {
     padding-left: 10px;
-
+    height: 36px;
 }
 
 .mytag-upvote-circle {
@@ -531,7 +533,7 @@ span.friendlist-friendname span {
     display: none;
 }
 
-.profile-selectbar>.select2-container {
+.profile-selectbar > .select2-container {
     /*border-radius: 10px 0 0 10px;*/
     width: 70%;
     height: 100%;
@@ -547,4 +549,34 @@ span.friendlist-friendname span {
 
 .select2-selection {
     border: 0 !important;
+}
+
+#manage-photo {
+    height: 160px;
+}
+
+.tab {
+    background-color: #ffffff;
+    display: inline-block;
+    height: 20px;
+    width: 80px;
+    float: left;
+}
+
+#shareMyCloudBtn:hover {
+    cursor: pointer;
+}
+
+#tab-placeholder {
+    height: 20px;
+    width: 5%;
+    padding: 0;
+}
+
+.tag-created-time {
+    text-align: center;
+}
+
+.tab-selected {
+    background-color: #dddddd;
 }

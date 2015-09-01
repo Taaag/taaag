@@ -1,22 +1,26 @@
-<div class="row tagrank">
+<div id='manage-photo' class="row tagrank">
     <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
 </div>
 <div class="row tagrank">
 
     <div class="profile-taglist">
+        <div id="tab-placeholder" class="col-sm-1"></div>
+        <div id="tab-votes" class="tab">By votes</div>
+        <div id="tab-time" class="tab">By time</div>
         <table class="table profile-taglist-table">
-            {% for tag in tags %}
-                <tr class="my-tag-set">
+            <tbody id="tag-votes-table">
+            {% for tag in tags_order_by_votes %}
+                <tr id="tag-set-{{ tag.name }}" class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
                     <th class="col-sm-1 th-upvote-num">
-                        <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.taggers|length }}</div>
+                        <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.votes }}</div>
                     </th>
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
                         <!-- 循环照片。。。 -->
-                        {% for tagger in tag.taggers[0:5] %}
+                        {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
                             </div>
@@ -24,13 +28,14 @@
                         {#                        <div class="mytag-img .th-mytag-img"></div>#}
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
-                        <span class="span-viewmore" data-index="{{ loop.index0 }}"><i class="fa fa-caret-right"></i></span>
+                        <span class="span-viewmore" data-name="{{ tag.name }}"><i
+                                class="fa fa-caret-right"></i></span>
                     </th>
                     <th class="col-sm-1 th-mytag-scroll">
-
                     </th>
                 </tr>
             {% endfor %}
+            </tbody>
         </table>
     </div>
 
@@ -45,6 +50,56 @@
 
 <script>
     $(function () {
+        var deleteButton = '<th class="col-sm-1 th-detele-btn">' +
+                '<div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div></th>';
+
+        var scroll = '<th class="col-sm-1 th-mytag-scroll"></th>';
+
+        function viewMore(name) {
+            return '<th class="col-sm-1 th-mytag-viewmore">' + '<span class="span-viewmore" data-name="' + name +
+                    '"><i class="fa fa-caret-right"></i></span></th>';
+        }
+
+        function numVotes(num, isVoteTable) {
+            var circle = '<div class="mytag-upvote-circle">';
+            return '<th class="col-sm-1 th-upvote-num">'+ (isVoteTable ? circle : '') +'<p class="mytag-upvote-num">' +
+                    num + '</p></div></th>';
+        }
+
+        function tagName(name) {
+            return '<th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">' + name + '</p></th>';
+        }
+
+        function createdTime(time) {
+            return '<th class="col-sm-4 tag-created-time">' + time + '</th>';
+        }
+
+        var time_table = '<tbody id="tag-time-table">';
+        {% for tag in tags_order_by_time %}
+            time_table += '<tr class="my-tag-set">' + deleteButton + numVotes('', false) + tagName({{ tag.name|tojson|safe }}) +
+                    createdTime({{ tag.created_time|tojson|safe }}) + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
+        {% endfor %}
+        time_table += '</tbody>';
+
+        var votes_table = '<tbody id="tag-votes-table">';
+        var taggers;
+        {% for tag in tags_order_by_votes %}
+            taggers = '<th class="col-sm-4">';
+            {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
+                taggers += '<div class="mytag-img th-mytag-img" data-uid="' + {{ tagger.id|tojson|safe }} +'" title="' +
+                        {{ tagger.name|tojson|safe }} +'"><img class="voter-img" src="https://graph.facebook.com/' +
+                        {{ tagger.id|tojson|safe }} +'/picture"></div>';
+            {% endfor %}
+            taggers += '</th>';
+            votes_table += '<tr id="tag-set-{{ tag.name|tojson|safe }}" class="my-tag-set">' + deleteButton +
+                    numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
+                    taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
+        {% endfor %}
+        console.log(numVotes(123, true));
+        votes_table += '</tbody>';
+
+        $('.profile-taglist-table').html(votes_table);
+
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
         });
@@ -55,7 +110,7 @@
 
 
         $('.mytaglist-delete-btn').click(function () {
-            var $row = $(this).closest('.my-tag-set');
+            var $row = $('#tag-set' + $(this).attr('data-name'));
             var tag = $row.find('.mytag-tagname-font').text();
             BootstrapDialog.confirm(
                     {
@@ -85,14 +140,11 @@
             });
         }
 
-        var tagger_array = {{ tags|tojson }}
-
-                $('.span-viewmore').click(function () {
-                    var $row = $(this).closest('.my-tag-set');
-                    var tag = $row.find('.mytag-tagname-font').text();
-                    var upvoteNum = $row.find('.mytag-upvote-num').text();
-                    var index = parseInt($(this).attr('data-index'));
-                    var taggers = tagger_array[index]['taggers'];
+        var tagger_array = {{ tag_with_taggers|tojson }}
+                $(document).on('click', '.span-viewmore', function() {
+                    var tag = $(this).attr('data-name');
+                    var taggers = tagger_array[tag];
+                    console.log(taggers);
                     var msg = '<table><tbody>';
                     $.each(taggers, function (index, tagger) {
                         msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
@@ -102,7 +154,7 @@
                     });
                     msg += '</tbody></table>';
                     BootstrapDialog.show({
-                        title: '<p class = "dialog-title">' + upvoteNum + ' people have upvoted ' + tag + ' </p>',
+                        title: '<p class = "dialog-title">' + taggers.length + ' people have upvoted ' + tag + ' </p>',
                         message: msg,
                         type: 'none',
                         closable: true,
@@ -111,6 +163,16 @@
                         cssClass: 'upvoteList-dialog'
                     });
                 });
+        $('#tab-time').click(function () {
+            $('.profile-taglist-table').html(time_table);
+            $(this).addClass('tab-selected');
+            $('#tab-votes').removeClass('tab-selected');
+        });
+        $('#tab-votes').click(function () {
+            $('.profile-taglist-table').html(votes_table);
+            $(this).addClass('tab-selected');
+            $('#tab-time').removeClass('tab-selected');
+        });
     });
 
 

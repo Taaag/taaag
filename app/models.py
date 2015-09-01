@@ -45,7 +45,7 @@ class User(db.Model):
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")
-        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created.desc()).with_entities(
+        return self.tags.join(tagger, tagger.id == Tagging.tagger_id).order_by(Tagging.created).with_entities(
             Tag.name, tagger).all()
 
     def get_tags_order_by_time(self):

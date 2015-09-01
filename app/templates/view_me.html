@@ -1,6 +1,6 @@
 <div id="view-me" class="view">
     <div class="row">
-        <div class="profile-name">{{ user.name }}</div>
+        <div class="profile-name">{{ user.name }} <i class="fa fa-camera-retro" id="shareMyCloudBtn"></i></div>
     </div>
 
     <div class="row" id="myCanvasContainer">
@@ -24,6 +24,44 @@
     $(function () {
         $("#profile-view-manage-btn").click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
+        });
+        $("#shareMyCloudBtn").click(function () {
+            var canvas = document.getElementById('myCanvas');
+            $('.spinner-overlay').show();
+            $.post('/store_image/', {data: canvas.toDataURL('image/png')}, function (response) {
+                if (response.error) {
+                    $('.spinner-overlay').hide();
+                    alert(response.error);
+                    return;
+                }
+                var uri = response['uri'];
+                FB.api(
+                        'me/objects/cstaaag:tag',
+                        'post',
+                        {'object': {
+                            'og:url': 'https://taaag.sshz.org/tag_cloud/{{ user.id }}',
+                            'og:title': '{{ user.name }}\'s Tag Cloud',
+                            'og:type': 'cstaaag:tag',
+                            'og:image': uri,
+                            'fb:app_id': '687248731410966'
+                        }},
+                        function (response) {
+                            $('.spinner-overlay').hide();
+                            if (response.error) {
+                                alert(response.error);
+                                return;
+                            }
+                            FB.ui({
+                                method: 'share_open_graph',
+                                action_type: 'og.likes',
+                                action_properties: JSON.stringify({
+                                    object: response['id'],
+                                })
+                            }, function (response) {
+                            });
+                        }
+                );
+            });
         });
     });
 </script>
