@@ -5,8 +5,8 @@ import requests
 
 from flask import g, render_template, request, session, jsonify, abort, Response
 from app import app
-from app.models import User, Tag, Tagging
-from app.api import apis, APIException, views
+from app.models import User
+from app.api import apis, APIException, views, public_cloud
 from app.utils import clear_friends_cache
 
 
@@ -94,6 +94,14 @@ def store_image():
         return Response(generate(), headers=dict(r.headers))
     else:
         abort(400)
+
+
+@app.route('/tag_cloud/<uid>', methods=['GET'])
+def tag_cloud(uid):
+    user = User.get_by_id(uid)
+    if not user:
+        abort(403)
+    return public_cloud(user)
 
 
 @app.before_request
