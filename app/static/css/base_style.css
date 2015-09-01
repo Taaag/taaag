@@ -151,10 +151,15 @@ body {
     display: none;
 }
 
-.fb-btn-container {
+.fb-btn-container{
     padding: 5px;
     display: inline-block;
     float: right;
+}
+.b-f-btn-container {
+     padding: 5px;
+    display: inline-block;
+    float: left;
 }
 
 .fb-btn {
