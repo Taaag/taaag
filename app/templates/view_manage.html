@@ -95,35 +95,11 @@
                         {{ tagger.id|tojson|safe }} +'/picture"></div>';
             {% endfor %}
             taggers += '</th>';
-            votes_table += '<tr id="tag-set-{{ tag.name|tojson|safe }}" class="my-tag-set">' + deleteButton +
+            votes_table += '<tr class="my-tag-set">' + deleteButton +
                     numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
                     taggers + viewMore + scroll + '</tr>';
         {% endfor %}
         votes_table += '</tbody>';
-
-        $('#manage-to-view-btn').click(function () {
-            $(document).trigger("viewChanging", ["me", {}]);
-        });
-
-        $('.mytaglist-delete-btn').click(function () {
-            var $row = $('#tag-set' + $(this).attr('data-name'));
-            var tag = $row.find('.mytag-tagname-font').text();
-            BootstrapDialog.confirm(
-                    {
-                        title: 'Detele',
-                        type: 'none',
-                        message: "<h4> Are you sure to delete " + tag + "? </h4>",
-                        size: BootstrapDialog.SIZE_SMALL,
-                        closable: true,
-                        closeByBackdrop: true,
-                        callback: function (result) {
-                            if (result) {
-                                deleteTag(tag, $row);
-                            }
-                        }
-
-                    });
-        });
 
         function deleteTag(tag, $row) {
             $.get('/api/delete_tag', {name: tag}, function (response) {
@@ -160,6 +136,23 @@
             });
         }).on('click', '.mytag-img', function () {
             $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+        }).on('click', '.mytaglist-delete-btn', function () {
+            var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
+            BootstrapDialog.confirm(
+                    {
+                        title: 'Detele',
+                        type: 'none',
+                        message: "<h4> Are you sure to delete " + tag + "? </h4>",
+                        size: BootstrapDialog.SIZE_SMALL,
+                        closable: true,
+                        closeByBackdrop: true,
+                        callback: function (result) {
+                            if (result) {
+                                deleteTag(tag, $row);
+                            }
+                        }
+
+                    });
         });
 
         $('#tab-time').click(function () {
@@ -174,6 +167,9 @@
             $(".mytag-img").tooltip({placement: "bottom", container: "body"});
         });
 
+        $('#manage-to-view-btn').click(function () {
+            $(document).trigger("viewChanging", ["me", {}]);
+        });
         {#        $('#tab-votes').trigger("active");#}
     });
 
