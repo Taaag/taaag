@@ -7,7 +7,7 @@
 
     <!-- These are Open Graph tags.-->
     <meta property="fb:app_id" content="{{ app_id }}"/>
-    <meta property="og:description" content="Tag your friends!" />
+    <meta property="og:description" content="Tag your friends!"/>
 
     <title>{{ app_name }}</title>
 
@@ -72,6 +72,23 @@
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61576953-2', 'auto');
+    ga('send', 'pageview');
+
 </script>
 
 <!-- share button 以外的部分(行) -->
@@ -110,10 +127,14 @@
         <div id="menu">
             <div class="icon-btn" id="icon-top"><img src="/static/images/iconmenu.jpg" alter="menu"></div>
             <div id="menu-items">
-                <div class="icon-btn to-home" ><img class = "icon-open" src="/static/images/iconhouse.png" alter="home" data-toggle="tooltip" data-placement="bottom" title = "home"></div>
-                <div class="icon-btn" id="menu-me"><img  class = "icon-open" src="/static/images/iconme.png" alter="me" data-toggle="tooltip" data-placement="bottom" title = "me" ></div>
-                <div class="icon-btn" id="menu-friends"><img  class = "icon-open" src="/static/images/iconfriend.png" alter="friends" data-toggle="tooltip" data-placement="bottom" title = "friends" ></div>
-                <div class="icon-btn" id="menu-settings"><img  class = "icon-open" src="/static/images/iconsettings.png" alter="settings" data-toggle="tooltip" data-placement="bottom" title = "setting"></div>
+                <div class="icon-btn to-home"><img class="icon-open" src="/static/images/iconhouse.png" alter="home" data-toggle="tooltip"
+                                                   data-placement="bottom" title="home"></div>
+                <div class="icon-btn" id="menu-me"><img class="icon-open" src="/static/images/iconme.png" alter="me" data-toggle="tooltip"
+                                                        data-placement="bottom" title="me"></div>
+                <div class="icon-btn" id="menu-friends"><img class="icon-open" src="/static/images/iconfriend.png" alter="friends" data-toggle="tooltip"
+                                                             data-placement="bottom" title="friends"></div>
+                <div class="icon-btn" id="menu-settings"><img class="icon-open" src="/static/images/iconsettings.png" alter="settings" data-toggle="tooltip"
+                                                              data-placement="bottom" title="setting"></div>
             </div>
         </div>
     </div>
@@ -137,10 +158,10 @@
     //     FB.logout(function(response) { });
     // };
 
-$(document).ready(function(){
-    $('.icon-open').tooltip(
-    ); 
-});
+    $(document).ready(function () {
+        $('.icon-open').tooltip(
+        );
+    });
 
 
 </script>
