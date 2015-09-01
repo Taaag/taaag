@@ -62,7 +62,6 @@
 
         function numVotes(num, isVoteTable) {
             var circle = '<div class="mytag-upvote-circle">';
-            console.log("?");
             return '<th class="col-sm-1 th-upvote-num">'+ isVoteTable ? circle : '' +'<p class="mytag-upvote-num">' +
                     num + '</p></div></th>';
         }
@@ -96,6 +95,7 @@
                     numVotes({{ tag.votes|tojson|safe }}, true) + tagName({{ tag.name|tojson|safe }}) +
                     taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
+        console.log(numVotes(123, true));
         votes_table += '</tbody>';
 
         $('.profile-taglist-table').html(votes_table);
