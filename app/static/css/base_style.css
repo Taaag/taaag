@@ -38,9 +38,10 @@ body {
 
 .outer-contrainer{
 
-    background: url("../images/border.png") repeat;
+    background: url("../images/border.png") fixed no-repeat;
     text-align: center;
     width: 100%;
+    background-position: center; 
     /*margin:auto;*/
 }
 
