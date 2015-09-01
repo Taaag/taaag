@@ -1,13 +1,14 @@
-import json
-
-from facebook import get_user_from_cookie, GraphAPI
-from flask import g, render_template, redirect, request, session, url_for, jsonify, abort
 from datetime import timezone
 
-from app import app, db
+from facebook import get_user_from_cookie, GraphAPI
+import requests
+
+from flask import g, render_template, request, session, jsonify, abort, Response
+from app import app
 from app.models import User, Tag, Tagging
 from app.api import apis, APIException, views
 from app.utils import clear_friends_cache
+
 
 # Facebook app details
 FB_APP_ID = '687248731410966'
@@ -62,6 +63,19 @@ def view(view_type):
             return views[view_type](g.user, request.args)
         except APIException as e:
             return e.message
+
+
+@app.route('/image_proxy/<uid>', methods=['GET'])
+def image_proxy(uid):
+    url = 'https://graph.facebook.com/%s/picture?type=normal' % uid
+    r = requests.get(url, stream=True, params=request.args)
+    headers = dict(r.headers)
+
+    def generate():
+        for chunk in r.iter_content(1024):
+            yield chunk
+
+    return Response(generate(), headers=headers)
 
 
 @app.before_request
