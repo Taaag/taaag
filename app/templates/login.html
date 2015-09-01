@@ -38,7 +38,7 @@
 
             $('.fb-login-btn').click(function () {
                 FB.login(function (response) {
-                }, {scope: 'public_profile, user_friends'});
+                }, {scope: 'public_profile, user_friends, publish_actions'});
             });
         });
     });
