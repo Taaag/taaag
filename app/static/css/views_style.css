@@ -83,7 +83,7 @@
     background-color: white;
     margin: 20px auto;
     padding: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 /*.friendlist-box-shadow{
@@ -211,7 +211,7 @@ span.friendlist-friendname span {
 }
 
 .tagrank-chart {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     width: 490px;
     height: 300px;
@@ -345,7 +345,7 @@ span.friendlist-friendname span {
     width: 500px;
     height: 180px;
     background-color: #f7ca18;
-    overflow-y: scroll;
+    overflow-y: auto;
     /*  border-right: 10px solid  #ddd ;*/
 }
 
@@ -460,7 +460,7 @@ span.friendlist-friendname span {
 
 .upvoteList-dialog {
     padding-top: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .dialog-set {
@@ -491,7 +491,7 @@ span.friendlist-friendname span {
 }
 
 .bootstrap-dialog {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .bootstrap-dialog-title {
@@ -542,7 +542,7 @@ span.friendlist-friendname span {
 .select2-selection {
     border: 0 !important;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .select2-selection {
