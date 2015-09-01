@@ -556,7 +556,7 @@ span.friendlist-friendname span {
 }
 
 .tab {
-    background-color: #ffffff;
+    background-color: #dddddd;
     display: inline-block;
     height: 20px;
     width: 80px;
@@ -578,5 +578,5 @@ span.friendlist-friendname span {
 }
 
 .tab-selected {
-    background-color: #dddddd;
+    background-color: #ffffff;
 }
