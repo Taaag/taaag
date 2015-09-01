@@ -5,6 +5,7 @@
 
     <div class="profile-taglist">
         <table class="table profile-taglist-table">
+            <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
                 <tr class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
@@ -32,6 +33,7 @@
                     </th>
                 </tr>
             {% endfor %}
+            </tbody>
         </table>
     </div>
 
@@ -47,12 +49,14 @@
 <script>
     $(function () {
         var tags_order_by_time = {{ tags_order_by_time|tojson }};
-        var time_table = '';
+        var time_table = '<tbody id="tag-time-table">';
         $.each(tags_order_by_time, function (index, tag) {
             time_table += '<tr><td class="col-sm-1"></td><td class="col-sm-5">' + tag.name +
-                         '</td><td class="col-sm-6">' + tag.created_time+ '</td></tr>';
+                          '</td><td class="col-sm-6">' + tag.created_time + '</td></tr>';
         });
+        time_table += '</tbody>';
         console.log(time_table);
+        $('.profile-taglist-table').html(time_table);
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
