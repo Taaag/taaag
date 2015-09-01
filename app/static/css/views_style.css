@@ -590,7 +590,8 @@ span.friendlist-friendname span {
 }
 
 .tab-selected {
-    background-color: #ffffff;
+    background-color: #303030;
+    color:white;
 }
 
 
@@ -622,7 +623,8 @@ height: 30px;
     cursor: pointer;
     border: 0px;
     text-align: center;
-    width: 40px;
+    width: 80px;
+    background-color: #fff;
     
 }
 #tab-time{
@@ -630,5 +632,6 @@ height: 30px;
     border: 0px;
     text-align: center;
     width: 80px;
+    background-color: #fff;
     
 }
