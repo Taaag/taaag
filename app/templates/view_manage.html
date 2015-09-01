@@ -9,7 +9,7 @@
                 <th>By votes</th>
                 <th>By time</th>
             </thead>
-            <tbody id="tag-votes-table">
+            <tbody id="table-body">
             {% for tag in tags_order_by_votes %}
                 <tr id="tag-set-{{ tag.name }}" class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
@@ -74,14 +74,13 @@
             return '<th class="col-sm-4">' + time + '</th>';
         }
 
-        var time_table = '<tbody id="tag-time-table">';
+        var time_table = '';
         {% for tag in tags_order_by_time %}
             time_table += '<tr>' + deleteButton + '<th class="col-sm-1"></th>' + tagName({{ tag.name|tojson|safe }}) +
                     createdTime({{ tag.created_time|tojson|safe }}) + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
-        time_table += '</tbody>';
 
-        var votes_table = '<tbody id="tag-votes-table">';
+        var votes_table = '';
         var taggers;
         {% for tag in tags_order_by_votes %}
             taggers = '<th class="col-sm-4">';
@@ -95,9 +94,8 @@
                     numVotes({{ tag.votes|tojson|safe }}) + tagName({{ tag.name|tojson|safe }}) +
                     taggers + viewMore({{ tag.name|tojson|safe }}) + scroll + '</tr>';
         {% endfor %}
-        votes_table += '</tbody>';
 
-        $('.profile-taglist-table').html(votes_table);
+        $('#table-body').html(votes_table);
 
         $('#manage-to-view-btn').click(function () {
             $(document).trigger("viewChanging", ["me", {}]);
