@@ -5,7 +5,7 @@
 
     <div class="profile-taglist">
         <table class="table profile-taglist-table">
-            {% for tag in tags %}
+            {% for tag in tags_order_by_votes %}
                 <tr class="my-tag-set">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
@@ -24,7 +24,8 @@
                         {#                        <div class="mytag-img .th-mytag-img"></div>#}
                     </th>
                     <th class="col-sm-1 th-mytag-viewmore">
-                        <span class="span-viewmore" data-index="{{ loop.index0 }}"><i class="fa fa-caret-right"></i></span>
+                        <span class="span-viewmore" data-index="{{ loop.index0 }}"><i
+                                class="fa fa-caret-right"></i></span>
                     </th>
                     <th class="col-sm-1 th-mytag-scroll">
 
@@ -88,7 +89,7 @@
             });
         }
 
-        var tagger_array = {{ tags|tojson }}
+        var tagger_array = {{ tags_order_by_votes|tojson }}
 
                 $('.span-viewmore').click(function () {
                     var $row = $(this).closest('.my-tag-set');

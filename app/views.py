@@ -10,8 +10,6 @@ from app.api import apis, APIException, views
 from app.utils import clear_friends_cache
 
 
-
-
 # Facebook app details
 FB_APP_ID = '687248731410966'
 FB_APP_NAME = 'Taaag'
