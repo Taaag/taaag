@@ -8,9 +8,9 @@
     <!-- These are Open Graph tags.-->
     <meta property="og:description" content="{{ user.name }}'s Tag Cloud at Taaag"/>
     <meta property="og:site_name" content="Taaag"/>
-    <meta property="og:title" content="{{ user.name }}'s Tag Cloud" />
-    <meta property="og:type" content="cstaaag:tag" />
-    <meta property="fb:app_id" content="687248731410966" />
+    <meta property="og:title" content="{{ user.name }}'s Tag Cloud"/>
+    <meta property="og:type" content="cstaaag:tag"/>
+    <meta property="fb:app_id" content="687248731410966"/>
 
     <title>{{ user.name }}'s Tag Cloud</title>
 
@@ -89,7 +89,11 @@
                         <button id="public-join-btn">Join Taaag</button>
                     </div>
                 </div>
-                {% set user_image = 'https://graph.facebook.com/' ~ user.id ~ '/picture?type=normal' %}
+                {% if user.id == 0 %}
+                    {% set user_image = '/static/images/iconrandom.png' %}
+                {% else %}
+                    {% set user_image = 'https://graph.facebook.com/' ~ user.id ~ '/picture?type=normal' %}
+                {% endif %}
                 {% include 'tag_cloud.html' %}
             </div>
         </div>
