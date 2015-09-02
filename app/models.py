@@ -74,7 +74,7 @@ class User(db.Model):
         db.session.commit()
 
     def is_liking(self, likee):
-        result = Liking.get_by_liker_likee(likee)
+        result = Liking.get_by_liker_likee(self, likee)
         if not result:
             return False
         return result[0].event_id
@@ -257,11 +257,11 @@ class Liking(db.Model):
     def delete_by_liker_likee(cls, liker, likee):
         result = cls.get_by_liker_likee(liker, likee)
         if result:
-            db.session.delete(result)
+            db.session.delete(result[0])
             db.session.commit()
             return True
         return False
 
     @classmethod
     def get_by_liker_likee(cls, liker, likee):
-        return cls.query().filter(liker_id=liker.id, likee_id=likee.id).all()
+        return cls.query.filter_by(liker_id=liker.id, likee_id=likee.id).all()
