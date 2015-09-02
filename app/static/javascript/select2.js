@@ -1820,6 +1820,7 @@ S2.define('select2/selection/search',[
     container.on('close', function () {
       self.$search.val('');
       self.$search.trigger('focus');
+      setTimeout(function() { this.trigger('open', {}); }, 1);
     });
 
     container.on('enable', function () {
