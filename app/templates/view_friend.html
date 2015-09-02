@@ -83,16 +83,15 @@
 
         $('#inputDescription').on("select2:selecting", function (e) {
             console.log(e.params.args.data.text);
-{#            var selected = e.params.data.text;#}
-{#            var existing = $('a.tagged[data-name="' + selected + '"]');#}
-{#            if (existing.length > 0) {#}
-{#                console.log(existing.length);#}
-{#                e.preventDefault();#}
-{#                $.bootstrapGrowl("You have added this tag to this friend!", {#}
-{#                    align: 'center',#}
-{#                    'type': 'warning'#}
-{#                });#}
-{#            }#}
+            var selected = e.params.args.data.text;
+            var existing = $('a.tagged[data-name="' + selected + '"]');
+            if (existing.length > 0) {
+                e.preventDefault();
+                $.bootstrapGrowl("You have added this tag to this friend!", {
+                    align: 'center',
+                    'type': 'warning'
+                });
+            }
         });
 
         $('.select2-search__field').keypress(function (e) {
