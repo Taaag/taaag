@@ -612,20 +612,24 @@ span.friendlist-friendname span {
 
 }
 
+#likeFriendCloudBtn{
+    cursor:pointer;
+}
+
 .likeFriendCloudBtn-normal{
-   background-color: white;
+   color: white;
 }
 
 .likeFriendCloudBtn-normal:hover{
-    background-color: red;
+    color: red;
     opacity: 0.5;
 }
 
 .lifeFriendCloudBtn-liked{
-    background-color: red;
+    color: red;
 }
 
 .lifeFriendCloudBtn-liked:hover{
-    background-color: #303030;
+    color: #303030;
 }
 
