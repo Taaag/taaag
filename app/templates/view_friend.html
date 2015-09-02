@@ -82,11 +82,11 @@
         });
 
         $('#inputDescription').on("select2:selecting", function (e) {
-            var selected = e.params.args.data.text;
-            var existing = $('a.tagged[data-name="' + selected + '"]');
+            var tag = e.params.args.data.text;
+            var existing = $('a.tagged[data-name="' + tag + '"]');
             if (existing.length > 0) {
                 e.preventDefault();
-                $.bootstrapGrowl("You have added this tag to this friend!", {
+                $.bootstrapGrowl("You've already tagged this friend as " + tag, {
                     align: 'center',
                     'type': 'warning'
                 });
