@@ -14,6 +14,7 @@
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/login_style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/spinner.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -34,6 +35,7 @@
 
             $('.fb-login-btn').click(function () {
                 FB.login(function (response) {
+                    $('.spinner-overlay').show();
                     window.location.reload(true);
                 }, {scope: 'public_profile, user_friends, publish_actions'});
             });
@@ -56,8 +58,11 @@
     ga('send', 'pageview');
 </script>
 
+<div class="spinner-overlay" style="display: none">
+    <div class="spinner"></div>
+</div>
+
 <div class="background-login">
-    <!-- share button 以外的部分(行) -->
     <button class="fb-login-btn" data-size='xlarge'>
         <img src="static/images/fbloginlogo_official.png" class="fb_img">
         Login Now
