@@ -48,7 +48,7 @@ def api(method):
             return jsonify({'succeed': True, 'response': apis[method](g.user, request.args)})
         except APIException as e:
             return jsonify({'succeed': False, 'message': e.message})
-        except ValueError:
+        except (ValueError, KeyError):
             abort(400)
         except Exception as e:
             return jsonify({'succeed': False, 'message': 'Internal Server Error'})
@@ -62,6 +62,8 @@ def view(view_type):
     if view_type in views:
         try:
             return views[view_type](g.user, request.args)
+        except (ValueError, KeyError):
+            abort(400)
         except APIException as e:
             return e.message
         except Exception as e:
