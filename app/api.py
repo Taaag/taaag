@@ -140,12 +140,13 @@ def api_user_like_friend(user, payload):
     event_id = payload['event_id'].strip().lower()
     if not likee:
         raise APIException('Likee does not exist!')
+    elif not user.is_friend_of(likee):
+        raise APIException('You are not friends!')
     elif not event_id:
         raise APIException('You need a facebook event!')
     elif likee == user:
         raise APIException('You cannot like yourself!')
-    # user.like(likee, event_id)
-    return event_id
+    user.like(likee, event_id)
 
 
 apis = {
