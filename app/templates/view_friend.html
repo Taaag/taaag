@@ -185,7 +185,7 @@
                     if (response['succeed']) {
                         console.log(response);
                         FB.api(
-                                response['response']['event_id'],
+                                response['response'],
                                 'delete',
                                 function (response) {
                                     $.bootstrapGrowl("Unliked this cloud", {align: 'center', 'type': 'success'});
