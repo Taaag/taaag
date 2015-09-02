@@ -176,13 +176,14 @@
                             $(this).addClass('likeFriendCloudBtn-liked');
                             $.bootstrapGrowl("Successfully liked this cloud", {align: 'center', 'type': 'success'});
                         } else {
-                            $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'error'});
+                            $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'danger'});
                         }
                     });
                 });
             } else {
                 $.get('/api/unlike_friend', {likee: '{{ friend.id }}'}, function (response) {
                     if (response['succeed']) {
+                        console.log(response);
                         FB.api(
                                 response['response']['event_id'],
                                 'delete',
@@ -193,7 +194,7 @@
                                 }
                         );
                     } else {
-                        $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'error'});
+                        $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'danger'});
                     }
                 });
             }
