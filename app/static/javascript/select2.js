@@ -4313,6 +4313,9 @@ S2.define('select2/dropdown/closeOnSelect',[
       return;
     }
 
+    this.trigger('query', {
+      term: ''
+    });
     this.trigger('close', {});
   };
 
