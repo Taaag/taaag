@@ -439,12 +439,12 @@ span.friendlist-friendname span {
 }
 
 .span-viewmore {
-    cursor: pointer;
     font-size: 15px;
     margin: 5px;
 }
 
-.span-viewmore:hover {
+.th-mytag-viewmore:hover {
+    cursor: pointer;
     opacity: 0.4;
 }
 
