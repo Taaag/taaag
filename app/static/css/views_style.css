@@ -359,21 +359,17 @@ span.friendlist-friendname span {
 }
 
 .profile-taglist-table {
-    width: 500px;
-    height: auto;
     border-bottom: 1px solid #fae066;
     background-color: white;
     margin-bottom: 0px;
 }
 
 .my-tag-set {
-    width: 500px;
     border-bottom: 1px dotted #fae066;
 }
 
 /* th : background setting for the detele button cell*/
 .th-detele-btn {
-    width: 5%;
     background-color: #fae066;
     text-align: center;
 }
@@ -386,7 +382,6 @@ span.friendlist-friendname span {
     border: none;
     outline: none;
     text-align: center;
-    margin: auto;
     margin: 5px;
     vertical-align: middle;
     cursor: pointer;
@@ -415,7 +410,6 @@ span.friendlist-friendname span {
 }
 
 .taglist-th-tn {
-    width: 250px;
     border-right: 1px dotted #fae066;
 }
 
