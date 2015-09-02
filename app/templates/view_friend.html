@@ -84,6 +84,7 @@
         $('#inputDescription').on("select2:select", function (e) {
             var selected = e.params.data.text;
             var existing = $('a.tagged[data-name=' + selected + ']');
+            console.log(existing.length);
             if (existing.length > 0) {
                 e.preventDefault();
                 $.bootstrapGrowl("You have added this tag to this friend!", {
