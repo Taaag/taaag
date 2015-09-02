@@ -80,7 +80,7 @@ class User(db.Model):
         return result[0].event_id
 
     def like(self, likee, event_id):
-        return Liking.create(self, likee, event_id)
+        return Liking.create(liker=self, likee=likee, event_id=event_id)
 
     def unlike(self, likee):
         return Liking.delete_by_liker_likee(self, likee)
