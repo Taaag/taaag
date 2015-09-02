@@ -96,6 +96,7 @@
         $('.select2-search__field').keypress(function (e) {
             var key = e.which;
             if (key == 13 && $(this).val() == '') {
+                console.log('enter!');
                 $('#btnSubmit').trigger('click');
             }
         });
