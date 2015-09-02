@@ -1,7 +1,6 @@
 import json
 
 from collections import OrderedDict
-
 import sqlalchemy
 from app.views import render_template
 from app.models import User, Tag, Tagging
@@ -99,7 +98,7 @@ def api_user_add_tags(user, payload):
         raise APIException('Taggee does not exist!')
     if not user.can_tag(taggee):
         raise APIException('Cannot tag the user!')
-    tags_name = [_.strip().lower() for _ in json.loads(payload['tags']) if _]
+    tags_name = [_.strip().lower() for _ in json.loads(payload['tags']) if _ and len(_) <= 32]
     succeeded = []
     for tag_name in tags_name:
         tag = Tag.get_or_create(tag_name)
@@ -161,6 +160,7 @@ def api_user_unlike_friend(user, payload):
         return event_id
     else:
         raise APIException('Unknown error!')
+
 
 apis = {
     'all_tags': api_tag_all,
