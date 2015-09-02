@@ -11,9 +11,9 @@ from app.utils import clear_friends_cache
 
 
 # Facebook app details
-FB_APP_ID = '687248731410966'
-FB_APP_NAME = 'Taaag'
-FB_APP_SECRET = '***REMOVED***'
+FB_APP_ID = app.config['FB_APP_ID']
+FB_APP_NAME = app.config['FB_APP_NAME']
+FB_APP_SECRET = app.config['FB_APP_SECRET']
 
 
 @app.route('/', methods=['GET', 'POST'])
