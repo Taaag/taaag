@@ -264,4 +264,4 @@ class Liking(db.Model):
 
     @classmethod
     def get_by_liker_likee(cls, liker, likee):
-        return cls.query.filter(liker_id=liker.id, likee_id=likee.id).all()
+        return cls.query.filter_by(liker_id=liker.id, likee_id=likee.id).all()
