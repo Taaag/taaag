@@ -51,15 +51,6 @@
     opacity: 0.8;
 }
 
-#home-page-input::placeholder {
-    font-size: 30px;
-
-    -webkit-animation: type 4 steps(50, end) 1;
-    -moz-animation: type 4 steps(50, end) 1;
-    animation: type 4 steps(50, end) 1;
-
-}
-
 @keyframes type {
     from {
         width: 0;
@@ -272,7 +263,6 @@ span.friendlist-friendname span {
     float: right;
     margin: 10px 15px;
     text-align: center;
-    vertical-align: center;
 }
 
 .tagrank-upvote-num {
@@ -593,19 +583,15 @@ span.friendlist-friendname span {
     height: 20px;
     margin-left: 25px;
     border: 0px;
-    margin:;
-
 }
 
 #taglist-tab a {
-
     margin-bottom: 0px;
     margin-top: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     border-bottom: 0px;
     color: #303030;
-
 }
 
 #tab-votes {
