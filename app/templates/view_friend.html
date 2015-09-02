@@ -82,7 +82,7 @@
         });
 
         $('#inputDescription').on("select2:select", function (e) {
-            console.log(e);
+            console.log(e.params.text);
         });
 
         $('.select2-search__field').keypress(function (e) {
