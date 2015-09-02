@@ -129,7 +129,9 @@
                             $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
-                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged" id="' + idToCreate + '">' + value + '</a></li>';
+                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" ' +
+                                    'class="tag-cloud-tag tagged" data-name="' + value +'" id="' + idToCreate + '">' +
+                                    value + '</a></li>';
                             $('#tag-list').append(newList);
                         }
                         idsToMove.push(idToCreate);
