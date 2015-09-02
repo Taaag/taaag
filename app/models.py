@@ -73,6 +73,12 @@ class User(db.Model):
     def update(self):
         db.session.commit()
 
+    def get_likees(self):
+        return self.likees.all()
+
+    def get_likers(self):
+        return self.likers.all()
+
     def is_liking(self, likee):
         result = Liking.get_by_liker_likee(self, likee)
         if not result:
@@ -80,6 +86,8 @@ class User(db.Model):
         return result[0].event_id
 
     def like(self, likee, event_id):
+        if self == likee:
+            return False
         return Liking.create(liker=self, likee=likee, event_id=event_id)
 
     def unlike(self, likee):
