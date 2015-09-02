@@ -151,7 +151,7 @@ apis = {
 
 
 def view_index(user, payload):
-    all_friends = user.get_friends()
+    all_friends = [_ for _ in user.get_friends() if _.id != 0]
     if len(all_friends) >= 3:
         selected_friends = random.sample(all_friends, 3)
     else:
