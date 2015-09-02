@@ -1,6 +1,6 @@
 <div id="view-friend" class="view">
     <div class="row">
-        <div class="profile-name">{{ friend.name }}</div>
+        <div class="profile-name">{{ friend.name }} <i class="fa fa-heart" id="likeFriendCloudBtn"></i></div>
     </div>
 
     <div class="row">
@@ -152,6 +152,17 @@
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
+            });
+        });
+
+        $("#likeFriendCloudBtn").click(function () {
+            FB.ui({
+                method: 'share_open_graph',
+                action_type: 'og.likes',
+                action_properties: JSON.stringify({
+                    url: 'https://taaag.sshz.org/tag_cloud/{{ friend.id }}',
+                })
+            }, function (response) {
             });
         });
 
