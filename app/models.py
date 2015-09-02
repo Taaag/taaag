@@ -1,12 +1,13 @@
 from datetime import datetime
+from datetime import timezone
 
 from app import db
+
 from app.enums import UserPrivacy
 from app.utils import is_friend_of, get_user_friends, has_friends_permission
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 from sqlalchemy.exc import IntegrityError
-from datetime import timezone
 
 
 class User(db.Model):
@@ -36,6 +37,14 @@ class User(db.Model):
 
     # def get_tags(self):
     # return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
+
+    def add_default_tag(self):
+        tag = Tag.get_or_create('\U0001f4a9')
+        tagger = User.get_by_id(0)
+        try:
+            Tagging.create(tagger=tagger, taggee=self, tag=tag)
+        except IntegrityError:
+            pass
 
     def friends_api_authorized(self):
         return has_friends_permission(self)

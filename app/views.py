@@ -118,6 +118,7 @@ def get_current_user():
                                    profile_url=profile['link'],
                                    access_token=access_token)
                 clear_friends_cache(user)
+                user.add_default_tag()
             else:
                 user.access_token = access_token
                 user.update()
