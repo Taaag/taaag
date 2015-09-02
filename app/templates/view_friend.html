@@ -81,8 +81,16 @@
             //closeOnSelect: false
         });
 
-        $('#inputDescription').on("select2:select", function (e) {
-            console.log(e.params.data.text);
+        $('#inputDescription').on("select2:selecting", function (e) {
+            var tag = e.params.args.data.text;
+            var existing = $('a.tagged[data-name="' + tag + '"]');
+            if (existing.length > 0) {
+                e.preventDefault();
+                $.bootstrapGrowl("You've already tagged this friend as " + tag, {
+                    align: 'center',
+                    'type': 'warning'
+                });
+            }
         });
 
         $('.select2-search__field').keypress(function (e) {
