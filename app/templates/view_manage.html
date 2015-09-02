@@ -10,17 +10,17 @@
         <table class="table profile-taglist-table" id="taglist-table-votes">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_votes %}
-                <tr id="tag-set-{{ tag.name }}-votes" class="my-tag-set">
+                <tr class="my-tag-set" data-name="{{ tag.name|tojson|safe }}">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
                     <th class="col-sm-1 th-upvote-num">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.votes }}</div>
                     </th>
-                    <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
+                    <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name|tojson|safe }}</p></th>
                     <th class="col-sm-4">
                         {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
-                            <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
+                            <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tag.name|tojson|safe }}">
                                 {% if tagger.id == '0' %}
                                     <img class="voter-img" src="/static/images/poo-head.png">
                                 {% else %}
@@ -40,12 +40,12 @@
         <table class="table profile-taglist-table" id="taglist-table-time" style="display: none">
             <tbody id="tag-votes-table">
             {% for tag in tags_order_by_time %}
-                <tr id="tag-set-{{ tag.name }}-time" class="my-tag-set">
+                <tr class="my-tag-set" data-name="{{ tag.name|tojson|safe }}">
                     <th class="col-sm-1 th-detele-btn">
                         <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
                     </th>
                     <th class="col-sm-1 th-upvote-num"><p class="mytag-upvote-num"></p></th>
-                    <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
+                    <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name|tojson|safe }}</p></th>
                     <th class="col-sm-4 tag-created-time">{{ tag.created_time }}</th>
                     <th class="col-sm-1 th-mytag-viewmore"><span class="span-viewmore"><i class="fa fa-caret-right"></i></span></th>
                 </tr>
@@ -65,8 +65,7 @@
             $.get('/api/delete_tag', {name: tag}, function (response) {
                 if (response['succeed']) {
                     $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
-                    $('#tag-set-' + tag + '-votes').remove();
-                    $('#tag-set-' + tag + '-time').remove();
+                    $('.my-tag-set[data-name="'+tag+'"]').remove();
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
