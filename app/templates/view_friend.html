@@ -81,7 +81,7 @@
             //closeOnSelect: false
         });
 
-        $('#inputDescription').change(function (e) {
+        $('#inputDescription').on("select2:select", function (e) {
             console.log(e.target);
         });
 
