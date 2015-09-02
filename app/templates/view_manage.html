@@ -21,7 +21,7 @@
                     <th class="col-sm-4">
                         {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
-                                {% if tagger.id == 0 %}
+                                {% if tagger.id == '0' %}
                                     <img class="voter-img" src="/static/images/poo-head.png">
                                 {% else %}
                                     <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
