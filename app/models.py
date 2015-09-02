@@ -73,6 +73,9 @@ class User(db.Model):
     def update(self):
         db.session.commit()
 
+    def is_liking(self, likee):
+        return likee in self.likees
+
     @classmethod
     def get_by_id(cls, id):
         return cls.query.get(id)
