@@ -157,7 +157,7 @@ def api_user_unlike_friend(user, payload):
     elif not user.is_friend_of(payload['likee']):
         raise APIException('You are not friends!')
     if user.unlike(likee):
-        return 'OK'
+        return
     else:
         raise APIException('Unknown error!')
 

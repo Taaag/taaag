@@ -275,7 +275,7 @@ class Liking(db.Model):
         if result:
             db.session.delete(result[0])
             db.session.commit()
-            return True
+            return result[0].event_id
         return False
 
     @classmethod
