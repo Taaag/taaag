@@ -59,7 +59,7 @@
         $('#inputDescription').select2({
             tags: true,
             ajax: {
-                delay: 500,
+                delay: 250,
                 url: '/api/search_tags',
                 data: function (params) {
                     var queryParameters = {
@@ -77,8 +77,7 @@
                 },
                 cache: true
             },
-            //selectOnClose: true,
-            //closeOnSelect: false
+            selectOnClose: true
         });
 
         $('#inputDescription').on("select2:selecting", function (e) {
@@ -102,13 +101,13 @@
 {#            }#}
 {#        });#}
 
-        $(document).on('keypress', '.select2-search__field', function (e) {
-            var key = e.which;
-            console.log(key);
-            if (key === 13 && $(this).val() === '') {
-                $('#btnSubmit').trigger('click');
-            }
-        });
+{#        $(document).on('keypress', '.select2-search__field', function (e) {#}
+{#            var key = e.which;#}
+{#            console.log(key);#}
+{#            if (key === 13 && $(this).val() === '') {#}
+{#                $('#btnSubmit').trigger('click');#}
+{#            }#}
+{#        });#}
 
         $('#btnSubmit').click(function () {
             var tags = $('#inputDescription').val() || [];
@@ -182,18 +181,6 @@
                 })
             }, function (response) {
             });
-        });
-
-        var allTags = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.whitespace,
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: '/api/search_tags?keyword=%QUERY',
-                wildcard: '%QUERY',
-                transform: function (response) {
-                    return response['response']
-                }
-            }
         });
 
     })
