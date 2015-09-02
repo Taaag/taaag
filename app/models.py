@@ -41,10 +41,10 @@ class User(db.Model):
         return has_friends_permission(self)
 
     def get_friends(self):
-        return [_ for _ in get_user_friends(self) if User.get_by_id(_['id'])]
+        return [_ for _ in get_user_friends(self) if User.get_by_id(_['id'])] + [{'id': '0', 'name': 'Pile of Poo'}]
 
     def is_friend_of(self, other_id):
-        return User.get_by_id(other_id) and is_friend_of(self, other_id)
+        return str(other_id) == '0' or (User.get_by_id(other_id) and is_friend_of(self, other_id))
 
     def get_tags_with_tagger(self):
         tagger = aliased(User, name="tagger")

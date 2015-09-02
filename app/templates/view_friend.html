@@ -168,6 +168,9 @@
 
     })
 </script>
-
-{% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?type=normal' %}
+{% if friend.id == 0 %}
+    {% set user_image = '/static/images/iconrandom.png' %}
+{% else %}
+    {% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?type=normal' %}
+{% endif %}
 {% include 'tag_cloud.html' %}
