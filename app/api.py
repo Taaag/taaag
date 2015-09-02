@@ -144,11 +144,22 @@ def api_user_like_friend(user, payload):
         raise APIException('You are not friends!')
     elif not event_id:
         raise APIException('You need a facebook event!')
-    elif likee == user:
-        raise APIException('You cannot like yourself!')
     if user.like(likee, event_id):
         return 'OK'
+    else:
+        raise APIException('Unknown error!')
 
+
+def api_user_unlike_friend(user, payload):
+    likee = User.get_by_id(payload['likee'])
+    if not likee:
+        raise APIException('Likee does not exist!')
+    elif not user.is_friend_of(payload['likee']):
+        raise APIException('You are not friends!')
+    if user.unlike(likee):
+        return 'OK'
+    else:
+        raise APIException('Unknown error!')
 
 apis = {
     'all_tags': api_tag_all,
@@ -162,7 +173,8 @@ apis = {
     'delete_tag': api_user_delete_tag,
     'search_friends': api_user_search_friends,
     'all_friends': api_user_all_friends,
-    'like_friend': api_user_like_friend
+    'like_friend': api_user_like_friend,
+    'unlike_friend': api_user_unlike_friend
 }
 
 
