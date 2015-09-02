@@ -135,6 +135,21 @@ def api_user_all_friends(user, payload):
     return user.get_friends()
 
 
+def api_user_like_friend(user, payload):
+    likee = User.get_by_id(payload['likee'])
+    event_id = payload['event_id']
+    if not likee:
+        raise APIException('Likee does not exist!')
+    elif likee == user:
+        raise APIException('You cannot like yourself!')
+    elif not event_id:
+        raise APIException('You need a facebook event!')
+    try:
+        user.like(likee, event_id)
+    except sqlalchemy.exc.IntegrityError:
+        raise APIException('You cannot like a person twice')
+
+
 apis = {
     'all_tags': api_tag_all,
     'search_tags': api_tag_search,
