@@ -57,4 +57,4 @@ def has_friends_permission(user):
 
 
 def display_time(time):
-    return time.replace(tzinfo=timezone.utc).astimezone(app.config['DEFAULT_TIMEZONE']).strftime('%m-%d, %H:%M')
+    return time.replace(tzinfo=timezone.utc).astimezone(app.config['DEFAULT_TIMEZONE']).strftime('%d/%m, %H:%M')
