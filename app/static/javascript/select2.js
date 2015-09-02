@@ -1968,7 +1968,7 @@ S2.define('select2/selection/search',[
 
     this.trigger('open', {});
 
-    this.$search.val(item.text + ' ');
+    //this.$search.val(item.text + ' ');
   };
 
   Search.prototype.resizeSearch = function () {
