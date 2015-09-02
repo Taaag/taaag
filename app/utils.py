@@ -1,8 +1,9 @@
+from datetime import timezone
+
 import facebook
 import requests
 from app import mc
 from app import app
-from datetime import timezone
 
 
 def get_friends_key(uid):
@@ -29,6 +30,8 @@ def get_user_friends(user):
 
 
 def is_friend_of(user, other_id):
+    if str(other_id) == '0':
+        return True
     friends = get_user_friends(user)
     for friend in friends:
         if friend['id'] == str(other_id):
