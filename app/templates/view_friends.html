@@ -12,9 +12,12 @@
                         {% for friend in friend_row %}
                             <td>
                                 <img class="friendlist-friend"
+                                        {% if friend.id == '0' %}
+                                     src="/static/images/poo-head.png"
+                                        {% else %}
                                      src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
+                                        {% endif %}
                                      data-uid="{{ friend.id }}">
-{#                                <span class="friendlist-friendname"><span>{{friend.name}}</span></span>#}
                             </td>
                         {% endfor %}
                     </tr>
