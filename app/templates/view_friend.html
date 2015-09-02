@@ -172,6 +172,7 @@
                         event_id: response['post_id']
                     }, function (response) {
                         if (response['succeed']) {
+                            console.log($(this));
                             $(this).removeClass('likeFriendCloudBtn-normal');
                             $(this).addClass('likeFriendCloudBtn-liked');
                             $.bootstrapGrowl("Successfully liked this cloud", {align: 'center', 'type': 'success'});
@@ -189,6 +190,7 @@
                                 'delete',
                                 function (response) {
                                     $.bootstrapGrowl("Unliked this cloud", {align: 'center', 'type': 'success'});
+                                    console.log($(this));
                                     $(this).removeClass('likeFriendCloudBtn-liked');
                                     $(this).addClass('likeFriendCloudBtn-normal');
                                 }
