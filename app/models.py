@@ -230,6 +230,10 @@ class Liking(db.Model):
     likee_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False, primary_key=True)
     event_id = db.Column(db.String, nullable=False, unique=True)
 
+    # Relationships
+    liker = db.relationship('User', foreign_keys='Liking.liker_id')
+    likee = db.relationship('User', foreign_keys='Liking.likee_id')
+
     @classmethod
     def create(cls, **kwargs):
         liking = cls(**kwargs)
