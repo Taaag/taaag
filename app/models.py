@@ -68,7 +68,6 @@ class User(db.Model):
         return is_friend_of(self, taggee.id) and taggee.allow_tag()
 
     def update(self):
-        db.session.update(self)
         db.session.commit()
 
     @classmethod
