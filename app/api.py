@@ -74,20 +74,21 @@ def api_user_friend_tags(user, payload):
 def api_user_add_tag(user, payload):
     # Payload: {'taggee': 'uid', 'tag': 'foo'}
     # Return: ???
-    taggee = User.get_by_id(payload['taggee'])
-    if not taggee:
-        raise APIException('Taggee does not exist!')
-    if not user.can_tag(taggee):
-        raise APIException('Cannot tag the user!')
-    tag_name = payload['tag'].strip().lower()
-    if not tag_name:
-        raise APIException('Tag name not allowed!')
-    tag = Tag.get_or_create(tag_name)
-    try:
-        Tagging.create(tagger=user, taggee=taggee, tag=tag)
-        return 'OK'
-    except sqlalchemy.exc.IntegrityError:
-        raise APIException('Already tagged!')
+    # taggee = User.get_by_id(payload['taggee'])
+    # if not taggee:
+    #     raise APIException('Taggee does not exist!')
+    # if not user.can_tag(taggee):
+    #     raise APIException('Cannot tag the user!')
+    # tag_name = payload['tag'].strip().lower()
+    # if not tag_name:
+    #     raise APIException('Tag name not allowed!')
+    # tag = Tag.get_or_create(tag_name)
+    # try:
+    #     Tagging.create(tagger=user, taggee=taggee, tag=tag)
+    #     return 'OK'
+    # except sqlalchemy.exc.IntegrityError:
+    #     raise APIException('Already tagged!')
+    raise APIException('Method deprecated')
 
 
 def api_user_add_tags(user, payload):
@@ -98,7 +99,8 @@ def api_user_add_tags(user, payload):
         raise APIException('Taggee does not exist!')
     if not user.can_tag(taggee):
         raise APIException('Cannot tag the user!')
-    tags_name = [_.strip().lower() for _ in json.loads(payload['tags']) if _ and len(_) <= 32]
+    tags_name = [_.strip().lower() for _ in json.loads(payload['tags'])]
+    tags_name = [_ for _ in tags_name if len(_) <= 32]
     succeeded = []
     for tag_name in tags_name:
         tag = Tag.get_or_create(tag_name)
