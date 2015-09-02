@@ -86,9 +86,7 @@ class User(db.Model):
         return result[0].event_id
 
     def like(self, likee, event_id):
-        if self == likee:
-            return False
-        return Liking.create(liker=self, likee=likee, event_id=event_id)
+        return Liking.create_or_update(self, likee, event_id)
 
     def unlike(self, likee):
         return Liking.delete_by_liker_likee(self, likee)
@@ -252,14 +250,14 @@ class Liking(db.Model):
     likee = db.relationship('User', foreign_keys='Liking.likee_id')
 
     @classmethod
-    def create(cls, **kwargs):
-        liking = cls(**kwargs)
-        try:
+    def create_or_update(cls, liker, likee, event_id):
+        liking = cls.get_by_liker_likee(liker, likee)
+        if liking:
+            liking.event_id = event_id
+        else:
+            liking = cls(liker=liker, likee=likee, event_id=event_id)
             db.session.add(liking)
-            db.session.commit()
-        except IntegrityError:
-            db.session.rollback()
-            raise
+        db.session.commit()
 
     @classmethod
     def delete_by_liker_likee(cls, liker, likee):
