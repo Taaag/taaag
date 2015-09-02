@@ -74,7 +74,7 @@ class User(db.Model):
         db.session.commit()
 
     def is_liking(self, likee):
-        result = Liking.get_by_liker_likee(likee)
+        result = Liking.get_by_liker_likee(self, likee)
         if not result:
             return False
         return result[0].event_id
