@@ -267,6 +267,7 @@ class Liking(db.Model):
             liking = cls(liker=liker, likee=likee, event_id=event_id)
             db.session.add(liking)
         db.session.commit()
+        return liking.event_id
 
     @classmethod
     def delete_by_liker_likee(cls, liker, likee):

@@ -178,7 +178,8 @@ def view_index(user, payload):
 def view_friend(user, payload):
     friend = User.get_by_id(payload['id'])
     tags = api_user_friend_tags(user, payload)
-    return render_template('view_friend.html', friend=friend, tags=tags)
+    liked_by_me = user.is_liking(friend)
+    return render_template('view_friend.html', friend=friend, tags=tags, liked=liked_by_me)
 
 
 def view_friends(user, payload):

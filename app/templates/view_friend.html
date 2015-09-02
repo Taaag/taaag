@@ -1,6 +1,6 @@
 <div id="view-friend" class="view">
     <div class="row">
-        <div class="profile-name">{{ friend.name }} <i class="fa fa-heart likeFriendCloudBtn-normal" id="likeFriendCloudBtn"></i></div>
+        <div class="profile-name">{{ friend.name }} <i class="fa fa-heart {{ 'likeFriendCloudBtn-liked' if liked else 'likeFriendCloudBtn-normal' }}" id="likeFriendCloudBtn"></i></div>
     </div>
 
     <div class="row">
@@ -164,8 +164,10 @@
                 })
             }, function (response) {
                 console.log(response['post_id']);
-                $.get('/api/like_friend', {likee: {{ friend.id }}, event_id: response['post_id']}, function(response) {
+                $.get('/api/like_friend', {likee: '{{ friend.id }}', event_id: response['post_id']}, function(response) {
                     console.log(response);
+                    $(this).removeClass('likeFriendCloudBtn-normal');
+                    $(this).addClass('likeFriendCloudBtn-liked');
                 });
             });
         });
