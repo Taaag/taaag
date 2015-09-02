@@ -23,6 +23,7 @@ def index():
     if g.user and g.user.friends_api_authorized():
         return render_template('base.html', app_id=FB_APP_ID, app_name=FB_APP_NAME)
     # Otherwise, a user is not logged in.
+    session['user'] = ''
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
 
