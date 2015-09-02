@@ -2997,13 +2997,13 @@ S2.define('select2/data/select',[
     data.selected = true;
 
     // If data.element is a DOM node, use it instead
-    if ($(data.element).is('option')) {
-      data.element.selected = true;
-
-      this.$element.trigger('change');
-
-      return;
-    }
+//    if ($(data.element).is('option')) {
+//      data.element.selected = true;
+//
+//      this.$element.trigger('change');
+//
+//      return;
+//    }
 
     if (this.$element.prop('multiple')) {
       this.current(function (currentData) {
