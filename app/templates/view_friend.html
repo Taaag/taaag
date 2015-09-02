@@ -81,9 +81,12 @@
             //closeOnSelect: false
         });
 
+        $('#inputDescription').on("select2:select", function (e) {
+            console.log(e.param.text);
+        });
+
         $('.select2-search__field').keypress(function (e) {
             var key = e.which;
-            console.log(key);
             if (key == 13 && $(this).val() == '') {
                 $('#btnSubmit').trigger('click');
             }
