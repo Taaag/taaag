@@ -66,7 +66,7 @@
     }
 }
 
-.nav-tabs>li>a{
+.nav-tabs > li > a {
 
     border: none;
 }
@@ -89,7 +89,7 @@
     margin: 20px auto;
     padding: 10px;
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 /*.friendlist-box-shadow{
@@ -345,16 +345,16 @@ span.friendlist-friendname span {
     border-radius: 100px;
     margin: auto;
     margin-top: 0px;
-    margin-bottom: 25px;   /*orginal 35px*/
+    margin-bottom: 25px; /*orginal 35px*/
     border: 5px solid #fff;
 }
 
 .profile-taglist {
-    
-    height: 180px;   /*orginal 200px*/
+
+    height: 180px; /*orginal 200px*/
     background-color: #fae066;
     overflow-x: hidden;
-    overflow-y:auto;
+    overflow-y: auto;
     /*  border-right: 10px solid  #ddd ;*/
 }
 
@@ -364,8 +364,6 @@ span.friendlist-friendname span {
     border-bottom: 1px solid #fae066;
     background-color: white;
     margin-bottom: 0px;
-    overflow-y: auto;
-    overflow-x:hidden;
 }
 
 .my-tag-set {
@@ -465,14 +463,10 @@ span.friendlist-friendname span {
     opacity: 0.4;
 }
 
-.th-mytag-scroll {
-    width: 3%;
-}
-
 .upvoteList-dialog {
     padding-top: 200px;
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .dialog-set {
@@ -504,7 +498,7 @@ span.friendlist-friendname span {
 
 .bootstrap-dialog {
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .bootstrap-dialog-title {
@@ -556,7 +550,7 @@ span.friendlist-friendname span {
     border: 0 !important;
     height: 100%;
     overflow-y: auto;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .select2-selection {
@@ -591,49 +585,48 @@ span.friendlist-friendname span {
 
 .tab-selected {
     background-color: #303030;
-    color:white;
+    color: white;
 }
 
-
-#shareMyCloudBtn{
-width: 50px;
-height: 30px;
-
-}
-
-#taglist-tab{
-   height: 20px;
-   margin-left: 25px;
-   border: 0px;
-   margin:;
+#shareMyCloudBtn {
+    width: 50px;
+    height: 30px;
 
 }
 
-#taglist-tab a{
+#taglist-tab {
+    height: 20px;
+    margin-left: 25px;
+    border: 0px;
+    margin:;
+
+}
+
+#taglist-tab a {
 
     margin-bottom: 0px;
     margin-top: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     border-bottom: 0px;
-    color:#303030;
-    
+    color: #303030;
+
 }
 
-
-#tab-votes{
+#tab-votes {
     cursor: pointer;
     border: 0px;
     text-align: center;
     width: 80px;
     background-color: #fff;
-    
+
 }
-#tab-time{
+
+#tab-time {
     cursor: pointer;
     border: 0px;
     text-align: center;
     width: 80px;
     background-color: #fff;
-    
+
 }
