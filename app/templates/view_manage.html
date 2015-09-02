@@ -71,7 +71,7 @@
 
         var tagger_array = {{ tag_with_taggers|tojson }};
 
-        $('.span-viewmore').click(function () {
+        $('.th-mytag-viewmore').click(function () {
             var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
             var taggers = tagger_array[tag];
             var msg = '<table><tbody>';
