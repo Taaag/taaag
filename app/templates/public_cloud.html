@@ -89,10 +89,10 @@
                         <button id="public-join-btn">Join Taaag</button>
                     </div>
                 </div>
-                {% if friend.id == 0 %}
+                {% if user.id == 0 %}
                     {% set user_image = '/static/images/iconrandom.png' %}
                 {% else %}
-                    {% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?type=normal' %}
+                    {% set user_image = 'https://graph.facebook.com/' ~ user.id ~ '/picture?type=normal' %}
                 {% endif %}
                 {% include 'tag_cloud.html' %}
             </div>
