@@ -181,19 +181,21 @@
                     });
                 });
             } else {
+                $('.spinner-overlay').show();
                 $.get('/api/unlike_friend', {likee: '{{ friend.id }}'}, function (response) {
                     if (response['succeed']) {
-                        console.log(response);
                         FB.api(
                                 response['response'],
                                 'delete',
                                 function (response) {
+                                    $('.spinner-overlay').hide();
                                     $.bootstrapGrowl("Unliked this cloud", {align: 'center', 'type': 'success'});
                                     $('#likeFriendCloudBtn').removeClass('likeFriendCloudBtn-liked').
                                             addClass('likeFriendCloudBtn-normal');
                                 }
                         );
                     } else {
+                        $('.spinner-overlay').hide();
                         $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'danger'});
                     }
                 });
