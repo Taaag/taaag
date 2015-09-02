@@ -257,7 +257,7 @@ class Liking(db.Model):
     def delete_by_liker_likee(cls, liker, likee):
         result = cls.get_by_liker_likee(liker, likee)
         if result:
-            db.session.delete(result)
+            db.session.delete(result[0])
             db.session.commit()
             return True
         return False
