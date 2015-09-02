@@ -28,8 +28,11 @@ class User(db.Model):
     tags = db.relationship('Tag', backref=db.backref('taggees', lazy='dynamic'), secondary='taggings',
                            primaryjoin='Tagging.taggee_id==User.id', lazy='dynamic')
     tag_others = db.relationship('Tag', backref=db.backref('taggers', lazy='dynamic'), secondary='taggings',
-                                 primaryjoin='Tagging.tagger_id==User.id',
-                                 lazy='dynamic')
+                                 primaryjoin='Tagging.tagger_id==User.id', lazy='dynamic')
+
+    likees = db.relationship('User', backref=db.backref('likers', lazy='dynamic'), secondary='likings',
+                             primaryjoin='Liking.liker_id==User.id', secondaryjoin="User.id==Liking.likee_id",
+                             lazy='dynamic')
 
     # def get_tags(self):
     # return self.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
@@ -69,6 +72,9 @@ class User(db.Model):
 
     def update(self):
         db.session.commit()
+
+    def is_liking(self, likee):
+        return likee in self.likees
 
     @classmethod
     def get_by_id(cls, id):
@@ -188,7 +194,7 @@ class Tagging(db.Model):
     __tablename__ = 'taggings'
 
     id = db.Column(db.Integer, nullable=False, primary_key=True)
-    created = db.Column(db.DateTime, default=datetime.utcnow().replace(tzinfo=timezone.utc), nullable=False)
+    created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
                         onupdate=datetime.utcnow)
     tagger_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False)
@@ -207,6 +213,28 @@ class Tagging(db.Model):
         tagging = cls(**kwargs)
         try:
             db.session.add(tagging)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
+            raise
+
+
+class Liking(db.Model):
+    __tablename__ = 'likings'
+
+    created = db.Column(db.DateTime, default=datetime.utcnow().replace(tzinfo=timezone.utc), nullable=False)
+    updated = db.Column(db.DateTime, default=datetime.utcnow, nullable=False,
+                        onupdate=datetime.utcnow)
+
+    liker_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False, primary_key=True)
+    likee_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'), nullable=False, primary_key=True)
+    event_id = db.Column(db.String, nullable=False, unique=True)
+
+    @classmethod
+    def create(cls, **kwargs):
+        liking = cls(**kwargs)
+        try:
+            db.session.add(liking)
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
