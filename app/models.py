@@ -262,7 +262,7 @@ class Liking(db.Model):
     def create_or_update(cls, liker, likee, event_id):
         liking = cls.get_by_liker_likee(liker, likee)
         if liking:
-            liking.event_id = event_id
+            liking[0].event_id = event_id
         else:
             liking = cls(liker=liker, likee=likee, event_id=event_id)
             db.session.add(liking)
