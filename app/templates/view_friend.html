@@ -85,6 +85,7 @@
             var selected = e.params.data.text;
             var existing = $('a.tagged[data-name="' + selected + '"]');
             if (existing.length > 0) {
+                console.log(existing.length);
                 e.preventDefault();
                 $.bootstrapGrowl("You have added this tag to this friend!", {
                     align: 'center',
