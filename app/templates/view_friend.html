@@ -163,7 +163,10 @@
                     object: 'https://taaag.sshz.org/tag_cloud/{{ friend.id }}',
                 })
             }, function (response) {
-                console.log(response.post_id);
+                console.log(response['post_id']);
+                $.get('/api/like_friend', {like: {{ friend.id }}, event_id: response['post_id']}, function(response) {
+                    console.log(response);
+                });
             });
         });
 
