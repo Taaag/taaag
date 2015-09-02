@@ -82,7 +82,9 @@
         });
 
         $('#inputDescription').on("select2:select", function (e) {
-            console.log(e.params.data.text);
+            var selected = e.params.data.text;
+            var existing = $('a.tagged[data-name=' + selected + ']');
+            console.log(existing);
         });
 
         $('.select2-search__field').keypress(function (e) {
