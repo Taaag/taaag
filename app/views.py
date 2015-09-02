@@ -48,6 +48,8 @@ def api(method):
             return jsonify({'succeed': True, 'response': apis[method](g.user, request.args)})
         except APIException as e:
             return jsonify({'succeed': False, 'message': e.message})
+        except ValueError:
+            abort(400)
     return jsonify({'message': 'API endpoint is working!'})
 
 
