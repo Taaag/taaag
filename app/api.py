@@ -146,7 +146,7 @@ def api_user_like_friend(user, payload):
         raise APIException('You need a facebook event!')
     elif likee == user:
         raise APIException('You cannot like yourself!')
-    if user.like(likee, event_id)
+    if user.like(likee, event_id):
         return 'OK'
 
 
