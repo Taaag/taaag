@@ -1966,7 +1966,7 @@ S2.define('select2/selection/search',[
       data: item
     });
 
-    this.trigger('open', {});
+    //this.trigger('open', {});
 
     //this.$search.val(item.text + ' ');
   };
