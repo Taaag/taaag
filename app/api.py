@@ -140,7 +140,7 @@ def api_user_like_friend(user, payload):
     event_id = payload['event_id'].strip().lower()
     if not likee:
         raise APIException('Likee does not exist!')
-    elif not user.is_friend_of(likee):
+    elif not user.is_friend_of(payload['likee']):
         raise APIException('You are not friends!')
     elif not event_id:
         raise APIException('You need a facebook event!')
