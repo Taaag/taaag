@@ -67,6 +67,10 @@ class User(db.Model):
     def can_tag(self, taggee):
         return is_friend_of(self, taggee.id) and taggee.allow_tag()
 
+    def update(self):
+        db.session.update(self)
+        db.session.commit()
+
     @classmethod
     def get_by_id(cls, id):
         return cls.query.get(id)

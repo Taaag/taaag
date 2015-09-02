@@ -110,16 +110,18 @@ def get_current_user():
         result = get_user_from_cookie(cookies=request.cookies, app_id=FB_APP_ID,
                                       app_secret=FB_APP_SECRET)
         if result:
+            graph = GraphAPI(result['access_token'])
+            profile = graph.get_object('me', fields='link,name,id')
+            access_token = graph.extend_access_token(FB_APP_ID, FB_APP_SECRET)
             user = User.get_by_id(result['uid'])
             if not user:
-                graph = GraphAPI(result['access_token'])
-                profile = graph.get_object('me', fields='link,name,id')
-                access_token = graph.extend_access_token(FB_APP_ID, FB_APP_SECRET)
-
                 user = User.create(id=profile['id'], name=profile['name'],
                                    profile_url=profile['link'],
                                    access_token=access_token['access_token'])
                 clear_friends_cache(user)
+            else:
+                user.access_token = access_token
+                user.update()
 
             session['user'] = user.id
 
