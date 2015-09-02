@@ -105,8 +105,7 @@
         $(document).on('keypress', '.select2-search__field', function (e) {
             var key = e.which;
             console.log(key);
-            console.log($(this).val());
-            if (key == 13 && $(this).val() === '') {
+            if (key === 13 && $(this).val() === '') {
                 $('#btnSubmit').trigger('click');
             }
         });
