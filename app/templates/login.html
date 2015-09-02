@@ -34,7 +34,7 @@
 
             $('.fb-login-btn').click(function () {
                 FB.login(function (response) {
-                    window.location = window.location;
+                    window.location.reload(true);
                 }, {scope: 'public_profile, user_friends, publish_actions'});
             });
         });
