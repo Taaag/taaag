@@ -166,7 +166,6 @@
                         object: 'https://taaag.sshz.org/tag_cloud/{{ friend.id }}',
                     })
                 }, function (response) {
-                    console.log(response['post_id']);
                     $.get('/api/like_friend', {
                         likee: '{{ friend.id }}',
                         event_id: response['post_id']
