@@ -93,7 +93,16 @@
             }
         });
 
-        $('.select2-search__field').keypress(function (e) {
+{#        $('.select2-search__field').keypress(function (e) {#}
+{#            var key = e.which;#}
+{#            console.log(key);#}
+{#            console.log($(this).val());#}
+{#            if (key == 13 && $(this).val() === '') {#}
+{#                $('#btnSubmit').trigger('click');#}
+{#            }#}
+{#        });#}
+
+        $(document).on('keypress', '.select2-search__field', function (e) {
             var key = e.which;
             console.log(key);
             console.log($(this).val());
@@ -132,7 +141,7 @@
                             $tag.addClass('tagged');
                         } else {
                             var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" ' +
-                                    'class="tag-cloud-tag tagged" data-name="' + value +'" id="' + idToCreate + '">' +
+                                    'class="tag-cloud-tag tagged" data-name="' + value + '" id="' + idToCreate + '">' +
                                     value + '</a></li>';
                             $('#tag-list').append(newList);
                         }
