@@ -83,7 +83,7 @@
 
         $('#inputDescription').on("select2:select", function (e) {
             var selected = e.params.data.text;
-            var existing = $('a.tagged[data-name=' + selected + ']');
+            var existing = $('a.tagged[data-name="' + selected + '"]');
             if (existing.length > 0) {
                 e.preventDefault();
                 console.log('sdfsf');
