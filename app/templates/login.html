@@ -32,12 +32,9 @@
                 xfbml: true
             });
 
-            FB.Event.subscribe('auth.login', function (response) {
-                window.location = window.location;
-            });
-
             $('.fb-login-btn').click(function () {
                 FB.login(function (response) {
+                    window.location = window.location;
                 }, {scope: 'public_profile, user_friends, publish_actions'});
             });
         });
