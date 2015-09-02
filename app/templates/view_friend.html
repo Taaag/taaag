@@ -84,6 +84,13 @@
 
         $('#inputDescription').on("select2:selecting", function (e) {
             var tag = (e.params.args.data.text).toLowerCase().trim();
+            if (tag.length > 32) {
+                e.preventDefault();
+                $.bootstrapGrowl(tag + " is too long", {
+                    align: 'center',
+                    'type': 'warning'
+                });
+            }
             var existing = $('a.tagged[data-name="' + tag + '"]');
             if (existing.length > 0) {
                 e.preventDefault();
