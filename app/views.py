@@ -20,11 +20,10 @@ FB_APP_SECRET = '***REMOVED***'
 def index():
     # If a user was set in the get_current_user function before the request,
     # the user is logged in.
-    if g.user:
-        if not g.user.friends_api_authorized():
-            return '卧槽 You have not authorized us!'
+    if g.user and g.user.friends_api_authorized():
         return render_template('base.html', app_id=FB_APP_ID, app_name=FB_APP_NAME)
     # Otherwise, a user is not logged in.
+    session['user'] = ''
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
 
@@ -110,16 +109,18 @@ def get_current_user():
         result = get_user_from_cookie(cookies=request.cookies, app_id=FB_APP_ID,
                                       app_secret=FB_APP_SECRET)
         if result:
+            graph = GraphAPI(result['access_token'])
+            profile = graph.get_object('me', fields='link,name,id')
+            access_token = graph.extend_access_token(FB_APP_ID, FB_APP_SECRET)['access_token']
             user = User.get_by_id(result['uid'])
             if not user:
-                graph = GraphAPI(result['access_token'])
-                profile = graph.get_object('me', fields='link,name,id')
-                access_token = graph.extend_access_token(FB_APP_ID, FB_APP_SECRET)
-
                 user = User.create(id=profile['id'], name=profile['name'],
                                    profile_url=profile['link'],
-                                   access_token=access_token['access_token'])
+                                   access_token=access_token)
                 clear_friends_cache(user)
+            else:
+                user.access_token = access_token
+                user.update()
 
             session['user'] = user.id
 

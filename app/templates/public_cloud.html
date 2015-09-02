@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- These are Open Graph tags.-->
-    <meta property="fb:app_id" content="{{ app_id }}"/>
-    <meta property="og:description" content="Tag your friends!"/>
+    <meta property="og:description" content="{{ user.name }}'s Tag Cloud at Taaag"/>
+    <meta property="og:site_name" content="Taaag"/>
+    <meta property="og:title" content="{{ user.name }}'s Tag Cloud" />
+    <meta property="og:type" content="cstaaag:tag" />
+    <meta property="fb:app_id" content="687248731410966" />
 
-    <title>{{ app_name }}</title>
+    <title>{{ user.name }}'s Tag Cloud</title>
 
     <!-- Style -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -23,7 +26,7 @@
 
 </head>
 
-<body class="overall">
+<body class="outer-contrainer">
 <script type="text/javascript">
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -46,47 +49,49 @@
         })
     })
 </script>
-<div class="row row-nonshare">
-    <!-- logo left -->
-    <div class="col-xs-2 col-sm-2 col-md-2 no-padding" id="body-left">
-        <div id="logo-container">
-            <img id="logo" class="to-home" src="/static/images/tagicon.png" alter="app logo">
-        </div>
-    </div>
-    <!-- end logo left -->
-
-    <!-- main area -->
-    <div class="col-xs-8 col-sm-8 col-md-8 no-padding" id="body-middle">
-
-        <div class="row col-sm-12 input-search no-padding">
-        </div>
-
-        <div class="row col-sm-12 content-area no-padding" id="content-view">
-            <div class="view">
-                <div class="row">
-                    <div class="profile-name">{{ user.name }}'s Tag Cloud</div>
-                </div>
-
-                <div class="row">
-                    <canvas width="490" height="270" id="myCanvas">
-                        <div id="tags">
-                            <ul id="tag-list">
-                                {% for key, value in tags.items() %}
-                                    <li>
-                                        <a href="#" data-weight="{{ value }}" style="font-weight:bold;">{{ key }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </canvas>
-                </div>
-
-                <div class="row">
-                    <button id="public-join-btn">Join Taaag</button>
-                </div>
+<div class="overall">
+    <div class="row row-nonshare">
+        <!-- logo left -->
+        <div class="col-xs-2 col-sm-2 col-md-2 no-padding" id="body-left">
+            <div id="logo-container">
+                <img id="logo" class="to-home" src="/static/images/tagicon.png" alter="app logo">
             </div>
-            {% set uid = user.id %}
-            {% include 'tag_cloud.html' %}
+        </div>
+        <!-- end logo left -->
+
+        <!-- main area -->
+        <div class="col-xs-8 col-sm-8 col-md-8 no-padding" id="body-middle">
+
+            <div class="row col-sm-12 input-search no-padding">
+            </div>
+
+            <div class="row col-sm-12 content-area no-padding" id="content-view">
+                <div class="view">
+                    <div class="row">
+                        <div class="profile-name">{{ user.name }}'s Tag Cloud</div>
+                    </div>
+
+                    <div class="row">
+                        <canvas width="490" height="270" id="myCanvas">
+                            <div id="tags">
+                                <ul id="tag-list">
+                                    {% for key, value in tags.items() %}
+                                        <li>
+                                            <a href="#" data-weight="{{ value }}" style="font-weight:bold;">{{ key }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </canvas>
+                    </div>
+
+                    <div class="row">
+                        <button id="public-join-btn">Join Taaag</button>
+                    </div>
+                </div>
+                {% set user_image = 'https://graph.facebook.com/' ~ user.id ~ '/picture?type=normal' %}
+                {% include 'tag_cloud.html' %}
+            </div>
         </div>
     </div>
 </div>

@@ -36,13 +36,12 @@ body {
     overflow-x: hidden;
 }
 
-.outer-contrainer{
-
+.outer-contrainer {
     background: url("../images/border.png") fixed no-repeat;
     text-align: center;
     width: 100%;
-    background-position: center top; 
-    /*margin:auto;*/
+    background-position: center top;
+    background-color: #F7CA18;
 }
 
 .spinner-overlay {
@@ -63,7 +62,7 @@ body {
     max-width: 760px;
     max-height: 560px;
     background-color: #fae066;
-    margin:auto;
+    margin: auto;
     border-left: 15px solid #fff;
     border-right: 15px solid #fff;
 }
@@ -81,8 +80,8 @@ body {
     background-color: #fae066; /**/
     height: 40px;
     padding-bottom: 5px;
-    padding-left:5px; 
-    padding-right:5px; 
+    padding-left: 5px;
+    padding-right: 5px;
     /*text-align: right;*/
 }
 
@@ -154,11 +153,12 @@ body {
     display: none;
 }
 
-.fb-btn-container{
+.fb-btn-container {
     padding: 5px;
     display: inline-block;
     float: right;
 }
+
 .b-f-btn-container {
     padding: 5px;
     display: inline-block;
@@ -176,7 +176,7 @@ body {
     padding: 0;
     vertical-align: middle;
     width: 70px;
-    
+
 }
 
 .fb-btn:hover {

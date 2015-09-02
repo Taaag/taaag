@@ -44,9 +44,12 @@ def clear_friends_cache(user):
 
 def has_friends_permission(user):
     graph = facebook.GraphAPI(user.access_token)
-    for i in graph.get_connections("me", "permissions")['data']:
-        if i['permission'] == 'user_friends' and i['status'] == 'granted':
-            return True
+    try:
+        for i in graph.get_connections("me", "permissions")['data']:
+            if i['permission'] == 'user_friends' and i['status'] == 'granted':
+                return True
+    except facebook.GraphAPIError:
+        return False
     return False
 
 

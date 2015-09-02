@@ -1,6 +1,6 @@
 <div id="view-me" class="view">
     <div class="row">
-        <div class="profile-name">{{ user.name }} <img id="shareMyCloudBtn" src = "/static/images/iconsnap.png"></img></div>
+        <div class="profile-name">{{ user.name }} <img id="shareMyCloudBtn" src="/static/images/iconsnap.png"></img></div>
     </div>
 
     <div class="row" id="myCanvasContainer">
@@ -66,5 +66,5 @@
     });
 </script>
 
-{% set uid = user.id %}
+{% set user_image = '/image_proxy/' ~ user.id %}
 {% include 'tag_cloud.html' %}

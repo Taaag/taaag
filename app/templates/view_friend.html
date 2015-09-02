@@ -1,6 +1,6 @@
 <div id="view-friend" class="view">
     <div class="row">
-        <div class="profile-name">{{ friend.name }}</div>
+        <div class="profile-name">{{ friend.name }} <i class="fa fa-heart" id="likeFriendCloudBtn"></i></div>
     </div>
 
     <div class="row">
@@ -81,10 +81,31 @@
             //closeOnSelect: false
         });
 
-        $('.select2-search__field').keypress(function (e) {
+        $('#inputDescription').on("select2:selecting", function (e) {
+            var tag = e.params.args.data.text;
+            var existing = $('a.tagged[data-name="' + tag + '"]');
+            if (existing.length > 0) {
+                e.preventDefault();
+                $.bootstrapGrowl("You've already tagged this friend as " + tag, {
+                    align: 'center',
+                    'type': 'warning'
+                });
+            }
+        });
+
+{#        $('.select2-search__field').keypress(function (e) {#}
+{#            var key = e.which;#}
+{#            console.log(key);#}
+{#            console.log($(this).val());#}
+{#            if (key == 13 && $(this).val() === '') {#}
+{#                $('#btnSubmit').trigger('click');#}
+{#            }#}
+{#        });#}
+
+        $(document).on('keypress', '.select2-search__field', function (e) {
             var key = e.which;
             console.log(key);
-            if (key == 13 && $(this).val() == '') {
+            if (key === 13 && $(this).val() === '') {
                 $('#btnSubmit').trigger('click');
             }
         });
@@ -118,7 +139,9 @@
                             $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
-                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" class="tag-cloud-tag tagged" id="' + idToCreate + '">' + value + '</a></li>';
+                            var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" ' +
+                                    'class="tag-cloud-tag tagged" data-name="' + value + '" id="' + idToCreate + '">' +
+                                    value + '</a></li>';
                             $('#tag-list').append(newList);
                         }
                         idsToMove.push(idToCreate);
@@ -150,6 +173,17 @@
             });
         });
 
+        $("#likeFriendCloudBtn").click(function () {
+            FB.ui({
+                method: 'share_open_graph',
+                action_type: 'og.likes',
+                action_properties: JSON.stringify({
+                    object: 'https://taaag.sshz.org/tag_cloud/{{ friend.id }}',
+                })
+            }, function (response) {
+            });
+        });
+
         var allTags = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -165,5 +199,5 @@
     })
 </script>
 
-{% set uid = friend.id %}
+{% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?type=normal' %}
 {% include 'tag_cloud.html' %}
