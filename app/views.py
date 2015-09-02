@@ -50,6 +50,8 @@ def api(method):
             return jsonify({'succeed': False, 'message': e.message})
         except ValueError:
             abort(400)
+        except Exception as e:
+            return jsonify({'succeed': False, 'message': 'Internal Server Error'})
     return jsonify({'message': 'API endpoint is working!'})
 
 
@@ -62,6 +64,8 @@ def view(view_type):
             return views[view_type](g.user, request.args)
         except APIException as e:
             return e.message
+        except Exception as e:
+            return 'Internal Server Error'
 
 
 @app.route('/image_proxy/<uid>', methods=['GET'])
