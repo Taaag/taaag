@@ -97,7 +97,7 @@
             var key = e.which;
             console.log(key);
             console.log($(this).val());
-            if (key == 13 && $(this).val() == '') {
+            if (key == 13 && $(this).val() === '') {
                 $('#btnSubmit').trigger('click');
             }
         });
