@@ -74,7 +74,16 @@ class User(db.Model):
         db.session.commit()
 
     def is_liking(self, likee):
-        return likee in self.likees
+        result = Liking.get_by_liker_likee(likee)
+        if not result:
+            return False
+        return result[0].event_id
+
+    def like(self, likee, event_id):
+        return Liking.create(self, likee, event_id)
+
+    def unlike(self, likee):
+        return Liking.delete_by_liker_likee(self, likee)
 
     @classmethod
     def get_by_id(cls, id):
@@ -243,3 +252,16 @@ class Liking(db.Model):
         except IntegrityError:
             db.session.rollback()
             raise
+
+    @classmethod
+    def delete_by_liker_likee(cls, liker, likee):
+        result = cls.get_by_liker_likee(liker, likee)
+        if result:
+            db.session.delete(result)
+            db.session.commit()
+            return True
+        return False
+
+    @classmethod
+    def get_by_liker_likee(cls, liker, likee):
+        return cls.query().filter(liker_id=liker.id, likee_id=likee.id).all()
