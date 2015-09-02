@@ -82,7 +82,6 @@
         });
 
         $('#inputDescription').on("select2:selecting", function (e) {
-            console.log(e.params.args.data.text);
             var selected = e.params.args.data.text;
             var existing = $('a.tagged[data-name="' + selected + '"]');
             if (existing.length > 0) {
