@@ -20,7 +20,7 @@
                     <th class="col-sm-5 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
                         {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
-                            <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tag.name }}">
+                            <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 {% if tagger.id == '0' %}
                                     <img class="voter-img" src="/static/images/poo-head.png">
                                 {% else %}
@@ -72,7 +72,7 @@
             });
         }
 
-        var tagger_array = {{ tag_with_taggers|tojson }};
+        var tagger_array = {{ tag_with_taggers|tojson|safe }};
 
         $('.th-mytag-viewmore').click(function () {
             var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
