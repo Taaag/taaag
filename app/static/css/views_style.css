@@ -647,7 +647,7 @@ span.friendlist-friendname span {
 .wrapper .friendlist-friendname{
     visibility: hidden;
     position:relative;
-    bottom:30px;
+    bottom:50px;
 }
 
 .wrapper:hover{
