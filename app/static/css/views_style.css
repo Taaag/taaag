@@ -645,5 +645,7 @@ span.friendlist-friendname span {
     background:#303030;
     color:white;
     font-size: 15px;
+    padding:10px;
+    margin: 10px;
 }
 
