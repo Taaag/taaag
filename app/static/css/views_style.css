@@ -38,11 +38,11 @@
 }
 
 .home-page-suggest-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50px;
     background-color: #303030;
-    margin: 25px;
+    margin: 15px;
     border: none;
     cursor: pointer;
 }
