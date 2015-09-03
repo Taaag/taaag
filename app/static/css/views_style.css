@@ -694,6 +694,7 @@ span.friendlist-friendname span {
     text-align: center;
 }
 
-.setting-description{
-    
+.setting-switch{
+    vertical-align: middle;
+    text-align: center;
 }
