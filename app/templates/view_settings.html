@@ -7,12 +7,12 @@
                 friend.</h6>
         </div>
 
-        <div class = "col-xs-3" id = "setting-option">
-            <input id = "setting-switch"type="checkbox" name="my-checkbox" checked data-on-color = "warning" data-off-color ="default" data-size = "mini">
+        <div class="col-xs-3" id="setting-option">
+            <input id="setting-switch" type="checkbox" name="my-checkbox" checked data-on-color="warning" data-off-color="default" data-size="mini">
         </div>
     </div>
-    <div class = "row" >
-        <img class = "settings-img" src = "/static/images/imgsettings.png" alter = "setting-img">
+    <div class="row">
+        <img class="settings-img" src="/static/images/imgsettings.png" alter="setting-img">
     </div>
 
 </div>
@@ -20,9 +20,13 @@
 <script type="text/javascript">
     $(function () {
         $("#setting-switch").bootstrapSwitch();
-        $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+        $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function (event, state) {
             $.get('/api/change_settings', {'public': state}, function (response) {
-                $.bootstrapGrowl("Settings saved!");
+                if (response['succeed']) {
+                    $.bootstrapGrowl("Settings saved!", {align: 'center', 'type': 'success'});
+                } else {
+                    $.bootstrapGrowl("Something went wrong", {align: 'center', 'type': 'warning'});
+                }
             });
         });
     });
