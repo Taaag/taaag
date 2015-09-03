@@ -116,6 +116,7 @@ body {
 .input-search {
     height: 100px;
     text-align: right;
+    size:20px;
 }
 
 .searchbar {
