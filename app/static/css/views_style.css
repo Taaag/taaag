@@ -649,6 +649,7 @@ span.friendlist-friendname span {
     position:relative;
     text-align: center;
     vertical-align: middle;
+    bottom: 10px;
    
     
 }
@@ -662,5 +663,4 @@ span.friendlist-friendname span {
     visibility: visible;
     font-size: 15px;
     color:black; 
-    margin-bottom: -30px;
 }
