@@ -2,7 +2,6 @@ from datetime import datetime
 from datetime import timezone
 
 from app import db
-
 from app.enums import UserPrivacy
 from app.utils import is_friend_of, get_user_friends, has_friends_permission
 from sqlalchemy import func

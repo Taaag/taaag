@@ -99,7 +99,6 @@ def tag_cloud(uid):
     return public_cloud(user)
 
 
-
 @app.before_request
 def get_current_user():
     if not session.get('user'):
