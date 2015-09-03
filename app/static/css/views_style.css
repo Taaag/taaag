@@ -91,14 +91,16 @@
 
 }*/
 
-.friendlist-friend {
+.friendlist-friend, .friendlist-invite {
     height: 120px;
     width: 120px;
     margin: 10px;
     cursor: pointer;
 }
 
-.friendlist-friend:hover {
+
+
+.friendlist-friend:hover, .friendlist-invite:hover {
     opacity: 0.3;
     background: #303030;
 
