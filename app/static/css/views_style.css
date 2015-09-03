@@ -683,6 +683,7 @@ span.friendlist-friendname span {
      color: #303030;
      background-color: white;
      text-align: left;
+     height: 75px;
 
 }
 .settings h4, h6{
@@ -694,6 +695,8 @@ span.friendlist-friendname span {
     text-align: center;
 }
 
-.setting-description{
-    
+.setting-switch{
+    vertical-align: middle;
+    text-align: center;
+    /*height: 75px;*/
 }
