@@ -674,8 +674,8 @@ span.friendlist-friendname span {
 }
 
 .settings-img{
-     width: 300px;
-     height: 300px;
+     width: 250px;
+     height: 260px;
      margin: auto;
 }
 
@@ -689,4 +689,8 @@ span.friendlist-friendname span {
     font-size: 50px;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.setting-description{
+    
 }
