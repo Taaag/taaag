@@ -20,14 +20,14 @@
                                      src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
                                         {% endif %}
                                      data-uid="{{ friend.id }}">
-                                <p class = "friendlist-friendname" >{{friend.name}}</p>
+                                <div class = "friendlist-friendname" >{{friend.name}}</div>
 
                             </td>
                         {% endfor %}
                         {% if friend_row|length < 3 %}
                         <td class = "wrapper">
                             <img class = "friendlist-invite" src = "/static/images/invite.png">
-                             <p class = "friendlist-friendname" >Invite Now!</p>
+                             <div class = "friendlist-friendname" >Invite Now!</div>
 
                         </td>
                         {% endif %}
@@ -40,7 +40,7 @@
                     <tr>
                         <td class = "wrapper">
                             <img class = "friendlist-invite" src = "/static/images/invite.png">
-                            <p class = "friendlist-friendname" >Invite Now!</p>
+                            <div class = "friendlist-friendname" >Invite Now!</div>
 
                         </td>
                     </tr>
