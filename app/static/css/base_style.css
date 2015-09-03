@@ -59,7 +59,7 @@ body {
 }
 
 .overall {
-    max-width: 760px;
+    width: 775px;
     max-height: 560px;
     background-color: #fae066;
     margin: auto;
