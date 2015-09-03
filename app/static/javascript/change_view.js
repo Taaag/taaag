@@ -33,7 +33,7 @@
             $(document).trigger("viewChanging", ["me", {}]);
         });
         $('#menu-settings').click(function () {
-            $(document).trigger("viewChanging", ["manage", {}]);
+            $(document).trigger("viewChanging", ["settings", {}]);
         });
         $('#menu-friends').click(function () {
             $(document).trigger("viewChanging", ["friends", {}]);
