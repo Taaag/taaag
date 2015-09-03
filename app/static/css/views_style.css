@@ -641,3 +641,9 @@ span.friendlist-friendname span {
     color: #303030;
 }
 
+.tctooltip{
+    background:#303030;
+    color:white;
+    font-size: 15px;
+}
+
