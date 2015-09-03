@@ -1,9 +1,12 @@
 <div id="view_settings" class="view">
-
     <div class="row"><p class="setting-header">Settings</p></div>
     <div class="row settings">
-        <div class="col-xs-8">hehe</div>
-        <div class="col-xs-4">jaja</div>
+        <div class="col-xs-9 setting-description">
+            <h4>Allow non-login users to see your tag cloud</h4>
+            <h6>If unselected, people cannot see your cloud by clicking the link shared by either you or your
+                friend.</h6>
+        </div>
+        <div class="col-xs-3" id="setting-option"></div>
     </div>
     <div class="row">
         <img class="settings-img" src="/static/images/poo-head.png" alter="setting-img">
@@ -12,8 +15,8 @@
 </div>
 <script>
     $(function () {
-        $('.settings').click(function() {
-            $.get('/api/change_settings', {public: 0}, function(response) {
+        $('.settings').click(function () {
+            $.get('/api/change_settings', {public: 0}, function (response) {
                 alert(response);
             });
         });
