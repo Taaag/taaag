@@ -686,6 +686,7 @@ span.friendlist-friendname span {
 }
 
 .setting-header{
-    font-size: 60px;
+    font-size: 80px;
     text-align: center;
+    margin-bottom: 20px;
 }
