@@ -76,6 +76,7 @@ class User(db.Model):
     def update_privacy(self, privacy):
         if UserPrivacy.is_valid(privacy):
             self.privacy = privacy
+            db.session.commit()
             return True
         return False
 
