@@ -67,6 +67,11 @@ body {
     border-right: 15px solid #fff;
 }
 
+.overall .overall-responsive {
+    max-width: 775px;
+    width: 100%;
+}
+
 .row {
     margin: 0;
 }
@@ -116,7 +121,7 @@ body {
 .input-search {
     height: 100px;
     text-align: right;
-    size:20px;
+    size: 20px;
 }
 
 .searchbar {
@@ -209,7 +214,7 @@ body {
 .icon-open {
 }
 
-.typeahead{
+.typeahead {
     font-size: 15px;
 }
 
