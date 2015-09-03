@@ -672,3 +672,14 @@ span.friendlist-friendname span {
 .wrapper:hover .friendlist-friendname {
     visibility: visible;
 }
+
+.settings-img{
+     width: 250px;
+     height: 250px;
+     margin: auto;
+}
+
+.settings{
+     color: #303030;
+     background-color: white;
+}
