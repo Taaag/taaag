@@ -165,7 +165,7 @@ def api_user_unlike_friend(user, payload):
 
 
 def api_user_publish_cloud():
-
+    return {}
 
 apis = {
     'all_tags': api_tag_all,
