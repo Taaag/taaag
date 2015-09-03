@@ -17,11 +17,21 @@
                 <th class="col-sm-2"><img class="tagrank-img" src="{% if taggee.id == 0 %}/static/images/poo-head-s.png{% else %}https://graph.facebook.com/{{ taggee.id }}/picture{% endif %}"></th>
                 <th class="col-sm-7"><p class="tagrank-ranknum">{{ taggee.name }}</p></th>
                 <th class="col-sm-5">
-                    <div class="tagrank-upvote-circle"><p class="tagrank-upvote-num">{{ taggee.count }}</div>
+                    <div class="tagrank-upvote-circle"><p class="tagrank-upvote-num">{{ taggee.count }}</p></div>
                 </th>
             </tr>
         {% endfor %}
     </table>
-    <div>
+    </div>
 </div>
+
+<script type="text/javascript">
+$(function () {
+
+ $('#tagrank-input').textfill();
+
+
+    });
+
+</script>
 
