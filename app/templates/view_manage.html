@@ -1,3 +1,4 @@
+
 <div id='manage-photo' class="row tagrank">
     <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
 </div>
@@ -105,7 +106,7 @@
         $('.mytaglist-delete-btn').click(function () {
             var tag = $(this).closest('tr').find('.mytag-tagname-font').text();
             BootstrapDialog.confirm({
-                title: 'Detele',
+                title: 'Delete',
                 type: 'none',
                 message: "<h4> Are you sure to delete " + tag + "? </h4>",
                 size: BootstrapDialog.SIZE_SMALL,
