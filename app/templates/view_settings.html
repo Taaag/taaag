@@ -14,19 +14,17 @@
     <div class = "row" >
         <img class = "settings-img" src = "/static/images/imgsettings.png" alter = "setting-img">
     </div>
-    
+
 </div>
 
 <script type="text/javascript">
     $(function () {
-        $('.settings').click(function () {
-            $.get('/api/change_settings', {public: 0}, function (response) {
-                console.log(response);
+        $("#setting-switch").bootstrapSwitch();
+        $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+            $.get('/api/change_settings', {'public': state}, function (response) {
+                $.bootstrapGrowl("Settings saved!");
             });
         });
-        $("#setting-switch").bootstrapSwitch(
-
-    );
     });
 </script>
 

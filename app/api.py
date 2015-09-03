@@ -76,9 +76,9 @@ def api_user_add_tag(user, payload):
     # Return: ???
     # taggee = User.get_by_id(payload['taggee'])
     # if not taggee:
-    #     raise APIException('Taggee does not exist!')
+    # raise APIException('Taggee does not exist!')
     # if not user.can_tag(taggee):
-    #     raise APIException('Cannot tag the user!')
+    # raise APIException('Cannot tag the user!')
     # tag_name = payload['tag'].strip().lower()
     # if not tag_name:
     #     raise APIException('Tag name not allowed!')
@@ -165,14 +165,16 @@ def api_user_unlike_friend(user, payload):
 
 
 def api_user_change_settings(user, payload):
-    public = payload['public'].strip().lower()
+    public = payload.get('public', '').strip().lower()
     if public:
-        if user.update_privacy(public):
+        public_internal = {'true': 1, 'false': 0}.get(public, -1)
+        if user.update_privacy(public_internal):
             return 'OK'
         else:
             raise APIException('invalid input!')
     else:
         raise APIException('Unknown type of settings!')
+
 
 apis = {
     'all_tags': api_tag_all,
