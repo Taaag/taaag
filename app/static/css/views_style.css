@@ -650,6 +650,7 @@ span.friendlist-friendname span {
     width: 120px;
     height: 120px;
     margin: 10px;
+    z-index: 3;
 
     
 }
@@ -659,7 +660,7 @@ span.friendlist-friendname span {
     background: #303030;
     text-align: center;
     vertical-align: middle;
-    z-index: 100;
+    /*z-index: 3;*/
 }
 .wrapper:hover .friendlist-friendname{
     visibility: visible;
