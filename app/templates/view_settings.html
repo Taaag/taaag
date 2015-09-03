@@ -1,11 +1,12 @@
 <div id="view_settings" class="view">
-
-    <div class = "row"><p class = "setting-header">Settings</p></div>
-    <div class = "row settings">
-        <div class = "col-xs-9 setting-description">
+    <div class="row"><p class="setting-header">Settings</p></div>
+    <div class="row settings">
+        <div class="col-xs-9 setting-description">
             <h4>Allow non-login users to see your tag cloud</h4>
-            <h6>If unselected, people cannot see your cloud by clicking the link shared by either you or your friend.</h6>
+            <h6>If unselected, people cannot see your cloud by clicking the link shared by either you or your
+                friend.</h6>
         </div>
+
         <div class = "col-xs-3" id = "setting-option">
             <input id = "setting-switch"type="checkbox" name="my-checkbox" checked data-on-color = "warning" data-off-color ="default" size = "small" >
         </div>
@@ -17,11 +18,17 @@
 </div>
 
 <script type="text/javascript">
-$(function(){
-    $("#setting-switch").bootstrapSwitch(
-
+    $(function () {
+        $('.settings').click(function () {
+            $.get('/api/change_settings', {public: 0}, function (response) {
+                console.log(response);
+            });
+        });
+        $("#setting-switch").bootstrapSwitch(
 
     );
-});
-
+    });
 </script>
+
+
+     
