@@ -67,9 +67,13 @@ body {
     border-right: 15px solid #fff;
 }
 
-.overall .overall-responsive {
+.overall-responsive {
     max-width: 775px;
     width: 100%;
+    background-color: #fae066;
+    margin: auto;
+    border-left: 15px solid #fff;
+    border-right: 15px solid #fff;
 }
 
 .row {

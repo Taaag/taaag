@@ -186,6 +186,7 @@ span.friendlist-friendname span {
     border: none;
     text-align: center;
     margin-top: 10px;
+    max-width: 100%;
 }
 
 #manage-to-view-btn {
