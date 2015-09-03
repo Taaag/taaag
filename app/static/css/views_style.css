@@ -695,11 +695,11 @@ span.friendlist-friendname span {
     text-align: center;
 }
 
-.setting-switch{
+#setting-switch{
     vertical-align: middle;
     text-align: center;
     height: 75px;
 }
-#setting-description{
+.setting-description{
     height: 75px;
 }
