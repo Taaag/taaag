@@ -19,7 +19,9 @@
         <button id="profile-view-manage-btn">Manage My Tags</button>
     </div>
 </div>
-<div class ="tctooltip"><a href="#" title="test" ></a><div>
+<div class="tctooltip"><a href="#" title="test"></a>
+
+</div>
 
 <script>
     $(function () {
@@ -68,4 +70,5 @@
 </script>
 
 {% set user_image = '/image_proxy/' ~ user.id %}
+{% set on_view_me = True %}
 {% include 'tag_cloud.html' %}

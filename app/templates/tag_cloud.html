@@ -10,18 +10,22 @@
                 };
 
                 $('#myCanvas').tagcanvas({
+                    {% if on_view_me %}
+                        dragControl: true,
+                        dragThreshold: 4,
+                    {% endif %}
                     activeCursor: "pointer",
                     textColour: null,
                     weight: true,
                     reverse: true,
-                    fadeIn:0.01,
-                    shuffleTags:true,
+                    fadeIn: 0.01,
+                    shuffleTags: true,
                     depth: 0.8,
                     maxSpeed: 0.02,
                     zoomMin: 0.5,
                     weightMode: "both",
-                    tooltip:"div",
-                    tooltipClass:"tctooltip",
+                    tooltip: "div",
+                    tooltipClass: "tctooltip",
                     weightGradient: gradient,
                     weightSizeMax: 40,
                     weightSizeMin: 20,
