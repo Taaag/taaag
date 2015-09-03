@@ -407,7 +407,7 @@ span.friendlist-friendname span {
     font-size: 15px;
     color: #303030;
     margin-bottom: 0px;
-    max-height: 100%;
+    max-width: 100%;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
