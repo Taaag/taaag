@@ -656,9 +656,12 @@ span.friendlist-friendname span {
     text-align: center;
     vertical-align: middle;
     bottom: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
 }
 
-.wrapper:hover {
+.wrapper:hover > img {
     /*background-color: white;*/
     opacity: 0.5;
     filter: blur(5px) opacity(0.5);
@@ -669,7 +672,4 @@ span.friendlist-friendname span {
 
 .wrapper:hover .friendlist-friendname {
     visibility: visible;
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
 }
