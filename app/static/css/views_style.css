@@ -98,11 +98,11 @@
     cursor: pointer;
 }
 
-.friendlist-friend:hover, .friendlist-invite:hover {
+/*.friendlist-friend:hover, .friendlist-invite:hover {
     opacity: 0.3;
     background: #303030;
 
-}
+}*/
 
 span.friendlist-friendname {
     background: transparent;
@@ -649,18 +649,20 @@ span.friendlist-friendname span {
     position:relative;
     text-align: center;
     vertical-align: middle;
-    bottom: 10px;
+    bottom: 50%;
    
     
 }
 
 .wrapper:hover{
     opacity: 0.3;
+
     
     
 }
 .wrapper:hover .friendlist-friendname{
     visibility: visible;
     font-size: 15px;
+    font-weight: bold;
     color:black; 
 }
