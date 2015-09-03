@@ -655,7 +655,6 @@ span.friendlist-friendname span {
     position:relative;
     text-align: center;
     vertical-align: middle;
-    z-index: 100;
     bottom:50px;  
 }
 
