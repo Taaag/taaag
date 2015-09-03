@@ -22,7 +22,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="/static/javascript/jquery.tagcanvas.min.js" type="text/javascript"></script>
 
 </head>
 
@@ -72,7 +71,7 @@
                     </div>
 
                     <div class="row">
-                        <h1>This user requires log in to </h1>
+                        <h3>Only {{ user.name }}'s friends can see this cloud. If you are one of them, </h3>
                     </div>
 
                     <div class="row">
@@ -88,6 +87,7 @@
             </div>
         </div>
     </div>
+    <div class="row row-share"></div>
 </div>
 </body>
 </html>
