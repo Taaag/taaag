@@ -401,6 +401,7 @@ span.friendlist-friendname span {
 
 .taglist-th-tn {
     border-right: 1px dotted #fae066;
+    text-overflow: ellipsis;
 }
 
 .mytag-tagname-font {
