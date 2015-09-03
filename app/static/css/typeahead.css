@@ -1,74 +1,74 @@
 .tt-menu,
 .gist {
-  text-align: left;
+    text-align: left;
 }
 
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 200px;
-  height: 40px;
-  padding: 8px 12px;
-  font-size: 12px;
-  line-height: 30px;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
-  outline: none;
-  background-color: #fff;
+    width: 200px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 30px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
 
 }
 
 .typeahead {
-  background-color: #fff;
-  border: none;
+    background-color: #fff;
+    border: none;
 }
 
 .typeahead:focus {
-  border: none;
+    border: none;
 }
 
 .tt-query {
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
 .tt-menu {
-  width: 200px;
-/*  margin: 12px 0;*/
-  padding: 8px 0;
-  background-color: rgba(255,255,255,.85);
-  border: 1px solid #ccc;
-  border: 1px solid rgba(247, 202, 24, 0.2);
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
-  -webkit-box-shadow: 0 5px 10px rgba(247,202,24,.2);
-     -moz-box-shadow: 0 5px 10px rgba(247,202,24,.2);
-          box-shadow: 0 5px 10px rgba(247,202,24,.2);
-  overflow-y:auto;
+    width: 200px;
+    /*  margin: 12px 0;*/
+    padding: 8px 0;
+    background-color: rgba(255, 255, 255, .85);
+    border: 1px solid #ccc;
+    border: 1px solid rgba(247, 202, 24, 0.2);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 5px 10px rgba(247, 202, 24, .2);
+    -moz-box-shadow: 0 5px 10px rgba(247, 202, 24, .2);
+    box-shadow: 0 5px 10px rgba(247, 202, 24, .2);
+    overflow-y: auto;
 }
 
 .tt-suggestion {
-  padding: 3px;
-  font-size: 18px;
-  line-height: 18px;
+    padding: 3px;
+    font-size: 18px;
+    line-height: 18px;
 }
 
 .tt-suggestion:hover {
-  cursor: pointer;
-  color: #fff;
-  background-color: #303030;
-  opacity: 0.85
+    cursor: pointer;
+    color: #fff;
+    background-color: #303030;
+    opacity: 0.85
 }
 
 .tt-suggestion.tt-cursor {
-  color: #fff;
-  background-color: #303030;
+    color: #fff;
+    background-color: #303030;
 
 }
 
 .tt-suggestion p {
-  margin: 0;
+    margin: 0;
 }
