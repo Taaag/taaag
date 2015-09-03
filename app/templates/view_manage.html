@@ -94,7 +94,13 @@
                 closable: true,
                 closeByBackdrop: true,
                 size: BootstrapDialog.SIZE_SMALL,
-                cssClass: 'upvoteList-dialog'
+                cssClass: 'upvoteList-dialog',
+                onshown: function (dialogRef) {
+                    $('.dialog-set').click(function () {
+                        dialogRef.close();
+                        $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+                    });
+                },
             });
         });
 

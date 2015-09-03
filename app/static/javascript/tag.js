@@ -17,7 +17,4 @@
         $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
     });
 
-    $(document).on('click', '.dialog-set', function() {
-        $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
-    });
 }(jQuery));
