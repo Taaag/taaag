@@ -665,8 +665,8 @@ span.friendlist-friendname span {
     /*background-color: white;*/
     filter: blur(3px) opacity(0.7);
     -webkit-filter: blur(3px) opacity(0.7);
-    transition: filter 0ms 300ms;
-    -webkit-transition: -webkit-filter 0ms 300ms;
+    transition: filter 300ms;
+    -webkit-transition: -webkit-filter 300ms;
 }
 
 .wrapper:hover .friendlist-friendname {
