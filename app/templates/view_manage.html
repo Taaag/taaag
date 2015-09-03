@@ -89,7 +89,7 @@
             });
             msg += '</tbody></table>';
             BootstrapDialog.show({
-                title: '<p class = "dialog-title">' + taggers.length + ' people have upvoted ' + tag + ' </p>',
+                title: '<p class = "dialog-title">' + taggers.length + ' people have upvoted ' + $('<div>').text(tag).html() + ' </p>',
                 message: msg,
                 type: 'none',
                 closable: true,
@@ -108,7 +108,7 @@
             BootstrapDialog.confirm({
                 title: 'Delete',
                 type: 'none',
-                message: "<h4> Are you sure to delete " + tag + "? </h4>",
+                message: "<h4> Are you sure to delete " + $('<div>').text(tag).html() + "? </h4>",
                 size: BootstrapDialog.SIZE_SMALL,
                 closable: true,
                 closeByBackdrop: true,
