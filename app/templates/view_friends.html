@@ -8,6 +8,7 @@
             <table>
                 <tbody>
                 {% for friend_row in friends|batch(3) %}
+
                     <tr>
                         {% for friend in friend_row %}
                             <td>
@@ -18,10 +19,29 @@
                                      src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
                                         {% endif %}
                                      data-uid="{{ friend.id }}">
+                                { }
                             </td>
                         {% endfor %}
+                        {% if friend_row.size() < 3 %}
+                        <td>
+                            <img class = "friendlist-friend" src = "/static/images/plus.png">
+
+                        </td>
+                        {% endif %}
+
                     </tr>
+
+
                 {% endfor %}
+                {% if friends.size()%3 == 0 %}
+                    <tr>
+                        <td>
+                            <img class = "friendlist-friend" src = "/static/images/plus.png">
+
+                        </td>
+                    </tr>
+
+                {% endif %}
                 </tbody>
             </table>
         </div>
