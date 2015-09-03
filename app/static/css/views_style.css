@@ -649,11 +649,15 @@ span.friendlist-friendname span {
     position:relative;
     bottom:30px;
 }
+
+.wrapper:hover{
+    text-align: center;
+    vertical-align: middle;
+}
 .wrapper:hover .friendlist-friendname{
     visibility: visible;
-    font-size: 10px;
+    font-size: 15px;
     color:#303030; 
-    text-align: center;
-    z-index: 100;
+    
 
 }
