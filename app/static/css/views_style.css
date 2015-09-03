@@ -94,7 +94,6 @@
 .friendlist-friend, .friendlist-invite {
     height: 120px;
     width: 120px;
-    margin: 10px;
     cursor: pointer;
 }
 
@@ -663,7 +662,7 @@ span.friendlist-friendname span {
 }
 
 .wrapper:hover{
-    opacity: 0.3;
+    opacity: 0.8;
 
     
     
