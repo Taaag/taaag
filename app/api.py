@@ -188,7 +188,7 @@ apis = {
     'all_friends': api_user_all_friends,
     'like_friend': api_user_like_friend,
     'unlike_friend': api_user_unlike_friend,
-    'publish_cloud': api_user_change_settings
+    'change_settings': api_user_change_settings
 }
 
 

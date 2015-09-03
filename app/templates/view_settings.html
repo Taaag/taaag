@@ -1,12 +1,21 @@
 <div id="view_settings" class="view">
 
-    <div class = "row"><p class = "setting-header">Settings</p></div>
-    <div class = "row settings">
-        <div class = "col-xs-8">hehe</div>
-        <div class = "col-xs-4">jaja</div>
+    <div class="row"><p class="setting-header">Settings</p></div>
+    <div class="row settings">
+        <div class="col-xs-8">hehe</div>
+        <div class="col-xs-4">jaja</div>
     </div>
-    <div class = "row" >
-        <img class = "settings-img" src = "/static/images/poo-head.png" alter = "setting-img">
+    <div class="row">
+        <img class="settings-img" src="/static/images/poo-head.png" alter="setting-img">
     </div>
-    
+
 </div>
+<script>
+    $(function () {
+        $('.settings').click(function() {
+            $.get('/api/change_settings', {public: 0}, function(response) {
+                alert(response);
+            });
+        });
+    });
+</script>
