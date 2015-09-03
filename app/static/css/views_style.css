@@ -643,29 +643,33 @@ span.friendlist-friendname span {
     opacity: 0.9;
 }
 
-
-.wrapper{
+.wrapper {
     width: 120px;
     height: 120px;
-    margin:10px;
-    text-align:center;
+    margin: 10px;
+    text-align: center;
 }
-.wrapper .friendlist-friendname{
+
+.wrapper .friendlist-friendname {
     visibility: hidden;
-    position:relative;
+    position: relative;
     text-align: center;
     vertical-align: middle;
-    bottom:50px;  
+    bottom: 50px;
 }
 
-.wrapper:hover{
-    background-color: white;
+.wrapper:hover {
+    /*background-color: white;*/
     opacity: 0.5;
+    filter: blur(5px) opacity(0.5);
+    -webkit-filter: blur(5px) opacity(0.5);
+    transition: filter 200ms 300ms;
+    -webkit-transition: -webkit-filter 200ms 300ms;
 }
 
-.wrapper:hover .friendlist-friendname{
+.wrapper:hover .friendlist-friendname {
     visibility: visible;
     font-size: 15px;
     font-weight: bold;
-    color:black; 
+    color: black;
 }
