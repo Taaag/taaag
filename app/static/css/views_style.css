@@ -644,3 +644,12 @@ span.friendlist-friendname span {
     opacity: 0.9;
 }
 
+.wrapper .friendlist-friendname{
+    visibility: hidden;
+}
+.wrapper:hover .friendlist-friendname{
+    visibility: visible;
+    font-size: 10px;
+    color:#303030; 
+    text-align: center;
+}
