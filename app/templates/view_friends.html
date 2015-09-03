@@ -22,7 +22,7 @@
                                 { }
                             </td>
                         {% endfor %}
-                        {% if friend_row.size() < 3 %}
+                        {% if friend_row|length < 3 %}
                         <td>
                             <img class = "friendlist-friend" src = "/static/images/plus.png">
 
@@ -33,7 +33,7 @@
 
 
                 {% endfor %}
-                {% if friends.size()%3 == 0 %}
+                {% if friends|length %3 == 0 %}
                     <tr>
                         <td>
                             <img class = "friendlist-friend" src = "/static/images/plus.png">
