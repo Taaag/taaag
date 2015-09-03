@@ -593,6 +593,7 @@ span.friendlist-friendname span {
     padding-bottom: 0px;
     border-bottom: 0px;
     color: #303030;
+    border-radius: 0;
 }
 
 #tab-votes {
