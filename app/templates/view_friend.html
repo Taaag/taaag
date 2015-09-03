@@ -12,7 +12,8 @@
                     {% for key, value in tags.items() %}
                         <li>
                             <a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
-                               class="tag-cloud-tag {% if value[1] %}tagged{% endif %}">{{ key }}</a>
+                               class="tag-cloud-tag {% if value[1] %}tagged{% endif %}"
+                               title="{% if value[1] %}You and {% value[0]-1 %} others{% else %}{% value[0] %} people{% endif %} upvoted">{{ key }}</a>
                         </li>
                     {% endfor %}
                 </ul>
