@@ -6,10 +6,22 @@
             <h4>Allow non-login users to see your tag cloud</h4>
             <h6>If unselected, people cannot see your cloud by clicking the link shared by either you or your friend.</h6>
         </div>
-        <div class = "col-xs-3" id = "setting-option"></div>
+        <div class = "col-xs-3" id = "setting-option">
+            <input id = "setting-switch"type="checkbox" name="my-checkbox" checked data-on-color = "warning" data-off-color ="default" size = "small" >
+        </div>
     </div>
     <div class = "row" >
-        <img class = "settings-img" src = "/static/images/poo-head.png" alter = "setting-img">
+        <img class = "settings-img" src = "/static/images/imgsetting.png" alter = "setting-img">
     </div>
     
 </div>
+
+<script type="text/javascript">
+$(function(){
+    $("#setting-switch").bootstrapSwitch(
+
+
+    );
+});
+
+</script>
