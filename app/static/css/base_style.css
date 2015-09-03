@@ -168,7 +168,7 @@ body {
 
 .fb-btn {
     background-color: #303030;
-    height: 13px;
+    height: 20px;
     border-radius: 5px;
     border: none;
     outline: none;
@@ -176,6 +176,7 @@ body {
     padding: 0;
     vertical-align: middle;
     width: 70px;
+    font-size: 15px;
 
 }
 
