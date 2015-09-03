@@ -698,8 +698,9 @@ span.friendlist-friendname span {
 #setting-option{
     text-align: center;
     height: 75px;
-    padding:20px;
+    padding:15px;
     vertical-align: middle;
+
 }
 .setting-description{
     height: 75px;
