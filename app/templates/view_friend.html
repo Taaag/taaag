@@ -112,14 +112,16 @@
                         var $tag = $("#tag-list").find('a[data-name="' + value + '"]');
                         var idToCreate = "tag-to-move-" + idsToMove.length.toString();
                         if ($tag.length > 0) {
-                            $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
+                            var newWeight = parseInt($tag.attr('data-weight')) + 1;
+                            $tag.attr('data-weight', newWeight.toString());
+                            $tag.attr('title', 'You and ' + (newWeight - 1)+ ' more tagged');
                             $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
                             var tag = $('<div>').text(value).html();
                             var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" ' +
-                                    'class="tag-cloud-tag tagged" data-name="' + tag + '" id="' + idToCreate + '">' +
-                                    tag + '</a></li>';
+                                    'class="tag-cloud-tag tagged" data-name="' + tag + '" id="' +
+                                    idToCreate + '" title="You tagged">' + tag + '</a></li>';
                             $('#tag-list').append(newList);
                         }
                         idsToMove.push(idToCreate);
