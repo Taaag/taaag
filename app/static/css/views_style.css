@@ -660,8 +660,7 @@ span.friendlist-friendname span {
 }
 .wrapper:hover .friendlist-friendname{
     visibility: visible;
-    position: relative;
     font-size: 15px;
     color:black; 
-    
+    margin-bottom: -30px;
 }
