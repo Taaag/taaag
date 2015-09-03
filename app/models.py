@@ -68,7 +68,10 @@ class User(db.Model):
         return {'id': str(self.id), 'name': self.name}
 
     def allow_tag(self):
-        return self.privacy == UserPrivacy.OPEN  # TODO
+        return True  # TODO
+
+    def public_cloud(self):
+        return self.privacy == UserPrivacy.OPEN
 
     def update_privacy(self, privacy):
         if UserPrivacy.is_valid(privacy):
