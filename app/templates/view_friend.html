@@ -131,9 +131,10 @@
                             $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
+                            var tag = $('<div>').text(value).html();
                             var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" ' +
-                                    'class="tag-cloud-tag tagged" data-name="' + value + '" id="' + idToCreate + '">' +
-                                    value + '</a></li>';
+                                    'class="tag-cloud-tag tagged" data-name="' + tag + '" id="' + idToCreate + '">' +
+                                    tag + '</a></li>';
                             $('#tag-list').append(newList);
                         }
                         idsToMove.push(idToCreate);
