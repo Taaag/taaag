@@ -644,6 +644,12 @@ span.friendlist-friendname span {
     opacity: 0.9;
 }
 
+
+.wrapper{
+    width: 120px;
+    height: 120px;
+    margin:10px;
+}
 .wrapper .friendlist-friendname{
     visibility: hidden;
     position:relative;
