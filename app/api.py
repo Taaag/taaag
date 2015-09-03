@@ -164,6 +164,9 @@ def api_user_unlike_friend(user, payload):
         raise APIException('Unknown error!')
 
 
+def api_user_publish_cloud():
+
+
 apis = {
     'all_tags': api_tag_all,
     'search_tags': api_tag_search,
@@ -177,7 +180,8 @@ apis = {
     'search_friends': api_user_search_friends,
     'all_friends': api_user_all_friends,
     'like_friend': api_user_like_friend,
-    'unlike_friend': api_user_unlike_friend
+    'unlike_friend': api_user_unlike_friend,
+    'publish_cloud': api_user_publish_cloud
 }
 
 
@@ -223,13 +227,18 @@ def view_manage(user, payload):
                            tags_order_by_time=tags_order_by_time)
 
 
+def view_settings(user, payload):
+    return render_template('view_settings.html', user=user.to_dict())
+
+
 views = {
     'friend': view_friend,
     'friends': view_friends,
     'tag': view_tag,
     'me': view_me,
     'manage': view_manage,
-    'index': view_index
+    'index': view_index,
+    'settings': view_settings
 }
 
 
