@@ -170,7 +170,7 @@ def api_user_change_settings(user, payload):
         if user.update_privacy(public):
             return 'OK'
         else:
-            return 'invalid input!'
+            raise APIException('invalid input!')
     else:
         raise APIException('Unknown type of settings!')
 

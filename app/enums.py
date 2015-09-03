@@ -6,7 +6,6 @@ class UserPrivacy:
     @classmethod
     def is_valid(cls, privacy):
         try:
-            int(privacy)
-            return privacy in cls.valid_value
+            return int(privacy) in cls.valid_value
         except ValueError:
             return False
