@@ -401,14 +401,15 @@ span.friendlist-friendname span {
 
 .taglist-th-tn {
     border-right: 1px dotted #fae066;
-    text-overflow: ellipsis;
 }
 
 .mytag-tagname-font {
     font-size: 15px;
     color: #303030;
     margin-bottom: 0px;
-
+    max-height: 100%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 
 .th-mytag-img {
