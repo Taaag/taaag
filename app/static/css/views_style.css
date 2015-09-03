@@ -660,7 +660,7 @@ span.friendlist-friendname span {
 }
 
 .wrapper:hover{
-    background-color: white; 
+    color: white; 
 }
 
 .wrapper:hover .friendlist-friendname{
