@@ -8,7 +8,9 @@
             <div id="tags">
                 <ul>
                     {% for key, value in tags.items() %}
-                        <li><a href="#" data-weight="{{ value|length }}" title = "{{value[0].name}} {%if value|length > 1 %}and {{ value|length - 1 }} more {%endif%}tagged" style="font-weight:bold;">{{ key }}</a></li>
+                        <li><a href="#" data-weight="{{ value|length }}"
+                               title="{{ value[0].name }} {% if value|length > 1 %}and {{ value|length - 1 }} more {% endif %}tagged"
+                               style="font-weight:bold;">{{ key }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
