@@ -649,6 +649,7 @@ span.friendlist-friendname span {
     width: 120px;
     height: 120px;
     margin:10px;
+    text-align:center;
 }
 .wrapper .friendlist-friendname{
     visibility: hidden;
