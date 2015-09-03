@@ -11,8 +11,8 @@
 
                     <tr>
                         {% for friend in friend_row %}
-                            <td class = "wrapper">
-
+                            <td>
+                            <div class = "wrapper">
                                 <img class="friendlist-friend"
                                         {% if friend.id == '0' %}
                                      src="/static/images/poo-head.png"
@@ -21,14 +21,15 @@
                                         {% endif %}
                                      data-uid="{{ friend.id }}">
                                 <p class = "friendlist-friendname" >{{friend.name}}</p>
-
+                            </div>
                             </td>
                         {% endfor %}
                         {% if friend_row|length < 3 %}
-                        <td class = "wrapper">
+                        <td>
+                            <div class = "wrapper">
                             <img class = "friendlist-invite" src = "/static/images/invite.png">
                              <p class = "friendlist-friendname" >Invite Now!</p>
-
+                            </div>
                         </td>
                         {% endif %}
 
@@ -38,10 +39,11 @@
                 {% endfor %}
                 {% if friends|length %3 == 0 %}
                     <tr>
-                        <td class = "wrapper">
+                        <td>
+                            <div class = "wrapper">
                             <img class = "friendlist-invite" src = "/static/images/invite.png">
                             <p class = "friendlist-friendname" >Invite Now!</p>
-
+                            </div>
                         </td>
                     </tr>
 
