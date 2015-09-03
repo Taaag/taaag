@@ -13,14 +13,14 @@
             {% for tag in tags_order_by_votes %}
                 <tr class="my-tag-set" data-name="{{ tag.name }}">
                     <th class="th-detele-btn">
-                        <div class="mytaglist-delete-btn"><i class="fa fa-times"></i></div>
+                        <div class="mytaglist-delete-btn"><i class="fa fa-trash-0"></i></div>
                     </th>
                     <th class="col-sm-1 th-upvote-num">
                         <div class="mytag-upvote-circle"><p class="mytag-upvote-num">{{ tag.votes }}</div>
                     </th>
                     <th class="col-sm-6 taglist-th-tn"><p class="mytag-tagname-font">{{ tag.name }}</p></th>
                     <th class="col-sm-4">
-                        {% for tagger in tag_with_taggers[tag.name][0:5]|reverse %}
+                        {% for tagger in tag_with_taggers[tag.name][0:4]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 {% if tagger.id == '0' %}
                                     <img class="voter-img" src="/static/images/poo-head.png">
