@@ -17,7 +17,7 @@
     $(function () {
         $('.settings').click(function () {
             $.get('/api/change_settings', {public: 0}, function (response) {
-                alert(response);
+                console.log(response);
             });
         });
     });
