@@ -56,6 +56,7 @@ def view(view_type):
             return e.message
         except Exception as e:
             return 'Internal Server Error'
+    abort(400)
 
 
 @app.route('/image_proxy/<uid>', methods=['GET'])
