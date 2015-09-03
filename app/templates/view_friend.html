@@ -13,7 +13,8 @@
                         <li>
                             <a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
                                class="tag-cloud-tag {% if value[1] %}tagged{% endif %}"
-                               title="{% if value[1] %}You and {{ value[0]-1 }} others{% else %}{{ value[0] }} people{% endif %} upvoted">{{ key }}</a>
+                               title="{% if value[1] %}You and {{ value[0]-1 }} others
+                                   {% else %}{{ value[0] }} people{% endif %} upvoted">{{ key }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -41,14 +42,6 @@
             $(this).attr('data-name', $(this).text());
         }).dblclick(function (e) {
             $(document).trigger("viewChanging", ["tag", {'name': $(this).text()}]);
-        });
-
-        $(document).on('click', ".tag-cloud-tag:not(.tagged)", function() {
-            insertNewTag($(this).text());
-        });
-
-        $(document).on('click', ".tag-cloud-tag.tagged", function() {
-            $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
         });
 
         function insertNewTag(text) {
