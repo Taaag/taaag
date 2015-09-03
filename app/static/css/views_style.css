@@ -646,6 +646,8 @@ span.friendlist-friendname span {
 
 .wrapper .friendlist-friendname{
     visibility: hidden;
+    position:relative;
+    bottom:30px;
 }
 .wrapper:hover .friendlist-friendname{
     visibility: visible;
@@ -653,4 +655,5 @@ span.friendlist-friendname span {
     color:#303030; 
     text-align: center;
     z-index: 100;
+
 }
