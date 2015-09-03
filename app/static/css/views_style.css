@@ -455,6 +455,7 @@ span.friendlist-friendname span {
 
 .dialog-set {
     border-bottom: 1px dotted #fae066;
+    cursor: pointer;
 }
 
 .dialog-title {

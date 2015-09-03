@@ -1,4 +1,3 @@
-
 <div id='manage-photo' class="row tagrank">
     <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
 </div>
@@ -66,7 +65,7 @@
             $.get('/api/delete_tag', {name: tag}, function (response) {
                 if (response['succeed']) {
                     $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
-                    $('.my-tag-set[data-name="'+tag+'"]').remove();
+                    $('.my-tag-set[data-name="' + tag + '"]').remove();
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
@@ -83,7 +82,7 @@
                 var img_url = '/static/images/poo-head.png';
                 if (tagger.id > 0)
                     img_url = 'https://graph.facebook.com/' + tagger.id + '/picture';
-                msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
+                msg += '<tr class="dialog-set" data-uid="' + tagger.id + '"><td class="col-sm-2"><img class="dialog-img" ' +
                         'src="' + img_url + '"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
                         '</p></td></tr>';
             });
