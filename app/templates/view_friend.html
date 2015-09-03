@@ -85,7 +85,12 @@
                     'type': 'warning'
                 });
             }
+            var added = $('#inputDescription').val() || [];
+            if (!(added.indexOf(text) == -1)) {
+                e.preventDefault();
+            }
         });
+
 
         $('#btnSubmit').click(function () {
             var tags = $('#inputDescription').val() || [];
@@ -114,7 +119,7 @@
                         if ($tag.length > 0) {
                             var newWeight = parseInt($tag.attr('data-weight')) + 1;
                             $tag.attr('data-weight', newWeight.toString());
-                            $tag.attr('title', 'You and ' + (newWeight - 1)+ ' more tagged');
+                            $tag.attr('title', 'You and ' + (newWeight - 1) + ' more tagged');
                             $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
