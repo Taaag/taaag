@@ -164,8 +164,15 @@ def api_user_unlike_friend(user, payload):
         raise APIException('Unknown error!')
 
 
-def api_user_publish_cloud():
-    return {}
+def api_user_change_settings(user, payload):
+    public = payload['public'].strip().lower()
+    if public:
+        if user.update_privacy(public):
+            return 'OK'
+        else:
+            return 'invalid input!'
+    else:
+        raise APIException('Unknown type of settings!')
 
 apis = {
     'all_tags': api_tag_all,
