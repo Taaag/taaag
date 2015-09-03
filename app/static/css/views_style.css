@@ -659,7 +659,7 @@ span.friendlist-friendname span {
 }
 
 .wrapper:hover{
-    opacity: 0.01;
+    color:white;
 }
 
 .wrapper:hover .friendlist-friendname{
@@ -667,4 +667,5 @@ span.friendlist-friendname span {
     font-size: 15px;
     font-weight: bold;
     color:black; 
+    z-index: 10;
 }
