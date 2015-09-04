@@ -236,4 +236,7 @@ body {
     font-size: 15px;
 }
 
-
+.user-intro{
+    width: 100px;
+    height: 100px;
+}
