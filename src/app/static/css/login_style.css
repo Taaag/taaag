@@ -32,7 +32,7 @@ body {
     outline: none;
     text-align: center;
     padding-top: 5px;
-    margin-top:  55px;
+    margin-top:  45px;
     margin-left: 280px;
     opacity: 1;
 
@@ -107,4 +107,5 @@ body {
 
 .login-img{
   width: 760px;
+  text-align: center;
 }
