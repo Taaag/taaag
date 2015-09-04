@@ -60,6 +60,7 @@
                 source: invitable_friends,
                 display: 'name',
                 templates: {
+                    header: '<h3>Invite More Friends</h3>',
                     suggestion: function (friend) {
                         return '<div>' + friend.name + '</div>';
                     }
