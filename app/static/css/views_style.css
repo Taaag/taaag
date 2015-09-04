@@ -679,8 +679,9 @@ span.friendlist-friendname span {
 }
 
 .settings-img {
-    width: 250px;
-    height: 260px;
+    margin-top:10px;
+    width: 200px;
+    height: 200px;
     margin: auto;
 }
 
