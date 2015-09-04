@@ -27,18 +27,6 @@ def index():
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
 
 
-@app.route('/test_login')
-def test_login():
-    return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME)
-
-
-@app.route('/test_filter', methods=['GET'])
-def test_filter():
-    return render_template('test_filter.html', a=g.user.get_tags_order_by_time(),
-                           default_tz=app.config['DEFAULT_TIMEZONE'],
-                           timezone=timezone)
-
-
 @app.route('/api/<method>', methods=['GET'])
 def api(method):
     if not g.user:
@@ -68,6 +56,7 @@ def view(view_type):
             return e.message
         except Exception as e:
             return 'Internal Server Error'
+    abort(400)
 
 
 @app.route('/image_proxy/<uid>', methods=['GET'])
@@ -109,7 +98,6 @@ def tag_cloud(uid):
     if not user:
         abort(403)
     return public_cloud(user)
-
 
 
 @app.before_request

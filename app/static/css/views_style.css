@@ -186,6 +186,7 @@ span.friendlist-friendname span {
     border: none;
     text-align: center;
     margin-top: 10px;
+    max-width: 100%;
 }
 
 #manage-to-view-btn {
@@ -677,35 +678,37 @@ span.friendlist-friendname span {
     visibility: visible;
 }
 
-.settings-img{
-     width: 250px;
-     height: 260px;
-     margin: auto;
+.settings-img {
+    width: 250px;
+    height: 260px;
+    margin: auto;
 }
 
-.settings{
-     color: #303030;
-     background-color: white;
-     text-align: left;
-     height: 75px;
+.settings {
+    color: #303030;
+    background-color: white;
+    text-align: left;
+    height: 75px;
 
 }
-.settings h4, h6{
+
+.settings h4, h6 {
     margin-left: 5px;
 }
 
-.setting-header{
+.setting-header {
     font-size: 50px;
     text-align: center;
 }
 
-#setting-option{
+#setting-option {
     text-align: center;
     height: 75px;
-    padding:15px;
+    padding: 15px;
     vertical-align: middle;
 
 }
-.setting-description{
+
+.setting-description {
     height: 75px;
 }

@@ -12,25 +12,27 @@
                     <tr>
                         {% for friend in friend_row %}
                             <td>
-                            <div class = "wrapper">
-                                <img class="friendlist-friend"
-                                        {% if friend.id == '0' %}
-                                     src="/static/images/poo-head.png"
-                                        {% else %}
-                                     src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
-                                        {% endif %}
-                                     data-uid="{{ friend.id }}">
-                                <p class = "friendlist-friendname" >{{friend.name}}</p>
-                            </div>
+                                <div class="wrapper">
+                                    <img class="friendlist-friend"
+                                            {% if friend.id == '0' %}
+                                         src="/static/images/poo-head.png"
+                                            {% else %}
+                                         src="https://graph.facebook.com/{{ friend.id }}/picture?type=large"
+                                            {% endif %}
+                                         data-uid="{{ friend.id }}">
+
+                                    <p class="friendlist-friendname">{{ friend.name }}</p>
+                                </div>
                             </td>
                         {% endfor %}
                         {% if friend_row|length < 3 %}
-                        <td>
-                            <div class = "wrapper">
-                            <img class = "friendlist-invite" src = "/static/images/invite.png">
-                             <p class = "friendlist-friendname" >Invite Now!</p>
-                            </div>
-                        </td>
+                            <td>
+                                <div class="wrapper">
+                                    <img class="friendlist-invite" src="/static/images/invite.png">
+
+                                    <p class="friendlist-friendname">Invite Now!</p>
+                                </div>
+                            </td>
                         {% endif %}
 
                     </tr>
@@ -40,9 +42,10 @@
                 {% if friends|length %3 == 0 %}
                     <tr>
                         <td>
-                            <div class = "wrapper">
-                            <img class = "friendlist-invite" src = "/static/images/invite.png">
-                            <p class = "friendlist-friendname" >Invite Now!</p>
+                            <div class="wrapper">
+                                <img class="friendlist-invite" src="/static/images/invite.png">
+
+                                <p class="friendlist-friendname">Invite Now!</p>
                             </div>
                         </td>
                     </tr>
@@ -62,8 +65,8 @@
         });
     });
 
-$(function () {
-   $('.friendlist-invite').click(function () {
+    $(function () {
+        $('.friendlist-invite').click(function () {
             FB.ui({method: 'apprequests',
                 filters: ['app_non_users'],
                 message: 'Come and join Taaag to tag your friends!'
@@ -71,6 +74,6 @@ $(function () {
                 $.bootstrapGrowl('Successfully invited ' + response.to.length.toString() + ' friends.');
             });
         });
-      });
+    });
 </script>
 
