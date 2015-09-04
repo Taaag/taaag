@@ -562,6 +562,7 @@ span.friendlist-friendname span {
 #shareMyCloudBtn:hover {
     cursor: pointer;
     opacity: 0.5;
+    margin-left: 10px;
 }
 
 #tab-placeholder {
