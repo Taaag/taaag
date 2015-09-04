@@ -287,11 +287,11 @@ body {
 }
 
 .tourbus-stop{
-    background-color: #303030;
-    color: gray;
+    background-color: ;
+    color: white;
     border-radius: 5px;
     margin: 5px;
-    padding: 5px;
+    padding: 8px 5px;
 }
 
 .tourbus-next:hover, .tourbus-stop:hover{
