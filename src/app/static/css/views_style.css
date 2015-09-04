@@ -186,7 +186,7 @@ span.friendlist-friendname span {
     max-width: 100%;
 }
 
-#profile-view-manage-btn:hover,#manage-to-view-btn:hover {
+#profile-view-manage-btn:hover, #manage-to-view-btn:hover {
     opacity: 0.7;
 }
 
@@ -403,7 +403,7 @@ span.friendlist-friendname span {
 
 .taglist-th-tn {
     border-right: 1px dotted #fae066;
-    
+
 }
 
 .mytag-tagname-font {
@@ -685,7 +685,7 @@ span.friendlist-friendname span {
     width: 200px;
     height: 200px;
     margin: auto;
-    margin-top:40px;
+    margin-top: 40px;
 }
 
 .settings {
@@ -718,11 +718,10 @@ span.friendlist-friendname span {
     height: 75px;
 }
 
-
-button.close{
+button.close {
     color: #fff;
 }
 
-.close{
+.close {
     color: #fff;
 }
