@@ -74,11 +74,13 @@
 }
 
 .tt-friend-head {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
 }
 
-.typeahead-header {
+.tt-header {
     background-color: rgba(89, 94, 96, 0.85);
     color: rgb(255, 255, 255);
+    padding: 3px;
 }
