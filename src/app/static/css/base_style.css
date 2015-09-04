@@ -282,17 +282,17 @@ body {
     color: #F7CA18;
     border-radius: 5px;
     margin: 5px;
-    padding: 8px 5px;
+    padding: 6px 5px;
 
 }
 
 .tourbus-stop{
     background-color: #303030;
     opacity: 0.8;
-    color:gray;
+    color:white;
     border-radius: 5px;
     margin: 5px;
-    padding: 8px 5px;
+    padding: 6px 5px;
 }
 
 .tourbus-next:hover, .tourbus-stop:hover{
