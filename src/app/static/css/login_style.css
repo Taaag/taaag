@@ -21,6 +21,12 @@ body {
     height: 29px;
 }
 
+.fb-btn-container{
+
+  text-align: center;
+  vertical-align: middle;
+}
+
 .fb-login-btn {
     width: 200px;
     height: 50px;
@@ -32,8 +38,7 @@ body {
     outline: none;
     text-align: center;
     padding-top: 5px;
-    margin: auto;
-    margin-top:  35px;
+    margin-top:  25px;
     /*margin-left: 280px;*/
     opacity: 1;
 
