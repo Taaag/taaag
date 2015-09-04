@@ -37,6 +37,7 @@
 
 <script>
     $(function () {
+        $('.profile-name').textfill();
         $(".tag-cloud-tag").each(function (index, value) {
             $(this).attr('data-name', $(this).text());
         }).dblclick(function (e) {
