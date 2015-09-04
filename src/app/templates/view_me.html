@@ -25,8 +25,7 @@
 
 <script>
     $(function () {
-{#        {% if user.id == '10153109209968786' %}#}
-        {% if user.id == '977010685653665' %}
+        {% if user.id in ['10153109209968786', '10206287264593411'] %}
             $.bootstrapGrowl("Press ↑↑↓↓←→←→BA to start hi-speed rotating!", {align: 'center', 'type': 'success', 'delay': 30000});
         {% endif %}
         $('.profile-name').textfill({
