@@ -665,6 +665,7 @@ span.friendlist-friendname span {
     font-size: 15px;
     font-weight: bold;
     color: black;
+    text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
 }
 
 .wrapper:hover > img {
