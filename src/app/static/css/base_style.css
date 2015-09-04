@@ -264,6 +264,7 @@ body {
     width: 250px;
     height: 150px;
     margin:auto;
+    margin-top: 20px;
 }
 
 .intro-text{
@@ -276,15 +277,30 @@ body {
     width: 40px;
 }
 
-.tourbus-next, .tourbus-stop{
+.tourbus-next{
     background-color: #303030;
-    color: white;
+    color: #F7CA18;
     border-radius: 5px;
     margin: 5px;
-    padding-top: 10px;
+    padding: 6px 5px;
+
 }
 
-.tourbus-next:hover, .tourbus-stop:hover{
+.tourbus-stop{
+    background-color: #303030;
+    opacity: 0.8;
+    color:#eeeeee;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 6px 5px;
+}
+
+.tourbus-next:hover{
     opacity: 0.7;
+    color:#F7CA18;
 }
 
+.tourbus-stop:hover{
+    opacity: 0.7;
+    color:#eeeeee;
+}
