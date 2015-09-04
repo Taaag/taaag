@@ -104,3 +104,7 @@ body {
   -webkit-animation: animatedBackground 40s linear infinite;
   animation: animatedBackground 40s linear infinite;
 }
+
+.login-img{
+  width: 760px;
+}
