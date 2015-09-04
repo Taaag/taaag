@@ -190,12 +190,12 @@ body {
 
 }
 
-.invite-btn{
+#invite-btn{
     cursor: pointer;;
     height: 30px;
     width: 30px;
 }
-.invite-btn:hover{
+#invite-btn:hover{
     opacity: 0.7;
 }
 
