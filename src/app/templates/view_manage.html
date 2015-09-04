@@ -1,5 +1,5 @@
 <div id='manage-photo' class="row tagrank">
-    <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
+    <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?width=200&height=200">
 </div>
 <div class="row tagrank">
     <ul class="nav nav-tabs" id="taglist-tab">
@@ -22,9 +22,9 @@
                         {% for tagger in tag_with_taggers[tag.name][0:4]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 {% if tagger.id == '0' %}
-                                    <img class="voter-img" src="/static/images/poo-head.png">
+                                    <img class="voter-img" src="/static/images/poo-head-s.png">
                                 {% else %}
-                                    <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
+                                    <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture?width=50&height=50">
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -56,7 +56,7 @@
 
 </div>
 <div class="row tagrank">
-    <button id="manage-to-view-btn">Check out your tag cloud!</button>
+    <button id="manage-to-view-btn">Check out my tag cloud!</button>
 </div>
 
 <script>
@@ -79,16 +79,16 @@
             var taggers = tagger_array[tag];
             var msg = '<table><tbody>';
             $.each(taggers, function (index, tagger) {
-                var img_url = '/static/images/poo-head.png';
+                var img_url = '/static/images/poo-head-s.png';
                 if (tagger.id > 0)
-                    img_url = 'https://graph.facebook.com/' + tagger.id + '/picture';
+                    img_url = 'https://graph.facebook.com/' + tagger.id + '/picture?width=50&height=50';
                 msg += '<tr class="dialog-set" data-uid="' + tagger.id + '"><td class="col-sm-2"><img class="dialog-img" ' +
                         'src="' + img_url + '"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
                         '</p></td></tr>';
             });
             msg += '</tbody></table>';
             BootstrapDialog.show({
-                title: '<p class = "dialog-title">' + taggers.length + ' people have upvoted ' + $('<div>').text(tag).html() + ' </p>',
+                title: '<p class = "dialog-title">' + taggers.length + ' have tagged ' + $('<div>').text(tag).html() + ' </p>',
                 message: msg,
                 type: 'none',
                 closable: true,

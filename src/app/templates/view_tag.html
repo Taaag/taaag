@@ -15,7 +15,7 @@
             {% for taggee in taggees %}
                 <tr style="" class="row tagrank-set" data-uid="{{ taggee.id }}">
                     <th class="col-sm-2"><img class="tagrank-img"
-                                              src="{% if taggee.id == 0 %}/static/images/poo-head-s.png{% else %}https://graph.facebook.com/{{ taggee.id }}/picture{% endif %}">
+                                              src="{% if taggee.id == 0 %}/static/images/poo-head-s.png{% else %}https://graph.facebook.com/{{ taggee.id }}/picture?width=50&height=50{% endif %}">
                     </th>
                     <th class="col-sm-7"><p class="tagrank-ranknum">{{ taggee.name }}</p></th>
                     <th class="col-sm-5">

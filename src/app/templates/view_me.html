@@ -1,6 +1,6 @@
 <div id="view-me" class="view">
     <div class="row">
-        <div class="profile-name">{{ user.name }} <img id="shareMyCloudBtn" src="/static/images/iconsnap.png"></img></div>
+        <div class="profile-name"><span>{{ user.name }}</span><img id="shareMyCloudBtn" src="/static/images/iconsnap.png"></img></div>
     </div>
 
     <div class="row" id="myCanvasContainer">
@@ -25,6 +25,7 @@
 
 <script>
     $(function () {
+        $('.profile-name').textfill();
         $("#profile-view-manage-btn").click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
         });

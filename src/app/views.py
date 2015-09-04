@@ -1,6 +1,6 @@
 import base64
 
-from facebook import get_user_from_cookie, GraphAPI
+from facebook import get_user_from_cookie, GraphAPI, parse_signed_request
 import requests
 
 from flask import g, render_template, request, session, jsonify, abort, Response
@@ -61,7 +61,7 @@ def view(view_type):
 
 @app.route('/image_proxy/<uid>', methods=['GET'])
 def image_proxy(uid):
-    url = 'https://graph.facebook.com/%s/picture?type=normal' % uid
+    url = 'https://graph.facebook.com/%s/picture?width=100&height=100' % uid
     r = requests.get(url, stream=True, params=request.args)
     headers = dict(r.headers)
 
@@ -98,6 +98,17 @@ def tag_cloud(uid):
     if not user:
         abort(403)
     return public_cloud(user)
+
+
+@app.route('/deauthorize_callback/', methods=['POST'])
+def deauthorize_callback():
+    signed_request = request.form['signed_request']
+    data = parse_signed_request(signed_request, app_secret=FB_APP_SECRET)
+    uid = data['user_id']
+    user = User.get_by_id(uid)
+    clear_friends_cache(user)
+    user.delete()
+    return ''
 
 
 @app.before_request

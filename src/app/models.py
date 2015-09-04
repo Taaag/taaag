@@ -103,6 +103,10 @@ class User(db.Model):
     def unlike(self, likee):
         return Liking.delete_by_liker_likee(self, likee)
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def get_by_id(cls, id):
         return cls.query.get(id)
@@ -118,15 +122,6 @@ class User(db.Model):
     def get_tags_for_user(cls, user_id):
         user = cls.get_by_id(user_id)
         return user.tags.with_entities(Tag.name, func.count(Tagging.id)).group_by(Tag.name).all()
-
-    @classmethod
-    def delete_by_uid(cls, user_id):
-        user = cls.get_by_id(user_id)
-        if not user:
-            return False
-        db.session.delete(user)
-        db.session.commit()
-        return True
 
 
 class Tag(db.Model):

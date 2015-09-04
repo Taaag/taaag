@@ -170,7 +170,7 @@ body {
 }
 
 .b-f-btn-container {
-    padding: 5px;
+    padding-bottom: 8px;
     display: inline-block;
     float: right;
     margin-left: 10px;
@@ -185,9 +185,24 @@ body {
     color: white;
     padding: 0;
     vertical-align: middle;
-    width: 70px;
+    width: 30px;
     font-size: 15px;
+    margin-bottom: 5px;
 
+}
+
+#invite-btn{
+    cursor: pointer;;
+    height: 30px;
+    width: 30px;
+    margin-bottom: 8px;
+}
+#invite-btn:hover{
+    opacity: 0.7;
+}
+
+.fb-like{
+    margin-bottom: 5px;
 }
 
 .fb-btn:hover {

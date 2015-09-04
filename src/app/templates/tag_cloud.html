@@ -31,7 +31,7 @@
                     weightSizeMax: 40,
                     weightSizeMin: 20,
                     weightFrom: "data-weight",
-                    centreImage: "{{ user_image }}",
+                    centreImage: {{ user_image|tojson|safe }},
                     textFont: 'Josefin Sans, sans-serif',
                     bgOutline: null,
                     fadeIn: 20,

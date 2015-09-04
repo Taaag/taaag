@@ -64,13 +64,10 @@
 
 #friendlist-title {
     outline: none;
-    font-weight: bold;
     text-align: center;
-    font-size: 30px;
-    margin-bottom: 10px;
-    margin-top: 25px;
     border: none;
     color: #303030;
+    font-size: 50px;
 }
 
 .friendlist-box {
@@ -189,6 +186,10 @@ span.friendlist-friendname span {
     max-width: 100%;
 }
 
+#profile-view-manage-btn:hover,#manage-to-view-btn:hover {
+    opacity: 0.7;
+}
+
 #manage-to-view-btn {
     width: 180px;
     margin-top: 10px;
@@ -196,7 +197,8 @@ span.friendlist-friendname span {
 
 .tagrank-input {
     height: 55px;
-    margin: 20px auto 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     border-radius: 10px;
     border: none;
     outline: none;
@@ -204,7 +206,6 @@ span.friendlist-friendname span {
     text-align: center;
     padding: 10px;
     color: #303030;
-    font-weight: bold;
 }
 
 .tagrank-chart {
@@ -258,7 +259,7 @@ span.friendlist-friendname span {
     height: 40px;
     border-radius: 20px;
     background-color: #303030;
-    color: white;
+    color: #f7ca18;
     font-size: 12px;
     float: right;
     margin: 10px 15px;
@@ -402,7 +403,7 @@ span.friendlist-friendname span {
 
 .taglist-th-tn {
     border-right: 1px dotted #fae066;
-    max-width: 0;
+    
 }
 
 .mytag-tagname-font {
@@ -679,9 +680,10 @@ span.friendlist-friendname span {
 }
 
 .settings-img {
-    width: 250px;
-    height: 260px;
+    width: 200px;
+    height: 200px;
     margin: auto;
+    margin-top:40px;
 }
 
 .settings {
@@ -704,7 +706,8 @@ span.friendlist-friendname span {
 #setting-option {
     text-align: center;
     height: 75px;
-    padding: 15px;
+    padding: 25px;
+    padding-right: 10px;
     vertical-align: middle;
 
 }
@@ -712,3 +715,5 @@ span.friendlist-friendname span {
 .setting-description {
     height: 75px;
 }
+
+
