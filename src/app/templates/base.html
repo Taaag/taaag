@@ -182,16 +182,18 @@
 
 <ol class='tourbus-legs' id='my-tour-id'>
 
-  <li data-orientation='centered' data-highlight='true'>
+  <li data-highlight='true' data-orientation='centered'>
+    <div class = "col-xs-3">
+        <img class = "user-intro" src = "/static/images/userintro.png" alter = "User Intro Boy"></img>
+    </div>
+    <div class = "col-xs-9">
     <h4>Welcome to Taaag!</h4>
-    <p>We are here to enhance your interaction with your Facebook friends.</p>
-    <a href='javascript:void(0);' class='tourbus-next'>Start the tour...</a>
+    <p>I am Little Poo! Follow me to have a short tour around the Taaag!</p>
+    </div>
+    <a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Start the tour...</a>
   </li>
-  <li data-el='#menu' data-orientation='left' data-width='200' data-highlight='true'>
-    <h4>Menu</h4>
-    <p>Mouse on the menu to navigate our app.</p>
-    <a href='javascript:void(0);' class='tourbus-next'>Next...</a>
-  </li>
+  
+  
 </ol>
 
 
@@ -206,7 +208,21 @@
         $('.fb-btn').tooltip();
         $('#invite-btn').tooltip();
 
-        var tour = $('#my-tour-id').tourbus( {} );
+        var tour = $('#my-tour-id').tourbus( {
+                onLegStart: function( leg, bus ) {
+                     if( leg.rawData.highlight ) {
+                     leg.$target.addClass('my-tour-highlight');
+                         $('.my-tour-overlay').show();
+                         }
+                     },
+                 onLegEnd: function( leg, bus ) {
+                    if( leg.rawData.highlight ) {
+                    leg.$target.removeClass('my-tour-highlight');
+                    $('.my-tour-overlay').hide();
+                        }
+                            }
+
+        } );
         tour.trigger('depart.tourbus');
 
     });
