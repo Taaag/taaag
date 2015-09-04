@@ -56,7 +56,7 @@
                         if (friend.id !== '0') {
                             img_url = 'https://graph.facebook.com/' + friend.id + '/picture?width=50&height=50';
                         }
-                        return '<div><img src="' + img_url + '">' + friend.name + '</div>';
+                        return '<div><img class="tt-friend-head" src="' + img_url + '">' + friend.name + '</div>';
                     }
                 }
             }, {
@@ -66,7 +66,7 @@
                 templates: {
                     header: '<h3>Invite More Friends</h3>',
                     suggestion: function (friend) {
-                        return '<div><img src="' + friend.picture.data.url + '">' + friend.name + '</div>';
+                        return '<div><img class="tt-friend-head" src="' + friend.picture.data.url + '">' + friend.name + '</div>';
                     }
                 }
             });
