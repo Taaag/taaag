@@ -64,7 +64,7 @@ body {
 .fb-login-btn:hover,
 .fb-login-btn.hover {
   background-color: #417cb8;
-  transform: translateY(5px);
+  transform: translateY(1px);
 }
 
 .fb-login-btn:active,
