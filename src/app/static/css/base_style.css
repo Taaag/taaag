@@ -278,10 +278,10 @@ body {
 
 .tourbus-next, .tourbus-stop{
     background-color: #303030;
-    color: white;
+    color: #F7CA18;
     border-radius: 5px;
     margin: 5px;
-    padding: 10px 5px 10px 5px;
+    padding: 5px 2px 5px 2px;
 
 }
 
