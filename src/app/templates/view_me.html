@@ -26,8 +26,8 @@
 <script>
     $(function () {
         $('.profile-name').textfill({
-                maxFontPixels:30
-         });
+            maxFontPixels: 30
+        });
         $("#profile-view-manage-btn").click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
         });
@@ -68,6 +68,15 @@
                         }
                 );
             });
+        });
+        var state = 0, konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        window.addEventListener("keydown", function(e) {
+            if (e.keyCode == konami[state]) state++;
+            else state = 0;
+            if (state == 10) {
+                $.bootstrapGrowl("High speed rotating!", {align: 'center', 'type': 'success'});
+                $('#myCanvas').tagcanvas("setspeed", [10, -10]);
+            }
         });
     });
 </script>
