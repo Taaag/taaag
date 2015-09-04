@@ -25,7 +25,9 @@
 
 <script>
     $(function () {
-        $('.profile-name').textfill();
+        $('.profile-name').textfill({
+                maxFontPixels:30
+         });
         $("#profile-view-manage-btn").click(function () {
             $(document).trigger("viewChanging", ["manage", {}]);
         });

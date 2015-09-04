@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/base_style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/views_style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/spinner.css">
+    <link href='/static/css/jquery-tourbus.css' media='all' rel='stylesheet' type='text/css' />
 
 
     <!--[if IE]>
@@ -52,6 +53,7 @@
     <script src="/static/javascript/jquery.tagcanvas.min.js"></script>
     <script src="/static/javascript/select2.js"></script>
     <script src="/static/javascript/tag.js"></script>
+    <script src='/static/javascript/jquery-tourbus.min.js'></script>
 </head>
 
 <body class="outer-contrainer">
@@ -178,6 +180,21 @@
 <!-- main -->
 
 
+<ol class='tourbus-legs' id='my-tour-id'>
+
+  <li data-orientation='centered'>
+    <h4>Welcome to Taaag!</h4>
+    <p>We are here to enhance your interaction with your Facebook friends.</p>
+    <a href='javascript:void(0);' class='tourbus-next'>Start the tour...</a>
+  </li>
+  <li data-el='#menu' data-orientation='left' data-width='200'>
+    <h4>Menu</h4>
+    <p>Mouse on the menu to navigate our app.</p>
+    <a href='javascript:void(0);' class='tourbus-next'>Next...</a>
+  </li>
+</ol>
+
+
 <!-- end share button area -->
 <script>
     // document.getElementById('logout').onclick = function() {
@@ -188,10 +205,19 @@
         $('.icon-open').tooltip();
         $('.fb-btn').tooltip();
         $('#invite-btn').tooltip();
+
+        var tour = $('#my-tour-id').tourbus( {} );
+        tour.trigger('depart.tourbus');
+
     });
 
 
 </script>
+ <script class='highlight' data-language='javascript' type='text/highlight'>
+            $(window).load( function() {
+                var tour = $('#my-tour-id').tourbus( {} );
+            } );
+ </script>
 </body>
 </html>
 
