@@ -195,7 +195,7 @@ body {
     cursor: pointer;;
     height: 30px;
     width: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 #invite-btn:hover{
     opacity: 0.7;
