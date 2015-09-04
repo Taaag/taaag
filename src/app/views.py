@@ -3,7 +3,7 @@ import base64
 from facebook import get_user_from_cookie, GraphAPI, parse_signed_request
 import requests
 
-from flask import g, render_template, request, session, jsonify, abort, Response
+from flask import g, render_template, request, session, jsonify, abort, Response, redirect
 from app import app
 from app.models import User
 from app.api import apis, APIException, views, public_cloud
@@ -20,7 +20,7 @@ FB_APP_SECRET = app.config['FB_APP_SECRET']
 def index():
     # If a user was set in the get_current_user function before the request,
     # the user is logged in.
-    if g.user and g.user.friends_api_authorized():
+    if g.user and (g.user.id == 0 or g.user.friends_api_authorized()):
         return render_template('base.html', app_id=FB_APP_ID, app_name=FB_APP_NAME, new_user=g.get('new_user', False))
     # Otherwise, a user is not logged in.
     session['user'] = ''
@@ -62,7 +62,7 @@ def view(view_type):
 @app.route('/image_proxy/<uid>', methods=['GET'])
 def image_proxy(uid):
     if uid == '0':
-        url = 'https://taaag.sshz.org/static/images/poo-head-s.png'
+        return redirect('https://taaag.sshz.org/static/images/poo-head-s.png')
     else:
         url = 'https://graph.facebook.com/%s/picture?width=100&height=100' % uid
     r = requests.get(url, stream=True, params=request.args)
@@ -111,6 +111,12 @@ def deauthorize_callback():
     user = User.get_by_id(uid)
     clear_friends_cache(user)
     user.delete()
+    return ''
+
+
+@app.route('/temp_poo')
+def temp_poo():
+    session['user'] = '0'
     return ''
 
 
