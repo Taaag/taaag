@@ -208,7 +208,21 @@
         $('.fb-btn').tooltip();
         $('#invite-btn').tooltip();
 
-        var tour = $('#my-tour-id').tourbus( {} );
+        var tour = $('#my-tour-id').tourbus( {
+                onLegStart: function( leg, bus ) {
+                     if( leg.rawData.highlight ) {
+                     leg.$target.addClass('my-tour-highlight');
+                         $('.my-tour-overlay').show();
+                         }
+                     },
+                 onLegEnd: function( leg, bus ) {
+                    if( leg.rawData.highlight ) {
+                    leg.$target.removeClass('my-tour-highlight');
+                    $('.my-tour-overlay').hide();
+                        }
+                            }
+
+        } );
         tour.trigger('depart.tourbus');
 
     });
