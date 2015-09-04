@@ -80,8 +80,11 @@
                 if (e.keyCode == konami[state]) state++;
                 else state = 0;
                 if (state == 10) {
-                    $.bootstrapGrowl("High speed rotating!", {align: 'center', 'type': 'success'});
-                    $('#view-me #myCanvas').tagcanvas("setspeed", [10, -10]);
+                    var $canvas = $('#view-me #myCanvas');
+                    if($canvas.length > 0) {
+                        $.bootstrapGrowl("High speed rotating!", {align: 'center', 'type': 'success'});
+                        $canvas.tagcanvas("setspeed", [10, -10]);
+                    }
                 }
             });
             injected = true;
