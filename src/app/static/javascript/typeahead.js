@@ -69,14 +69,12 @@
 
         $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
             if (suggestion.hasOwnProperty('picture')) {
-                $('#invite-btn').click(function () {
-                    FB.ui({
-                        method: 'apprequests',
-                        to: suggestion['id'],
-                        message: 'Come and join Taaag to tag your friends!'
-                    }, function (response) {
-                        $.bootstrapGrowl('Successfully invited ' + response.to.length.toString() + ' friends.');
-                    });
+                FB.ui({
+                    method: 'apprequests',
+                    to: suggestion['id'],
+                    message: 'Come and join Taaag to tag your friends!'
+                }, function (response) {
+                    $.bootstrapGrowl('Successfully invited ' + response.to.length.toString() + ' friends.');
                 });
             } else if (suggestion.hasOwnProperty('name')) {
                 $(document).trigger("viewChanging", ["friend", {'id': suggestion['id']}]);
