@@ -3,7 +3,7 @@ from datetime import timezone
 
 from app import db
 from app.enums import UserPrivacy
-from app.utils import is_friend_of, get_user_friends, has_friends_permission
+from app.utils import is_friend_of, get_user_friends, get_user_invitable_friends, has_friends_permission
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 from sqlalchemy.exc import IntegrityError
@@ -50,6 +50,9 @@ class User(db.Model):
 
     def get_friends(self):
         return [_ for _ in get_user_friends(self) if User.get_by_id(_['id'])] + [{'id': '0', 'name': 'Pile of Poo'}]
+
+    def get_invitable_friends(self):
+        return get_user_invitable_friends(self)
 
     def is_friend_of(self, other_id):
         return str(other_id) == '0' or (User.get_by_id(other_id) and is_friend_of(self, other_id))
