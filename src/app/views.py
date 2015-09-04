@@ -3,7 +3,7 @@ import base64
 from facebook import get_user_from_cookie, GraphAPI, parse_signed_request
 import requests
 
-from flask import g, render_template, request, session, jsonify, abort, Response
+from flask import g, render_template, request, session, jsonify, abort, Response, redirect
 from app import app
 from app.models import User
 from app.api import apis, APIException, views, public_cloud
@@ -62,7 +62,7 @@ def view(view_type):
 @app.route('/image_proxy/<uid>', methods=['GET'])
 def image_proxy(uid):
     if uid == '0':
-        url = 'https://taaag.sshz.org/static/images/poo-head-s.png'
+        return redirect('https://taaag.sshz.org/static/images/poo-head-s.png')
     else:
         url = 'https://graph.facebook.com/%s/picture?width=100&height=100' % uid
     r = requests.get(url, stream=True, params=request.args)
