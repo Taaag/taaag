@@ -261,8 +261,9 @@ body {
 }
 
 .gif-screen{
-    width: 200px;
-    height: 120px;
+    width: 250px;
+    height: 150px;
+    margin:auto;
 }
 
 .intro-text{
