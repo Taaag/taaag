@@ -679,10 +679,10 @@ span.friendlist-friendname span {
 }
 
 .settings-img {
-    margin-top:10px;
     width: 200px;
     height: 200px;
     margin: auto;
+    margin-top:10px;
 }
 
 .settings {
@@ -705,7 +705,8 @@ span.friendlist-friendname span {
 #setting-option {
     text-align: center;
     height: 75px;
-    padding: 15px;
+    padding: 25px;
+    padding-right: 10px;
     vertical-align: middle;
 
 }
