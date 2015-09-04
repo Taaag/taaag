@@ -61,7 +61,7 @@ def view(view_type):
 
 @app.route('/image_proxy/<uid>', methods=['GET'])
 def image_proxy(uid):
-    url = 'https://graph.facebook.com/%s/picture?type=normal' % uid
+    url = 'https://graph.facebook.com/%s/picture?width=100&height=100' % uid
     r = requests.get(url, stream=True, params=request.args)
     headers = dict(r.headers)
 
