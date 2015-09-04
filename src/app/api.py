@@ -81,7 +81,7 @@ def api_user_add_tag(user, payload):
     # raise APIException('Cannot tag the user!')
     # tag_name = payload['tag'].strip().lower()
     # if not tag_name:
-    #     raise APIException('Tag name not allowed!')
+    # raise APIException('Tag name not allowed!')
     # tag = Tag.get_or_create(tag_name)
     # try:
     #     Tagging.create(tagger=user, taggee=taggee, tag=tag)
@@ -136,6 +136,10 @@ def api_user_all_friends(user, payload):
     return user.get_friends()
 
 
+def api_user_invitable_friends(user, payload):
+    return user.get_invitable_friends()
+
+
 def api_user_like_friend(user, payload):
     likee = User.get_by_id(payload['likee'])
     event_id = payload['event_id'].strip().lower()
@@ -188,6 +192,7 @@ apis = {
     'delete_tag': api_user_delete_tag,
     'search_friends': api_user_search_friends,
     'all_friends': api_user_all_friends,
+    'invitable_friends': api_user_invitable_friends,
     'like_friend': api_user_like_friend,
     'unlike_friend': api_user_unlike_friend,
     'change_settings': api_user_change_settings
