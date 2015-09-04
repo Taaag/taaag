@@ -166,6 +166,7 @@
         <div class="b-f-btn-container">
             <button class="fb-btn" id="back-btn" data-toggle="tooltip" ata-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button>
             <button class="fb-btn" id="forward-btn" data-toggle="tooltip" ata-placement="top" title="Forward"><i class="fa fa-arrow-right"></i></button>
+            <button class="fb-btn" id="qns-btn" data-toggle="tooltip" ata-placement="top" title="Tour with Poo"><i class="fa fa-question-circle"></i></button>
             <img id="invite-btn" src="/static/images/invite-s.png" data-toggle="tooltip" ata-placement="top" title="Invite"></img>
         </div>
         <div class="fb-btn-container">
@@ -302,6 +303,7 @@
         $('.fb-btn').tooltip();
         $('#invite-btn').tooltip();
 
+
         var tour = $('#my-tour-id').tourbus({
             onLegStart: function (leg, bus) {
                 if (leg.rawData.highlight) {
@@ -320,6 +322,10 @@
         {% if new_user %}
             tour.trigger('depart.tourbus');
         {% endif %}
+
+        $('#qns-btn').click(function(){
+            tour.trigger('depart.tourbus');
+        });
     });
 
 
