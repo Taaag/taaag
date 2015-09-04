@@ -1,6 +1,6 @@
 import base64
 
-from facebook import get_user_from_cookie, GraphAPI
+from facebook import get_user_from_cookie, GraphAPI, parse_signed_request
 import requests
 
 from flask import g, render_template, request, session, jsonify, abort, Response
@@ -102,7 +102,12 @@ def tag_cloud(uid):
 
 @app.route('/deauthorize_callback/', methods=['POST'])
 def deauthorize_callback():
-    print(request.form)
+    signed_request = request.form['signed_request']
+    data = parse_signed_request(signed_request, app_secret=FB_APP_SECRET)
+    uid = data['user_id']
+    user = User.get_by_id(uid)
+    clear_friends_cache(user)
+    user.delete()
     return ''
 
 
