@@ -114,12 +114,6 @@ def deauthorize_callback():
     return ''
 
 
-@app.route('/temp_poo')
-def temp_poo():
-    session['user'] = '0'
-    return ''
-
-
 @app.before_request
 def get_current_user():
     if not session.get('user'):
