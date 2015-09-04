@@ -190,6 +190,14 @@ body {
 
 }
 
+.invite-btn{
+    height: 10px;
+    width: 10px;
+}
+.invite-btn:hover{
+    opacity: 0.7;
+}
+
 .fb-btn:hover {
 
     background-color: #3b5998;
