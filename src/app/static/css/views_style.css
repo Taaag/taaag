@@ -716,22 +716,3 @@ span.friendlist-friendname span {
 }
 
 
-.fb-login-btn {
-  color: #fff;
-  background-color: #6496c8;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 10px #27496d;
-}
-
-.fb-login-btn:hover,
-.fb-login-btn.hover {
-  background-color: #417cb8
-}
-
-.fb-login-btn:active,
-.fb-login-btn.active {
-  background-color: #417cb8;
-  box-shadow: 0 5px #27496d;
-  transform: translateY(5px);
-}
