@@ -1,6 +1,5 @@
-
 <div id='manage-photo' class="row tagrank">
-    <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?type=large">
+    <img class="profile-taglist-img" src="https://graph.facebook.com/{{ user.id }}/picture?width=200&height=200">
 </div>
 <div class="row tagrank">
     <ul class="nav nav-tabs" id="taglist-tab">
@@ -23,9 +22,9 @@
                         {% for tagger in tag_with_taggers[tag.name][0:4]|reverse %}
                             <div class="mytag-img th-mytag-img" data-uid="{{ tagger.id }}" title="{{ tagger.name }}">
                                 {% if tagger.id == '0' %}
-                                    <img class="voter-img" src="/static/images/poo-head.png">
+                                    <img class="voter-img" src="/static/images/poo-head-s.png">
                                 {% else %}
-                                    <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture">
+                                    <img class="voter-img" src="https://graph.facebook.com/{{ tagger.id }}/picture?width=50&height=50">
                                 {% endif %}
                             </div>
                         {% endfor %}
@@ -66,7 +65,7 @@
             $.get('/api/delete_tag', {name: tag}, function (response) {
                 if (response['succeed']) {
                     $.bootstrapGrowl("Successfully removed " + tag, {align: 'center', 'type': 'success'});
-                    $('.my-tag-set[data-name="'+tag+'"]').remove();
+                    $('.my-tag-set[data-name="' + tag + '"]').remove();
                 } else {
                     $.bootstrapGrowl("Oops, " + response['message'], {align: 'center', 'type': 'warning'});
                 }
@@ -80,10 +79,10 @@
             var taggers = tagger_array[tag];
             var msg = '<table><tbody>';
             $.each(taggers, function (index, tagger) {
-                var img_url = '/static/images/poo-head.png';
+                var img_url = '/static/images/poo-head-s.png';
                 if (tagger.id > 0)
-                    img_url = 'https://graph.facebook.com/' + tagger.id + '/picture';
-                msg += '<tr class="dialog-set"><td class="col-sm-2"><img class="dialog-img" ' +
+                    img_url = 'https://graph.facebook.com/' + tagger.id + '/picture?width=50&height=50';
+                msg += '<tr class="dialog-set" data-uid="' + tagger.id + '"><td class="col-sm-2"><img class="dialog-img" ' +
                         'src="' + img_url + '"></td><td class="col-sm-10"><p class="dialog-name">' + tagger.name +
                         '</p></td></tr>';
             });
@@ -95,7 +94,13 @@
                 closable: true,
                 closeByBackdrop: true,
                 size: BootstrapDialog.SIZE_SMALL,
-                cssClass: 'upvoteList-dialog'
+                cssClass: 'upvoteList-dialog',
+                onshown: function (dialogRef) {
+                    $('.dialog-set').click(function () {
+                        dialogRef.close();
+                        $(document).trigger("viewChanging", ["friend", {'id': $(this).data('uid')}]);
+                    });
+                },
             });
         });
 

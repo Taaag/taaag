@@ -59,8 +59,17 @@ body {
 }
 
 .overall {
-    max-width: 760px;
+    width: 775px;
     max-height: 560px;
+    background-color: #fae066;
+    margin: auto;
+    border-left: 15px solid #fff;
+    border-right: 15px solid #fff;
+}
+
+.overall-responsive {
+    max-width: 775px;
+    width: 100%;
     background-color: #fae066;
     margin: auto;
     border-left: 15px solid #fff;
@@ -116,7 +125,7 @@ body {
 .input-search {
     height: 100px;
     text-align: right;
-    size:20px;
+    size: 20px;
 }
 
 .searchbar {
@@ -157,13 +166,13 @@ body {
 .fb-btn-container {
     padding: 5px;
     display: inline-block;
-    float: right;
+    float: left;
 }
 
 .b-f-btn-container {
     padding: 5px;
     display: inline-block;
-    float: left;
+    float: right;
     margin-left: 10px;
 }
 
@@ -209,7 +218,7 @@ body {
 .icon-open {
 }
 
-.typeahead{
+.typeahead {
     font-size: 15px;
 }
 

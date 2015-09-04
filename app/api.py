@@ -253,7 +253,4 @@ views = {
 
 def public_cloud(user):
     tags = User.get_tags_for_user(user.id)
-    if user.public_cloud():
-        return render_template('public_cloud.html', user=user, tags={_[0]: _[1] for _ in tags})
-    else:
-        return render_template('public_cloud_forbidden.html', user=user)
+    return render_template('public_cloud.html', user=user, public=user.public_cloud(), tags={_[0]: _[1] for _ in tags})

@@ -13,7 +13,7 @@
                         <li>
                             <a href="#" data-weight="{{ value[0] }}" style="font-weight:bold;"
                                class="tag-cloud-tag {% if value[1] %}tagged{% endif %}"
-                               title="{% if value[1] %}You and {{ value[0]-1 }} others{% else %}{{ value[0] }} people{% endif %} upvoted">{{ key }}</a>
+                               title="{% if value[1] %}You{% if value[0]>1 %} and {{ value[0]-1 }} more{% endif %}{% else %}{{ value[0] }} people{% endif %} tagged">{{ key }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -42,21 +42,6 @@
         }).dblclick(function (e) {
             $(document).trigger("viewChanging", ["tag", {'name': $(this).text()}]);
         });
-
-        $(".tag-cloud-tag:not(.tagged)").click(function (e) {
-            insertNewTag($(this).text());
-        });
-        $(".tag-cloud-tag.tagged").click(function (e) {
-            $.bootstrapGrowl("You have already tagged " + $(this).text(), {align: 'center', 'type': 'warning'});
-        });
-
-        function insertNewTag(text) {
-            var tags = $('#inputDescription').val() || [];
-            if (tags.indexOf(text) == -1) {
-                tags.push(text);
-                $('#inputDescription').val(tags).trigger("change");
-            }
-        }
 
         //$('#inputDescription').tagsInput({maxChars: 32, delimiter: ['☭'], width: "75%", height: "100%"});
         $('#inputDescription').select2({
@@ -100,7 +85,13 @@
                     'type': 'warning'
                 });
             }
+            var added = $('#inputDescription').val() || [];
+            if (!(added.indexOf(tag) == -1)) {
+                e.preventDefault();
+            }
+            console.log(added);
         });
+
 
         $('#btnSubmit').click(function () {
             var tags = $('#inputDescription').val() || [];
@@ -127,14 +118,16 @@
                         var $tag = $("#tag-list").find('a[data-name="' + value + '"]');
                         var idToCreate = "tag-to-move-" + idsToMove.length.toString();
                         if ($tag.length > 0) {
-                            $tag.attr('data-weight', (parseInt($tag.attr('data-weight')) + 1).toString());
+                            var newWeight = parseInt($tag.attr('data-weight')) + 1;
+                            $tag.attr('data-weight', newWeight.toString());
+                            $tag.attr('title', 'You and ' + (newWeight - 1) + ' more tagged');
                             $tag.attr('id', idToCreate);
                             $tag.addClass('tagged');
                         } else {
                             var tag = $('<div>').text(value).html();
                             var newList = '<li><a href="#" data-weight="1" style="font-weight:bold;" ' +
-                                    'class="tag-cloud-tag tagged" data-name="' + tag + '" id="' + idToCreate + '">' +
-                                    tag + '</a></li>';
+                                    'class="tag-cloud-tag tagged" data-name="' + tag + '" id="' +
+                                    idToCreate + '" title="You tagged">' + tag + '</a></li>';
                             $('#tag-list').append(newList);
                         }
                         idsToMove.push(idToCreate);
@@ -215,6 +208,6 @@
 {% if friend.id == 0 %}
     {% set user_image = '/static/images/poo-head-s.png' %}
 {% else %}
-    {% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?type=normal' %}
+    {% set user_image = 'https://graph.facebook.com/' ~ friend.id ~ '/picture?width=100&height=100' %}
 {% endif %}
 {% include 'tag_cloud.html' %}
