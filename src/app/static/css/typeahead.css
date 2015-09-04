@@ -72,3 +72,7 @@
 .tt-suggestion p {
     margin: 0;
 }
+
+.typeahead-header {
+    background-color: rgba(89, 94, 96, 0.85)
+}

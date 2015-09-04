@@ -43,20 +43,20 @@
                 name: 'tags',
                 source: tags,
                 templates: {
-                    header: '<h3>Tags</h3>'
+                    header: '<h3 class="typeahead-header">Tags</h3>'
                 }
             }, {
                 name: 'friends',
                 source: friends,
                 display: 'name',
                 templates: {
-                    header: '<h3>Friends</h3>',
+                    header: '<h3 class="typeahead-header">Friends</h3>',
                     suggestion: function (friend) {
                         var img_url = '/static/images/poo-head-s.png';
                         if (friend.id !== '0') {
                             img_url = 'https://graph.facebook.com/' + friend.id + '/picture?width=50&height=50';
                         }
-                        return '<div><img src="' + img_url + '">' + friend.name + '</div>';
+                        return '<div><img class="tt-friend-head" src="' + img_url + '">' + friend.name + '</div>';
                     }
                 }
             }, {
@@ -64,9 +64,9 @@
                 source: invitable_friends,
                 display: 'name',
                 templates: {
-                    header: '<h3>Invite More Friends</h3>',
+                    header: '<h3 class="typeahead-header">Invite More Friends</h3>',
                     suggestion: function (friend) {
-                        return '<div><img src="' + friend.picture.data.url + '">' + friend.name + '</div>';
+                        return '<div><img class="tt-friend-head" src="' + friend.picture.data.url + '">' + friend.name + '</div>';
                     }
                 }
             });
