@@ -177,12 +177,12 @@ body {
 }
 
 .fb-btn {
-    background-color: #303030;
+    
     height: 20px;
     border-radius: 5px;
     border: none;
     outline: none;
-    color: white;
+    color: #303030;
     padding: 0;
     vertical-align: middle;
     width: 30px;
@@ -196,6 +196,7 @@ body {
     height: 30px;
     width: 30px;
     margin-bottom: 8px;
+    margin-right:10px;
 }
 #invite-btn:hover{
     opacity: 0.7;
@@ -206,9 +207,7 @@ body {
 }
 
 .fb-btn:hover {
-
-    background-color: #3b5998;
-    color: white;
+  opacity: 0.7;
 
 }
 
