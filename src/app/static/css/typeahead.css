@@ -73,6 +73,11 @@
     margin: 0;
 }
 
+.tt-friend-head {
+    height: 50px;
+    width: 50px;
+}
+
 .typeahead-header {
     background-color: rgba(89, 94, 96, 0.85);
     color: rgb(255, 255, 255);
