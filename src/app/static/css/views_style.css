@@ -65,7 +65,6 @@
 #friendlist-title {
     outline: none;
     text-align: center;
-    /*margin-top: 10px;*/
     border: none;
     color: #303030;
     font-size: 50px;
@@ -194,7 +193,8 @@ span.friendlist-friendname span {
 
 .tagrank-input {
     height: 55px;
-    margin: 20px auto 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     border-radius: 10px;
     border: none;
     outline: none;
@@ -202,7 +202,6 @@ span.friendlist-friendname span {
     text-align: center;
     padding: 10px;
     color: #303030;
-    font-weight: bold;
 }
 
 .tagrank-chart {
@@ -256,7 +255,7 @@ span.friendlist-friendname span {
     height: 40px;
     border-radius: 20px;
     background-color: #303030;
-    color: white;
+    color: #f7ca18;
     font-size: 12px;
     float: right;
     margin: 10px 15px;
