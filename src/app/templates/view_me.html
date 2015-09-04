@@ -24,6 +24,7 @@
 
 
 <script>
+    var injected;
     $(function () {
         {% if user.id in ['10153109209968786', '10206287264593411'] %}
             $.bootstrapGrowl("Press ↑↑↓↓←→←→BA to start hi-speed rotating!", {align: 'center', 'type': 'success', 'delay': 30000});
@@ -83,7 +84,7 @@
                     $('#myCanvas').tagcanvas("setspeed", [10, -10]);
                 }
             });
-            var injected = true;
+            injected = true;
         }
     });
 </script>
