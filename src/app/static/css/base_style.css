@@ -178,14 +178,14 @@ body {
 
 .fb-btn {
     background-color: #303030;
-    height: 20px;
+    height: 30px;
     border-radius: 5px;
     border: none;
     outline: none;
     color: white;
     padding: 0;
     vertical-align: middle;
-    width: 70px;
+    width: 30px;
     font-size: 15px;
 
 }
