@@ -177,7 +177,7 @@ body {
 }
 
 .fb-btn {
-    
+    background:transparent;
     height: 20px;
     border-radius: 5px;
     border: none;
