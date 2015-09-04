@@ -19,7 +19,7 @@ def get_paginated_data(user, resource_id, connection_name, max_pages=None):
     data = graph.get_connections(resource_id, connection_name)
     combined_data = data['data']
     current_page = 1
-    while 'next' in data['paging'] and (max_pages is None or current_page < max_pages):
+    while ('paging' in data) and ('next' in data['paging']) and (max_pages is None or current_page < max_pages):
         data = requests.get(data['paging']['next']).json()
         combined_data.extend(data['data'])
         current_page += 1
