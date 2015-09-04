@@ -170,7 +170,7 @@ body {
 }
 
 .b-f-btn-container {
-    padding: 5px;
+    padding-bottom: 10px;
     display: inline-block;
     float: right;
     margin-left: 10px;
@@ -178,14 +178,14 @@ body {
 
 .fb-btn {
     background-color: #303030;
-    height: 30px;
+    height: 20px;
     border-radius: 5px;
     border: none;
     outline: none;
     color: white;
     padding: 0;
     vertical-align: middle;
-    width: 20px;
+    width: 30px;
     font-size: 15px;
     margin-bottom: 5px;
 
