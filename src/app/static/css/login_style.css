@@ -32,8 +32,9 @@ body {
     outline: none;
     text-align: center;
     padding-top: 5px;
+    margin: auto;
     margin-top:  35px;
-    margin-left: 280px;
+    /*margin-left: 280px;*/
     opacity: 1;
 
 }
@@ -112,5 +113,6 @@ body {
 
 #jumpboy{
   height: 220px;
+  margin: auto;
   margin-top: 15px;
 }
