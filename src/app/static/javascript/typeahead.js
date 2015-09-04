@@ -72,6 +72,7 @@
             });
 
         $('.typeahead').bind('typeahead:select', function (ev, suggestion) {
+            $('#search-bar').typeahead('val', '');
             if (suggestion.hasOwnProperty('picture')) {
                 FB.ui({
                     method: 'apprequests',
