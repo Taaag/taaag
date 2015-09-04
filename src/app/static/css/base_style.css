@@ -264,3 +264,7 @@ body {
     width: 200px;
     height: 120px;
 }
+
+.intro-text{
+    text-align: left;
+}
