@@ -281,6 +281,7 @@ body {
     color: white;
     border-radius: 5px;
     margin: 5px;
+    padding-top: 10px;
 }
 
 .tourbus-next:hover, .tourbus-stop:hover{
