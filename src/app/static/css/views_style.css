@@ -65,8 +65,7 @@
 #friendlist-title {
     outline: none;
     text-align: center;
-    
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     border: none;
     color: #303030;
     font-size: 50px;
