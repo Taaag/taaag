@@ -277,13 +277,21 @@ body {
     width: 40px;
 }
 
-.tourbus-next, .tourbus-stop{
+.tourbus-next{
     background-color: #303030;
     color: #F7CA18;
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
 
+}
+
+.tourbus-stop{
+    background-color: #303030;
+    color: gray;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .tourbus-next:hover, .tourbus-stop:hover{
