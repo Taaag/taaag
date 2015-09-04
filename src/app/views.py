@@ -21,7 +21,7 @@ def index():
     # If a user was set in the get_current_user function before the request,
     # the user is logged in.
     if g.user and g.user.friends_api_authorized():
-        return render_template('base.html', app_id=FB_APP_ID, app_name=FB_APP_NAME, new_user=g.new_user)
+        return render_template('base.html', app_id=FB_APP_ID, app_name=FB_APP_NAME, new_user=g.get('new_user', False))
     # Otherwise, a user is not logged in.
     session['user'] = ''
     return render_template('login.html', app_id=FB_APP_ID, name=FB_APP_NAME, user_name=g.user.name if g.user else None)
