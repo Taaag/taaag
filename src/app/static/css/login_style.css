@@ -74,21 +74,21 @@ body {
   transform: translateY(5px);
 }
 
-@keyframes animatedBackground {
+    @keyframes animatedBackground {
       from { background-position: 0 0; }
-      to { background-position: 100% 0; }
+      to { background-position: 760px 0; }
     }
     @-webkit-keyframes animatedBackground {
       from { background-position: 0 0; }
-      to { background-position: 100% 0; }
+      to { background-position: 760px 0; }
     }
     @-ms-keyframes animatedBackground {
       from { background-position: 0 0; }
-      to { background-position: 100% 0; }
+      to { background-position: 760px 0; }
     }
     @-moz-keyframes animatedBackground {
       from { background-position: 0 0; }
-      to { background-position: 100% 0; }
+      to { background-position: 760px 0; }
     }
 
 
@@ -98,7 +98,6 @@ body {
   background-image: url('../images/floatingcloud.png');
   background-position: 0px 0px;
   background-repeat: repeat-x;
-  animation: animatedBackground 40s linear infinite;
   -o-animation: animatedBackground 40s linear infinite;
   -ms-animation: animatedBackground 40s linear infinite;
   -moz-animation: animatedBackground 40s linear infinite;
