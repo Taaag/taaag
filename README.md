@@ -16,3 +16,6 @@ https://apps.facebook.com/687248731410966
 * Zheng Yuan A0105786X
 	* Frontend Developer
 	* Storyteller of Poo
+* Poo 💩
+	* Mascot
+	* Poo Himself

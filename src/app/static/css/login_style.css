@@ -3,7 +3,7 @@ body {
 }
 
 .background-login {
- /*   background: url("../images/loginpage.jpg") no-repeat;*/
+    /*   background: url("../images/loginpage.jpg") no-repeat;*/
     width: 760px;
     height: 560px;
     background-size: 760px 560px;
@@ -21,10 +21,9 @@ body {
     height: 29px;
 }
 
-.fb-btn-container{
-
-  text-align: center;
-  vertical-align: middle;
+.fb-btn-container {
+    text-align: center;
+    vertical-align: middle;
 }
 
 .fb-login-btn {
@@ -38,7 +37,7 @@ body {
     outline: none;
     text-align: center;
     padding-top: 5px;
-    margin-top:  25px;
+    margin-top: 25px;
     /*margin-left: 280px;*/
     opacity: 1;
 
@@ -58,67 +57,84 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-
 .fb-login-btn {
-  color: #fff;
-  background-color: #6496c8;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 10px #27496d;
+    color: #fff;
+    background-color: #6496c8;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px #27496d;
 }
 
 .fb-login-btn:hover,
 .fb-login-btn.hover {
-  background-color: #417cb8;
-  transform: translateY(1px);
+    background-color: #417cb8;
+    transform: translateY(1px);
 }
 
 .fb-login-btn:active,
 .fb-login-btn.active {
-  background-color: #417cb8;
-  box-shadow: 0 5px #27496d;
-  transform: translateY(5px);
+    background-color: #417cb8;
+    box-shadow: 0 5px #27496d;
+    transform: translateY(5px);
 }
 
-    @keyframes animatedBackground {
-      from { background-position: 0 0; }
-      to { background-position: -760px 0; }
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
     }
-    @-webkit-keyframes animatedBackground {
-      from { background-position: 0 0; }
-      to { background-position: -760px 0; }
+    to {
+        background-position: -760px 0;
     }
-    @-ms-keyframes animatedBackground {
-      from { background-position: 0 0; }
-      to { background-position: -760px 0; }
-    }
-    @-moz-keyframes animatedBackground {
-      from { background-position: 0 0; }
-      to { background-position: -760px 0; }
-    }
-
-
-#animate-area { 
-  width: 760px; 
-  height: 200px; 
-  background-image: url('../images/floatingcloud.png');
-  background-position: 0px 0px;
-  background-repeat: repeat-x;
-  -o-animation: animatedBackground 40s linear infinite;
-  -ms-animation: animatedBackground 40s linear infinite;
-  -moz-animation: animatedBackground 40s linear infinite;
-  -webkit-animation: animatedBackground 40s linear infinite;
-  animation: animatedBackground 40s linear infinite;
 }
 
-.login-img{
-  width: 760px;
-  text-align: center;
+@-webkit-keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -760px 0;
+    }
 }
 
-#jumpboy{
-  height: 220px;
-  margin: auto;
-  margin-top: 25px;
-  margin-left: 35px;
+@-ms-keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -760px 0;
+    }
+}
+
+@-moz-keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -760px 0;
+    }
+}
+
+#animate-area {
+    width: 760px;
+    height: 200px;
+    background-image: url('../images/floatingcloud.png');
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    -o-animation: animatedBackground 40s linear infinite;
+    -ms-animation: animatedBackground 40s linear infinite;
+    -moz-animation: animatedBackground 40s linear infinite;
+    -webkit-animation: animatedBackground 40s linear infinite;
+    animation: animatedBackground 40s linear infinite;
+}
+
+.login-img {
+    width: 760px;
+    text-align: center;
+}
+
+#jumpboy {
+    height: 220px;
+    margin: auto;
+    margin-top: 25px;
+    margin-left: 35px;
 }
