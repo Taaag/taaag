@@ -37,7 +37,10 @@
 
 <script>
     $(function () {
-        $('.profile-name').textfill();
+        $('.profile-name').textfill(
+            {
+                maxFontPixels:30
+         });
         $(".tag-cloud-tag").each(function (index, value) {
             $(this).attr('data-name', $(this).text());
         }).dblclick(function (e) {
