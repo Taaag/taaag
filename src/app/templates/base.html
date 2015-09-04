@@ -183,12 +183,12 @@
 
 <ol class='tourbus-legs' id='my-tour-id'>
 
-  <li data-orientation='centered'>
+  <li data-orientation='centered' data-highlight='true'>
     <h4>Welcome to Taaag!</h4>
     <p>We are here to enhance your interaction with your Facebook friends.</p>
     <a href='javascript:void(0);' class='tourbus-next'>Start the tour...</a>
   </li>
-  <li data-el='#menu' data-orientation='left' data-width='200'>
+  <li data-el='#menu' data-orientation='left' data-width='200' data-highlight='true'>
     <h4>Menu</h4>
     <p>Mouse on the menu to navigate our app.</p>
     <a href='javascript:void(0);' class='tourbus-next'>Next...</a>
@@ -214,11 +214,7 @@
 
 
 </script>
- <script class='highlight' data-language='javascript' type='text/highlight'>
-            $(window).load( function() {
-                var tour = $('#my-tour-id').tourbus( {} );
-            } );
- </script>
+
 </body>
 </html>
 
