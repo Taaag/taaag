@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/base_style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/views_style.css">
     <link rel="stylesheet" type="text/css" href="/static/css/spinner.css">
-    <link href='/static/css/jquery-tourbus.css' media='all' rel='stylesheet' type='text/css' />
+    <link href='/static/css/jquery-tourbus.css' media='all' rel='stylesheet' type='text/css'/>
 
 
     <!--[if IE]>
@@ -166,7 +166,7 @@
         <div class="b-f-btn-container">
             <button class="fb-btn" id="back-btn" data-toggle="tooltip" ata-placement="top" title="Back"><i class="fa fa-arrow-left"></i></button>
             <button class="fb-btn" id="forward-btn" data-toggle="tooltip" ata-placement="top" title="Forward"><i class="fa fa-arrow-right"></i></button>
-            <img id="invite-btn" src = "/static/images/invite-s.png" data-toggle="tooltip" ata-placement="top" title="Invite"></img>
+            <img id="invite-btn" src="/static/images/invite-s.png" data-toggle="tooltip" ata-placement="top" title="Invite"></img>
         </div>
         <div class="fb-btn-container">
             <div class="fb-like" data-href="https://apps.facebook.com/687248731410966/" data-layout="button_count"
@@ -182,110 +182,112 @@
 
 <ol class='tourbus-legs' id='my-tour-id'>
 
-  <li data-orientation='centered'>
-    <div class = "col-xs-3">
-        <img class = "user-intro" src = "/static/images/userintro.png" alter = "User Intro Boy"></img>
-    </div>
-    <div class = "col-xs-9">
-    <h4>Welcome to Taaag!</h4>
-    <p>I am Little Poo! Follow me to have a short tour around the Taaag!</p>
-    </div>
-    <a href='javascript:void(0);' class='button tourbus-stop'>I already know...</a>
-    <a href='javascript:void(0);' class='button tourbus-next'>Start the tour...</a>
-   </li>
-   <li data-highlight = "true" data-el = "#menu" data-orientation='left' data-width='240'>
+    <li data-orientation='centered'>
+        <div class="col-xs-3">
+            <img class="user-intro" src="/static/images/userintro.png" alter="User Intro Boy"></img>
+        </div>
+        <div class="col-xs-9">
+            <h4>Welcome to Taaag!</h4>
+
+            <p>I am Little Poo! Follow me to have a short tour around the Taaag!</p>
+        </div>
+        <a href='javascript:void(0);' class='button tourbus-stop'>I already know...</a>
+        <a href='javascript:void(0);' class='button tourbus-next'>Start the tour...</a>
+    </li>
+    <li data-highlight="true" data-el="#menu" data-orientation='left' data-width='240'>
         <h4>Mouse Over!</h4>
-        <p>You can navigate the whole app.</p> 
+
+        <p>You can navigate the whole app.</p>
         <a href='javascript:void(0);' class='tourbus-next'>Next...</a>
     </li>
-  <li data-orientation='centered' data-width='700'>
-     
-         <div class = "col-xs-6"><img class = "gif-screen" src = "/static/images/drag.gif"></img></div>
-         
-         <div class = "col-xs-6">
-            <div class = "row">
+    <li data-orientation='centered' data-width='700'>
+
+        <div class="col-xs-6"><img class="gif-screen" src="/static/images/drag.gif"></img></div>
+
+        <div class="col-xs-6">
+            <div class="row">
                 <img class="icon-open" src="/static/images/iconme.png">
             </div>
-            <div class = "row">
-            <p class = "intro-text">In your own tag cloud, you are able to drag the cloud. You can click the camera <img id = "camera-intro" src="/static/images/iconsnap.png"></img> to take a snap of your tag cloud and share with your friends!</p>
+            <div class="row">
+                <p class="intro-text">In your own tag cloud, you are able to drag the cloud. You can click the camera <img id="camera-intro"
+                                                                                                                           src="/static/images/iconsnap.png"></img>
+                    to take a snap of your tag cloud and share with your friends!</p>
             </div>
-            <div class = "row"> <a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Next...</a></div>
-         </div>
-   
-    
-   
-  </li>
-  <li data-orientation='centered' data-width='700'>
-     
-         <div class = "col-xs-6"><img class = "gif-screen" src = "/static/images/search.gif"></img></div>
-         
-         <div class = "col-xs-6">
-            <div class = "row">
-                <img class = "user-intro" src = "/static/images/userintro-right.png" alter = "User Intro Boy"></img>
-            </div>
-            <div class = "row">
-            <p class = "intro-text">You may search your friends or a tag on your friends here!</p>
-            </div>
-            <div class = "row"> <a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Next...</a></div>
-         </div>
-   
-    
-   
+            <div class="row"><a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Next...</a></div>
+        </div>
+
+
     </li>
     <li data-orientation='centered' data-width='700'>
-     
-         <div class = "col-xs-6"><img class = "gif-screen" src = "/static/images/likepoo.gif"></img></div>
-         
-         <div class = "col-xs-6">
-            <div class = "row">
-                <img class = "user-intro" src = "/static/images/userintro-right.png" alter = "User Intro Boy"></img>
-            </div>
-            <div class = "row">
-            <p class = "intro-text">You may click the heart to like your friend's cloud! :)</p>
-            <h6 class = "intro-text">This will post your like on your Facebook timeline.</h6>
-            </div>
-            <div class = "row"> <a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Next...</a></div>
-         </div>
-   
-    
-   
-  </li>
-  <li data-orientation='centered' data-width='700'>
-     
-         <div class = "col-xs-6"><img class = "gif-screen" src = "/static/images/howtotag.gif"></img></div>
-         
-         <div class = "col-xs-6">
-            <div class = "row">
-                <img class = "user-intro" src = "/static/images/userintro-right.png" alter = "User Intro Boy"></img>
-            </div>
-            <div class = "row">
-            <p class = "intro-text">Click the tags on the cloud to see how many people agreed on it. You can click to agree on other tags you friend have. Enter one or multiple descriptions for your friends and submit them to show on the tag cloud.</p>
-            </div>
-            <div class = "row"> <a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Finally...</a></div>
-         </div>
-    
-  </li>
 
-  <li data-orientation='centered' data-width='700'>
-     
-         <div class = "col-xs-6"><img class = "gif-screen" src = "/static/images/settings-intro.png"></img></div>
-         
-         <div class = "col-xs-6">
-            <div class = "row">
-                <img class = "user-intro" src = "/static/images/iconsettings.png" alter = "Settings"></img>
-            </div>
-            <div class = "row">
-            <h4>We care your privacy!</h4>
-            <p>Go to settings to turn on/off your permission for your friends to see your shared cloud without login.</p>
-            </div>
-            <div class = "row"> <a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Start tagging now!</a></div>
-         </div>
-   
-    
-   
-  </li>
+        <div class="col-xs-6"><img class="gif-screen" src="/static/images/search.gif"></img></div>
 
-  
+        <div class="col-xs-6">
+            <div class="row">
+                <img class="user-intro" src="/static/images/userintro-right.png" alter="User Intro Boy"></img>
+            </div>
+            <div class="row">
+                <p class="intro-text">You may search your friends or a tag on your friends here!</p>
+            </div>
+            <div class="row"><a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Next...</a></div>
+        </div>
+
+
+    </li>
+    <li data-orientation='centered' data-width='700'>
+
+        <div class="col-xs-6"><img class="gif-screen" src="/static/images/likepoo.gif"></img></div>
+
+        <div class="col-xs-6">
+            <div class="row">
+                <img class="user-intro" src="/static/images/userintro-right.png" alter="User Intro Boy"></img>
+            </div>
+            <div class="row">
+                <p class="intro-text">You may click the heart to like your friend's cloud! :)</p>
+                <h6 class="intro-text">This will post your like on your Facebook timeline.</h6>
+            </div>
+            <div class="row"><a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Next...</a></div>
+        </div>
+
+
+    </li>
+    <li data-orientation='centered' data-width='700'>
+
+        <div class="col-xs-6"><img class="gif-screen" src="/static/images/howtotag.gif"></img></div>
+
+        <div class="col-xs-6">
+            <div class="row">
+                <img class="user-intro" src="/static/images/userintro-right.png" alter="User Intro Boy"></img>
+            </div>
+            <div class="row">
+                <p class="intro-text">Click the tags on the cloud to see how many people agreed on it. You can click to agree on other tags you friend have.
+                    Enter one or multiple descriptions for your friends and submit them to show on the tag cloud.</p>
+            </div>
+            <div class="row"><a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Finally...</a></div>
+        </div>
+
+    </li>
+
+    <li data-orientation='centered' data-width='700'>
+
+        <div class="col-xs-6"><img class="gif-screen" src="/static/images/settings-intro.png"></img></div>
+
+        <div class="col-xs-6">
+            <div class="row">
+                <img class="user-intro" src="/static/images/iconsettings.png" alter="Settings"></img>
+            </div>
+            <div class="row">
+                <h4>We care your privacy!</h4>
+
+                <p>Go to settings to turn on/off your permission for your friends to see your shared cloud without login.</p>
+            </div>
+            <div class="row"><a href='javascript:void(0);' class='button remove-bottom tourbus-next'>Start tagging now!</a></div>
+        </div>
+
+
+    </li>
+
+
 </ol>
 
 
@@ -300,23 +302,24 @@
         $('.fb-btn').tooltip();
         $('#invite-btn').tooltip();
 
-        var tour = $('#my-tour-id').tourbus( {
-                onLegStart: function( leg, bus ) {
-                     if( leg.rawData.highlight ) {
-                     leg.$target.addClass('my-tour-highlight');
-                         $('.my-tour-overlay').show();
-                         }
-                     },
-                 onLegEnd: function( leg, bus ) {
-                    if( leg.rawData.highlight ) {
+        var tour = $('#my-tour-id').tourbus({
+            onLegStart: function (leg, bus) {
+                if (leg.rawData.highlight) {
+                    leg.$target.addClass('my-tour-highlight');
+                    $('.my-tour-overlay').show();
+                }
+            },
+            onLegEnd: function (leg, bus) {
+                if (leg.rawData.highlight) {
                     leg.$target.removeClass('my-tour-highlight');
                     $('.my-tour-overlay').hide();
-                        }
-                            }
+                }
+            }
+        });
 
-        } );
-        tour.trigger('depart.tourbus');
-
+        {% if new_user %}
+            tour.trigger('depart.tourbus');
+        {% endif %}
     });
 
 
