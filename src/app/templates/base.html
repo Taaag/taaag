@@ -195,8 +195,9 @@
   <li data-el='#menu' data-orientation='left' data-width='200' data-highlight='true'>
     <h4>Mouse Over!</h4>
     <p>Try click on a button!</p>
-    <a href='javascript:void(0);' class='tourbus-next'>Next...</a>
+    <a href='javascript:$(document).trigger("viewChanging", ["me", {}]);' class='tourbus-next'>Next...</a>
   </li>
+
   
   
 </ol>
